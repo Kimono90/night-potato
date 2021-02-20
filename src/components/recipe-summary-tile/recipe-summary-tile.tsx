@@ -1,6 +1,11 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../recipe-summary-tile/recipe-summary-tile.scss';
+import {
+  faClock,
+  faHamburger,
+  faMale,
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function RecipeSummaryTile() {
   return (
@@ -10,15 +15,15 @@ export default function RecipeSummaryTile() {
       </div>
       <div className="recipe-info-block">
         <div className="recipe-info">
-          <p>
-            <FontAwesomeIcon icon={['fas', 'male']} /> - 4
-          </p>
-          <p>
-            <FontAwesomeIcon icon={['far', 'clock']} /> - 50 mins
-          </p>
-          <p>
-            <FontAwesomeIcon icon={['fas', 'hamburger']} /> - 500 kcal
-          </p>
+          <div>
+            <FontAwesomeIcon icon={faMale} /> - 4
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faClock} /> - 50 mins
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faHamburger} /> - 500 kcal
+          </div>
         </div>
         <div
           style={{

@@ -5,7 +5,7 @@ import RecipeSummaryTile from '../../components/recipe-summary-tile/recipe-summa
 export default function RecipeOverviewPage() {
   return (
     <div className="overview-page">
-      Recipe Overview Page
+      <h1>Recipes</h1>
       <RecipeSummaryTile />
     </div>
   );

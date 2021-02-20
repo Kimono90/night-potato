@@ -1,12 +1,9 @@
 .recipe-tile {
   border-radius: 0.5rem;
-  margin-top: 1rem;
   padding-top: 0.25rem;
   background-color: #7D6C6A;
   text-align: center;
   justify-content: center;
-
-
 
   & .recipe-title {
     padding-bottom: 1rem;
@@ -23,7 +20,7 @@
     & .recipe-info {
       flex-direction: column;
 
-      & p {
+      & div {
         margin: 5px 10px;
       }
     }

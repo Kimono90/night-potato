@@ -166,6 +166,7 @@
     ]
   },
   "devDependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
     "@types/react-router-dom": "^5.1.7"
   }
 }
