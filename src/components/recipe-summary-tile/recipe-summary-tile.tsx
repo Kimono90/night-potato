@@ -24,9 +24,7 @@ export default function RecipeSummaryTile({
 }: props) {
   return (
     <div className="recipe-tile">
-      <div className="recipe-title">
-        <strong>{recipeName}</strong>
-      </div>
+      <div className="recipe-title">{recipeName}</div>
       <div className="recipe-info-block">
         <div className="recipe-info">
           <div>
