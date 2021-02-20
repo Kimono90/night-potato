@@ -7,11 +7,11 @@
   align-items: center;
   text-align: center;
   flex-direction: column;
+  width: 100%;
 }
 
 @media (min-width: 500px) {
   .overview-page {
-    max-width: 45rem;
-    height: 45rem;
+    width: 45rem;
   }
 }

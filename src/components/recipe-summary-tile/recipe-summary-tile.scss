@@ -1,12 +1,18 @@
 .recipe-tile {
   border-radius: 0.5rem;
   padding-top: 0.25rem;
+  margin-bottom: 2rem;
   background-color: #7D6C6A;
   text-align: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  width: 90%;
 
   & .recipe-title {
     padding-bottom: 1rem;
+    max-width: 90%;
+    align-self: center;
   }
 
   & .recipe-info-block {
@@ -21,15 +27,23 @@
       flex-direction: column;
 
       & div {
-        margin: 5px 10px;
+        margin: 0.5rem 1.5rem;
+
+        & svg {
+          min-width: 2rem;
+        }
       }
     }
 
     & .recipe-photo {
-      border-radius: 0.5rem;
       max-height: 100%;
-      max-width: 100%;
-      object-fit: contain;
+      max-width: 50%;
+      width: 5rem;
+      height: 7rem;
+      padding: 0;
+      margin: 0;
+      background-position: center;
+      background-size: cover;
     }
   }
 }
@@ -43,10 +57,13 @@
 
       .recipe-info {
         max-height: 10rem;
+        font-size: 1.5rem;
       }
 
       .recipe-photo {
-        max-height: 10rem;
+        width: 30rem;
+        height: 50rem;
+        border-radius: 0 0.5rem 0.5rem 0;
       }
     }
   }
@@ -54,5 +71,5 @@
 
 .recipe-tile:hover {
   box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
-  transition: box-shadow .3s ease-in-out;
+  transition: box-shadow .2s ease-in-out;
 }
