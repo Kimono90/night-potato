@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={RecipeOverviewPage} />
-        <Route path="/summary/:id" component={RecipeSummaryPage} />
+        <Route path="/summary/:recipeId" component={RecipeSummaryPage} />
         {/*<Route path="/add/:recipeId" component={RecipeAddPage} />*/}
       </Switch>
     </Router>

@@ -7,24 +7,14 @@ import {
   faMale,
 } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
+import { RecipeInfo } from '../../models/RecipeInfo';
 
 type props = {
   recipeId: number;
-  recipeName: string;
-  portions: number;
-  prepTimeInMinutes: number;
-  kcalPerPortion: number;
-  imgUrl: string;
+  recipeInfo: RecipeInfo;
 };
 
-export default function RecipeSummaryCard({
-  recipeId,
-  recipeName,
-  portions,
-  prepTimeInMinutes,
-  kcalPerPortion,
-  imgUrl,
-}: props) {
+export default function RecipeSummaryCard({ recipeId, recipeInfo }: props) {
   const history = useHistory();
 
   return (
@@ -32,22 +22,24 @@ export default function RecipeSummaryCard({
       className="recipe-card"
       onClick={() => history.push(`/summary/${recipeId}`)}
     >
-      <div className="recipe-title">{recipeName}</div>
+      <div className="recipe-title">{recipeInfo.name}</div>
       <div className="recipe-info-block">
         <div className="recipe-info">
           <div>
-            <FontAwesomeIcon icon={faMale} /> {portions} persons
+            <FontAwesomeIcon icon={faMale} /> {recipeInfo.portions} persons
           </div>
           <div>
-            <FontAwesomeIcon icon={faClock} /> {prepTimeInMinutes} mins
+            <FontAwesomeIcon icon={faClock} /> {recipeInfo.prepTimeInMinutes}{' '}
+            mins
           </div>
           <div>
-            <FontAwesomeIcon icon={faHamburger} /> {kcalPerPortion} kcal
+            <FontAwesomeIcon icon={faHamburger} /> {recipeInfo.kcalPerPortion}{' '}
+            kcal
           </div>
         </div>
         <div
           className="recipe-photo"
-          style={{ backgroundImage: `url(${imgUrl}` }}
+          style={{ backgroundImage: `url(${recipeInfo.imgUrl}` }}
         />
       </div>
     </div>

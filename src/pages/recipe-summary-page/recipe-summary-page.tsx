@@ -1,8 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { IRouteParams } from '../../models/RouteParams';
 
 export default function RecipeSummaryPage() {
-  const { id } = useParams<any>(); // solve this issue because its weird
+  const { recipeId } = useParams<IRouteParams>();
 
-  return <div className="summary-page">{id}</div>;
+  return <div className="summary-page">{recipeId}</div>;
 }
