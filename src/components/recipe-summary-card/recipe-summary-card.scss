@@ -15,7 +15,7 @@
     padding: 0.5rem
   }
 
-  & .recipe-info-block {
+  & .recipe-info-part {
     border-radius: 0.5rem;
     background-color: #C9A495;
     display: flex;
@@ -53,7 +53,7 @@
   .recipe-summary-card {
     width: 35rem;
 
-    .recipe-info-block {
+    .recipe-info-part {
       height: 10rem;
 
       .recipe-info {

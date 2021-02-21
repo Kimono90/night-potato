@@ -23,7 +23,7 @@ export default function RecipeSummaryCard({ recipeId, recipeInfo }: props) {
       onClick={() => history.push(`/summary/${recipeId}`)}
     >
       <div className="recipe-title">{recipeInfo.name}</div>
-      <div className="recipe-info-block">
+      <div className="recipe-info-part">
         <div className="recipe-info">
           <div>
             <FontAwesomeIcon icon={faMale} /> {recipeInfo.portions} persons
