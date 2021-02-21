@@ -7,11 +7,11 @@ import {
   faMale,
 } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
-import { RecipeInfo } from '../../models/RecipeInfo';
+import { IRecipeInfo } from '../../models-and-constants/IRecipeInfo';
 
 type props = {
   recipeId: number;
-  recipeInfo: RecipeInfo;
+  recipeInfo: IRecipeInfo;
 };
 
 export default function RecipeSummaryCard({ recipeId, recipeInfo }: props) {

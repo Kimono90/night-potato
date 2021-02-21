@@ -1,4 +1,4 @@
-export interface RecipeInfo {
+export interface IRecipeInfo {
   name: string;
   portions: number;
   prepTimeInMinutes: number;
