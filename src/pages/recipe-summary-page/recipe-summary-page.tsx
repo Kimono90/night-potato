@@ -1,9 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { IRouteParams } from '../../models-and-constants/IRouteParams';
+import RecipeInfoBlock from '../../components/recipe-info-block/recipe-info-block';
+import './recipe-summary-page.scss';
 
 export default function RecipeSummaryPage() {
-  const { recipeId } = useParams<IRouteParams>();
+  let { recipeId } = useParams<IRouteParams>();
 
-  return <div className="summary-page">{recipeId}</div>;
+  return (
+    <div className="summary-page">
+      <RecipeInfoBlock recipeId={Number(recipeId)} />
+    </div>
+  );
 }
