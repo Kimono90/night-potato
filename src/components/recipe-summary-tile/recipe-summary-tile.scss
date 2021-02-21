@@ -44,6 +44,7 @@
       margin: 0;
       background-position: center;
       background-size: cover;
+      border-radius: 0 0.5rem 0.5rem 0;
     }
   }
 }
@@ -63,7 +64,6 @@
       .recipe-photo {
         width: 30rem;
         height: 50rem;
-        border-radius: 0 0.5rem 0.5rem 0;
       }
     }
   }
