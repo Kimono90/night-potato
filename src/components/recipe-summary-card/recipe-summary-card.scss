@@ -1,4 +1,4 @@
-.recipe-card {
+.recipe-summary-card {
   border-radius: 0.5rem;
   margin-bottom: 2rem;
   background-color: #7D6C6A;
@@ -50,7 +50,7 @@
 }
 
 @media (min-width: 500px) {
-  .recipe-card {
+  .recipe-summary-card {
     width: 35rem;
 
     .recipe-info-block {
@@ -69,7 +69,7 @@
   }
 }
 
-.recipe-card:hover {
+.recipe-summary-card:hover {
   box-shadow: 0 0 6px 6px rgba(255, 255, 255, 0.2);
   transition: box-shadow .2s ease-in-out;
   cursor: pointer;

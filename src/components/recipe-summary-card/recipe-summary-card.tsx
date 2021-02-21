@@ -19,7 +19,7 @@ export default function RecipeSummaryCard({ recipeId, recipeInfo }: props) {
 
   return (
     <div
-      className="recipe-card"
+      className="recipe-summary-card"
       onClick={() => history.push(`/summary/${recipeId}`)}
     >
       <div className="recipe-title">{recipeInfo.name}</div>
