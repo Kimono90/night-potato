@@ -70,6 +70,6 @@
 }
 
 .recipe-tile:hover {
-  box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+  box-shadow: 0 0 6px 6px rgba(255, 255, 255, 0.2);
   transition: box-shadow .2s ease-in-out;
 }

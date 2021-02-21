@@ -21,7 +21,7 @@ export default function RecipeOverviewPage() {
         imgUrl="https://www.leukerecepten.nl/wp-content/uploads/2019/10/brownies.jpg"
       />
       <RecipeSummaryTile
-        recipeName="Bami met Saté"
+        recipeName="Bami with Saté"
         portions={4}
         prepTimeInMinutes={40}
         kcalPerPortion={600}
