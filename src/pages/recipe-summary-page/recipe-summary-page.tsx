@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { IRouteParams } from '../../models-and-constants/IRouteParams';
+import type { IRouteParams } from 'src/models-and-constants/IRouteParams';
 import RecipeInfoBlock from '../../components/recipe-info-block/recipe-info-block';
 import './recipe-summary-page.scss';
 

@@ -1,4 +1,4 @@
-import { Measurements } from './Measurements';
+import type { Measurements } from "./Measurements";
 
 export interface IIngredient {
   product: string;
