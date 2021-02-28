@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { IRecipeInfo } from '../../models-and-constants/IRecipeInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClock,
@@ -7,6 +6,7 @@ import {
   faMale,
 } from '@fortawesome/free-solid-svg-icons';
 import './recipe-info-block.scss';
+import type { IRecipeInfo } from '../../models-and-constants/IRecipeInfo';
 
 type Props = {
   recipeId: number;

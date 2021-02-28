@@ -7,7 +7,7 @@ import {
   faMale,
 } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
-import { IRecipeInfo } from '../../models-and-constants/IRecipeInfo';
+import type { IRecipeInfo } from 'src/models-and-constants/IRecipeInfo';
 
 type props = {
   recipeId: number;
