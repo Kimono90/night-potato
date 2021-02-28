@@ -8,7 +8,7 @@ export default function RecipeSummaryPage() {
   let { recipeId } = useParams<IRouteParams>();
 
   return (
-    <div className="summary-page">
+    <div className="summaryPage">
       <RecipeInfoBlock recipeId={Number(recipeId)} />
     </div>
   );

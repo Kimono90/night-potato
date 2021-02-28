@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import './recipe-info-block.scss';
 import type { IRecipeInfo } from '../../models-and-constants/IRecipeInfo';
+import { StyledRecipeInfoBlock } from './recipe-info-block.styles';
 
 type Props = {
   recipeId: number;
@@ -26,7 +27,7 @@ export default function RecipeInfoBlock({ recipeId }: Props) {
   };
 
   return (
-    <div className="recipe-info-block">
+    <StyledRecipeInfoBlock style={{backgroundColor: 'red'}}>
       <h1>Recipe</h1>
       <div className="recipe-card">
         <div className="recipe-title">{info.name}</div>
@@ -42,6 +43,7 @@ export default function RecipeInfoBlock({ recipeId }: Props) {
           </div>
         </div>
       </div>
-    </div>
+    </StyledRecipeInfoBlock>
+
   );
 }
