@@ -5,7 +5,7 @@ type Props = {
   instructions: IInstructionStep[]
 }
 
-export default function RecipeInstructionsBlock({instructions}: Props) {
+export default function InstructionsBlock({instructions}: Props) {
 
   return (
     <div>INSTRUCTIONS</div>

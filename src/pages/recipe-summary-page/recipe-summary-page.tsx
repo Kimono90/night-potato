@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import type { IRouteParams } from 'src/models-and-constants/IRouteParams';
-import RecipeInfoBlock from '../../components/recipe-info-block/recipe-info-block';
+import MetaInfoBlock from '../../components/recipe-info-block/meta-info-block';
 import { StyledRecipeSummaryPage } from './recipe-summary-page.styles';
-import RecipeIngredientsBlock from '../../components/recipe-ingredients-block/recipe-ingredients-block';
-import RecipeInstructionsBlock from '../../components/recipe-instructions-block/recipe-instructions-block';
+import IngredientsBlock from '../../components/recipe-ingredients-block/ingredients-block';
+import InstructionsBlock from '../../components/recipe-instructions-block/instructions-block';
 import type { IRecipe } from '../../models-and-constants/IRecipe';
 
 export default function RecipeSummaryPage() {
@@ -23,15 +23,16 @@ export default function RecipeSummaryPage() {
       kcalPerPortion: 500,
       imgUrl: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe'
     },
-    ingredients: [],
-    instructionSteps: []
+    ingredients: [{ product: 'chickpeas', amount: 500, measurement: 'gram' },
+      { product: 'tomato sauce', amount: 200, measurement: 'ml'}],
+    instructionSteps: [{stepNr: 1, stepDescription: 'Buy the flour', isDone: false}]
   };
 
   return (
     <StyledRecipeSummaryPage data-label="summaryPage">
-      <RecipeInfoBlock recipeMetaInfo={recipe.metaInfo} />
-      <RecipeIngredientsBlock ingredients={recipe.ingredients} />
-      <RecipeInstructionsBlock instructions={recipe.instructionSteps} />
+      <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} />
+      <IngredientsBlock ingredients={recipe.ingredients} />
+      <InstructionsBlock instructions={recipe.instructionSteps} />
     </StyledRecipeSummaryPage>
   );
 }

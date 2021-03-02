@@ -5,21 +5,22 @@ import {
   faHamburger,
   faMale,
 } from '@fortawesome/free-solid-svg-icons';
-import { StyledFullRecipeCard, StyledRecipeMetaInfo, StyledRecipeTitle, StyledRecipeInfoBlock } from './recipe-info-block.styles';
+import { StyledMetaInfo, StyledInfoBlock } from './meta-info-block.styles';
 import type { IRecipeMetaInfo } from '../../models-and-constants/IRecipe';
+import { StyledSummaryCard, StyledTitle } from '../shared-styles/shared-styles';
 
 type Props = {
   recipeMetaInfo: IRecipeMetaInfo;
 };
 
-export default function RecipeInfoBlock({ recipeMetaInfo }: Props) {
+export default function MetaInfoBlock({ recipeMetaInfo }: Props) {
 
   return (
-    <StyledRecipeInfoBlock data-label="info-block">
+    <StyledInfoBlock data-label="info-block">
       <h1>Recipe</h1>
-      <StyledFullRecipeCard data-label="recipe-card">
-        <StyledRecipeTitle data-label="recipe-title">{recipeMetaInfo.name}</StyledRecipeTitle>
-        <StyledRecipeMetaInfo data-label="recipe-meta-info">
+      <StyledSummaryCard data-label="summary-card">
+        <StyledTitle data-label="recipe-title">{recipeMetaInfo.name}</StyledTitle>
+        <StyledMetaInfo data-label="recipe-meta-info">
           <div>
             <FontAwesomeIcon icon={faMale} /> {recipeMetaInfo.portions} persons
           </div>
@@ -29,10 +30,10 @@ export default function RecipeInfoBlock({ recipeMetaInfo }: Props) {
           <div>
             <FontAwesomeIcon icon={faHamburger} /> {recipeMetaInfo.kcalPerPortion} kcal
           </div>
-        </StyledRecipeMetaInfo>
-      </StyledFullRecipeCard>
+        </StyledMetaInfo>
+      </StyledSummaryCard>
 
-    </StyledRecipeInfoBlock>
+    </StyledInfoBlock>
 
   );
 }

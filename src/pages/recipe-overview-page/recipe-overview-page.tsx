@@ -1,12 +1,17 @@
-import React from 'react';
-import RecipeSummaryCard from '../../components/recipe-summary-card/recipe-summary-card';
+import React, { useEffect } from 'react';
+import OverviewCard from '../../components/recipe-overview-card/overview-card';
 import { StyledRecipeOverviewPage } from './recipe-overview-page.styles';
 
 export default function RecipeOverviewPage() {
+    useEffect(() => {
+        //TODO: get all recipes
+    }, [])
+
+    //TODO map through all recipes to render Summary cards
   return (
     <StyledRecipeOverviewPage data-label="overview-page">
       <h1>Recipes</h1>
-      <RecipeSummaryCard
+      <OverviewCard
         recipeId={1}
         recipeInfo={{
           name: 'Vegetarian Chickpea Curry',
@@ -17,7 +22,7 @@ export default function RecipeOverviewPage() {
             'https://images.unsplash.com/photo-1585937421612-70a008356fbe',
         }}
       />
-      <RecipeSummaryCard
+      <OverviewCard
         recipeId={2}
         recipeInfo={{
           name: 'Brownies',
@@ -28,7 +33,7 @@ export default function RecipeOverviewPage() {
             'https://images.unsplash.com/photo-1515037893149-de7f840978e2',
         }}
       />
-      <RecipeSummaryCard
+      <OverviewCard
         recipeId={3}
         recipeInfo={{
           name: 'Poke Bowl',
@@ -38,7 +43,7 @@ export default function RecipeOverviewPage() {
           imgUrl: 'https://images.unsplash.com/photo-1542354255-839e272e3408',
         }}
       />
-      <RecipeSummaryCard
+      <OverviewCard
         recipeId={4}
         recipeInfo={{
           name: 'Paõ de Queijo',
@@ -49,7 +54,7 @@ export default function RecipeOverviewPage() {
             'https://images.unsplash.com/photo-1598142982901-df6cec10ae35',
         }}
       />
-      <RecipeSummaryCard
+      <OverviewCard
         recipeId={5}
         recipeInfo={{
           name: 'Pizza Margherita',
