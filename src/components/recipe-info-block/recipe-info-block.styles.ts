@@ -6,7 +6,7 @@ export const StyledRecipeInfoBlock = styled.div`
   align-items: center;
   `
 
-export const RecipeCard = styled.div`
+export const StyledFullRecipeCard = styled.div`
   border-radius: 0.5rem;
   margin-bottom: 2rem;
   background-color: #7D6C6A;
@@ -16,19 +16,19 @@ export const RecipeCard = styled.div`
   justify-content: center;
   width: 90%;
   
-  @media (min-width: 500px) {
+  @media (min-width: 541px) {
     width: 35rem;
   }
   `
 
-export const RecipeTitle = styled.div`
+export const StyledRecipeTitle = styled.div`
   max-width: 90%;
   align-self: center;
   font-size: 2rem;
   padding: 0.5rem;
   `
 
-export const RecipeMetaInfo = styled.div`
+export const StyledRecipeMetaInfo = styled.div`
   border-radius: 0.5rem;
   background-color: #C9A495;
   display: flex;
@@ -45,7 +45,7 @@ export const RecipeMetaInfo = styled.div`
     }
   }
   
-  @media (min-width: 500px) {
+  @media (min-width: 541px) {
     height: 3rem;
     font-size: 1.5rem;
   }

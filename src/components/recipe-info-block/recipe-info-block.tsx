@@ -6,7 +6,7 @@ import {
   faMale,
 } from '@fortawesome/free-solid-svg-icons';
 import type { IRecipeInfo } from '../../models-and-constants/IRecipeInfo';
-import { RecipeCard, RecipeMetaInfo, RecipeTitle, StyledRecipeInfoBlock } from './recipe-info-block.styles';
+import { StyledFullRecipeCard, StyledRecipeMetaInfo, StyledRecipeTitle, StyledRecipeInfoBlock } from './recipe-info-block.styles';
 
 type Props = {
   recipeId: number;
@@ -28,9 +28,9 @@ export default function RecipeInfoBlock({ recipeId }: Props) {
   return (
     <StyledRecipeInfoBlock data-label="info-block">
       <h1>Recipe</h1>
-      <RecipeCard data-label="recipe-card">
-        <RecipeTitle data-label="recipe-title">{info.name}</RecipeTitle>
-        <RecipeMetaInfo data-label="recipe-meta-info">
+      <StyledFullRecipeCard data-label="recipe-card">
+        <StyledRecipeTitle data-label="recipe-title">{info.name}</StyledRecipeTitle>
+        <StyledRecipeMetaInfo data-label="recipe-meta-info">
           <div>
             <FontAwesomeIcon icon={faMale} /> {info.portions} persons
           </div>
@@ -40,8 +40,8 @@ export default function RecipeInfoBlock({ recipeId }: Props) {
           <div>
             <FontAwesomeIcon icon={faHamburger} /> {info.kcalPerPortion} kcal
           </div>
-        </RecipeMetaInfo>
-      </RecipeCard>
+        </StyledRecipeMetaInfo>
+      </StyledFullRecipeCard>
 
     </StyledRecipeInfoBlock>
 
