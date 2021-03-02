@@ -16,11 +16,12 @@ export interface IRecipeMetaInfo {
 export interface IInstructionStep {
   stepNr: number;
   stepDescription: string;
-  isDone: boolean;
+  isChecked: boolean;
 }
 
 export interface IIngredient {
   product: string;
   amount: number;
   measurement: string;
+  isChecked: boolean
 }

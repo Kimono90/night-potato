@@ -17,17 +17,18 @@ export const StyledIngredient = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-start;
-  
-  input {
-    margin-left: 1rem;
+
+  svg {
+    margin: 1rem 0 1rem 1rem;
+    cursor: pointer;
   }
   
-  p {
+  p,s {
     text-align: start;
     margin: 0.5rem 1rem;
   }
   
   #amount {
-    width: 8rem;
+    width: 6rem;
   }
 `
