@@ -1,6 +1,5 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './recipe-summary-card.scss';
 import {
   faClock,
   faHamburger,
@@ -8,6 +7,13 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import type { IRecipeInfo } from 'src/models-and-constants/IRecipeInfo';
+import {
+  StyledRecipeSummaryCard,
+  StyledRecipeSummaryDescription,
+  StyledRecipeSummaryInfo,
+  StyledRecipeSummaryTitle,
+  StyledRecipeSummaryPhoto
+} from './recipe-summary-card.styles';
 
 type props = {
   recipeId: number;
@@ -18,13 +24,13 @@ export default function RecipeSummaryCard({ recipeId, recipeInfo }: props) {
   const history = useHistory();
 
   return (
-    <div
-      className="recipe-summary-card"
+    <StyledRecipeSummaryCard
+      data-label="recipe-summary-card"
       onClick={() => history.push(`/summary/${recipeId}`)}
     >
-      <div className="recipe-title">{recipeInfo.name}</div>
-      <div className="recipe-info-part">
-        <div className="recipe-info">
+      <StyledRecipeSummaryTitle data-label="recipe-title">{recipeInfo.name}</StyledRecipeSummaryTitle>
+      <StyledRecipeSummaryInfo data-label="recipe-info">
+        <StyledRecipeSummaryDescription data-label="recipe-description">
           <div>
             <FontAwesomeIcon icon={faMale} /> {recipeInfo.portions} persons
           </div>
@@ -36,12 +42,12 @@ export default function RecipeSummaryCard({ recipeId, recipeInfo }: props) {
             <FontAwesomeIcon icon={faHamburger} /> {recipeInfo.kcalPerPortion}{' '}
             kcal
           </div>
-        </div>
-        <div
-          className="recipe-photo"
+        </StyledRecipeSummaryDescription>
+        <StyledRecipeSummaryPhoto
+          data-label="recipe-photo"
           style={{ backgroundImage: `url(${recipeInfo.imgUrl}` }}
         />
-      </div>
-    </div>
+      </StyledRecipeSummaryInfo>
+    </StyledRecipeSummaryCard>
   );
 }

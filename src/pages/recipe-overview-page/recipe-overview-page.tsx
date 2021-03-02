@@ -1,10 +1,10 @@
 import React from 'react';
-import '../recipe-overview-page/recipe-overview-page.scss';
 import RecipeSummaryCard from '../../components/recipe-summary-card/recipe-summary-card';
+import { StyledRecipeOverviewPage } from './recipe-overview-page.styles';
 
 export default function RecipeOverviewPage() {
   return (
-    <div className="overview-page">
+    <StyledRecipeOverviewPage data-label="overview-page">
       <h1>Recipes</h1>
       <RecipeSummaryCard
         recipeId={1}
@@ -60,6 +60,6 @@ export default function RecipeOverviewPage() {
             'https://images.unsplash.com/photo-1574071318508-1cdbab80d002',
         }}
       />
-    </div>
+    </StyledRecipeOverviewPage>
   );
 }
