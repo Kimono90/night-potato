@@ -6,7 +6,6 @@ import {
   faMale,
 } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
-import type { IRecipeInfo } from 'src/models-and-constants/IRecipeInfo';
 import {
   StyledRecipeSummaryCard,
   StyledRecipeSummaryDescription,
@@ -14,10 +13,11 @@ import {
   StyledRecipeSummaryTitle,
   StyledRecipeSummaryPhoto
 } from './recipe-summary-card.styles';
+import type { IRecipeMetaInfo } from '../../models-and-constants/IRecipe';
 
 type props = {
   recipeId: number;
-  recipeInfo: IRecipeInfo;
+  recipeInfo: IRecipeMetaInfo;
 };
 
 export default function RecipeSummaryCard({ recipeId, recipeInfo }: props) {
