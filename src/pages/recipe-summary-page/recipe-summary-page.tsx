@@ -16,8 +16,8 @@ const r: IRecipe = {
     kcalPerPortion: 500,
     imgUrl: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe'
   },
-  ingredients: [{ product: 'chickpeas', amount: 500, measurement: 'gram', isChecked: false },
-    { product: 'tomato sauce', amount: 200, measurement: 'ml', isChecked: true}],
+  ingredients: [{ product: 'CHICKPEAS', amount: 500, measurement: 'gram', isChecked: false },
+    { product: 'TOMATO SAUCE', amount: 200, measurement: 'ml', isChecked: true}],
   instructionSteps: [{stepNr: 1, stepDescription: 'Buy the flour', isChecked: false}]
 };
 

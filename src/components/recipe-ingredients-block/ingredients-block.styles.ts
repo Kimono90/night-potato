@@ -17,18 +17,32 @@ export const StyledIngredient = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-start;
+  align-items: center;
+  margin: 0.5rem;
 
   svg {
-    margin: 1rem 0 1rem 1rem;
     cursor: pointer;
+    margin-left: 1rem;
   }
   
-  p,s {
+  p {
     text-align: start;
-    margin: 0.5rem 1rem;
+    margin: 0 1rem;
   }
   
   #amount {
-    width: 6rem;
+    display: inline-block;
+    width: 8rem;
   }
+`
+
+export const StyledIngredientStrikeThrough = styled.div`
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-bottom: 2px solid white;
+  transform: translate(-50%, -50%) scaleX(${(props: {isChecked: boolean}) => props.isChecked ? 1 : 0});
+  transform-origin: left;
+  transition: transform .3s ease-in-out;
 `

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { IIngredient } from '../../models-and-constants/IRecipe';
 import { StyledSummaryCard, StyledTitle } from '../shared-styles/shared-styles';
-import { StyledIngredient, StyledIngredientList } from './ingredients-block.styles';
+import { StyledIngredient, StyledIngredientList, StyledIngredientStrikeThrough } from './ingredients-block.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
 import { faSquare } from '@fortawesome/free-regular-svg-icons';
@@ -10,6 +10,8 @@ type Props = {
   ingredients: IIngredient[];
   onIngredientChange: (newIngredients: IIngredient[]) => void;
 }
+
+const extraWhiteSpace = '&nbsp;&nbsp;'
 
 export default function IngredientsBlock({ingredients, onIngredientChange}: Props) {
   const toggleChecked = (ingredient: IIngredient) => {
@@ -24,8 +26,11 @@ export default function IngredientsBlock({ingredients, onIngredientChange}: Prop
   const ingredientList = ingredients.map((i: IIngredient) => {
     return (<StyledIngredient key={`${i.product}`} data-label="ingredient">
       <FontAwesomeIcon icon={i.isChecked ? faCheckSquare : faSquare} onClick={() => toggleChecked(i)} />
-      <p style={{textDecoration: i.isChecked ? 'line-through': 'none'}} id="amount">{i.amount} {i.measurement}</p>
-      <p style={{textDecoration: i.isChecked ? 'line-through': 'none'}}>{i.product}</p>
+      <p style={{position: 'relative'}}>
+        <StyledIngredientStrikeThrough isChecked={i.isChecked} />
+        <span id="amount">{i.amount} {i.measurement}</span>
+        <span id="product">{i.product}</span>
+      </p>
     </StyledIngredient>)
 
 
