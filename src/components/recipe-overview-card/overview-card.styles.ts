@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const StyledRecipeSummaryCard = styled.div`
+export const StyledOverviewCard = styled.div`
   border-radius: 0.5rem;
   margin-bottom: 2rem;
   background-color: #7D6C6A;
@@ -21,14 +21,14 @@ export const StyledRecipeSummaryCard = styled.div`
   }
   `
 
-export const StyledRecipeSummaryTitle = styled.div`
+export const StyledOverviewTitle = styled.div`
   max-width: 90%;
   align-self: center;
   font-size: 1.5rem;
   padding: 0.5rem
   `
 
-export const StyledRecipeSummaryInfo = styled.div`
+export const StyledOverviewInfo = styled.div`
   border-radius: 0.5rem;
   background-color: #C9A495;
   display: flex;
@@ -41,7 +41,7 @@ export const StyledRecipeSummaryInfo = styled.div`
   }
   `
 
-export const StyledRecipeSummaryDescription = styled.div`
+export const StyledOverviewDescription = styled.div`
   flex-direction: column;
 
   & div {
@@ -58,7 +58,7 @@ export const StyledRecipeSummaryDescription = styled.div`
   }
   `
 
-export const StyledRecipeSummaryPhoto = styled.div`
+export const StyledOverviewPhoto = styled.div`
   max-height: 100%;
   max-width: 50%;
   width: 5rem;
