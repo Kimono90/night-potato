@@ -16,7 +16,7 @@ export const StyledOverviewCard = styled.div`
     cursor: pointer;
   }
   
-  @media(min-width: 541px) {
+  @media(min-width: 500px) {
     width: 35rem;
   }
   `
@@ -36,7 +36,7 @@ export const StyledOverviewInfo = styled.div`
   justify-content: space-between;
   align-items: center;
   
-  @media(min-width: 541px) {
+  @media(min-width: 500px) {
     height: 10rem;
   }
   `
@@ -52,7 +52,7 @@ export const StyledOverviewDescription = styled.div`
     }
   }
   
-  @media(min-width: 541px) {
+  @media(min-width: 500px) {
     max-height: 10rem;
     font-size: 1.5rem;
   }
@@ -69,7 +69,7 @@ export const StyledOverviewPhoto = styled.div`
   background-size: cover;
   border-radius: 0 0.5rem 0.5rem 0;
   
-  @media(min-width: 541px) {
+  @media(min-width: 500px) {
     width: 30rem;
     height: 50rem;
   }

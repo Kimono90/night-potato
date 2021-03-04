@@ -16,8 +16,8 @@ const r: IRecipe = {
     kcalPerPortion: 500,
     imgUrl: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe'
   },
-  ingredients: [{ product: 'CHICKPEAS', amount: 500, measurement: 'gram', isChecked: false },
-    { product: 'TOMATO SAUCE', amount: 200, measurement: 'ml', isChecked: true}],
+  ingredients: [{ product: 'Chickpeas', amount: 500, measurement: 'gram', isChecked: false },
+    { product: 'Low-sodium chicken broth and a lot of other stuff', amount: 200, measurement: 'ml', isChecked: true}],
   instructionSteps: [{stepNr: 1, stepDescription: 'Buy the flour', isChecked: false}]
 };
 

@@ -8,7 +8,7 @@ export const StyledIngredientList = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
 
-  @media (min-width: 541px) {
+  @media (min-width: 500px) {
     font-size: 1.5rem;
   }
   `
@@ -19,6 +19,8 @@ export const StyledIngredient = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin: 0.5rem;
+  flex-wrap: nowrap;
+
 
   svg {
     cursor: pointer;
@@ -32,17 +34,9 @@ export const StyledIngredient = styled.div`
   
   #amount {
     display: inline-block;
-    width: 8rem;
+    
+    @media(min-width: 500px) {
+      width: 8rem;
+    }
   }
-`
-
-export const StyledIngredientStrikeThrough = styled.div`
-  width: 100%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  border-bottom: 2px solid white;
-  transform: translate(-50%, -50%) scaleX(${(props: {isChecked: boolean}) => props.isChecked ? 1 : 0});
-  transform-origin: left;
-  transition: transform .3s ease-in-out;
 `
