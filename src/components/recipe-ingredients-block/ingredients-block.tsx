@@ -1,7 +1,7 @@
 import React from 'react';
 import type { IIngredient } from '../../models-and-constants/IRecipe';
-import { StyledSummaryCard, StyledTitle } from '../shared-styles/shared-styles';
-import { StyledIngredient, StyledIngredientList } from './ingredients-block.styles';
+import { StyledList, StyledSummaryCard, StyledTitle } from '../shared-styles/shared-styles';
+import { StyledIngredient } from './ingredients-block.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
 import { faSquare } from '@fortawesome/free-regular-svg-icons';
@@ -10,8 +10,6 @@ type Props = {
   ingredients: IIngredient[];
   onIngredientChange: (newIngredients: IIngredient[]) => void;
 }
-
-const extraWhiteSpace = '&nbsp;&nbsp;'
 
 export default function IngredientsBlock({ingredients, onIngredientChange}: Props) {
   const toggleChecked = (ingredient: IIngredient) => {
@@ -38,9 +36,9 @@ export default function IngredientsBlock({ingredients, onIngredientChange}: Prop
   return (
     <StyledSummaryCard data-label="summary-card">
       <StyledTitle data-label="title">Ingredients</StyledTitle>
-      <StyledIngredientList data-label="ingredient-list">
+      <StyledList data-label="ingredient-list">
         {ingredientList}
-      </StyledIngredientList>
+      </StyledList>
     </StyledSummaryCard>
   )
 }
