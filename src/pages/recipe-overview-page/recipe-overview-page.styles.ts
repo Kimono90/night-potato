@@ -11,6 +11,6 @@ export const StyledRecipeOverviewPage = styled.div`
   flex-direction: column;
   width: 100%;
 
-  @media (min-width: 541px) {
+  @media (min-width: 500px) {
       width: 47rem;
   `

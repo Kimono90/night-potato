@@ -23,7 +23,7 @@ export const StyledMetaInfo = styled.div`
     }
   }
   
-  @media (min-width: 541px) {
+  @media (min-width: 500px) {
     height: 3rem;
     font-size: 1.5rem;
   }

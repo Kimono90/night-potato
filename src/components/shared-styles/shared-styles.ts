@@ -8,10 +8,10 @@ export const StyledSummaryCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   
-  @media (min-width: 541px) {
-    width: 35rem;
+  @media (min-width: 500px) {
+    width: 45rem;
   }
   `
 
