@@ -17,7 +17,6 @@ export default function MetaInfoBlock({ recipeMetaInfo }: Props) {
 
   return (
     <StyledInfoBlock data-label="info-block">
-      <h1>Recipe</h1>
       <StyledSummaryCard data-label="summary-card">
         <StyledTitle data-label="recipe-title">{recipeMetaInfo.name}</StyledTitle>
         <StyledMetaInfo data-label="recipe-meta-info">

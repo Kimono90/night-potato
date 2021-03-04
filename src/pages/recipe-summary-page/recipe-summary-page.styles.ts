@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const StyledRecipeSummaryPage = styled.div`
   padding: 0 1rem 1rem 1rem;
-  border-radius: 1rem;
   background-color: #30343F;
   color: #ffffff;
   display: flex;
@@ -12,5 +11,7 @@ export const StyledRecipeSummaryPage = styled.div`
   width: 100%;
 
   @media (min-width: 500px) {
-      width: 55rem;
+    width: 55rem;
+    border-radius: 1rem;
+  }
   `
