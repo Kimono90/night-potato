@@ -16,9 +16,14 @@ const r: IRecipe = {
     kcalPerPortion: 500,
     imgUrl: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe'
   },
-  ingredients: [{ product: 'Chickpeas', amount: 500, measurement: 'gram', isChecked: false },
-    { product: 'Low-sodium chicken broth and a lot of other stuff', amount: 200, measurement: 'ml', isChecked: true}],
-  instructionSteps: [{stepNr: 1, stepDescription: 'Buy the flour', isChecked: false}]
+  ingredients: [
+    { product: 'Chickpeas', amount: 500, measurement: 'gram', isChecked: true },
+    { product: 'Coconut milk', amount: 250, measurement: 'ml', isChecked: false },
+    { product: 'Low-sodium chicken broth and a lot of other stuff', amount: 200, measurement: 'ml', isChecked: false}],
+  instructionSteps: [
+    {stepNr: 1, stepDescription: 'Buy the stuff', isChecked: true},
+    {stepNr: 2, stepDescription: 'Cut the stuff', isChecked: false},
+    {stepNr: 3, stepDescription: 'Cook the stuff', isChecked: false}]
 };
 
 export default function RecipeSummaryPage() {
