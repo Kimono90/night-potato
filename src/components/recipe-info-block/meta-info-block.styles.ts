@@ -7,7 +7,7 @@ export const StyledInfoBlock = styled.div`
   margin-top: 3rem;
   `
 
-export const StyledMetaInfo = styled.div`
+export const StyledMetaInfoContent = styled.div`
   border-radius: 0.5rem;
   background-color: #C9A495;
   display: flex;
@@ -25,7 +25,18 @@ export const StyledMetaInfo = styled.div`
   }
   
   @media (min-width: 500px) {
-    height: 3rem;
+    height: 6rem;
     font-size: 1.5rem;
   }
   `
+
+export const StyledMetaInfoObject = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+ `
+
+export const StyledMetaInfoIcon = styled.div`
+  display: flex;
+  align-items: center;
+`
