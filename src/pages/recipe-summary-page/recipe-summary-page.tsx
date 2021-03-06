@@ -45,10 +45,24 @@ export default function RecipeSummaryPage() {
     setRecipe({...recipe, instructionSteps: newInstructions})
   }
 
+  const handlePortionsChange = (action: string) => {
+    console.log(action);
+    let newPortions = recipe.metaInfo.portions;
+    action === '+' ? newPortions++ : newPortions--;
+    if (newPortions === 0) return;
+
+    recalculateIngredientAmounts(newPortions);
+    setRecipe({...recipe, metaInfo: { ...recipe.metaInfo, portions: newPortions}})
+  }
+
+  const recalculateIngredientAmounts = (newPortions: number) => {
+    recipe.ingredients.forEach((i) => i.amount = i.amount / recipe.metaInfo.portions * newPortions)
+  }
+
   if (recipe) {
     return (
       <StyledRecipeSummaryPage data-label="summaryPage">
-        <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} />
+        <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
         <IngredientsBlock ingredients={recipe.ingredients} onIngredientChange={handleIngredientChange} />
         <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
       </StyledRecipeSummaryPage>
