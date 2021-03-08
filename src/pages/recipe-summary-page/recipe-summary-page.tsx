@@ -6,6 +6,7 @@ import { StyledRecipeSummaryPage } from './recipe-summary-page.styles';
 import IngredientsBlock from '../../components/recipe-ingredients-block/ingredients-block';
 import InstructionsBlock from '../../components/recipe-instructions-block/instructions-block';
 import type { IIngredient, IInstructionStep, IRecipe } from '../../models-and-constants/IRecipe';
+import PhotoCarousel from '../../components/recipe-photo-carousel/photo-carousel';
 
 const r: IRecipe = {
   id: 1,
@@ -63,6 +64,7 @@ export default function RecipeSummaryPage() {
     return (
       <StyledRecipeSummaryPage data-label="summaryPage">
         <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
+        <PhotoCarousel imgUrl={recipe.metaInfo.imgUrl} />
         <IngredientsBlock ingredients={recipe.ingredients} onIngredientChange={handleIngredientChange} />
         <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
       </StyledRecipeSummaryPage>
