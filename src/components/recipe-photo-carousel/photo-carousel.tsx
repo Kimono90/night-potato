@@ -9,12 +9,12 @@ type Props = {
 export default function PhotoCarousel({imgUrl}: Props) {
   return (
     <StyledPhotoCarousel>
-      <StyledArrowIcon data-label="FA-LEFT" icon={faChevronLeft} />
+      <StyledArrowIcon data-label="fa-left" icon={faChevronLeft} />
       <StyledCarouselPhoto
         data-label="carousel-photo"
         style={{ backgroundImage: `url(${imgUrl}` }}
       />
-      <StyledArrowIcon data-label="FA-RIGHT" icon={faChevronRight} />
+      <StyledArrowIcon data-label="fa-right" icon={faChevronRight} />
     </StyledPhotoCarousel>
 )
 }
