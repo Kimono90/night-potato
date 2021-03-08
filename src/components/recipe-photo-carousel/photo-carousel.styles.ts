@@ -8,8 +8,8 @@ export const StyledPhotoCarousel = styled.div`
 `
 
 export const StyledCarouselPhoto = styled.div`
-  width: 15rem;
-  height: 15rem;
+  width: 12rem;
+  height: 12rem;
   background-size: cover;
   border-radius: 0.5rem;
   margin: 0 1rem 2rem 1rem;
@@ -28,11 +28,11 @@ export const StyledArrowIcon = styled(FontAwesomeIcon)`
   transition: all 0.3s ease-in-out;
 
   :active {
-    transform: scale(1.1);
+    transform: scale(1.3);
   }
 
   @media(min-width: 500px) {
-    transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-in-out;
 
     :hover {
       cursor: pointer;
