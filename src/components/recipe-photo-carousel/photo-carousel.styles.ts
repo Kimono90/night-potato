@@ -25,10 +25,18 @@ export const StyledCarouselPhoto = styled.div`
 export const StyledArrowIcon = styled(FontAwesomeIcon)`
   font-size: 2rem;
   margin-bottom: 2rem;
-  transition: transform 0.3s ease-out;
+  transition: all 0.3s ease-in-out;
 
-  :hover {
-    cursor: pointer;
-    transform: ${props => props.icon === faChevronLeft ? 'translateX(-4px)' : 'translateX(4px)'};
+  :active {
+    transform: scale(1.1);
+  }
+
+  @media(min-width: 500px) {
+    transition: transform 0.3s ease-out;
+
+    :hover {
+      cursor: pointer;
+      transform: ${props => props.icon === faChevronLeft ? 'translateX(-4px)' : 'translateX(4px)'};
+    }
   }
 `
