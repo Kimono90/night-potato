@@ -15,14 +15,14 @@ export default function IngredientsBlock({ingredients, onIngredientChange}: Prop
   const toggleChecked = (ingredient: IIngredient) => {
     const igs = [...ingredients];
 
-    const toUpdate = igs.find((i) => i.product === ingredient.product);
+    const toUpdate = igs.find((i) => i.id === ingredient.id);
     if (toUpdate) toUpdate.isChecked = !ingredient.isChecked
 
     onIngredientChange(igs);
   }
 
   const ingredientList = ingredients.map((i: IIngredient) => {
-    return (<StyledIngredient key={`${i.product}`} data-label="ingredient">
+    return (<StyledIngredient key={`${i.id}`} data-label="ingredient">
       <FontAwesomeIcon icon={i.isChecked ? faCheckSquare : faSquare} onClick={() => toggleChecked(i)} />
       <p>
         <span style={{textDecoration: i.isChecked ? 'line-through': 'none'}} id="amount">{i.amount} {i.measurement}</span>

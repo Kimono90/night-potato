@@ -20,6 +20,7 @@ export interface IInstructionStep {
 }
 
 export interface IIngredient {
+  id: number;
   product: string;
   amount: number;
   measurement: string;
