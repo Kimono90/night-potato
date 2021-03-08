@@ -6,6 +6,7 @@ import { StyledRecipeSummaryPage } from './recipe-summary-page.styles';
 import IngredientsBlock from '../../components/recipe-ingredients-block/ingredients-block';
 import InstructionsBlock from '../../components/recipe-instructions-block/instructions-block';
 import type { IIngredient, IInstructionStep, IRecipe } from '../../models-and-constants/IRecipe';
+import PhotoCarousel from '../../components/recipe-photo-carousel/photo-carousel';
 
 const r: IRecipe = {
   id: 1,
@@ -17,9 +18,9 @@ const r: IRecipe = {
     imgUrl: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe'
   },
   ingredients: [
-    { product: 'Chickpeas', amount: 500, measurement: 'gram', isChecked: true },
-    { product: 'Coconut milk', amount: 250, measurement: 'ml', isChecked: false },
-    { product: 'Low-sodium chicken broth and a lot of other stuff', amount: 200, measurement: 'ml', isChecked: false}],
+    { id: 1, product: 'Chickpeas', amount: 500, measurement: 'gram', isChecked: true },
+    { id: 2, product: 'Coconut milk', amount: 250, measurement: 'ml', isChecked: false },
+    { id: 3, product: 'Low-sodium chicken broth and a lot of other stuff', amount: 200, measurement: 'ml', isChecked: false}],
   instructionSteps: [
     {stepNr: 2, stepDescription: 'Cut the stuff', isChecked: false},
     {stepNr: 1, stepDescription: 'Buy the stuff', isChecked: true},
@@ -63,6 +64,7 @@ export default function RecipeSummaryPage() {
     return (
       <StyledRecipeSummaryPage data-label="summaryPage">
         <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
+        <PhotoCarousel imgUrl={recipe.metaInfo.imgUrl} />
         <IngredientsBlock ingredients={recipe.ingredients} onIngredientChange={handleIngredientChange} />
         <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
       </StyledRecipeSummaryPage>
