@@ -5,7 +5,24 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 export const StyledPhotoCarousel = styled.div`
   display: flex;
   align-items: center;
+ justify-content: center;
 `
+
+export const StyledPreviousCarouselPhoto = styled.div`
+  width: 12rem;
+  height: 12rem;
+  background-size: cover;
+  border-radius: 0.5rem;
+  margin: 0 1rem 2rem 1rem;
+  padding: 0 2rem;
+  opacity: 0.3;
+  
+  @media(min-width: 500px) {
+    margin: 0 2rem 4rem 2rem;    
+    width: 20rem;
+    height: 20rem;
+  }
+ `
 
 export const StyledCarouselPhoto = styled.div`
   width: 12rem;
@@ -14,6 +31,22 @@ export const StyledCarouselPhoto = styled.div`
   border-radius: 0.5rem;
   margin: 0 1rem 2rem 1rem;
   padding: 0 2rem;
+  
+  @media(min-width: 500px) {
+    margin: 0 2rem 4rem 2rem;    
+    width: 20rem;
+    height: 20rem;
+  }
+ `
+
+export const StyledNextCarouselPhoto = styled.div`
+  width: 12rem;
+  height: 12rem;
+  background-size: cover;
+  border-radius: 0.5rem;
+  margin: 0 1rem 2rem 1rem;
+  padding: 0 2rem;
+  opacity: 0.3;
   
   @media(min-width: 500px) {
     margin: 0 2rem 4rem 2rem;    
