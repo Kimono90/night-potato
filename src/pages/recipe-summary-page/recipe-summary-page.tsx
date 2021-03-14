@@ -7,6 +7,7 @@ import IngredientsBlock from '../../components/recipe-ingredients-block/ingredie
 import InstructionsBlock from '../../components/recipe-instructions-block/instructions-block';
 import type { IIngredient, IInstructionStep, IRecipe } from '../../models-and-constants/IRecipe';
 import PhotoCarousel from '../../components/recipe-photo-carousel/photo-carousel';
+import { testImg1, testImg2 } from '../../testImgs';
 
 const r: IRecipe = {
   id: 1,
@@ -15,7 +16,7 @@ const r: IRecipe = {
     portions: 4,
     prepTimeInMinutes: 50,
     kcalPerPortion: 500,
-    imgUrl: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe'
+    imgUrls: [testImg1,testImg2]
   },
   ingredients: [
     { id: 1, product: 'Chickpeas', amount: 500, measurement: 'gram', isChecked: true },
@@ -64,7 +65,7 @@ export default function RecipeSummaryPage() {
     return (
       <StyledRecipeSummaryPage data-label="summaryPage">
         <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
-        <PhotoCarousel imgUrl={recipe.metaInfo.imgUrl} />
+        <PhotoCarousel imgUrls={recipe.metaInfo.imgUrls} />
         <IngredientsBlock ingredients={recipe.ingredients} onIngredientChange={handleIngredientChange} />
         <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
       </StyledRecipeSummaryPage>

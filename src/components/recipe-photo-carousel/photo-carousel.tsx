@@ -3,17 +3,18 @@ import { StyledArrowIcon, StyledCarouselPhoto, StyledPhotoCarousel } from './pho
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 type Props = {
-  imgUrl: string;
+  imgUrls: string [];
 }
 
-export default function PhotoCarousel({imgUrl}: Props) {
+export default function PhotoCarousel({imgUrls}: Props) {
   return (
     <StyledPhotoCarousel>
       <StyledArrowIcon data-label="fa-left" icon={faChevronLeft} />
-      <StyledCarouselPhoto
+      {imgUrls.map((imgUrl: string) => <StyledCarouselPhoto
         data-label="carousel-photo"
-        style={{ backgroundImage: `url(${imgUrl}` }}
-      />
+        style={{ backgroundImage: `url(${imgUrl})` }}
+
+      />)}
       <StyledArrowIcon data-label="fa-right" icon={faChevronRight} />
     </StyledPhotoCarousel>
 )
