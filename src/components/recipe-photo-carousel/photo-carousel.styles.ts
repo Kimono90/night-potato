@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import defineProperty = Reflect.defineProperty;
 
 export const StyledPhotoCarousel = styled.div`
   display: flex;
@@ -8,47 +9,26 @@ export const StyledPhotoCarousel = styled.div`
  justify-content: center;
 `
 
-export const StyledPreviousCarouselPhoto = styled.div`
-  width: 12rem;
-  height: 12rem;
-  background-size: cover;
-  border-radius: 0.5rem;
-  margin: 0 1rem 2rem 1rem;
-  padding: 0 2rem;
-  opacity: 0.3;
-  
-  @media(min-width: 500px) {
-    margin: 0 2rem 4rem 2rem;    
-    width: 20rem;
-    height: 20rem;
-  }
- `
+type CarouselPhotoProps = {
+ imgUrl: string
+}
 
-export const StyledCarouselPhoto = styled.div`
+export const StyledCarouselPhoto = styled.div<CarouselPhotoProps>`
   width: 12rem;
   height: 12rem;
   background-size: cover;
   border-radius: 0.5rem;
   margin: 0 1rem 2rem 1rem;
   padding: 0 2rem;
-  
-  @media(min-width: 500px) {
-    margin: 0 2rem 4rem 2rem;    
-    width: 20rem;
-    height: 20rem;
-  }
- `
+  background-image: ${props => props.imgUrl};
+ opacity: 1;
+ transition: opacity 0.3s ease-in-out;
+ 
+ :hover {
+  opacity: 0.5;
+ }
 
-export const StyledNextCarouselPhoto = styled.div`
-  width: 12rem;
-  height: 12rem;
-  background-size: cover;
-  border-radius: 0.5rem;
-  margin: 0 1rem 2rem 1rem;
-  padding: 0 2rem;
-  opacity: 0.3;
-  
-  @media(min-width: 500px) {
+ @media(min-width: 500px) {
     margin: 0 2rem 4rem 2rem;    
     width: 20rem;
     height: 20rem;
@@ -59,7 +39,7 @@ export const StyledArrowIcon = styled(FontAwesomeIcon)`
   font-size: 2rem;
   margin-bottom: 2rem;
   transition: all 0.3s ease-in-out;
-
+ 
   :active {
     transform: scale(1.3);
   }
