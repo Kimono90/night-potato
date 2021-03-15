@@ -10,7 +10,7 @@ export interface IRecipeMetaInfo {
   portions: number;
   prepTimeInMinutes: number;
   kcalPerPortion: number;
-  imgUrl: string;
+  imgUrls: string [];
 }
 
 export interface IInstructionStep {

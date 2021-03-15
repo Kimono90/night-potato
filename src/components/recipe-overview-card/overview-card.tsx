@@ -45,7 +45,7 @@ export default function OverviewCard({ recipeId, recipeInfo }: props) {
         </StyledOverviewDescription>
         <StyledOverviewPhoto
           data-label="recipe-photo"
-          style={{ backgroundImage: `url(${recipeInfo.imgUrl}` }}
+          style={{ backgroundImage: `url(${recipeInfo.imgUrls}` }}
         />
       </StyledOverviewInfo>
     </StyledOverviewCard>

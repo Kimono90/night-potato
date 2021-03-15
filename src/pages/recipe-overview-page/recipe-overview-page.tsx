@@ -18,8 +18,7 @@ export default function RecipeOverviewPage() {
           portions: 4,
           prepTimeInMinutes: 50,
           kcalPerPortion: 500,
-          imgUrl:
-            'https://images.unsplash.com/photo-1585937421612-70a008356fbe',
+          imgUrls: ['https://images.unsplash.com/photo-1585937421612-70a008356fbe'],
         }}
       />
       <OverviewCard
@@ -29,8 +28,7 @@ export default function RecipeOverviewPage() {
           portions: 6,
           prepTimeInMinutes: 60,
           kcalPerPortion: 250,
-          imgUrl:
-            'https://images.unsplash.com/photo-1515037893149-de7f840978e2',
+          imgUrls: ['https://images.unsplash.com/photo-1515037893149-de7f840978e2'],
         }}
       />
       <OverviewCard
@@ -40,7 +38,7 @@ export default function RecipeOverviewPage() {
           portions: 4,
           prepTimeInMinutes: 40,
           kcalPerPortion: 600,
-          imgUrl: 'https://images.unsplash.com/photo-1542354255-839e272e3408',
+          imgUrls: ['https://images.unsplash.com/photo-1542354255-839e272e3408'],
         }}
       />
       <OverviewCard
@@ -50,8 +48,7 @@ export default function RecipeOverviewPage() {
           portions: 2,
           prepTimeInMinutes: 45,
           kcalPerPortion: 350,
-          imgUrl:
-            'https://images.unsplash.com/photo-1598142982901-df6cec10ae35',
+          imgUrls: ['https://images.unsplash.com/photo-1598142982901-df6cec10ae35'],
         }}
       />
       <OverviewCard
@@ -61,8 +58,7 @@ export default function RecipeOverviewPage() {
           portions: 2,
           prepTimeInMinutes: 90,
           kcalPerPortion: 600,
-          imgUrl:
-            'https://images.unsplash.com/photo-1574071318508-1cdbab80d002',
+          imgUrls: ['https://images.unsplash.com/photo-1574071318508-1cdbab80d002'],
         }}
       />
     </StyledRecipeOverviewPage>
