@@ -18,13 +18,13 @@ export const StyledCarouselPhoto = styled.div<CarouselPhotoProps>`
   height: 12rem;
   background-size: cover;
   border-radius: 0.5rem;
-  margin: 0 1rem 0.5rem 1rem;
+  margin: 0 1rem 1.5rem 1rem;
   padding: 0 2rem;
   background-image: ${props => props.imgUrl};
  opacity: 1;
  
  @media(min-width: 500px) {
-    margin: 0 2rem 1rem 2rem;    
+    margin: 0 2rem 1.5rem 2rem;    
     width: 20rem;
     height: 20rem;
   }
@@ -32,6 +32,7 @@ export const StyledCarouselPhoto = styled.div<CarouselPhotoProps>`
 
 export const StyledArrowIcon = styled(FontAwesomeIcon)`
   font-size: 2rem;
+ margin-bottom: 0.5rem;
   transition: all 0.3s ease-in-out;
  
   :active {
