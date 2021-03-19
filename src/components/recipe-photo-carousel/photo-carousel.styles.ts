@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import defineProperty = Reflect.defineProperty;
+import { keyframes } from '@emotion/react';
 
 export const StyledPhotoCarousel = styled.div`
   display: flex;
@@ -10,8 +10,18 @@ export const StyledPhotoCarousel = styled.div`
 `
 
 type CarouselPhotoProps = {
- imgUrl: string
+ imgUrl: string;
 }
+
+export const fadeIn = keyframes`
+  from, 0%, to {
+  opacity: 0;
+  }
+  
+ 100% {
+  opacity: 1;
+ }
+`
 
 export const StyledCarouselPhoto = styled.div<CarouselPhotoProps>`
   width: 12rem;
@@ -21,7 +31,7 @@ export const StyledCarouselPhoto = styled.div<CarouselPhotoProps>`
   margin: 0 1rem 1.5rem 1rem;
   padding: 0 2rem;
   background-image: ${props => props.imgUrl};
- opacity: 1;
+  animation:${fadeIn} ease 1s;
  
  @media(min-width: 500px) {
     margin: 0 2rem 1.5rem 2rem;    

@@ -27,3 +27,43 @@ export const StyledIngredient = styled.div`
     }
   }
 `
+
+export const StyledEquipment = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.5rem 1.5rem;
+  flex-wrap: nowrap;
+`
+
+
+type TabProps = {
+  visible?: boolean;
+}
+
+export const StyledTabList = styled.div<TabProps>`
+  border-radius: 0.5rem;
+  background-color: #C9A495;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+  display: ${props => props.visible ? 'block' : 'none'};
+
+  @media (min-width: 500px) {
+    font-size: 1.5rem;
+  }
+  `
+
+export const StyledTabTitle = styled.div<TabProps>`
+  width: 50%;
+  align-self: center;
+  font-size: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background-color:${props => props.visible ? '#635554' : '#7D6C6A'} ;
+
+  :hover {
+    cursor: pointer;
+  }
+  `

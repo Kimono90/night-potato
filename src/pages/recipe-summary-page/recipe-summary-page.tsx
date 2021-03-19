@@ -22,6 +22,11 @@ const r: IRecipe = {
     { id: 1, product: 'Chickpeas', amount: 500, measurement: 'gram', isChecked: true },
     { id: 2, product: 'Coconut milk', amount: 250, measurement: 'ml', isChecked: false },
     { id: 3, product: 'Low-sodium chicken broth and a lot of other stuff', amount: 200, measurement: 'ml', isChecked: false}],
+  equipment: [
+    { id: 1, name: 'Mixer' },
+    { id: 2, name: 'Sharp knife' },
+    { id: 3, name: 'Baking tray' }
+  ],
   instructionSteps: [
     {stepNr: 2, stepDescription: 'Cut the stuff', isChecked: false},
     {stepNr: 1, stepDescription: 'Buy the stuff', isChecked: true},
@@ -66,7 +71,7 @@ export default function RecipeSummaryPage() {
       <StyledRecipeSummaryPage data-label="summaryPage">
         <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
         <PhotoCarousel imgUrls={recipe.metaInfo.imgUrls} />
-        <IngredientsBlock ingredients={recipe.ingredients} onIngredientChange={handleIngredientChange} />
+        <IngredientsBlock ingredients={recipe.ingredients} equipment={recipe.equipment} onIngredientChange={handleIngredientChange} />
         <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
       </StyledRecipeSummaryPage>
     );
