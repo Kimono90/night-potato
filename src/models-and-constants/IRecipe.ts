@@ -2,6 +2,7 @@ export interface IRecipe {
   id: number;
   metaInfo: IRecipeMetaInfo;
   ingredients: IIngredient[];
+  equipment: IEquipment[];
   instructionSteps: IInstructionStep[]
 }
 
@@ -17,6 +18,11 @@ export interface IInstructionStep {
   stepNr: number;
   stepDescription: string;
   isChecked: boolean;
+}
+
+export interface IEquipment {
+  id: number;
+  name: string;
 }
 
 export interface IIngredient {

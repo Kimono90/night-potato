@@ -26,12 +26,13 @@ export const StyledTitle = styled.div`
 export const StyledList = styled.div`
   border-radius: 0.5rem;
   background-color: #C9A495;
-  display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
+  display: flex;
 
   @media (min-width: 500px) {
     font-size: 1.5rem;
   }
   `
+

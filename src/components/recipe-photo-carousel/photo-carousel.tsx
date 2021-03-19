@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { StyledArrowIcon, StyledCarouselPhoto, StyledDot, StyledPhotoCarousel } from './photo-carousel.styles';
+import { fadeIn, StyledArrowIcon, StyledCarouselPhoto, StyledDot, StyledPhotoCarousel } from './photo-carousel.styles';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { css } from '@emotion/react';
 
 type Props = {
   imgUrls: string [];
@@ -23,14 +24,12 @@ export default function PhotoCarousel({imgUrls}: Props) {
 
   const renderDots = () => {
     return imgUrls.map((i, index) =>
-      <StyledDot active={selectedImgIndex == index} onClick={() => setSelectedImgIndex(index)}/>)
+      <StyledDot key={index} active={selectedImgIndex == index} onClick={() => setSelectedImgIndex(index)}/>)
   }
 
   return (
     <>
-      <StyledPhotoCarousel
-        data-label="photo-carousel"
-      >
+      <StyledPhotoCarousel data-label="photo-carousel">
         <StyledArrowIcon
           data-label="fa-left"
           icon={faChevronLeft}
