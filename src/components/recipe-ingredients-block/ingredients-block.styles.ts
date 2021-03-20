@@ -7,7 +7,7 @@ export const StyledIngredient = styled.div`
   align-items: center;
   margin: 0.5rem;
   flex-wrap: nowrap;
-
+  cursor: pointer;
 
   svg {
     cursor: pointer;

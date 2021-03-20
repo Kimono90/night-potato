@@ -23,8 +23,8 @@ export default function InstructionsBlock({instructions, onInstructionChange}: P
 
   const sortedInstructions = instructions.sort((a, b) => a.stepNr - b.stepNr);
   const instructionList = sortedInstructions.map((i) =>
-    <StyledInstruction data-label="instruction" key={i.stepNr}>
-    <FontAwesomeIcon icon={i.isChecked ? faCheckSquare : faSquare} onClick={() => toggleChecked(i)} />
+    <StyledInstruction data-label="instruction" key={i.stepNr} onClick={() => toggleChecked(i)}>
+    <FontAwesomeIcon icon={i.isChecked ? faCheckSquare : faSquare} />
     <p>
       <span style={{textDecoration: i.isChecked ? 'line-through': 'none'}}>{i.stepNr}. {i.stepDescription}</span>
     </p>

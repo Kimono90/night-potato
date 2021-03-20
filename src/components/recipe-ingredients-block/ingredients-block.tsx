@@ -25,8 +25,8 @@ export default function IngredientsBlock({ingredients, onIngredientChange, equip
   }
 
   const ingredientList = ingredients.map((i: IIngredient) => {
-    return (<StyledIngredient key={`${i.id}`} data-label="ingredient">
-      <FontAwesomeIcon icon={i.isChecked ? faCheckSquare : faSquare} onClick={() => toggleChecked(i)} />
+    return (<StyledIngredient key={`${i.id}`} data-label="ingredient" onClick={() => toggleChecked(i)}>
+      <FontAwesomeIcon icon={i.isChecked ? faCheckSquare : faSquare} />
       <p>
         <span style={{textDecoration: i.isChecked ? 'line-through': 'none'}} id="amount">{i.amount} {i.measurement}</span>
         <span style={{textDecoration: i.isChecked ? 'line-through': 'none'}} id="product"> {i.product}</span>
