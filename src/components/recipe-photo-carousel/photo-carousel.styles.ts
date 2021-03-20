@@ -33,6 +33,7 @@ export const StyledCarouselPhoto = styled.div<CarouselPhotoProps>`
   background-image: ${(props) => props.imgUrl};
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
+  user-select: none;
 
   @media (min-width: 500px) {
     margin: 0 2rem 1.5rem 2rem;

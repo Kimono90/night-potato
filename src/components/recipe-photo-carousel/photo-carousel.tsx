@@ -10,6 +10,7 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { useRef } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
 type Props = {
   imgUrls: string[];
@@ -18,6 +19,12 @@ type Props = {
 export default function PhotoCarousel({ imgUrls }: Props) {
   const [selectedImgIndex, setSelectedImgIndex] = useState<number>(0);
   const selectedPhotoRef = useRef<HTMLDivElement>(null);
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => handleNextImgClick(),
+    onSwipedRight: () => handlePreviousImgClick(),
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  })
 
   const handleNextImgClick = () => {
     return selectedImgIndex === imgUrls.length - 1
@@ -57,13 +64,15 @@ export default function PhotoCarousel({ imgUrls }: Props) {
           icon={faChevronLeft}
           onClick={handlePreviousImgClick}
         />
-        <StyledCarouselPhoto
-          key={`selected-photo-${selectedImgIndex}`}
-          ref={selectedPhotoRef}
-          id="photo"
-          imgUrl={`url(${imgUrls[selectedImgIndex]})`}
-          data-label="carousel-photo"
-        />
+        <div {...swipeHandlers}>
+          <StyledCarouselPhoto
+            key={`selected-photo-${selectedImgIndex}`}
+            ref={selectedPhotoRef}
+            id="photo"
+            imgUrl={`url(${imgUrls[selectedImgIndex]})`}
+            data-label="carousel-photo"
+          />
+        </div>
         <StyledArrowIcon
           data-label="fa-right"
           icon={faChevronRight}
