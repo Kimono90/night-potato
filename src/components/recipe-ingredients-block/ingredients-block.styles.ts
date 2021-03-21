@@ -48,7 +48,7 @@ export const StyledTabList = styled.div<TabProps>`
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
-  display: ${props => props.visible ? 'block' : 'none'};
+  display: ${props => props.visible ? 'flex' : 'none'};
 
   @media (min-width: 500px) {
     font-size: 1.5rem;

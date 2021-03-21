@@ -17,7 +17,8 @@ export const StyledOverviewCard = styled.div`
   }
   
   @media(min-width: 500px) {
-    width: 35rem;
+    width: 30rem;
+    margin: 1rem;
   }
   `
 
@@ -38,11 +39,13 @@ export const StyledOverviewInfo = styled.div`
   
   @media(min-width: 500px) {
     height: 10rem;
+    min-width: 25rem;
   }
   `
 
 export const StyledOverviewDescription = styled.div`
   flex-direction: column;
+  width: 65%;
 
   & div {
     margin: 0.5rem 1.5rem;
@@ -61,7 +64,7 @@ export const StyledOverviewDescription = styled.div`
 export const StyledOverviewPhoto = styled.div`
   max-height: 100%;
   max-width: 50%;
-  width: 5rem;
+  width: 35%;
   height: 7rem;
   padding: 0;
   margin: 0;
@@ -70,7 +73,7 @@ export const StyledOverviewPhoto = styled.div`
   border-radius: 0 0.5rem 0.5rem 0;
   
   @media(min-width: 500px) {
-    width: 30rem;
+    width: 50%;
     height: 50rem;
   }
   `

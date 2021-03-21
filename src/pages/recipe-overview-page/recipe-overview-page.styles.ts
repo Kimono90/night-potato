@@ -8,10 +8,13 @@ export const StyledRecipeOverviewPage = styled.div`
   align-items: center;
   text-align: center;
   flex-direction: column;
-  width: 100%;
 
   @media (min-width: 500px) {
-    width: 47rem;
-    border-radius: 1rem;
+    flex-direction: unset;
+    -webkit-flex-wrap: wrap;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 3rem;
   }
   `

@@ -10,7 +10,6 @@ export default function RecipeOverviewPage() {
     //TODO map through all recipes to render Summary cards
   return (
     <StyledRecipeOverviewPage data-label="overview-page">
-      <h1>Recipes</h1>
       <OverviewCard
         recipeId={1}
         recipeInfo={{

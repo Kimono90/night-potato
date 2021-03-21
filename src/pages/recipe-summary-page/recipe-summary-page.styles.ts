@@ -8,10 +8,9 @@ export const StyledRecipeSummaryPage = styled.div`
   align-items: center;
   text-align: center;
   flex-direction: column;
-  width: 100%;
 
   @media (min-width: 500px) {
-    width: 55rem;
-    border-radius: 1rem;
+    margin-top: 3rem;
+    width: 100%;
   }
   `
