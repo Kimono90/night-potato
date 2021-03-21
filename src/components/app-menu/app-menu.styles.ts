@@ -2,12 +2,16 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 export const StyledNavBar = styled.nav`
-  position: fixed;
-  width: 100%;
-  height: 3rem;
-  background-color: #635554;
-  display: flex;
-  align-items: center;
+  display: none;
+  
+  @media(min-width: 500px) {
+    position: fixed;
+    width: 100%;
+    height: 3rem;
+    background-color: #635554;
+    display: flex;
+    align-items: center;
+  }
   `
 
 export const StyledNavLink = styled(Link)`

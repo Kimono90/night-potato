@@ -5,12 +5,12 @@ export const StyledRecipeSummaryPage = styled.div`
   background-color: #30343F;
   color: #ffffff;
   display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
-  flex-direction: column;
+  width: 100%;
 
   @media (min-width: 500px) {
     margin-top: 3rem;
-    width: 100%;
   }
   `
