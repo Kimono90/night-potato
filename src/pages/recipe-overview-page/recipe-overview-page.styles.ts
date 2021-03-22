@@ -19,7 +19,7 @@ export const StyledRecipeResults = styled.div`
   `
 
 export const StyledSearchBox = styled.input`
-  margin-top: 4rem;
+  margin-top: 1rem;
   width: 75%;
   padding: .5rem 1rem;
   border-radius: .5rem;
@@ -27,4 +27,8 @@ export const StyledSearchBox = styled.input`
   font-family:  'Patrick Hand', cursive;
   font-size: 1.5rem;
   color: gray;
+  
+  @media (min-width: 500px) {
+    margin-top: 4rem;
+  }
   `
