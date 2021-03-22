@@ -27,6 +27,7 @@ export const StyledSearchBox = styled.input`
   font-family:  'Patrick Hand', cursive;
   font-size: 1.5rem;
   color: gray;
+  outline: none;
   
   @media (min-width: 500px) {
     margin-top: 4rem;
