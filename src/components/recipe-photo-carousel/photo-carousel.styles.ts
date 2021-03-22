@@ -31,14 +31,24 @@ export const StyledCarouselPhoto = styled.div<CarouselPhotoProps>`
   margin: 0 1rem 1.5rem 1rem;
   padding: 0 2rem;
   background-image: ${(props) => props.imgUrl};
-  transition: opacity 0.3s ease-in-out;
-  opacity: 0;
+  animation: fade-in 0.3s ease-in-out;
+  animation-fill-mode: backwards;
   user-select: none;
 
   @media (min-width: 500px) {
     margin: 0 2rem 1.5rem 2rem;
     width: 20rem;
     height: 20rem;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 `;
 
