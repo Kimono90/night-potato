@@ -9,12 +9,22 @@ export const StyledRecipeOverviewPage = styled.div`
   text-align: center;
   flex-direction: column;
   width: 100%;
+  `
+export const StyledRecipeResults = styled.div`
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  `
 
-  @media (min-width: 500px) {
-    flex-direction: unset;
-    -webkit-flex-wrap: wrap;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 3rem;
-  }
+export const StyledSearchBox = styled.input`
+  margin-top: 4rem;
+  width: 75%;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+  border: solid black 1px;
+  font-family:  'Patrick Hand', cursive;
+  font-size: 1.5rem;
+  color: gray;
   `
