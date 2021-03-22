@@ -12,13 +12,11 @@ export const StyledMetaInfoContent = styled.div`
   background-color: #C9A495;
   display: flex;
   text-align: start;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
 
   & div {
-    margin: 0.5rem 1.5rem;
-
     & svg {
       min-width: 2rem;
     }
@@ -34,9 +32,17 @@ export const StyledMetaInfoObject = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  margin: 1rem 0;
+  align-items: center;
+  justify-content: center;
+  
+  @media(min-width: 500px) {
+    min-width: 6rem;
+  }
  `
 
 export const StyledMetaInfoIcon = styled.div`
   display: flex;
   align-items: center;
+  margin: 0;
 `

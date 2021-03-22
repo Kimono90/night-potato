@@ -8,6 +8,7 @@ export const StyledIngredient = styled.div`
   margin: 0.5rem;
   flex-wrap: nowrap;
   cursor: pointer;
+  text-decoration: none;
 
   svg {
     cursor: pointer;
@@ -35,6 +36,7 @@ export const StyledEquipment = styled.div`
   align-items: center;
   margin: 0.5rem 1.5rem;
   flex-wrap: nowrap;
+  text-decoration: none;
 `
 
 
@@ -48,8 +50,9 @@ export const StyledTabList = styled.div<TabProps>`
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
-  display: ${props => props.visible ? 'block' : 'none'};
-
+  display: ${props => props.visible ? 'flex' : 'none'};
+  text-decoration: none;
+  
   @media (min-width: 500px) {
     font-size: 1.5rem;
   }

@@ -30,7 +30,7 @@ const r: IRecipe = {
   instructionSteps: [
     {stepNr: 2, stepDescription: 'Cut the stuff', isChecked: false},
     {stepNr: 1, stepDescription: 'Buy the stuff', isChecked: true},
-    {stepNr: 3, stepDescription: 'Cook the stuff', isChecked: false}]
+    {stepNr: 3, stepDescription: 'Cook the stuff. And this is one super long line because I want to test how that looks in the UI so that wont go wrong', isChecked: false}]
 };
 
 export default function RecipeSummaryPage() {
@@ -71,8 +71,10 @@ export default function RecipeSummaryPage() {
       <StyledRecipeSummaryPage data-label="summaryPage">
         <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
         <PhotoCarousel imgUrls={recipe.metaInfo.imgUrls} />
-        <IngredientsBlock ingredients={recipe.ingredients} equipment={recipe.equipment} onIngredientChange={handleIngredientChange} />
-        <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
+        {/*<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>*/}
+          <IngredientsBlock ingredients={recipe.ingredients} equipment={recipe.equipment} onIngredientChange={handleIngredientChange} />
+          <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
+        {/*</div>*/}
       </StyledRecipeSummaryPage>
     );
   }

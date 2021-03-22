@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClock,
   faHamburger,
-  faMale,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import {
@@ -32,7 +32,7 @@ export default function OverviewCard({ recipeId, recipeInfo }: props) {
       <StyledOverviewInfo data-label="recipe-info">
         <StyledOverviewDescription data-label="recipe-description">
           <div>
-            <FontAwesomeIcon icon={faMale} /> {recipeInfo.portions} persons
+            <FontAwesomeIcon icon={faUser} /> {recipeInfo.portions} persons
           </div>
           <div>
             <FontAwesomeIcon icon={faClock} /> {recipeInfo.prepTimeInMinutes}{' '}

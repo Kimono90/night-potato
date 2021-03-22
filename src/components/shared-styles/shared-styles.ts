@@ -13,6 +13,8 @@ export const StyledSummaryCard = styled.div`
   
   @media (min-width: 500px) {
     width: 45rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
   }
   `
 

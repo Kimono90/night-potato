@@ -8,7 +8,8 @@ export const StyledInstruction = styled.div`
   margin: 0.5rem;
   flex-wrap: nowrap;
   cursor: pointer;
-  
+  text-decoration: none;
+
   svg {
     cursor: pointer;
     margin-left: 1rem;
