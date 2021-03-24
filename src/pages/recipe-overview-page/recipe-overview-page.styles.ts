@@ -30,6 +30,7 @@ export const StyledSearchBox = styled.input`
   outline: none;
   
   @media (min-width: 500px) {
+    width: 50%;
     margin-top: 4rem;
   }
   `
