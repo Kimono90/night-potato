@@ -7,39 +7,18 @@ import IngredientsBlock from '../../components/recipe-ingredients-block/ingredie
 import InstructionsBlock from '../../components/recipe-instructions-block/instructions-block';
 import type { IIngredient, IInstructionStep, IRecipe } from '../../models-and-constants/IRecipe';
 import PhotoCarousel from '../../components/recipe-photo-carousel/photo-carousel';
-import { testImg1, testImg2, testImg3 } from '../../testImgs';
-
-const r: IRecipe = {
-  id: 1,
-  metaInfo: {
-    name: 'Vegetarian Chickpea Curry',
-    portions: 4,
-    prepTimeInMinutes: 50,
-    kcalPerPortion: 500,
-    imgUrls: [testImg1,testImg2, testImg3]
-  },
-  ingredients: [
-    { id: 1, product: 'Chickpeas', amount: 500, measurement: 'gram', isChecked: true },
-    { id: 2, product: 'Coconut milk', amount: 250, measurement: 'ml', isChecked: false },
-    { id: 3, product: 'Low-sodium chicken broth and a lot of other stuff', amount: 200, measurement: 'ml', isChecked: false}],
-  equipment: [
-    { id: 1, name: 'Mixer' },
-    { id: 2, name: 'Sharp knife' },
-    { id: 3, name: 'Baking tray' }
-  ],
-  instructionSteps: [
-    {stepNr: 2, stepDescription: 'Cut the stuff', isChecked: false},
-    {stepNr: 1, stepDescription: 'Buy the stuff', isChecked: true},
-    {stepNr: 3, stepDescription: 'Cook the stuff. And this is one super long line because I want to test how that looks in the UI so that wont go wrong', isChecked: false}]
-};
+import { testRecipe1, testRecipe2 } from '../../testRecipes';
 
 export default function RecipeSummaryPage() {
   let { recipeId } = useParams<IRouteParams>()
-  const [recipe, setRecipe] = useState<IRecipe>(r);
+  const [recipe, setRecipe] = useState<IRecipe>(testRecipe1);
 
   useEffect(() => {
-    //TODO: get recipe from recipeId
-    setRecipe(r)
+    const testRecipes = [testRecipe1, testRecipe2]
+    const currentRecipe = testRecipes.find((r) => r.id === Number(recipeId))
+    if (currentRecipe) {
+      setRecipe(currentRecipe)
+    }
   }, []);
 
   const handleIngredientChange = (newIngredients: IIngredient[]) => {
@@ -70,7 +49,7 @@ export default function RecipeSummaryPage() {
     return (
       <StyledRecipeSummaryPage data-label="summaryPage">
         <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
-        <PhotoCarousel imgUrls={recipe.metaInfo.imgUrls} />
+        {recipe.metaInfo.imgUrls.length ? <PhotoCarousel imgUrls={recipe.metaInfo.imgUrls} /> : null}
         {/*<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>*/}
           <IngredientsBlock ingredients={recipe.ingredients} equipment={recipe.equipment} onIngredientChange={handleIngredientChange} />
           <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
