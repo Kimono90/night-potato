@@ -47,7 +47,7 @@ export default function PhotoCarousel({ imgUrls }: Props) {
     ));
   };
 
-  return (
+  const multiplePhotos = (
     <>
       <StyledPhotoCarousel data-label="photo-carousel">
         <StyledArrowIcon
@@ -71,5 +71,17 @@ export default function PhotoCarousel({ imgUrls }: Props) {
       </StyledPhotoCarousel>
       <div style={{ display: 'flex' }}>{renderDots()}</div>
     </>
-  );
+)
+
+  const singlePhoto = (
+    <StyledPhotoCarousel data-label="photo-carousel">
+        <StyledCarouselPhoto
+          key={`selected-photo-${selectedImgIndex}`}
+          id="photo"
+          imgUrl={`url(${imgUrls[selectedImgIndex]})`}
+          data-label="carousel-photo"
+        />
+    </StyledPhotoCarousel>
+  )
+  return imgUrls.length == 1 ? singlePhoto : multiplePhotos;
 }
