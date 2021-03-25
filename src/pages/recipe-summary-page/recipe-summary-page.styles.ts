@@ -9,8 +9,5 @@ export const StyledRecipeSummaryPage = styled.div`
   align-items: center;
   text-align: center;
   width: 100%;
-  
-  @media (min-width: 500px) {
-    margin-top: 3rem;
-  }
+  margin-top: 3rem;
   `

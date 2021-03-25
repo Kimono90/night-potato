@@ -5,7 +5,7 @@ export const StyledInfoBlock = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 1rem;
-  width: 90%;
+  width: 95%;
   `
 
 export const StyledMetaInfoContent = styled.div`

@@ -20,7 +20,7 @@ export const StyledRecipeResults = styled.div`
   `
 
 export const StyledSearchBox = styled.input`
-  margin-top: 1rem;
+  margin-top: 4rem;
   width: 75%;
   padding: .5rem 1rem;
   border-radius: .5rem;
@@ -32,6 +32,5 @@ export const StyledSearchBox = styled.input`
   
   @media (min-width: 500px) {
     width: 50%;
-    margin-top: 4rem;
   }
   `
