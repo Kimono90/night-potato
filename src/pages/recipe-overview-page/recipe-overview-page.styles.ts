@@ -16,6 +16,7 @@ export const StyledRecipeResults = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 1rem;
+  width: 90%;
   `
 
 export const StyledSearchBox = styled.input`
