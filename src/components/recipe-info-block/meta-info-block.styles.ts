@@ -46,4 +46,5 @@ export const StyledMetaInfoIcon = styled.div`
   display: flex;
   align-items: center;
   margin: 0;
+  text-decoration: none;
 `

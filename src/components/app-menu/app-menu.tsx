@@ -12,10 +12,10 @@ export default function AppMenu({}: Props) {
   return (
   <StyledNavBar>
     {mobile ? <>
-      <Link to='/'><StyledPotatoIcon /> </Link>
+      <Link style={{textDecoration: 'none'}} to='/'><StyledPotatoIcon /> </Link>
         <StyledHamburgerMenu  icon={faBars}/> </> :
       <>
-        <Link to='/'><StyledPotatoIcon /></Link>
+        <Link style={{textDecoration: 'none'}} to='/'><StyledPotatoIcon /></Link>
         <StyledNavLink to='/'>CREATE RECIPE</StyledNavLink>
         <StyledNavLink to='/'>MY RECIPES</StyledNavLink>
       </>
