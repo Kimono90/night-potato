@@ -48,10 +48,19 @@ export const StyledPotatoIcon = styled(PotatoSvg)`
   padding: 0 1rem;
   display: block;
   align-items: center;
-  transition: transform .5s ease-in-out;
+  transition: transform .3s ease-in-out;
+  outline: none;
   
-  :active, :hover {
-    transform: rotate(360deg);
+  :active {
+    transform: scale(1.3);
+  }
+  
+  @media(min-width: 500px) {
+    transition: transform .5s ease-in-out;
+
+    :hover {
+      transform: rotate(360deg);
+    }
   }
 `
 

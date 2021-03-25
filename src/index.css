@@ -11,6 +11,10 @@ code {
   monospace;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 #root {
   display: flex;
   justify-content: center;
