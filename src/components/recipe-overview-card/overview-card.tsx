@@ -1,5 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClock,
   faHamburger,
@@ -14,6 +13,7 @@ import {
   StyledOverviewPhoto
 } from './overview-card.styles';
 import type { IRecipeMetaInfo } from '../../models-and-constants/IRecipe';
+import { OverviewCardIcon } from './overview-card-icon';
 
 type props = {
   recipeId: number;
@@ -31,17 +31,9 @@ export default function OverviewCard({ recipeId, recipeInfo }: props) {
       <StyledOverviewTitle data-label="recipe-title">{recipeInfo.name}</StyledOverviewTitle>
       <StyledOverviewInfo data-label="recipe-info">
         <StyledOverviewDescription data-label="recipe-description">
-          <div>
-            <FontAwesomeIcon icon={faUser} /> {recipeInfo.portions} persons
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faClock} /> {recipeInfo.prepTimeInMinutes}{' '}
-            mins
-          </div>
-          <div>
-            <FontAwesomeIcon icon={faHamburger} /> {recipeInfo.kcalPerPortion}{' '}
-            kcal
-          </div>
+          <OverviewCardIcon faIcon={faUser} iconText={`${recipeInfo.portions} persons`} />
+          <OverviewCardIcon faIcon={faClock} iconText={`${recipeInfo.prepTimeInMinutes} mins`} />
+          <OverviewCardIcon faIcon={faHamburger} iconText={`${recipeInfo.kcalPerPortion} kcal`} />
         </StyledOverviewDescription>
         <StyledOverviewPhoto
           data-label="recipe-photo"

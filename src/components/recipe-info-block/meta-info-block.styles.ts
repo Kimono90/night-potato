@@ -1,4 +1,6 @@
 import styled from '@emotion/styled'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 export const StyledInfoBlock = styled.div`
   display: flex;
@@ -8,7 +10,7 @@ export const StyledInfoBlock = styled.div`
   width: 95%;
   `
 
-export const StyledMetaInfoContent = styled.div`
+export const StyledMetaInfoContentArea = styled.div`
   border-radius: 0.5rem;
   background-color: #C9A495;
   display: flex;
@@ -29,7 +31,7 @@ export const StyledMetaInfoContent = styled.div`
   }
   `
 
-export const StyledMetaInfoObject = styled.div`
+export const StyledMetaInfoItem = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -42,9 +44,11 @@ export const StyledMetaInfoObject = styled.div`
   }
  `
 
-export const StyledMetaInfoIcon = styled.div`
+
+export const StyledMetaInfoIcon = styled(FontAwesomeIcon)`
   display: flex;
-  align-items: center;
   margin: 0;
   text-decoration: none;
+  cursor: ${props => props.icon === faPlusCircle || faMinusCircle ? 'pointer' : 'default'};
+  font-size: 1rem;
 `
