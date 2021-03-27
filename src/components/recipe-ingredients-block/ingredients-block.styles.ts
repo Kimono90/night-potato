@@ -14,20 +14,20 @@ export const StyledIngredient = styled.div`
     cursor: pointer;
     margin-left: 1rem;
   }
-  
+
   p {
     text-align: start;
     margin: 0 1rem;
   }
-  
+
   #amount {
     display: inline-block;
-    
-    @media(min-width: 500px) {
+
+    @media (min-width: 500px) {
       width: 8rem;
     }
   }
-`
+`;
 
 export const StyledEquipment = styled.div`
   display: flex;
@@ -37,26 +37,25 @@ export const StyledEquipment = styled.div`
   margin: 0.5rem 1.5rem;
   flex-wrap: nowrap;
   text-decoration: none;
-`
-
+`;
 
 type TabProps = {
   visible?: boolean;
-}
+};
 
 export const StyledTabList = styled.div<TabProps>`
   border-radius: 0.5rem;
-  background-color: #C9A495;
+  background-color: #c9a495;
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
-  display: ${props => props.visible ? 'flex' : 'none'};
+  display: ${(props) => (props.visible ? 'flex' : 'none')};
   text-decoration: none;
-  
+
   @media (min-width: 500px) {
     font-size: 1.5rem;
   }
-  `
+`;
 
 export const StyledTabTitle = styled.div<TabProps>`
   width: 50%;
@@ -64,9 +63,9 @@ export const StyledTabTitle = styled.div<TabProps>`
   font-size: 2rem;
   padding: 0.5rem;
   border-radius: 0.5rem 0.5rem 0 0;
-  background-color:${props => props.visible ? '#635554' : '#7D6C6A'} ;
+  background-color: ${(props) => (props.visible ? '#635554' : '#7D6C6A')};
 
   :hover {
     cursor: pointer;
   }
-  `
+`;

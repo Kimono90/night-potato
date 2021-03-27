@@ -1,47 +1,47 @@
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 export const StyledOverviewCard = styled.div`
   border-radius: 0.5rem;
   margin-bottom: 2rem;
-  background-color: #7D6C6A;
+  background-color: #7d6c6a;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%; 
-  
+  width: 90%;
+
   :hover {
     box-shadow: 0 0 6px 6px rgba(255, 255, 255, 0.2);
-    transition: box-shadow .2s ease-in-out;
+    transition: box-shadow 0.2s ease-in-out;
     cursor: pointer;
   }
-  
-  @media(min-width: 500px) {
+
+  @media (min-width: 500px) {
     width: 30rem;
     margin: 1rem;
   }
-  `
+`;
 
 export const StyledOverviewTitle = styled.div`
   max-width: 90%;
   align-self: center;
   font-size: 1.5rem;
-  padding: 0.5rem
-  `
+  padding: 0.5rem;
+`;
 
 export const StyledOverviewInfo = styled.div`
   border-radius: 0.5rem;
-  background-color: #C9A495;
+  background-color: #c9a495;
   display: flex;
   text-align: start;
   justify-content: space-between;
   align-items: center;
-  
-  @media(min-width: 500px) {
+
+  @media (min-width: 500px) {
     height: 10rem;
     min-width: 25rem;
   }
-  `
+`;
 
 export const StyledOverviewDescription = styled.div`
   flex-direction: column;
@@ -54,12 +54,12 @@ export const StyledOverviewDescription = styled.div`
       min-width: 2rem;
     }
   }
-  
-  @media(min-width: 500px) {
+
+  @media (min-width: 500px) {
     max-height: 10rem;
     font-size: 1.5rem;
   }
-  `
+`;
 
 export const StyledOverviewPhoto = styled.div`
   max-height: 100%;
@@ -71,9 +71,9 @@ export const StyledOverviewPhoto = styled.div`
   background-position: center;
   background-size: cover;
   border-radius: 0 0.5rem 0.5rem 0;
-  
-  @media(min-width: 500px) {
+
+  @media (min-width: 500px) {
     width: 50%;
     height: 50rem;
   }
-  `
+`;

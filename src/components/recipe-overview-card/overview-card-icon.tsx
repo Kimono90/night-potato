@@ -5,9 +5,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 type Props = {
   faIcon: IconDefinition;
   iconText: string;
-}
+};
 
-export function OverviewCardIcon({faIcon, iconText}: Props): React.ReactElement {
-
-  return <div><FontAwesomeIcon icon={faIcon} /> {iconText}</div>
+export function OverviewCardIcon({ faIcon, iconText }: Props): React.ReactElement {
+  return (
+    <div>
+      <FontAwesomeIcon icon={faIcon} /> {iconText}
+    </div>
+  );
 }

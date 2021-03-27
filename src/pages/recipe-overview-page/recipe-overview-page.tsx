@@ -6,30 +6,31 @@ import { testRecipe1, testRecipe2 } from '../../testRecipes';
 
 export default function RecipeOverviewPage() {
   const [recipes, setRecipes] = useState<IRecipe[]>([]);
-  const [recipesToDisplay, setRecipesToDisplay] = useState<IRecipe[]>([])
+  const [recipesToDisplay, setRecipesToDisplay] = useState<IRecipe[]>([]);
 
-    useEffect(() => {
-        //TODO: get all recipes
-      setRecipes([testRecipe1, testRecipe2])
-      setRecipesToDisplay([testRecipe1, testRecipe2])
-    }, [])
+  useEffect(() => {
+    //TODO: get all recipes
+    setRecipes([testRecipe1, testRecipe2]);
+    setRecipesToDisplay([testRecipe1, testRecipe2]);
+  }, []);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const searchInput = e.target.value;
-    const recipesCopy = [...recipes]
-    const filteredRecipes = recipesCopy
-      .filter((r) => r.metaInfo.name.toLowerCase().includes(searchInput.toLowerCase()))
-    setRecipesToDisplay(filteredRecipes)
-  }
+    const recipesCopy = [...recipes];
+    const filteredRecipes = recipesCopy.filter((r) =>
+      r.metaInfo.name.toLowerCase().includes(searchInput.toLowerCase()),
+    );
+    setRecipesToDisplay(filteredRecipes);
+  };
 
-  const recipeElements = recipesToDisplay.map((r) => <OverviewCard key={r.id} recipeId={r.id} recipeInfo={r.metaInfo} />)
+  const recipeElements = recipesToDisplay.map((r) => (
+    <OverviewCard key={r.id} recipeId={r.id} recipeInfo={r.metaInfo} />
+  ));
 
   return (
     <StyledRecipeOverviewPage data-label="overview-page">
-        <StyledSearchBox placeholder="Search for a recipe..." onChange={handleSearch}/>
-        <StyledRecipeResults>
-          {recipeElements}
-        </StyledRecipeResults>
+      <StyledSearchBox placeholder="Search for a recipe..." onChange={handleSearch} />
+      <StyledRecipeResults>{recipeElements}</StyledRecipeResults>
     </StyledRecipeOverviewPage>
   );
 }
