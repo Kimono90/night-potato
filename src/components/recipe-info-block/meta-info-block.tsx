@@ -3,8 +3,13 @@ import { faClock, faHamburger, faMinusCircle, faPlusCircle, faUser } from '@fort
 import type { IRecipeMetaInfo } from '../../models-and-constants/IRecipe';
 import { MetaInfoBlockWrapper } from './meta-info-block-wrapper';
 import { MetaInfoItem } from './meta-info-item';
-import { StyledMetaInfoItem } from './meta-info-block.styles';
+import {
+  StyledMetaInfoContentWithLabels,
+  StyledMetaInfoContentWithoutLabels,
+  StyledMetaInfoItem,
+} from './meta-info-block.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getFishLabel, getMeatLabel, getVegetarianLabel } from '../recipe-label/recipe-label';
 
 type Props = {
   recipeMetaInfo: IRecipeMetaInfo;
@@ -17,24 +22,30 @@ export default function MetaInfoBlock({ recipeMetaInfo, onChangePortions }: Prop
 
   return (
     <MetaInfoBlockWrapper recipeName={recipeMetaInfo.name}>
-      <StyledMetaInfoItem>
-        <div>
-          <FontAwesomeIcon
-            icon={faMinusCircle}
-            style={{ fontSize: '1rem', cursor: 'pointer' }}
-            onClick={() => onChangePortions(minus)}
-          />
-          <FontAwesomeIcon icon={faUser} style={{ fontSize: '1rem' }} />
-          <FontAwesomeIcon
-            icon={faPlusCircle}
-            style={{ fontSize: '1rem', cursor: 'pointer' }}
-            onClick={() => onChangePortions(plus)}
-          />
-        </div>
-        {recipeMetaInfo.portions} portions
-      </StyledMetaInfoItem>
-      <MetaInfoItem faIcon={faClock} iconText={`${recipeMetaInfo.prepTimeInMinutes} minutes`} />
-      <MetaInfoItem faIcon={faHamburger} iconText={`${recipeMetaInfo.kcalPerPortion} kcal`} />
+      <StyledMetaInfoContentWithoutLabels data-label="without-labels">
+        <StyledMetaInfoItem>
+          <div>
+            <FontAwesomeIcon
+              icon={faMinusCircle}
+              style={{ fontSize: '1rem', cursor: 'pointer' }}
+              onClick={() => onChangePortions(minus)}
+            />
+            <FontAwesomeIcon icon={faUser} style={{ fontSize: '1rem' }} />
+            <FontAwesomeIcon
+              icon={faPlusCircle}
+              style={{ fontSize: '1rem', cursor: 'pointer' }}
+              onClick={() => onChangePortions(plus)}
+            />
+          </div>
+          {recipeMetaInfo.portions} portions
+        </StyledMetaInfoItem>
+        <MetaInfoItem faIcon={faClock} iconText={`${recipeMetaInfo.prepTimeInMinutes} minutes`} />
+        <MetaInfoItem faIcon={faHamburger} iconText={`${recipeMetaInfo.kcalPerPortion} kcal`} />
+      </StyledMetaInfoContentWithoutLabels>
+      <StyledMetaInfoContentWithLabels>
+        {getFishLabel()}
+        {getVegetarianLabel()}
+      </StyledMetaInfoContentWithLabels>
     </MetaInfoBlockWrapper>
   );
 }

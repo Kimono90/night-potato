@@ -70,7 +70,7 @@ export default function IngredientsBlock({ ingredients, onIngredientChange, equi
                   });
               }}
             />
-            <StyledCopiedConfirmation isCopied={isCopied}>Copied ingredients :)!</StyledCopiedConfirmation>
+            <StyledCopiedConfirmation isCopied={isCopied}>Copied :)</StyledCopiedConfirmation>
           </StyledTabTitle>
           <StyledTabTitle data-label="title" onClick={() => setShowIngredients(false)} visible={!showIngredients}>
             Equipment
