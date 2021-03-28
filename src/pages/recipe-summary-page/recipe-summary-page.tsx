@@ -11,7 +11,7 @@ import { testRecipe1, testRecipe2, brazilianPudding } from '../../testRecipes';
 
 export default function RecipeSummaryPage() {
   let { recipeId } = useParams<IRouteParams>();
-  const [recipe, setRecipe] = useState<IRecipe>(testRecipe1);
+  const [recipe, setRecipe] = useState<IRecipe | null>(null);
 
   useEffect(() => {
     const testRecipes = [testRecipe1, testRecipe2, brazilianPudding];
@@ -22,17 +22,17 @@ export default function RecipeSummaryPage() {
   }, []);
 
   const handleIngredientChange = (newIngredients: IIngredient[]) => {
-    console.log(newIngredients);
+    if (!recipe) return;
     setRecipe({ ...recipe, ingredients: newIngredients });
   };
 
   const handleInstructionChange = (newInstructions: IInstructionStep[]) => {
-    console.log(newInstructions);
+    if (!recipe) return;
     setRecipe({ ...recipe, instructionSteps: newInstructions });
   };
 
   const handlePortionsChange = (action: string) => {
-    console.log(action);
+    if (!recipe) return;
     let newPortions = recipe.metaInfo.portions;
     action === '+' ? newPortions++ : newPortions--;
     if (newPortions === 0) return;
@@ -42,24 +42,24 @@ export default function RecipeSummaryPage() {
   };
 
   const recalculateIngredientAmounts = (newPortions: number) => {
+    if (!recipe) return;
     recipe.ingredients.forEach((i) => (i.amount = (i.amount / recipe.metaInfo.portions) * newPortions));
   };
 
-  if (recipe) {
-    return (
-      <StyledRecipeSummaryPage data-label="summaryPage">
-        <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
-        {recipe.metaInfo.imgUrls.length ? <PhotoCarousel imgUrls={recipe.metaInfo.imgUrls} /> : null}
-        {/*<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>*/}
-        <IngredientsBlock
-          ingredients={recipe.ingredients}
-          equipment={recipe.equipment}
-          onIngredientChange={handleIngredientChange}
-        />
-        <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
-        {/*</div>*/}
-      </StyledRecipeSummaryPage>
-    );
-  }
-  return null;
+  if (!recipe) return <StyledRecipeSummaryPage data-label="empty-summary-page" />;
+
+  return (
+    <StyledRecipeSummaryPage data-label="summary-page">
+      <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
+      {recipe.metaInfo.imgUrls.length ? <PhotoCarousel imgUrls={recipe.metaInfo.imgUrls} /> : null}
+      {/*<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>*/}
+      <IngredientsBlock
+        ingredients={recipe.ingredients}
+        equipment={recipe.equipment}
+        onIngredientChange={handleIngredientChange}
+      />
+      <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
+      {/*</div>*/}
+    </StyledRecipeSummaryPage>
+  );
 }
