@@ -7,14 +7,14 @@ import IngredientsBlock from '../../components/recipe-ingredients-block/ingredie
 import InstructionsBlock from '../../components/recipe-instructions-block/instructions-block';
 import type { IIngredient, IInstructionStep, IRecipe } from '../../models-and-constants/IRecipe';
 import PhotoCarousel from '../../components/recipe-photo-carousel/photo-carousel';
-import { testRecipe1, testRecipe2 } from '../../testRecipes';
+import { testRecipe1, testRecipe2, brazilianPudding } from '../../testRecipes';
 
 export default function RecipeSummaryPage() {
   let { recipeId } = useParams<IRouteParams>();
   const [recipe, setRecipe] = useState<IRecipe>(testRecipe1);
 
   useEffect(() => {
-    const testRecipes = [testRecipe1, testRecipe2];
+    const testRecipes = [testRecipe1, testRecipe2, brazilianPudding];
     const currentRecipe = testRecipes.find((r) => r.id === Number(recipeId));
     if (currentRecipe) {
       setRecipe(currentRecipe);

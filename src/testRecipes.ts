@@ -1,5 +1,5 @@
 import type { IRecipe } from './models-and-constants/IRecipe';
-import { testImg1, testImg2, testImg3 } from './testImgs';
+import { puddingImage, testImg1, testImg2, testImg3 } from './testImgs';
 
 export const testRecipe1: IRecipe = {
   id: 1,
@@ -71,13 +71,13 @@ export const testRecipe2: IRecipe = {
 };
 
 export const brazilianPudding: IRecipe = {
-  id: 2,
+  id: 3,
   metaInfo: {
     name: 'Brazilian Pudding',
     portions: 4,
     prepTimeInMinutes: 60,
     kcalPerPortion: 350,
-    imgUrls: ['https://images.unsplash.com/photo-1515037893149-de7f840978e2'],
+    imgUrls: [puddingImage],
   },
 
   ingredients: [

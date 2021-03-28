@@ -2,7 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from 'react';
 import OverviewCard from '../../components/recipe-overview-card/overview-card';
 import { StyledRecipeOverviewPage, StyledRecipeResults, StyledSearchBox } from './recipe-overview-page.styles';
 import type { IRecipe } from '../../models-and-constants/IRecipe';
-import { testRecipe1, testRecipe2 } from '../../testRecipes';
+import { testRecipe1, testRecipe2, brazilianPudding } from '../../testRecipes';
 
 export default function RecipeOverviewPage() {
   const [recipes, setRecipes] = useState<IRecipe[]>([]);
@@ -10,8 +10,8 @@ export default function RecipeOverviewPage() {
 
   useEffect(() => {
     //TODO: get all recipes
-    setRecipes([testRecipe1, testRecipe2]);
-    setRecipesToDisplay([testRecipe1, testRecipe2]);
+    setRecipes([testRecipe1, testRecipe2, brazilianPudding]);
+    setRecipesToDisplay([testRecipe1, testRecipe2, brazilianPudding]);
   }, []);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
