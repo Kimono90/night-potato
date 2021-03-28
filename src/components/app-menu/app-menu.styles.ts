@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import PotatoSvg from './potato.svg'
-
+import PotatoSvg from './potato.svg';
 
 export const StyledNavBar = styled.nav`
   position: fixed;
@@ -12,11 +11,11 @@ export const StyledNavBar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
-  @media(min-width: 500px) {
+
+  @media (min-width: 500px) {
     justify-content: flex-start;
   }
-  `
+`;
 
 export const StyledNavLink = styled(Link)`
   text-decoration: none;
@@ -29,9 +28,9 @@ export const StyledNavLink = styled(Link)`
   align-items: center;
 
   :hover {
-    background-color: #4D4242;
+    background-color: #4d4242;
   }
-`
+`;
 
 export const StyledHamburgerMenu = styled(FontAwesomeIcon)`
   text-decoration: none;
@@ -41,26 +40,25 @@ export const StyledHamburgerMenu = styled(FontAwesomeIcon)`
   height: 100%;
   display: flex;
   align-items: center;
-`
+`;
 
 export const StyledPotatoIcon = styled(PotatoSvg)`
   height: 2rem;
   padding: 0 1rem;
   display: block;
   align-items: center;
-  transition: transform .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   outline: none;
-  
+
   :active {
     transform: scale(1.3);
   }
-  
-  @media(min-width: 500px) {
-    transition: transform .5s ease-in-out;
+
+  @media (min-width: 500px) {
+    transition: transform 0.5s ease-in-out;
 
     :hover {
       transform: rotate(360deg);
     }
   }
-`
-
+`;

@@ -66,8 +66,7 @@ export const StyledArrowIcon = styled(FontAwesomeIcon)`
 
     :hover {
       cursor: pointer;
-      transform: ${(props) =>
-        props.icon === faChevronLeft ? 'translateX(-4px)' : 'translateX(4px)'};
+      transform: ${(props) => (props.icon === faChevronLeft ? 'translateX(-4px)' : 'translateX(4px)')};
     }
   }
 `;

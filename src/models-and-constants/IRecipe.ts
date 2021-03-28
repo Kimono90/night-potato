@@ -3,7 +3,7 @@ export interface IRecipe {
   metaInfo: IRecipeMetaInfo;
   ingredients: IIngredient[];
   equipment: IEquipment[];
-  instructionSteps: IInstructionStep[]
+  instructionSteps: IInstructionStep[];
 }
 
 export interface IRecipeMetaInfo {
@@ -11,7 +11,7 @@ export interface IRecipeMetaInfo {
   portions: number;
   prepTimeInMinutes: number;
   kcalPerPortion: number;
-  imgUrls: string [];
+  imgUrls: string[];
 }
 
 export interface IInstructionStep {
@@ -30,5 +30,5 @@ export interface IIngredient {
   product: string;
   amount: number;
   measurement: string;
-  isChecked: boolean
+  isChecked: boolean;
 }

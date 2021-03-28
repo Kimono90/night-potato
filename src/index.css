@@ -1,5 +1,5 @@
 body {
-  background-color: #30343F;
+  background-color: #30343f;
   margin: 0;
   font-family: 'Patrick Hand', cursive;
   -webkit-font-smoothing: antialiased;
@@ -7,8 +7,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-  monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 * {

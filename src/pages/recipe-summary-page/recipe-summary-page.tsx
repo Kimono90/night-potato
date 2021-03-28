@@ -7,29 +7,29 @@ import IngredientsBlock from '../../components/recipe-ingredients-block/ingredie
 import InstructionsBlock from '../../components/recipe-instructions-block/instructions-block';
 import type { IIngredient, IInstructionStep, IRecipe } from '../../models-and-constants/IRecipe';
 import PhotoCarousel from '../../components/recipe-photo-carousel/photo-carousel';
-import { testRecipe1, testRecipe2 } from '../../testRecipes';
+import { testRecipe1, testRecipe2, brazilianPudding } from '../../testRecipes';
 
 export default function RecipeSummaryPage() {
-  let { recipeId } = useParams<IRouteParams>()
+  let { recipeId } = useParams<IRouteParams>();
   const [recipe, setRecipe] = useState<IRecipe>(testRecipe1);
 
   useEffect(() => {
-    const testRecipes = [testRecipe1, testRecipe2]
-    const currentRecipe = testRecipes.find((r) => r.id === Number(recipeId))
+    const testRecipes = [testRecipe1, testRecipe2, brazilianPudding];
+    const currentRecipe = testRecipes.find((r) => r.id === Number(recipeId));
     if (currentRecipe) {
-      setRecipe(currentRecipe)
+      setRecipe(currentRecipe);
     }
   }, []);
 
   const handleIngredientChange = (newIngredients: IIngredient[]) => {
     console.log(newIngredients);
-    setRecipe({...recipe, ingredients: newIngredients})
-  }
+    setRecipe({ ...recipe, ingredients: newIngredients });
+  };
 
   const handleInstructionChange = (newInstructions: IInstructionStep[]) => {
     console.log(newInstructions);
-    setRecipe({...recipe, instructionSteps: newInstructions})
-  }
+    setRecipe({ ...recipe, instructionSteps: newInstructions });
+  };
 
   const handlePortionsChange = (action: string) => {
     console.log(action);
@@ -38,12 +38,12 @@ export default function RecipeSummaryPage() {
     if (newPortions === 0) return;
 
     recalculateIngredientAmounts(newPortions);
-    setRecipe({...recipe, metaInfo: { ...recipe.metaInfo, portions: newPortions}})
-  }
+    setRecipe({ ...recipe, metaInfo: { ...recipe.metaInfo, portions: newPortions } });
+  };
 
   const recalculateIngredientAmounts = (newPortions: number) => {
-    recipe.ingredients.forEach((i) => i.amount = i.amount / recipe.metaInfo.portions * newPortions)
-  }
+    recipe.ingredients.forEach((i) => (i.amount = (i.amount / recipe.metaInfo.portions) * newPortions));
+  };
 
   if (recipe) {
     return (
@@ -51,8 +51,12 @@ export default function RecipeSummaryPage() {
         <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
         {recipe.metaInfo.imgUrls.length ? <PhotoCarousel imgUrls={recipe.metaInfo.imgUrls} /> : null}
         {/*<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>*/}
-          <IngredientsBlock ingredients={recipe.ingredients} equipment={recipe.equipment} onIngredientChange={handleIngredientChange} />
-          <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
+        <IngredientsBlock
+          ingredients={recipe.ingredients}
+          equipment={recipe.equipment}
+          onIngredientChange={handleIngredientChange}
+        />
+        <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
         {/*</div>*/}
       </StyledRecipeSummaryPage>
     );

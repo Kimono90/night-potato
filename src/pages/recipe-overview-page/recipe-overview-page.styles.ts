@@ -2,14 +2,14 @@ import styled from '@emotion/styled';
 
 export const StyledRecipeOverviewPage = styled.div`
   padding: 0 1rem 1rem 1rem;
-  background-color: #30343F;
+  background-color: #30343f;
   color: #ffffff;
   display: flex;
   align-items: center;
   text-align: center;
   flex-direction: column;
   width: 100%;
-  `
+`;
 export const StyledRecipeResults = styled.div`
   display: flex;
   -webkit-flex-wrap: wrap;
@@ -17,20 +17,20 @@ export const StyledRecipeResults = styled.div`
   flex-wrap: wrap;
   margin-top: 1rem;
   width: 90%;
-  `
+`;
 
 export const StyledSearchBox = styled.input`
   margin-top: 4rem;
   width: 75%;
-  padding: .5rem 1rem;
-  border-radius: .5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
   border: solid black 1px;
-  font-family:  'Patrick Hand', cursive;
+  font-family: 'Patrick Hand', cursive;
   font-size: 1.5rem;
   color: gray;
   outline: none;
-  
+
   @media (min-width: 500px) {
     width: 50%;
   }
-  `
+`;

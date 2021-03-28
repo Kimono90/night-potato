@@ -14,9 +14,9 @@ export const StyledInstruction = styled.div`
     cursor: pointer;
     margin-left: 1rem;
   }
-  
+
   p {
     text-align: start;
     margin: 0 1rem;
   }
-`
+`;
