@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const StyledIngredient = styled.div`
   display: flex;
@@ -56,6 +57,7 @@ export const StyledTabList = styled.div<TabProps>`
   flex-direction: column;
   display: ${(props) => (props.visible ? 'flex' : 'none')};
   text-decoration: none;
+  position: relative;
 
   @media (min-width: 500px) {
     font-size: 1.5rem;
@@ -66,11 +68,34 @@ export const StyledTabTitle = styled.div<TabProps>`
   width: 50%;
   align-self: center;
   font-size: 2rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
   border-radius: 0.5rem 0.5rem 0 0;
   background-color: ${(props) => (props.visible ? '#635554' : '#7D6C6A')};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   :hover {
     cursor: pointer;
   }
+`;
+
+type CopyProps = {
+  isCopied: boolean;
+};
+
+export const StyledCopyButton = styled(FontAwesomeIcon)<CopyProps>`
+  font-size: 1.5rem;
+  align-self: center;
+  padding: 0 0.5rem;
+  display: ${(props) => (props.isCopied ? 'none' : 'block')};
+
+  :hover {
+    color: deepskyblue;
+  }
+`;
+
+export const StyledCopiedConfirmation = styled.span<CopyProps>`
+  padding: 0 0.5rem;
+  display: ${(props) => (props.isCopied ? 'block' : 'none')};
 `;
