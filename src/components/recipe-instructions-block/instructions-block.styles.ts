@@ -4,7 +4,7 @@ export const StyledInstruction = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-start;
-  align-items: center;
+  align-items: start;
   margin: 0.5rem;
   flex-wrap: nowrap;
   cursor: pointer;
@@ -13,6 +13,7 @@ export const StyledInstruction = styled.div`
   svg {
     cursor: pointer;
     margin-left: 1rem;
+    margin-top: 0.35rem;
   }
 
   p {
