@@ -15,9 +15,19 @@ export const StyledMetaInfoContentArea = styled.div`
   background-color: #c9a495;
   display: flex;
   text-align: start;
-  justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
+  flex-flow: column;
+
+  @media (min-width: 500px) {
+    font-size: 1.5rem;
+  }
+`;
+
+export const StyledMetaInfoContentWithoutLabels = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
 
   & div {
     & svg {
@@ -29,6 +39,14 @@ export const StyledMetaInfoContentArea = styled.div`
     height: 6rem;
     font-size: 1.5rem;
   }
+`;
+
+export const StyledMetaInfoContentWithLabels = styled.div`
+  padding-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
 `;
 
 export const StyledMetaInfoItem = styled.div`

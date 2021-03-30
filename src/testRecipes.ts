@@ -1,5 +1,6 @@
 import type { IRecipe } from './models-and-constants/IRecipe';
 import { puddingImage, testImg1, testImg2, testImg3 } from './testImgs';
+import { labels } from './components/recipe-label/label-constants';
 
 export const testRecipe1: IRecipe = {
   id: 1,
@@ -8,6 +9,7 @@ export const testRecipe1: IRecipe = {
     portions: 4,
     prepTimeInMinutes: 50,
     kcalPerPortion: 500,
+    labels: [labels.vegan, labels.vegetarian],
     imgUrls: [testImg1, testImg2, testImg3],
   },
   ingredients: [
@@ -45,6 +47,7 @@ export const testRecipe2: IRecipe = {
     portions: 4,
     prepTimeInMinutes: 60,
     kcalPerPortion: 350,
+    labels: [labels.vegetarian],
     imgUrls: ['https://images.unsplash.com/photo-1515037893149-de7f840978e2'],
   },
   ingredients: [
@@ -77,6 +80,7 @@ export const brazilianPudding: IRecipe = {
     portions: 4,
     prepTimeInMinutes: 60,
     kcalPerPortion: 350,
+    labels: [labels.vegetarian, labels.glutenFree],
     imgUrls: [puddingImage],
   },
 
