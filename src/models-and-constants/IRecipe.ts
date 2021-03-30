@@ -11,6 +11,7 @@ export interface IRecipeMetaInfo {
   portions: number;
   prepTimeInMinutes: number;
   kcalPerPortion: number;
+  labels: string[];
   imgUrls: string[];
 }
 

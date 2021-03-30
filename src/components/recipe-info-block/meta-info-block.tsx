@@ -9,14 +9,7 @@ import {
   StyledMetaInfoItem,
 } from './meta-info-block.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  getFishLabel,
-  getGlutenFreeLabel,
-  getLactoseFreeLabel,
-  getMeatLabel,
-  getVeganLabel,
-  getVegetarianLabel,
-} from '../recipe-label/recipe-labels';
+import { LabelDictionary } from '../recipe-label/recipe-labels';
 
 type Props = {
   recipeMetaInfo: IRecipeMetaInfo;
@@ -50,12 +43,7 @@ export default function MetaInfoBlock({ recipeMetaInfo, onChangePortions }: Prop
         <MetaInfoItem faIcon={faHamburger} iconText={`${recipeMetaInfo.kcalPerPortion} kcal`} />
       </StyledMetaInfoContentWithoutLabels>
       <StyledMetaInfoContentWithLabels>
-        {getGlutenFreeLabel()}
-        {getLactoseFreeLabel()}
-        {getVegetarianLabel()}
-        {getVeganLabel()}
-        {getFishLabel()}
-        {getMeatLabel()}
+        {recipeMetaInfo.labels.map((l) => LabelDictionary.get(l))}
       </StyledMetaInfoContentWithLabels>
     </MetaInfoBlockWrapper>
   );
