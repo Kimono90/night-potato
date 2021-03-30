@@ -11,6 +11,7 @@ export const StyledNavBar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 1;
 
   @media (min-width: 500px) {
     justify-content: flex-start;
