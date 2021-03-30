@@ -6,7 +6,7 @@ type LabelProps = {
 
 export const StyledRecipeLabel = styled.div<LabelProps>`
   background-color: ${(props) => props.backgroundColor};
-  border-radius: 1rem;
+  border-radius: 0.75rem;
   padding: 0.25rem 0.5rem;
   font-size: 1rem;
   display: flex;
