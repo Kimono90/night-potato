@@ -29,7 +29,8 @@ export default function AppMenu() {
           </Link>
           <StyledNavLink to="/">CREATE RECIPE</StyledNavLink>
           <StyledNavLink to="/">MY RECIPES</StyledNavLink>
-          {button}
+          <button onClick={() => signInToGoogle()}>SIGN IN</button>
+          <button onClick={() => signOutOfGoogle()}>SIGN OUT</button>
         </>
       )}
     </StyledNavBar>
