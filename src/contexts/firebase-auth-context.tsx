@@ -73,13 +73,11 @@ export const FirebaseProvider = ({ children }: any) => {
   };
 
   return (
-    <div>
-      <FirebaseContext.Provider
-        value={{ user: user, logIn: logIn, logOut: logOut, isLoggingIn: loggingIn } as IFirebaseContext}
-      >
-        {children}
-      </FirebaseContext.Provider>
-    </div>
+    <FirebaseContext.Provider
+      value={{ user: user, logIn: logIn, logOut: logOut, isLoggingIn: loggingIn } as IFirebaseContext}
+    >
+      {children}
+    </FirebaseContext.Provider>
   );
 };
 

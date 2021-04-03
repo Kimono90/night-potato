@@ -5,9 +5,9 @@ export const StyledRecipeOverviewPage = styled.div`
   background-color: #30343f;
   color: #ffffff;
   display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
-  flex-direction: column;
   width: 100%;
 `;
 export const StyledRecipeResults = styled.div`

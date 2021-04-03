@@ -12,9 +12,6 @@ export const StyledNavBar = styled.nav`
   align-items: center;
   justify-content: space-between;
   z-index: 1;
-
-  @media (min-width: 500px) {
-  }
 `;
 
 type NavItemProps = {
