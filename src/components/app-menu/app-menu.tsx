@@ -2,6 +2,7 @@ import React from 'react';
 import { StyledHamburgerMenu, StyledNavBar, StyledNavLink, StyledPotatoIcon } from './app-menu.styles';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { isUserSignedIn, signInToGoogle } from '../../auth/google-signin';
 
 type Props = {};
 
@@ -24,6 +25,7 @@ export default function AppMenu({}: Props) {
           </Link>
           <StyledNavLink to="/">CREATE RECIPE</StyledNavLink>
           <StyledNavLink to="/">MY RECIPES</StyledNavLink>
+          <button onClick={() => signInToGoogle()}>SIGN IN</button>
         </>
       )}
     </StyledNavBar>
