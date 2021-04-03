@@ -1,17 +1,20 @@
-import React from 'react';
-import { StyledHamburgerMenu, StyledNavBar, StyledNavLink, StyledPotatoIcon } from './app-menu.styles';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import React, { useContext } from 'react';
+import {
+  StyledHamburgerMenu,
+  StyledNavBar,
+  StyledNavLink,
+  StyledPotatoIcon,
+  StyledSignInButton,
+} from './app-menu.styles';
+import { faBars, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { isUserSignedIn, signInToGoogle, signOutOfGoogle } from '../../firebase/google-signin';
+import { FirebaseContext } from '../../contexts/firebase-auth-context';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function AppMenu() {
   const mobile = window.innerWidth < 500;
-
-  const button = !isUserSignedIn() ? (
-    <button onClick={() => signInToGoogle()}>SIGN IN</button>
-  ) : (
-    <button onClick={() => signOutOfGoogle()}>SIGN OUT</button>
-  );
+  const firebaseContext = useContext(FirebaseContext);
+  const isLoggedIn = firebaseContext.user;
 
   return (
     <StyledNavBar>
@@ -24,13 +27,26 @@ export default function AppMenu() {
         </>
       ) : (
         <>
-          <Link to="/">
-            <StyledPotatoIcon />
-          </Link>
-          <StyledNavLink to="/">CREATE RECIPE</StyledNavLink>
-          <StyledNavLink to="/">MY RECIPES</StyledNavLink>
-          <button onClick={() => signInToGoogle()}>SIGN IN</button>
-          <button onClick={() => signOutOfGoogle()}>SIGN OUT</button>
+          <div style={{ display: 'flex' }}>
+            <Link to="/">
+              <StyledPotatoIcon />
+            </Link>
+            <StyledNavLink loggedIn={!!firebaseContext.user} to="/">
+              CREATE RECIPE
+            </StyledNavLink>
+            <StyledNavLink loggedIn={!!firebaseContext.user} to="/">
+              MY RECIPES
+            </StyledNavLink>
+          </div>
+          <StyledSignInButton>
+            <span
+              style={{ marginRight: '0.5rem' }}
+              onClick={isLoggedIn ? firebaseContext.logOut : firebaseContext.logIn}
+            >
+              {`${isLoggedIn ? 'LOG OUT' : 'LOG IN'}`}
+            </span>
+            <FontAwesomeIcon icon={isLoggedIn ? faSignOutAlt : faSignInAlt} />
+          </StyledSignInButton>
         </>
       )}
     </StyledNavBar>

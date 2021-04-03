@@ -14,11 +14,29 @@ export const StyledNavBar = styled.nav`
   z-index: 1;
 
   @media (min-width: 500px) {
-    justify-content: flex-start;
   }
 `;
 
-export const StyledNavLink = styled(Link)`
+type NavItemProps = {
+  loggedIn: boolean;
+};
+
+export const StyledNavLink = styled(Link)<NavItemProps>`
+  text-decoration: none;
+  color: white;
+  padding: 0 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  height: 100%;
+  display: ${(props) => (props.loggedIn ? 'flex' : 'none')};
+  align-items: center;
+
+  :hover {
+    background-color: #4d4242;
+  }
+`;
+
+export const StyledSignInButton = styled.div`
   text-decoration: none;
   color: white;
   padding: 0 1rem;
