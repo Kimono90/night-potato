@@ -6,16 +6,14 @@ import AppMenu from './components/app-menu/app-menu';
 
 function App() {
   return (
-    <>
-      <Router>
-        <AppMenu />
-        <Switch>
-          <Route exact path="/" component={RecipeOverviewPage} />
-          <Route path="/summary/:recipeId" component={RecipeSummaryPage} />
-          {/*<Route path="/add/:recipeId" component={RecipeAddPage} />*/}
-        </Switch>
-      </Router>
-    </>
+    <Router>
+      <AppMenu />
+      <Switch>
+        <Route exact path="/" component={RecipeOverviewPage} />
+        <Route path="/summary/:recipeId" component={RecipeSummaryPage} />
+        {/*<Route path="/add/:recipeId" component={RecipeAddPage} />*/}
+      </Switch>
+    </Router>
   );
 }
 

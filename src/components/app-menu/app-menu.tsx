@@ -2,12 +2,16 @@ import React from 'react';
 import { StyledHamburgerMenu, StyledNavBar, StyledNavLink, StyledPotatoIcon } from './app-menu.styles';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { isUserSignedIn, signInToGoogle } from '../../auth/google-signin';
+import { isUserSignedIn, signInToGoogle, signOutOfGoogle } from '../../firebase/google-signin';
 
-type Props = {};
-
-export default function AppMenu({}: Props) {
+export default function AppMenu() {
   const mobile = window.innerWidth < 500;
+
+  const button = !isUserSignedIn() ? (
+    <button onClick={() => signInToGoogle()}>SIGN IN</button>
+  ) : (
+    <button onClick={() => signOutOfGoogle()}>SIGN OUT</button>
+  );
 
   return (
     <StyledNavBar>
@@ -25,7 +29,7 @@ export default function AppMenu({}: Props) {
           </Link>
           <StyledNavLink to="/">CREATE RECIPE</StyledNavLink>
           <StyledNavLink to="/">MY RECIPES</StyledNavLink>
-          <button onClick={() => signInToGoogle()}>SIGN IN</button>
+          {button}
         </>
       )}
     </StyledNavBar>
