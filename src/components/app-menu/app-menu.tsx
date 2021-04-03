@@ -39,13 +39,19 @@ export default function AppMenu() {
             </StyledNavLink>
           </div>
           <StyledSignInButton>
-            <span
-              style={{ marginRight: '0.5rem' }}
-              onClick={isLoggedIn ? firebaseContext.logOut : firebaseContext.logIn}
-            >
-              {`${isLoggedIn ? 'LOG OUT' : 'LOG IN'}`}
-            </span>
-            <FontAwesomeIcon icon={isLoggedIn ? faSignOutAlt : faSignInAlt} />
+            {firebaseContext.isLoggingIn ? (
+              <span>Logging in...</span>
+            ) : (
+              <>
+                <span
+                  style={{ marginRight: '0.5rem' }}
+                  onClick={isLoggedIn ? firebaseContext.logOut : firebaseContext.logIn}
+                >
+                  {`${isLoggedIn ? 'LOG OUT' : 'LOG IN'}`}
+                </span>
+                <FontAwesomeIcon icon={isLoggedIn ? faSignOutAlt : faSignInAlt} />
+              </>
+            )}
           </StyledSignInButton>
         </>
       )}
