@@ -8,6 +8,7 @@ export interface IFirebaseContext {
   logIn: () => void;
   logOut: () => void;
   user: firebase.User | null;
+  isLoggingIn: boolean;
 }
 
 const googleAuthProvider = new firebaseInstance.auth.GoogleAuthProvider();
@@ -51,14 +52,19 @@ function signOutOfGoogle() {
 
 export const FirebaseProvider = ({ children }: any) => {
   const [user, setUser] = useState<firebase.User | null>(null);
+  const [loggingIn, setIsLoggingIn] = useState<boolean>(false);
 
   useEffect(() => {
+    setIsLoggingIn(true);
     getSignedInUser().then((user) => setUser(user));
+    setIsLoggingIn(false);
   }, []);
 
   const logIn = async () => {
+    setIsLoggingIn(true);
     const currentUser = await signInToGoogle();
     setUser(currentUser);
+    setIsLoggingIn(false);
   };
 
   const logOut = async () => {
@@ -68,7 +74,9 @@ export const FirebaseProvider = ({ children }: any) => {
 
   return (
     <div>
-      <FirebaseContext.Provider value={{ user: user, logIn: logIn, logOut: logOut } as IFirebaseContext}>
+      <FirebaseContext.Provider
+        value={{ user: user, logIn: logIn, logOut: logOut, isLoggingIn: loggingIn } as IFirebaseContext}
+      >
         {children}
       </FirebaseContext.Provider>
     </div>
