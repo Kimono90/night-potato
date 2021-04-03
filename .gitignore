@@ -1,4 +1,5 @@
 .snowpack
 .idea
+.env
 build
 node_modules
