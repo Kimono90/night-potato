@@ -12,7 +12,7 @@ type Props = {
 
 export function Instruction({ instruction, toggleChecked }: Props) {
   return (
-    <StyledInstruction data-label="instruction" key={instruction.stepNr} onClick={() => toggleChecked(instruction)}>
+    <StyledInstruction data-label="instruction" onClick={() => toggleChecked(instruction)}>
       <FontAwesomeIcon icon={instruction.isChecked ? faCheckSquare : faSquare} />
       <p>
         <span style={{ textDecoration: instruction.isChecked ? 'line-through' : 'none' }}>
