@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import type { IEquipment, IIngredient } from '../../models-and-constants/IRecipe';
 import { StyledSummaryCard } from '../shared-styles/shared-styles';
-import {
-  StyledCopiedConfirmation,
-  StyledCopyButton,
-  StyledEquipment,
-  StyledTabList,
-  StyledTabTitle,
-} from './ingredients-block.styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { StyledCopiedConfirmation, StyledCopyButton, StyledTabList, StyledTabTitle } from './ingredients-block.styles';
 import { Ingredient } from './ingredient';
 import { faCopy } from '@fortawesome/free-regular-svg-icons';
+import { Equipment } from './equipment';
 
 type Props = {
   ingredients: IIngredient[];
@@ -39,15 +32,10 @@ export default function IngredientsBlock({ ingredients, onIngredientChange, equi
   };
 
   const ingredientList = ingredients.map((i: IIngredient) => (
-    <Ingredient ingredient={i} toggleChecked={toggleChecked} />
+    <Ingredient key={i.id} ingredient={i} toggleChecked={toggleChecked} />
   ));
 
-  const equipmentList = equipment.map((e: IEquipment) => (
-    <StyledEquipment>
-      <FontAwesomeIcon icon={faUtensils} />
-      <span style={{ marginLeft: '1rem' }}>{e.name}</span>
-    </StyledEquipment>
-  ));
+  const equipmentList = equipment.map((e: IEquipment) => <Equipment key={e.id} equipmentItem={e} />);
 
   return (
     <StyledSummaryCard data-label="summary-card">
@@ -57,20 +45,18 @@ export default function IngredientsBlock({ ingredients, onIngredientChange, equi
             <span style={{ display: `${isCopied ? 'none' : 'block'}` }}>Ingredients</span>
             <StyledCopyButton
               icon={faCopy}
-              isCopied={isCopied}
-              onClick={() => {
-                navigator.clipboard
-                  .writeText(textToCopy)
-                  .then(() => {
-                    setIsCopied(true);
-                    setTimeout(() => setIsCopied(false), 1000);
-                  })
-                  .catch(() => {
-                    //TODO: error handling
-                  });
+              copied={`${isCopied}`}
+              onClick={async () => {
+                try {
+                  await navigator.clipboard.writeText(textToCopy);
+                  setIsCopied(true);
+                  setTimeout(() => setIsCopied(false), 1000);
+                } catch (e) {
+                  // TODO: Error handling
+                }
               }}
             />
-            <StyledCopiedConfirmation isCopied={isCopied}>Copied :)</StyledCopiedConfirmation>
+            <StyledCopiedConfirmation copied={`${isCopied}`}>Copied :)</StyledCopiedConfirmation>
           </StyledTabTitle>
           <StyledTabTitle data-label="title" onClick={() => setShowIngredients(false)} visible={!showIngredients}>
             Equipment

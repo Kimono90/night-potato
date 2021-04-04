@@ -15,7 +15,7 @@ export const StyledNavBar = styled.nav`
 `;
 
 type NavItemProps = {
-  loggedIn: boolean;
+  signedin: string;
 };
 
 export const StyledNavLink = styled(Link)<NavItemProps>`
@@ -25,7 +25,7 @@ export const StyledNavLink = styled(Link)<NavItemProps>`
   font-size: 1.5rem;
   cursor: pointer;
   height: 100%;
-  display: ${(props) => (props.loggedIn ? 'flex' : 'none')};
+  display: ${(props) => (props.signedin === 'true' ? 'flex' : 'none')};
   align-items: center;
 
   :hover {

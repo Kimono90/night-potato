@@ -12,7 +12,7 @@ type Props = {
 
 export function Ingredient({ ingredient, toggleChecked }: Props): React.ReactElement {
   return (
-    <StyledIngredient key={`${ingredient.id}`} data-label="ingredient" onClick={() => toggleChecked(ingredient)}>
+    <StyledIngredient data-label="ingredient" onClick={() => toggleChecked(ingredient)}>
       <FontAwesomeIcon icon={ingredient.isChecked ? faCheckSquare : faSquare} />
       <p>
         <span style={{ textDecoration: ingredient.isChecked ? 'line-through' : 'none' }} id="amount">

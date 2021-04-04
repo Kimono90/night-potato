@@ -81,14 +81,14 @@ export const StyledTabTitle = styled.div<TabProps>`
 `;
 
 type CopyProps = {
-  isCopied: boolean;
+  copied: string;
 };
 
 export const StyledCopyButton = styled(FontAwesomeIcon)<CopyProps>`
   font-size: 1.5rem;
   align-self: center;
   padding: 0 0.5rem;
-  display: ${(props) => (props.isCopied ? 'none' : 'block')};
+  display: ${(props) => (props.copied === 'true' ? 'none' : 'block')};
 
   :hover {
     color: deepskyblue;
@@ -97,5 +97,5 @@ export const StyledCopyButton = styled(FontAwesomeIcon)<CopyProps>`
 
 export const StyledCopiedConfirmation = styled.span<CopyProps>`
   padding: 0 0.5rem;
-  display: ${(props) => (props.isCopied ? 'block' : 'none')};
+  display: ${(props) => (props.copied === 'true' ? 'block' : 'none')};
 `;

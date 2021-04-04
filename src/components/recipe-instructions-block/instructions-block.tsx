@@ -18,7 +18,9 @@ export default function InstructionsBlock({ instructions, onInstructionChange }:
 
   const sortedInstructions = instructions.sort((a, b) => a.stepNr - b.stepNr);
 
-  const instructionList = sortedInstructions.map((i) => <Instruction instruction={i} toggleChecked={toggleChecked} />);
+  const instructionList = sortedInstructions.map((i) => (
+    <Instruction key={i.stepNr} instruction={i} toggleChecked={toggleChecked} />
+  ));
 
   return (
     <StyledSummaryCard data-label="summary-card">

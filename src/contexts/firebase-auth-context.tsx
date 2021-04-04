@@ -1,7 +1,6 @@
 import type firebase from 'firebase';
 import React, { useEffect, useState } from 'react';
 import firebaseInstance from '../firebase/firebase-initialization';
-import UserCredential = firebaseInstance.auth.UserCredential;
 
 export interface IFirebaseContext {
   // firebase: firebase.app.App;
@@ -22,32 +21,22 @@ function getSignedInUser(): Promise<firebase.User | null> {
   });
 }
 
-function signInToGoogle(): Promise<firebase.User | null> {
-  return firebaseInstance
-    .auth()
-    .setPersistence(firebaseInstance.auth.Auth.Persistence.LOCAL)
-    .then(() => {
-      return firebaseInstance
-        .auth()
-        .signInWithPopup(googleAuthProvider)
-        .then((result: UserCredential) => {
-          if (result.user) {
-            return result.user;
-          }
-          return null;
-        })
-        .catch((error) => {
-          console.log(error);
-          return null;
-        });
-    });
+async function signInToGoogle(): Promise<firebase.User | null> {
+  const signedInUser = await firebaseInstance.auth().signInWithPopup(googleAuthProvider);
+
+  if (signedInUser) return signedInUser.user;
+  //TODO: error handling
+  console.log('sorry, something went wrong logging you in :(');
+  return null;
 }
 
-function signOutOfGoogle() {
-  firebaseInstance
-    .auth()
-    .signOut()
-    .then(() => {});
+async function signOutOfGoogle() {
+  try {
+    await firebaseInstance.auth().signOut();
+  } catch (error) {
+    //TODO: error handling
+    console.log('sorry, something went wrong logging you out :(');
+  }
 }
 
 export const FirebaseProvider = ({ children }: any) => {
@@ -69,7 +58,8 @@ export const FirebaseProvider = ({ children }: any) => {
 
   const logOut = async () => {
     await signOutOfGoogle();
-    setUser(null);
+    const currentUser = await getSignedInUser();
+    setUser(currentUser);
   };
 
   return (
