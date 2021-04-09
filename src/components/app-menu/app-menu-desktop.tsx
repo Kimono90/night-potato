@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { StyledNavLink, StyledPotatoIcon, StyledSignInButton } from './app-menu.styles';
+import { StyledNavBar, StyledNavLink, StyledPotatoIcon, StyledSignInButton } from './app-menu.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FirebaseContext } from '../../contexts/firebase-auth-context';
@@ -10,7 +10,7 @@ export function DesktopAppMenu() {
   const isLoggedIn = firebaseContext.user;
 
   return (
-    <>
+    <StyledNavBar>
       <div style={{ display: 'flex' }}>
         <Link to="/">
           <StyledPotatoIcon />
@@ -37,6 +37,6 @@ export function DesktopAppMenu() {
           </>
         )}
       </StyledSignInButton>
-    </>
+    </StyledNavBar>
   );
 }
