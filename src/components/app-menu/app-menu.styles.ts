@@ -6,7 +6,6 @@ import PotatoSvg from './potato.svg';
 export const StyledNavBar = styled.nav`
   position: fixed;
   width: 100%;
-  height: 3rem;
   background-color: #635554;
   display: flex;
   align-items: center;
@@ -21,34 +20,46 @@ type NavItemProps = {
 export const StyledNavLink = styled(Link)<NavItemProps>`
   text-decoration: none;
   color: white;
-  padding: 0 1rem;
+  padding: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
-  height: 100%;
-  display: ${(props) => (props.signedin === 'true' ? 'flex' : 'none')};
-  align-items: center;
+  display: ${(props) => (props.signedin === 'true' ? 'block' : 'none')};
+  text-align: center;
+  width: 100%;
 
   :hover {
     background-color: #4d4242;
+  }
+
+  @media (min-width: 500px) {
+    width: unset;
+    padding: 0.5rem 1rem;
+    height: 100%;
   }
 `;
 
 export const StyledSignInButton = styled.div`
   text-decoration: none;
   color: white;
-  padding: 0 1rem;
+  padding: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
-  height: 100%;
-  display: flex;
-  align-items: center;
+  display: block;
+  text-align: center;
+  width: 100%;
 
   :hover {
     background-color: #4d4242;
   }
+
+  @media (min-width: 500px) {
+    width: unset;
+    padding: 0.5rem 1rem;
+    height: 100%;
+  }
 `;
 
-export const StyledHamburgerMenu = styled(FontAwesomeIcon)`
+export const StyledHamburgerMenuButton = styled(FontAwesomeIcon)`
   text-decoration: none;
   color: white;
   padding: 0 1rem;
@@ -56,11 +67,40 @@ export const StyledHamburgerMenu = styled(FontAwesomeIcon)`
   height: 100%;
   display: flex;
   align-items: center;
+  cursor: pointer;
+`;
+
+type HamburgerMenuProps = {
+  show: string;
+};
+
+export const StyledHamburgerMenu = styled.div<HamburgerMenuProps>`
+  display: ${(props) => (props.show === 'true' ? 'flex' : 'none')};;
+  background-color: #635554;
+  height: 100%;
+  width: 100%;
+  padding-top: 3rem;
+  position: fixed;
+  animation: slide 0.4s ease-in-out;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  
+  @keyframes slide {
+    0% {
+      height: 0;
+    }
+
+    100% {
+      height: 100%;
+    }
+  }
+}
 `;
 
 export const StyledPotatoIcon = styled(PotatoSvg)`
   height: 2rem;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
   display: block;
   align-items: center;
   transition: transform 0.3s ease-in-out;
