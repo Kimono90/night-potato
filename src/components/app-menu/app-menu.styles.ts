@@ -11,6 +11,21 @@ export const StyledNavBar = styled.nav`
   align-items: center;
   justify-content: space-between;
   z-index: 1;
+  opacity: 1;
+
+  @media (min-width: 500px) {
+    animation: fadeIn 0.6s ease-in-out;
+
+    @keyframes slide {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  }
 `;
 
 type NavItemProps = {
@@ -26,6 +41,8 @@ export const StyledNavLink = styled(Link)<NavItemProps>`
   display: ${(props) => (props.signedin === 'true' ? 'block' : 'none')};
   text-align: center;
   width: 100%;
+  animation: fadeIn 0.4s ease-in-out;
+  opacity: 1;
 
   :hover {
     background-color: #4d4242;
@@ -35,6 +52,16 @@ export const StyledNavLink = styled(Link)<NavItemProps>`
     width: unset;
     padding: 0.5rem 1rem;
     height: 100%;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 `;
 
@@ -47,6 +74,8 @@ export const StyledSignInButton = styled.div`
   display: block;
   text-align: center;
   width: 100%;
+  animation: fadeIn 0.4s ease-in-out;
+  opacity: 1;
 
   :hover {
     background-color: #4d4242;
@@ -56,6 +85,16 @@ export const StyledSignInButton = styled.div`
     width: unset;
     padding: 0.5rem 1rem;
     height: 100%;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 `;
 
