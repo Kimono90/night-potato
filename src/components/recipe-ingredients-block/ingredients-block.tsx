@@ -9,10 +9,9 @@ import { Equipment } from './equipment';
 type Props = {
   ingredients: IIngredient[];
   equipment: IEquipment[];
-  onIngredientChange: (newIngredients: IIngredient[]) => void;
 };
 
-export default function IngredientsBlock({ ingredients, onIngredientChange, equipment }: Props) {
+export default function IngredientsBlock({ ingredients, equipment }: Props) {
   const [showIngredients, setShowIngredients] = useState<boolean>(true);
   const [textToCopy, setTextToCopy] = useState<string>('');
   const [isCopied, setIsCopied] = useState<boolean>(false);
@@ -24,16 +23,7 @@ export default function IngredientsBlock({ ingredients, onIngredientChange, equi
     setTextToCopy(finalCopyText);
   }, [ingredients]);
 
-  const toggleChecked = (ingredient: IIngredient) => {
-    const igs = [...ingredients];
-    const toUpdate = igs.find((i) => i.id === ingredient.id);
-    if (toUpdate) toUpdate.isChecked = !ingredient.isChecked;
-    onIngredientChange(igs);
-  };
-
-  const ingredientList = ingredients.map((i: IIngredient) => (
-    <Ingredient key={i.id} ingredient={i} toggleChecked={toggleChecked} />
-  ));
+  const ingredientList = ingredients.map((i: IIngredient) => <Ingredient key={i.id} ingredient={i} />);
 
   const equipmentList = equipment.map((e: IEquipment) => <Equipment key={e.id} equipmentItem={e} />);
 

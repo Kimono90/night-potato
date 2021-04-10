@@ -18,7 +18,6 @@ export interface IRecipeMetaInfo {
 export interface IInstructionStep {
   stepNr: number;
   stepDescription: string;
-  isChecked: boolean;
 }
 
 export interface IEquipment {
@@ -31,5 +30,4 @@ export interface IIngredient {
   product: string;
   amount: number;
   measurement: string;
-  isChecked: boolean;
 }

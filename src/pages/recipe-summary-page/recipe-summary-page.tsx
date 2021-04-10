@@ -53,12 +53,8 @@ export default function RecipeSummaryPage() {
       <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
       {recipe.metaInfo.imgUrls.length ? <PhotoCarousel imgUrls={recipe.metaInfo.imgUrls} /> : null}
       {/*<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>*/}
-      <IngredientsBlock
-        ingredients={recipe.ingredients}
-        equipment={recipe.equipment}
-        onIngredientChange={handleIngredientChange}
-      />
-      <InstructionsBlock instructions={recipe.instructionSteps} onInstructionChange={handleInstructionChange} />
+      <IngredientsBlock ingredients={recipe.ingredients} equipment={recipe.equipment} />
+      <InstructionsBlock instructions={recipe.instructionSteps} />
       {/*</div>*/}
     </StyledRecipeSummaryPage>
   );

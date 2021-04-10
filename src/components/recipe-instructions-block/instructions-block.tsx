@@ -5,22 +5,12 @@ import { Instruction } from './instruction';
 
 type Props = {
   instructions: IInstructionStep[];
-  onInstructionChange: (newInstructions: IInstructionStep[]) => void;
 };
 
-export default function InstructionsBlock({ instructions, onInstructionChange }: Props) {
-  const toggleChecked = (instructionStep: IInstructionStep) => {
-    const inst = [...instructions];
-    const toUpdate = inst.find((i) => i.stepNr === instructionStep.stepNr);
-    if (toUpdate) toUpdate.isChecked = !instructionStep.isChecked;
-    onInstructionChange(inst);
-  };
-
+export default function InstructionsBlock({ instructions }: Props) {
   const sortedInstructions = instructions.sort((a, b) => a.stepNr - b.stepNr);
 
-  const instructionList = sortedInstructions.map((i) => (
-    <Instruction key={i.stepNr} instruction={i} toggleChecked={toggleChecked} />
-  ));
+  const instructionList = sortedInstructions.map((i) => <Instruction key={i.stepNr} instruction={i} />);
 
   return (
     <StyledSummaryCard data-label="summary-card">

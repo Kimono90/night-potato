@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { IInstructionStep } from '../../models-and-constants/IRecipe';
 import { StyledInstruction } from './instructions-block.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,15 +7,16 @@ import { faSquare } from '@fortawesome/free-regular-svg-icons';
 
 type Props = {
   instruction: IInstructionStep;
-  toggleChecked: (instruction: IInstructionStep) => void;
 };
 
-export function Instruction({ instruction, toggleChecked }: Props) {
+export function Instruction({ instruction }: Props) {
+  const [isChecked, setIsChecked] = useState<boolean>();
+
   return (
-    <StyledInstruction data-label="instruction" onClick={() => toggleChecked(instruction)}>
-      <FontAwesomeIcon icon={instruction.isChecked ? faCheckSquare : faSquare} />
+    <StyledInstruction data-label="instruction" onClick={() => setIsChecked(!isChecked)}>
+      <FontAwesomeIcon icon={isChecked ? faCheckSquare : faSquare} />
       <p>
-        <span style={{ textDecoration: instruction.isChecked ? 'line-through' : 'none' }}>
+        <span style={{ textDecoration: isChecked ? 'line-through' : 'none' }}>
           {instruction.stepNr}. {instruction.stepDescription}
         </span>
       </p>
