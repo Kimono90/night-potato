@@ -20,7 +20,12 @@ export function MobileAppMenu() {
   return (
     <>
       <StyledNavBar>
-        <Link to="/">
+        <Link
+          to="/"
+          onClick={() => {
+            if (menuOpen) setMenuOpen(false);
+          }}
+        >
           <StyledPotatoIcon />
         </Link>
         <StyledHamburgerMenuButton icon={faBars} onClick={() => setMenuOpen(!menuOpen)} />
