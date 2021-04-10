@@ -9,10 +9,11 @@ export const StyledOverviewCard = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 90%;
+  transition: all 0.2s ease-in-out;
 
   :hover {
     box-shadow: 0 0 6px 6px rgba(255, 255, 255, 0.2);
-    transition: box-shadow 0.2s ease-in-out;
+    transform: scale(1.025);
     cursor: pointer;
   }
 
