@@ -31,7 +31,7 @@ export function MobileAppMenu() {
         <StyledHamburgerMenuButton icon={faBars} onClick={() => setMenuOpen(!menuOpen)} />
       </StyledNavBar>
       <StyledHamburgerMenu show={`${menuOpen}`}>
-        <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/">
+        <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/create">
           CREATE RECIPE
         </StyledNavLink>
         <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/">
