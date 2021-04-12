@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { IInstructionStep } from '../../models-and-constants/IRecipe';
+import type { IInstructionStep } from '../../../models-and-constants/IRecipe';
 import { StyledInstruction } from './instructions-block.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { faClock, faHamburger, faMinusCircle, faPlusCircle, faUser } from '@fortawesome/free-solid-svg-icons';
-import type { IRecipeMetaInfo } from '../../models-and-constants/IRecipe';
+import type { IRecipeMetaInfo } from '../../../models-and-constants/IRecipe';
 import { MetaInfoBlockWrapper } from './meta-info-block-wrapper';
 import { MetaInfoItem } from './meta-info-item';
 import {
@@ -9,7 +9,7 @@ import {
   StyledMetaInfoItem,
 } from './meta-info-block.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { LabelDictionary } from '../recipe-label/recipe-labels';
+import { LabelDictionary } from '../../recipe-label/recipe-labels';
 
 type Props = {
   recipeMetaInfo: IRecipeMetaInfo;

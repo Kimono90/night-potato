@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { IIngredient } from '../../models-and-constants/IRecipe';
+import type { IIngredient } from '../../../models-and-constants/IRecipe';
 import { StyledIngredient } from './ingredients-block.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';

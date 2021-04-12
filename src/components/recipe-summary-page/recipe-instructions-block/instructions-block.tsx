@@ -1,6 +1,6 @@
 import React from 'react';
-import type { IInstructionStep } from '../../models-and-constants/IRecipe';
-import { StyledList, StyledSummaryCard, StyledTitle } from '../shared-styles/shared-styles';
+import type { IInstructionStep } from '../../../models-and-constants/IRecipe';
+import { StyledList, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
 import { Instruction } from './instruction';
 
 type Props = {

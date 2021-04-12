@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import type { IRouteParams } from 'src/models-and-constants/IRouteParams';
-import MetaInfoBlock from '../../components/recipe-info-block/meta-info-block';
+import MetaInfoBlock from '../../components/recipe-summary-page/recipe-info-block/meta-info-block';
 import { StyledRecipeSummaryPage } from './recipe-summary-page.styles';
-import IngredientsBlock from '../../components/recipe-ingredients-block/ingredients-block';
-import InstructionsBlock from '../../components/recipe-instructions-block/instructions-block';
+import IngredientsBlock from '../../components/recipe-summary-page/recipe-ingredients-block/ingredients-block';
+import InstructionsBlock from '../../components/recipe-summary-page/recipe-instructions-block/instructions-block';
 import type { IIngredient, IInstructionStep, IRecipe } from '../../models-and-constants/IRecipe';
-import PhotoCarousel from '../../components/recipe-photo-carousel/photo-carousel';
+import PhotoCarousel from '../../components/recipe-summary-page/recipe-photo-carousel/photo-carousel';
 import { testRecipe1, testRecipe2, brazilianPudding } from '../../testRecipes';
 
 export default function RecipeSummaryPage() {

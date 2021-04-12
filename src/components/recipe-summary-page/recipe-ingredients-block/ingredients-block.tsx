@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import type { IEquipment, IIngredient } from '../../models-and-constants/IRecipe';
-import { StyledSummaryCard } from '../shared-styles/shared-styles';
+import type { IEquipment, IIngredient } from '../../../models-and-constants/IRecipe';
+import { StyledSummaryCard } from '../../shared-styles/shared-styles';
 import { StyledCopiedConfirmation, StyledCopyButton, StyledTabList, StyledTabTitle } from './ingredients-block.styles';
 import { Ingredient } from './ingredient';
 import { faCopy } from '@fortawesome/free-regular-svg-icons';
