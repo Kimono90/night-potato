@@ -8,7 +8,7 @@ export function RecipeName() {
   const [recipeName, setRecipeName] = useState<string>('');
 
   const recipeNameElement = showRecipeName ? (
-    <div style={{ display: 'flex', width: '50%' }}>
+    <div style={{ display: 'flex', width: '50%', position: 'relative' }}>
       <StyledRecipeName onClick={() => setShowRecipeName(false)}>{recipeName}</StyledRecipeName>
       <StyledPenIcon icon={faPen} />
     </div>

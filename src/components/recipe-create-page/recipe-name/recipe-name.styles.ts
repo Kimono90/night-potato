@@ -30,8 +30,8 @@ export const StyledRecipeName = styled.div`
 `;
 
 export const StyledPenIcon = styled(FontAwesomeIcon)`
-  align-self: flex-end;
-  z-index: 2;
-  margin-left: -2rem;
-  margin-bottom: 1.2rem;
+  margin-top: 2.9rem;
+  margin-right: 1rem;
+  right: 0;
+  position: absolute;
 `;
