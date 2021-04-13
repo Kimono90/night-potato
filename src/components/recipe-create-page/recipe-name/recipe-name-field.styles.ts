@@ -20,7 +20,7 @@ export const StyledRecipeNameInput = styled.input<RecipeInputProps>`
 
 export const StyledRecipeName = styled.div`
   margin-top: 2rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
   border-radius: 0.5rem;
   border: solid black 1px;
   font-family: 'Patrick Hand', cursive;
@@ -32,6 +32,8 @@ export const StyledRecipeName = styled.div`
   text-align: start;
   width: 100%;
   min-height: 2rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
 `;
 
 export const StyledPenIcon = styled(FontAwesomeIcon)`
@@ -42,7 +44,16 @@ export const StyledPenIcon = styled(FontAwesomeIcon)`
   cursor: pointer;
 `;
 
+export const StyledLetterCounter = styled.span`
+  margin-top: 0.25rem;
+  margin-right: -1.5rem;
+  right: 0;
+  position: absolute;
+`;
+
 export const StyledInputErrorMessage = styled.span`
   margin-top: 0.25rem;
   margin-left: 0.5rem;
+  max-width: 100%;
+  text-align: start;
 `;
