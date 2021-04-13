@@ -1,12 +1,16 @@
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const StyledRecipeInput = styled.input`
+type RecipeInputProps = {
+  hasError: string;
+};
+
+export const StyledRecipeNameInput = styled.input<RecipeInputProps>`
   margin-top: 2rem;
   width: 100%;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  border: solid black 1px;
+  border: ${(props) => (props.hasError == 'true' ? 'solid red 2px' : 'solid black 1px')};
   font-family: 'Patrick Hand', cursive;
   font-size: 1.5rem;
   color: white;
@@ -27,11 +31,18 @@ export const StyledRecipeName = styled.div`
   cursor: pointer;
   text-align: start;
   width: 100%;
+  min-height: 2rem;
 `;
 
 export const StyledPenIcon = styled(FontAwesomeIcon)`
-  margin-top: 2.9rem;
+  margin-top: 2.95rem;
   margin-right: 1rem;
   right: 0;
   position: absolute;
+  cursor: pointer;
+`;
+
+export const StyledInputErrorMessage = styled.span`
+  margin-top: 0.25rem;
+  margin-left: 0.5rem;
 `;

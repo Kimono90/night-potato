@@ -1,11 +1,13 @@
 import { StyledRecipeSummaryPage } from '../recipe-summary-page/recipe-summary-page.styles';
-import React from 'react';
-import { RecipeName } from '../../components/recipe-create-page/recipe-name/recipe-name';
+import React, { useState } from 'react';
+import { RecipeNameField } from '../../components/recipe-create-page/recipe-name/recipe-name-field';
 
 export function RecipeCreatePage() {
+  const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>();
+
   return (
     <StyledRecipeSummaryPage data-label="create-recipe-page">
-      <RecipeName />
+      <RecipeNameField onRecipeNameHasError={setRecipeNameHasError} />
     </StyledRecipeSummaryPage>
   );
 }
