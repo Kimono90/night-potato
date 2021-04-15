@@ -8,7 +8,7 @@ type RecipeInputProps = {
 export const StyledRecipeNameInput = styled.input<RecipeInputProps>`
   margin-top: 2rem;
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
   border: ${(props) => (props.hasError == 'true' ? 'solid red 2px' : 'solid black 1px')};
   font-family: 'Patrick Hand', cursive;
@@ -16,11 +16,15 @@ export const StyledRecipeNameInput = styled.input<RecipeInputProps>`
   color: white;
   outline: none;
   background-color: #c9a495;
+
+  @media (min-width: 500px) {
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+  }
 `;
 
 export const StyledRecipeName = styled.div`
   margin-top: 2rem;
-  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
   border: solid black 1px;
   font-family: 'Patrick Hand', cursive;
@@ -34,26 +38,56 @@ export const StyledRecipeName = styled.div`
   min-height: 2rem;
   text-overflow: ellipsis;
   overflow: hidden;
+
+  @media (min-width: 500px) {
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+  }
 `;
 
 export const StyledPenIcon = styled(FontAwesomeIcon)`
   margin-top: 2.95rem;
-  margin-right: 1rem;
   right: 0;
   position: absolute;
   cursor: pointer;
+
+  @media (min-width: 500px) {
+    margin-right: -2.25rem;
+  }
 `;
 
 export const StyledLetterCounter = styled.span`
   margin-top: 0.25rem;
-  margin-right: -1.5rem;
   right: 0;
   position: absolute;
+  user-select: none;
+
+  @media (min-width: 500px) {
+    margin-right: -2.5rem;
+  }
 `;
 
 export const StyledInputErrorMessage = styled.span`
   margin-top: 0.25rem;
-  margin-left: 0.5rem;
+  margin-left: -0.25rem;
   max-width: 100%;
   text-align: start;
+  user-select: none;
+  align-self: flex-start;
+
+  @media (min-width: 500px) {
+    margin-left: -1.5rem;
+  }
+`;
+
+export const StyledRecipeNameFieldWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  width: 80%;
+  flex-direction: column;
+  position: relative;
+
+  @media (min-width: 500px) {
+    width: 50%;
+    align-items: center;
+  }
 `;

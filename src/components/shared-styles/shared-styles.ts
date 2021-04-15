@@ -8,7 +8,7 @@ export const StyledSummaryCard = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
+  width: 90%;
   font-size: 1.25rem;
 
   @media (min-width: 500px) {

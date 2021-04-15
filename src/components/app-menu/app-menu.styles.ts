@@ -10,7 +10,7 @@ export const StyledNavBar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 1;
+  z-index: 2;
   opacity: 1;
 
   @media (min-width: 500px) {
@@ -124,6 +124,7 @@ export const StyledHamburgerMenu = styled.div<HamburgerMenuProps>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  z-index: 1;
   
   @keyframes slide {
     0% {

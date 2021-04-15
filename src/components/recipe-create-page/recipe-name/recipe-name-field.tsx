@@ -5,6 +5,7 @@ import {
   StyledRecipeNameInput,
   StyledRecipeName,
   StyledLetterCounter,
+  StyledRecipeNameFieldWrapper,
 } from './recipe-name-field.styles';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 
@@ -29,14 +30,12 @@ export function RecipeNameField({ onRecipeNameHasError }: Props): ReactElement {
   };
 
   const recipeNameElement = showRecipeName ? (
-    <div style={{ display: 'flex', width: '50%', position: 'relative' }}>
+    <StyledRecipeNameFieldWrapper>
       <StyledRecipeName onClick={() => setShowRecipeName(false)}>{recipeName}</StyledRecipeName>
       <StyledPenIcon icon={faPen} onClick={() => setShowRecipeName(false)} />
-    </div>
+    </StyledRecipeNameFieldWrapper>
   ) : (
-    <div
-      style={{ display: 'flex', width: '50%', flexDirection: 'column', alignItems: 'flex-start', position: 'relative' }}
-    >
+    <StyledRecipeNameFieldWrapper>
       <StyledRecipeNameInput
         autoFocus
         placeholder="Name your recipe"
@@ -62,7 +61,7 @@ export function RecipeNameField({ onRecipeNameHasError }: Props): ReactElement {
           You don't forget to name your children, right? Your recipe deserves a good name too.
         </StyledInputErrorMessage>
       ) : null}
-    </div>
+    </StyledRecipeNameFieldWrapper>
   );
   return <>{recipeNameElement}</>;
 }
