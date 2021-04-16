@@ -21,7 +21,7 @@ export function Ingredient({ ingredient }: Props): React.ReactElement {
         </span>
         <span style={{ textDecoration: isChecked ? 'line-through' : 'none' }} id="product">
           {' '}
-          {ingredient.product}
+          {ingredient.productName}
         </span>
       </p>
     </StyledIngredient>

@@ -17,7 +17,7 @@ export default function IngredientsBlock({ ingredients, equipment }: Props) {
   const [isCopied, setIsCopied] = useState<boolean>(false);
 
   useEffect(() => {
-    const ingredientList = ingredients.map((i) => `${i.amount} ${i.measurement} - ${i.product}`);
+    const ingredientList = ingredients.map((i) => `${i.amount} ${i.measurement} - ${i.productName}`);
     const totalList = ingredientList.join('\n').concat('\n \n');
     const finalCopyText = totalList.concat(`recipe found at ${window.location}`);
     setTextToCopy(finalCopyText);

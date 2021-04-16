@@ -11,11 +11,10 @@ export const StyledRecipeNameInput = styled.input<RecipeInputProps>`
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: ${(props) => (props.hasError == 'true' ? 'solid red 2px' : 'solid black 1px')};
-  font-family: 'Patrick Hand', cursive;
+  font-family: inherit;
   font-size: 1.5rem;
-  color: white;
   outline: none;
-  background-color: #c9a495;
+  background-color: white;
 
   @media (min-width: 500px) {
     padding: 0.5rem 2.5rem 0.5rem 1rem;
@@ -33,7 +32,6 @@ export const StyledRecipeName = styled.div`
   outline: none;
   background-color: #7d6c6a;
   cursor: pointer;
-  text-align: start;
   width: 100%;
   min-height: 2rem;
   text-overflow: ellipsis;
@@ -51,7 +49,7 @@ export const StyledPenIcon = styled(FontAwesomeIcon)`
   cursor: pointer;
 
   @media (min-width: 500px) {
-    margin-right: -2.25rem;
+    margin-right: -1.25rem;
   }
 `;
 
@@ -62,7 +60,7 @@ export const StyledLetterCounter = styled.span`
   user-select: none;
 
   @media (min-width: 500px) {
-    margin-right: -2.5rem;
+    margin-right: -1.75rem;
   }
 `;
 
@@ -85,9 +83,10 @@ export const StyledRecipeNameFieldWrapper = styled.div`
   width: 80%;
   flex-direction: column;
   position: relative;
+  margin-bottom: 2rem;
 
   @media (min-width: 500px) {
-    width: 50%;
+    width: 30%;
     align-items: center;
   }
 `;

@@ -13,13 +13,13 @@ type Props = {
   onRecipeNameHasError: (hasError: boolean) => void;
 };
 
-export function RecipeNameField({ onRecipeNameHasError }: Props): ReactElement {
+export function RecipeNameInputField({ onRecipeNameHasError }: Props): ReactElement {
   const [showRecipeName, setShowRecipeName] = useState<boolean>(false);
   const [showRecipeInputError, setShowRecipeInputError] = useState<boolean>(false);
   const [letterCount, setLetterCount] = useState<number>(0);
   const [recipeName, setRecipeName] = useState<string | undefined>('');
 
-  const recipeNameLetterCount = `${letterCount}/75`;
+  const recipeNameLetterCount = `${letterCount}/50`;
 
   const handleRecipeNameInput = () => {
     if (recipeName) setShowRecipeName(true);
@@ -43,7 +43,7 @@ export function RecipeNameField({ onRecipeNameHasError }: Props): ReactElement {
         onChange={(input: ChangeEvent<HTMLInputElement>) => {
           setShowRecipeInputError(false);
 
-          const trimmedValue = input.target.value.substr(0, 75);
+          const trimmedValue = input.target.value.substr(0, 50);
           setLetterCount(trimmedValue.length);
           setRecipeName(trimmedValue);
         }}
