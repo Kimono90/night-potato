@@ -47,4 +47,5 @@ export const StyledSelectField = styled(Select)`
 export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   font-size: 1.25rem;
   padding: 0.5rem;
+  cursor: pointer;
 `;

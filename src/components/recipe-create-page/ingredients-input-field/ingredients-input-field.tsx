@@ -12,12 +12,10 @@ export function IngredientsInputField(): ReactElement {
       const ids = ingredients.flatMap((i) => i.id);
       id = Math.max(...ids) + 1;
     }
-
     return id;
   };
 
   const renderIngredients = () => {
-    console.log(ingredients);
     const emptyIngredient: IIngredient = { id: generateUniqueId(), amount: 0, measurement: '', productName: '' };
     const ingredientsToRender: IIngredient[] = [...ingredients, emptyIngredient];
 

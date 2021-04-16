@@ -31,13 +31,16 @@ export function Ingredient({
   const [showMinusIcon, setShowMinusIcon] = useState<boolean>(false);
 
   useEffect(() => {
-    if (currentIngredient.id === ingredients.length + 1) setShowPlusIcon(true);
+    const allIds = ingredients.flatMap((i) => i.id);
+    let highestId = Math.max(...allIds);
+    if (highestId == -Infinity) highestId = 0;
+
+    if (currentIngredient.id === highestId + 1) setShowPlusIcon(true);
     !ingredients.length ? setShowMinusIcon(false) : setShowMinusIcon(true);
   }, [ingredientName, amount, measurement, ingredients]);
 
   const handlePlusButtonClick = (): void => {
     if (ingredientName && amount) {
-      console.log('result', ingredientName, amount);
       setShowPlusIcon(false);
       onPlusButtonClick(ingredientName, measurement?.value, amount);
     } else alert('not every field is complete!');
@@ -70,14 +73,7 @@ export function Ingredient({
         value={amount}
         onChange={(event) => setAmount(Number(event.target.value))}
       />
-      <StyledSelectField
-        placeholder=""
-        options={measurementOptions}
-        onChange={(e) => {
-          console.log(e);
-          setMeasurement(e);
-        }}
-      />
+      <StyledSelectField placeholder="" options={measurementOptions} onChange={(e) => setMeasurement(e)} />
       <div style={{ minWidth: '5rem' }}>
         {plusButton}
         {minusButton}

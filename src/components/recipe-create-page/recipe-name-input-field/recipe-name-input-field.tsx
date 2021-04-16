@@ -52,7 +52,6 @@ export function RecipeNameInputField({ onRecipeNameHasError }: Props): ReactElem
             handleRecipeNameInput();
           }
         }}
-        onBlur={handleRecipeNameInput}
         hasError={`${showRecipeInputError}`}
       />
       <StyledLetterCounter>{recipeNameLetterCount}</StyledLetterCounter>
