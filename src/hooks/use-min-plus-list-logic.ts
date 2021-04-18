@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useMinPlusLogic = (
+export const useMinPlusListLogic = (
   currentItemIdentifier: number | string,
   fullItemIdentifierList: number[] | string[],
 ) => {
