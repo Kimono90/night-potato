@@ -2,24 +2,16 @@ import React, { ReactElement, useState } from 'react';
 import { StyledList, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
 import { Ingredient } from './ingredient';
 import type { IIngredient } from '../../../models-and-constants/IRecipe';
+import { generate } from 'shortid';
 
 export function IngredientsInputField(): ReactElement {
   const [ingredients, setIngredients] = useState<IIngredient[]>([]);
 
-  const generateUniqueId = (): number => {
-    let id = 1;
-    if (ingredients.length) {
-      const ids = ingredients.flatMap((i) => i.id);
-      id = Math.max(...ids) + 1;
-    }
-    return id;
-  };
-
   const renderIngredients = () => {
-    const emptyIngredient: IIngredient = { id: generateUniqueId(), amount: 0, measurement: '', productName: '' };
+    const emptyIngredient: IIngredient = { id: generate(), amount: 0, measurement: '', productName: '' };
     const ingredientsToRender: IIngredient[] = [...ingredients, emptyIngredient];
 
-    return ingredientsToRender.map((i) => (
+    return ingredientsToRender.map((i, index) => (
       <Ingredient
         key={i.id}
         currentIngredient={i}
@@ -30,9 +22,9 @@ export function IngredientsInputField(): ReactElement {
     ));
   };
 
-  const handleAddIngredient = (name: string, measurement: string, amount: number) => {
+  const handleAddIngredient = (id: string, name: string, measurement: string, amount: number) => {
     const newIngredient: IIngredient = {
-      id: generateUniqueId(),
+      id: id,
       productName: name,
       measurement,
       amount,
@@ -41,7 +33,7 @@ export function IngredientsInputField(): ReactElement {
     setIngredients([...ingredients, newIngredient]);
   };
 
-  const handleRemoveIngredient = (ingredientId: number) => {
+  const handleRemoveIngredient = (ingredientId: string) => {
     const newIngredients = ingredients.filter((i) => i.id !== ingredientId);
     setIngredients(newIngredients);
   };

@@ -13,8 +13,8 @@ import type { OptionTypeBase } from 'react-select';
 
 type Props = {
   currentIngredient: IIngredient;
-  onPlusButtonClick: (name: string, measurement: string, amount: number) => void;
-  onMinusButtonClick: (id: number) => void;
+  onPlusButtonClick: (id: string, name: string, measurement: string, amount: number) => void;
+  onMinusButtonClick: (id: string) => void;
   ingredients: IIngredient[];
 };
 
@@ -31,18 +31,16 @@ export function Ingredient({
   const [showMinusIcon, setShowMinusIcon] = useState<boolean>(false);
 
   useEffect(() => {
-    const allIds = ingredients.flatMap((i) => i.id);
-    let highestId = Math.max(...allIds);
-    if (highestId == -Infinity) highestId = 0;
+    const currentIngredientIndex = ingredients.findIndex((i) => i.id === currentIngredient.id);
 
-    if (currentIngredient.id === highestId + 1) setShowPlusIcon(true);
-    !ingredients.length ? setShowMinusIcon(false) : setShowMinusIcon(true);
-  }, [ingredientName, amount, measurement, ingredients]);
+    if (currentIngredientIndex === -1) setShowPlusIcon(true);
+    setShowMinusIcon(!!ingredients.length);
+  }, [ingredients, currentIngredient]);
 
   const handlePlusButtonClick = (): void => {
     if (ingredientName && amount) {
       setShowPlusIcon(false);
-      onPlusButtonClick(ingredientName, measurement?.value, amount);
+      onPlusButtonClick(currentIngredient.id, ingredientName, measurement?.value, amount);
     } else alert('not every field is complete!');
   };
 

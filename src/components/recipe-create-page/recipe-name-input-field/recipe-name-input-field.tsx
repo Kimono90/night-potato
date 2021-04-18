@@ -37,15 +37,14 @@ export function RecipeNameInputField({ onRecipeNameHasError }: Props): ReactElem
   ) : (
     <StyledRecipeNameFieldWrapper>
       <StyledRecipeNameInput
+        maxLength={50}
         autoFocus
         placeholder="Name your recipe"
         value={recipeName}
         onChange={(input: ChangeEvent<HTMLInputElement>) => {
           setShowRecipeInputError(false);
-
-          const trimmedValue = input.target.value.substr(0, 50);
-          setLetterCount(trimmedValue.length);
-          setRecipeName(trimmedValue);
+          setLetterCount(input.target.value.length);
+          setRecipeName(input.target.value);
         }}
         onKeyDown={(e: any) => {
           if (e.key === 'Enter') {

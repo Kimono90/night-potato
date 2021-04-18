@@ -26,7 +26,7 @@ export interface IEquipment {
 }
 
 export interface IIngredient {
-  id: number;
+  id: string;
   productName: string;
   amount: number;
   measurement: string;
