@@ -10,6 +10,7 @@ import { MEASUREMENT_OPTIONS } from '../../../models-and-constants/MEASUREMENT_O
 import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import type { IIngredient } from '../../../models-and-constants/IRecipe';
 import type { OptionTypeBase } from 'react-select';
+import { useMinPlusLogic } from '../../../hooks/use-min-plus-logic';
 
 type Props = {
   currentIngredient: IIngredient;
@@ -27,27 +28,22 @@ export function Ingredient({
   const [ingredientName, setIngredientName] = useState<string>('');
   const [amount, setAmount] = useState<number | ''>('');
   const [measurement, setMeasurement] = useState<OptionTypeBase | null>();
-  const [showPlusIcon, setShowPlusIcon] = useState<boolean>(false);
-  const [showMinusIcon, setShowMinusIcon] = useState<boolean>(false);
-
-  useEffect(() => {
-    const currentIngredientIndex = ingredients.findIndex((i) => i.id === currentIngredient.id);
-
-    if (currentIngredientIndex === -1) setShowPlusIcon(true);
-    setShowMinusIcon(!!ingredients.length);
-  }, [ingredients, currentIngredient]);
+  const [minusButton, plusButton] = useMinPlusLogic(
+    currentIngredient.id,
+    ingredients.flatMap((i) => i.id),
+  );
 
   const handlePlusButtonClick = (): void => {
     if (ingredientName && amount) {
-      setShowPlusIcon(false);
+      plusButton.set(false);
       onPlusButtonClick(currentIngredient.id, ingredientName, measurement?.value, amount);
     } else alert('not every field is complete!');
   };
 
-  const plusButton = showPlusIcon ? (
+  const plusButtonComponent = plusButton.show ? (
     <StyledFontAwesomeIcon icon={faPlusCircle} onClick={() => handlePlusButtonClick()} />
   ) : null;
-  const minusButton = showMinusIcon ? (
+  const minusButtonComponent = minusButton.show ? (
     <StyledFontAwesomeIcon icon={faMinusCircle} onClick={() => onMinusButtonClick(currentIngredient.id)} />
   ) : null;
 
@@ -73,8 +69,8 @@ export function Ingredient({
       />
       <StyledSelectField placeholder="" options={measurementOptions} onChange={(e) => setMeasurement(e)} />
       <div style={{ minWidth: '5rem' }}>
-        {plusButton}
-        {minusButton}
+        {plusButtonComponent}
+        {minusButtonComponent}
       </div>
     </StyledCreateIngredientItem>
   );
