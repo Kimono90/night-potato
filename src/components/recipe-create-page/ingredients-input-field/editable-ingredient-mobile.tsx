@@ -4,9 +4,10 @@ import type { IIngredient } from '../../../models-and-constants/IRecipe';
 
 type Props = {
   ingredient: IIngredient;
+  onRemoveClick: (id: string) => void;
 };
 
-export function EditableIngredientMobile({ ingredient }: Props): ReactElement {
+export function EditableIngredientMobile({ ingredient, onRemoveClick }: Props): ReactElement {
   return (
     <StyledMobileIngredient data-label="mobile-ingredient">
       <p>
@@ -15,7 +16,7 @@ export function EditableIngredientMobile({ ingredient }: Props): ReactElement {
         </span>
         <span id="product"> {ingredient.productName}</span>
       </p>
-      <StyledRemoveButton>Remove</StyledRemoveButton>
+      <StyledRemoveButton onClick={() => onRemoveClick(ingredient.id)}>Remove</StyledRemoveButton>
     </StyledMobileIngredient>
   );
 }

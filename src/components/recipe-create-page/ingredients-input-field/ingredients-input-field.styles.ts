@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Select from 'react-select';
 
 export const StyledCreateIngredientItem = styled.div`
   margin: 0.5rem;
@@ -17,6 +16,11 @@ export const StyledIngredientField = styled.input`
   padding: 0.25rem 0.5rem;
   outline: none;
   width: 18rem;
+  margin: 0.5rem;
+
+  @media (min-width: 500px) {
+    margin: unset;
+  }
 `;
 
 export const StyledAmountField = styled.input`
@@ -29,6 +33,11 @@ export const StyledAmountField = styled.input`
   text-align: center;
   overflow: hidden;
   -moz-appearance: textfield;
+  margin: 0.5rem;
+
+  @media (min-width: 500px) {
+    margin: unset;
+  }
 
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {
@@ -37,11 +46,16 @@ export const StyledAmountField = styled.input`
   }
 `;
 
-export const StyledSelectField = styled(Select)`
+export const StyledSelectField = styled.select`
   font-family: inherit;
   font-size: 1.5rem;
   color: grey;
   min-width: 7rem;
+  margin: 0.5rem 0 0 0.5rem;
+
+  @media (min-width: 500px) {
+    margin: unset;
+  }
 `;
 
 export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -81,6 +95,7 @@ export const StyledRemoveButton = styled.button`
   border-radius: 0.5rem;
   padding: 0.25rem 0.5rem;
   text-align: center;
+  cursor: pointer;
 `;
 
 export const StyledAddButton = styled.button`
@@ -95,4 +110,19 @@ export const StyledAddButton = styled.button`
   padding: 0.25rem 0.5rem;
   min-width: 4rem;
   margin: 1rem 0;
+  cursor: pointer;
+`;
+
+type IngredientModalProps = {
+  show: string;
+};
+
+export const StyledAddIngredientModal = styled.div<IngredientModalProps>`
+  display: ${(props) => (props.show === 'true' ? 'flex' : 'none')};
+  background-color: #c9a495;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  flex-direction: column;
+  align-items: flex-start;
 `;

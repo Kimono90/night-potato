@@ -5,21 +5,38 @@ import { generate } from 'shortid';
 import { EditableIngredient } from './editable-ingredient';
 import { EditableIngredientMobile } from './editable-ingredient-mobile';
 import { StyledAddButton } from './ingredients-input-field.styles';
+import { AddIngredientModal } from './add-ingredient-modal';
 
 export function IngredientsInputField(): ReactElement {
-  const [ingredients, setIngredients] = useState<IIngredient[]>([
-    { id: '1', productName: 'very condensed milk', amount: 500, measurement: 'ml' },
-    { id: '1', productName: 'shredded coconut', amount: 300, measurement: 'gr' },
-  ]);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [ingredients, setIngredients] = useState<IIngredient[]>([]);
   const mobile = window.innerWidth < 500;
+
+  const handleAddIngredient = (id: string, name: string, measurement: string, amount: number) => {
+    const newIngredient: IIngredient = {
+      id: id,
+      productName: name,
+      measurement,
+      amount,
+    };
+
+    setIngredients([...ingredients, newIngredient]);
+  };
+
+  const handleRemoveIngredient = (ingredientId: string) => {
+    const newIngredients = ingredients.filter((i: IIngredient) => i.id !== ingredientId);
+    setIngredients(newIngredients);
+  };
 
   const renderIngredients = () => {
     if (mobile) {
-      const ingredientsToRender = ingredients.map((i) => <EditableIngredientMobile ingredient={i} />);
+      const ingredientsToRender = ingredients.map((i: IIngredient) => (
+        <EditableIngredientMobile ingredient={i} onRemoveClick={handleRemoveIngredient} />
+      ));
       return (
         <>
           {ingredientsToRender}
-          {mobile ? <StyledAddButton>Add</StyledAddButton> : null}
+          {mobile ? <StyledAddButton onClick={() => setShowModal(true)}>Add</StyledAddButton> : null}
         </>
       );
     }
@@ -38,26 +55,20 @@ export function IngredientsInputField(): ReactElement {
     ));
   };
 
-  const handleAddIngredient = (id: string, name: string, measurement: string, amount: number) => {
-    const newIngredient: IIngredient = {
-      id: id,
-      productName: name,
-      measurement,
-      amount,
-    };
-
-    setIngredients([...ingredients, newIngredient]);
-  };
-
-  const handleRemoveIngredient = (ingredientId: string) => {
-    const newIngredients = ingredients.filter((i) => i.id !== ingredientId);
-    setIngredients(newIngredients);
-  };
-
   return (
-    <StyledSummaryCard data-label="summary-card">
-      <StyledTitle data-label="title">Ingredients</StyledTitle>
-      <StyledList>{renderIngredients()}</StyledList>
-    </StyledSummaryCard>
+    <>
+      <StyledSummaryCard data-label="summary-card">
+        <StyledTitle data-label="title">Ingredients</StyledTitle>
+        <StyledList>{renderIngredients()}</StyledList>
+      </StyledSummaryCard>
+      <AddIngredientModal
+        showModal={showModal}
+        onIngredientAdd={(id, name, measurement, amount) => {
+          setShowModal(false);
+          handleAddIngredient(id, name, measurement, amount);
+        }}
+        onBackClick={() => setShowModal(false)}
+      />
+    </>
   );
 }

@@ -114,7 +114,7 @@ type HamburgerMenuProps = {
 };
 
 export const StyledHamburgerMenu = styled.div<HamburgerMenuProps>`
-  display: ${(props) => (props.show === 'true' ? 'flex' : 'none')};;
+  display: ${(props) => (props.show === 'true' ? 'flex' : 'none')};
   background-color: #635554;
   height: 100%;
   width: 100%;
