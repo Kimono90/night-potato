@@ -2,13 +2,13 @@ import styled from '@emotion/styled';
 
 export const StyledSummaryCard = styled.div`
   border-radius: 0.5rem;
-  margin-bottom: 2rem;
+  margin: 0 1rem 2rem 1rem;
   background-color: #7d6c6a;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
+  width: 95%;
   font-size: 1.25rem;
 
   @media (min-width: 500px) {
@@ -19,10 +19,14 @@ export const StyledSummaryCard = styled.div`
 `;
 
 export const StyledTitle = styled.div`
-  max-width: 90%;
+  max-width: 95%;
   align-self: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 0.5rem;
+
+  @media (min-width: 500px) {
+    font-size: 2rem;
+  }
 `;
 
 export const StyledList = styled.div`

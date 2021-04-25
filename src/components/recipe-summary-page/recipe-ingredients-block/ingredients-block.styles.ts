@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const StyledIngredient = styled.div`
   display: flex;
-  width: 100%;
+  width: 95%;
   justify-content: flex-start;
   align-items: start;
   margin: 0.5rem;
@@ -33,7 +33,7 @@ export const StyledIngredient = styled.div`
 
 export const StyledEquipment = styled.div`
   display: flex;
-  width: 100%;
+  width: 95%;
   justify-content: flex-start;
   align-items: start;
   margin: 0.5rem 1.5rem;
@@ -65,15 +65,19 @@ export const StyledTabList = styled.div<TabProps>`
 `;
 
 export const StyledTabTitle = styled.div<TabProps>`
-  width: 50%;
+  width: 45%;
   align-self: center;
-  font-size: 2rem;
   padding: 0.5rem 0.5rem 0.5rem 1rem;
   border-radius: 0.5rem 0.5rem 0 0;
   background-color: ${(props) => (props.visible ? '#635554' : '#7D6C6A')};
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.5rem;
+
+  @media (min-width: 500px) {
+    font-size: 2rem;
+  }
 
   :hover {
     cursor: pointer;

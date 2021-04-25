@@ -30,7 +30,7 @@ export default function IngredientsBlock({ ingredients, equipment }: Props) {
   return (
     <StyledSummaryCard data-label="summary-card">
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <div style={{ display: 'flex' }}>
           <StyledTabTitle data-label="title" onClick={() => setShowIngredients(true)} visible={showIngredients}>
             <span style={{ display: `${isCopied ? 'none' : 'block'}` }}>Ingredients</span>
             <StyledCopyButton
