@@ -49,3 +49,50 @@ export const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   padding: 0.5rem;
   cursor: pointer;
 `;
+
+export const StyledMobileIngredient = styled.div`
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.25rem;
+  flex-wrap: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+
+  p {
+    text-align: start;
+    margin: 0 0.5rem;
+    text-decoration: none;
+  }
+
+  #amount {
+    display: inline-block;
+  }
+`;
+
+export const StyledRemoveButton = styled.button`
+  font: inherit;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  background-color: orangered;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  text-align: center;
+`;
+
+export const StyledAddButton = styled.button`
+  font: inherit;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  background-color: limegreen;
+  border-radius: 0.5rem;
+  text-align: center;
+  align-self: center;
+  padding: 0.25rem 0.5rem;
+  min-width: 4rem;
+  margin: 1rem 0;
+`;

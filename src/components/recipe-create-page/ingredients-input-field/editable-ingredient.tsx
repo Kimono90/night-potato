@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import {
   StyledAmountField,
   StyledCreateIngredientItem,
@@ -19,7 +19,7 @@ type Props = {
   ingredients: IIngredient[];
 };
 
-export function Ingredient({
+export function EditableIngredient({
   currentIngredient,
   onPlusButtonClick,
   onMinusButtonClick,
