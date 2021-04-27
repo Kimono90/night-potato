@@ -9,6 +9,7 @@ import { MEASUREMENT_OPTIONS } from '../../../models-and-constants/measurement-o
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { generate } from 'shortid';
+import { AddItemModalWrapper } from '../add-item-modal-mobile/add-item-modal-wrapper';
 
 type Props = {
   showModal: boolean;
@@ -35,8 +36,15 @@ export function AddIngredientModal({ showModal, onIngredientAdd, onBackClick }: 
   };
 
   return (
-    <StyledAddIngredientModal show={`${showModal}`}>
-      <h2 style={{ alignSelf: 'center' }}>Add an ingredient</h2>
+    <AddItemModalWrapper
+      showModal={showModal}
+      modalTitle="Add an ingredient"
+      onBackClick={() => {
+        onBackClick();
+        resetFields();
+      }}
+      onCheckButtonClick={() => handleCheckButtonClick()}
+    >
       <StyledIngredientField
         placeholder="Ingredient name"
         value={ingredientName}
@@ -58,25 +66,6 @@ export function AddIngredientModal({ showModal, onIngredientAdd, onBackClick }: 
           <i>optional</i>
         </p>
       </div>
-      <div
-        style={{
-          display: 'flex',
-          fontSize: '2rem',
-          width: '100%',
-          justifyContent: 'space-evenly',
-          marginTop: '6rem',
-        }}
-      >
-        <FontAwesomeIcon
-          icon={faArrowLeft}
-          style={{ color: 'dodgerblue' }}
-          onClick={() => {
-            onBackClick();
-            resetFields();
-          }}
-        />
-        <FontAwesomeIcon icon={faCheck} style={{ color: 'limegreen' }} onClick={() => handleCheckButtonClick()} />
-      </div>
-    </StyledAddIngredientModal>
+    </AddItemModalWrapper>
   );
 }
