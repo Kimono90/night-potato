@@ -31,7 +31,7 @@ export function IngredientsInputField(): ReactElement {
   const renderIngredients = () => {
     if (mobile) {
       const ingredientsToRender = ingredients.map((i: IIngredient) => (
-        <EditableIngredientMobile ingredient={i} onRemoveClick={handleRemoveIngredient} />
+        <EditableIngredientMobile key={i.id} ingredient={i} onRemoveClick={handleRemoveIngredient} />
       ));
       return (
         <>

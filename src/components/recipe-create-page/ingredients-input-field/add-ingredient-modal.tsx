@@ -49,9 +49,9 @@ export function AddIngredientModal({ showModal, onIngredientAdd, onBackClick }: 
         onChange={(event) => setAmount(Number(event.target.value))}
       />
       <div style={{ display: 'flex', alignItems: 'baseline' }}>
-        <StyledSelectField placeholder="" onChange={(e) => setMeasurement(e.target.value)}>
+        <StyledSelectField value={measurement} onChange={(e) => setMeasurement(e.target.value)}>
           {MEASUREMENT_OPTIONS.map((o) => (
-            <option>{o}</option>
+            <option key={o}>{o}</option>
           ))}
         </StyledSelectField>
         <p style={{ marginLeft: '1rem' }}>
