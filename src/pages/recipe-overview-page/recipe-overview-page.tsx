@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import OverviewCard from '../../components/recipe-overview-card/overview-card';
+import OverviewCard from '../../components/recipe-overview-page/recipe-overview-card/overview-card';
 import { StyledRecipeOverviewPage, StyledRecipeResults, StyledSearchBox } from './recipe-overview-page.styles';
 import type { IRecipe } from '../../models-and-constants/IRecipe';
 import { testRecipe1, testRecipe2, brazilianPudding } from '../../testRecipes';

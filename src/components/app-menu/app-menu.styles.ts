@@ -10,7 +10,7 @@ export const StyledNavBar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 1;
+  z-index: 2;
   opacity: 1;
 
   @media (min-width: 500px) {
@@ -114,7 +114,7 @@ type HamburgerMenuProps = {
 };
 
 export const StyledHamburgerMenu = styled.div<HamburgerMenuProps>`
-  display: ${(props) => (props.show === 'true' ? 'flex' : 'none')};;
+  display: ${(props) => (props.show === 'true' ? 'flex' : 'none')};
   background-color: #635554;
   height: 100%;
   width: 100%;
@@ -124,6 +124,7 @@ export const StyledHamburgerMenu = styled.div<HamburgerMenuProps>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  z-index: 1;
   
   @keyframes slide {
     0% {

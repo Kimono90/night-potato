@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import type { IEquipment, IIngredient } from '../../models-and-constants/IRecipe';
-import { StyledSummaryCard } from '../shared-styles/shared-styles';
+import type { IEquipment, IIngredient } from '../../../models-and-constants/IRecipe';
+import { StyledSummaryCard } from '../../shared-styles/shared-styles';
 import { StyledCopiedConfirmation, StyledCopyButton, StyledTabList, StyledTabTitle } from './ingredients-block.styles';
 import { Ingredient } from './ingredient';
 import { faCopy } from '@fortawesome/free-regular-svg-icons';
@@ -9,38 +9,28 @@ import { Equipment } from './equipment';
 type Props = {
   ingredients: IIngredient[];
   equipment: IEquipment[];
-  onIngredientChange: (newIngredients: IIngredient[]) => void;
 };
 
-export default function IngredientsBlock({ ingredients, onIngredientChange, equipment }: Props) {
+export default function IngredientsBlock({ ingredients, equipment }: Props) {
   const [showIngredients, setShowIngredients] = useState<boolean>(true);
   const [textToCopy, setTextToCopy] = useState<string>('');
   const [isCopied, setIsCopied] = useState<boolean>(false);
 
   useEffect(() => {
-    const ingredientList = ingredients.map((i) => `${i.amount} ${i.measurement} - ${i.product}`);
+    const ingredientList = ingredients.map((i) => `${i.amount} ${i.measurement} - ${i.productName}`);
     const totalList = ingredientList.join('\n').concat('\n \n');
     const finalCopyText = totalList.concat(`recipe found at ${window.location}`);
     setTextToCopy(finalCopyText);
   }, [ingredients]);
 
-  const toggleChecked = (ingredient: IIngredient) => {
-    const igs = [...ingredients];
-    const toUpdate = igs.find((i) => i.id === ingredient.id);
-    if (toUpdate) toUpdate.isChecked = !ingredient.isChecked;
-    onIngredientChange(igs);
-  };
-
-  const ingredientList = ingredients.map((i: IIngredient) => (
-    <Ingredient key={i.id} ingredient={i} toggleChecked={toggleChecked} />
-  ));
+  const ingredientList = ingredients.map((i: IIngredient) => <Ingredient key={i.id} ingredient={i} />);
 
   const equipmentList = equipment.map((e: IEquipment) => <Equipment key={e.id} equipmentItem={e} />);
 
   return (
     <StyledSummaryCard data-label="summary-card">
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        <div style={{ display: 'flex' }}>
           <StyledTabTitle data-label="title" onClick={() => setShowIngredients(true)} visible={showIngredients}>
             <span style={{ display: `${isCopied ? 'none' : 'block'}` }}>Ingredients</span>
             <StyledCopyButton

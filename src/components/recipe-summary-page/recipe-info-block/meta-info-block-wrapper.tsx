@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledInfoBlock, StyledMetaInfoContentArea } from './meta-info-block.styles';
-import { StyledSummaryCard, StyledTitle } from '../shared-styles/shared-styles';
+import { StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
 
 type Props = {
   recipeName: string;

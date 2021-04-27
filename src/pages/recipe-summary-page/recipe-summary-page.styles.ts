@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
-export const StyledRecipeSummaryPage = styled.div`
-  padding: 0 1rem 1rem 1rem;
+export const StyledSingleRecipePage = styled.div`
   background-color: #30343f;
   color: #ffffff;
   display: flex;

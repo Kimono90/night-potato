@@ -8,7 +8,7 @@ import {
   StyledOverviewTitle,
   StyledOverviewPhoto,
 } from './overview-card.styles';
-import type { IRecipeMetaInfo } from '../../models-and-constants/IRecipe';
+import type { IRecipeMetaInfo } from '../../../models-and-constants/IRecipe';
 import { OverviewCardIcon } from './overview-card-icon';
 
 type props = {

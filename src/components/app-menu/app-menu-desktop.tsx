@@ -15,7 +15,7 @@ export function DesktopAppMenu() {
         <Link to="/">
           <StyledPotatoIcon />
         </Link>
-        <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/">
+        <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/create">
           CREATE RECIPE
         </StyledNavLink>
         <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/">

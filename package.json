@@ -21,6 +21,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "react-swipeable": "^6.1.0",
+    "shortid": "^2.2.16",
     "snowpack-plugin-svgr": "^0.1.2"
   },
   "devDependencies": {
@@ -34,6 +35,8 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/react-router-dom": "^5.1.7",
+    "@types/react-select": "^4.0.15",
+    "@types/shortid": "^0.0.29",
     "@types/snowpack-env": "^2.3.2",
     "@web/test-runner": "^0.12.17",
     "chai": "^4.3.4",
