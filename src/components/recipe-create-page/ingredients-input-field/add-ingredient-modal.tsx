@@ -1,13 +1,6 @@
 import React, { ReactElement, useState } from 'react';
-import {
-  StyledAddIngredientModal,
-  StyledAmountField,
-  StyledIngredientField,
-  StyledSelectField,
-} from './ingredients-input-field.styles';
+import { StyledAmountField, StyledIngredientField, StyledSelectField } from './ingredients-input-field.styles';
 import { MEASUREMENT_OPTIONS } from '../../../models-and-constants/measurement-options';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { generate } from 'shortid';
 import { AddItemModalWrapper } from '../add-item-modal-mobile/add-item-modal-wrapper';
 

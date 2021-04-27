@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
-import { StyledMobileIngredient, StyledRemoveButton } from './ingredients-input-field.styles';
+import { StyledMobileIngredient } from './ingredients-input-field.styles';
 import type { IIngredient } from '../../../models-and-constants/IRecipe';
+import { StyledRemoveButton } from 'src/components/shared-styles/shared-styles';
 
 type Props = {
   ingredient: IIngredient;

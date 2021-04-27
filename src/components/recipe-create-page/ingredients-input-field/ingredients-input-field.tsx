@@ -1,10 +1,9 @@
 import React, { ReactElement, useState } from 'react';
-import { StyledList, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
+import { StyledAddButton, StyledList, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
 import type { IIngredient } from '../../../models-and-constants/IRecipe';
 import { generate } from 'shortid';
 import { EditableIngredient } from './editable-ingredient';
 import { EditableIngredientMobile } from './editable-ingredient-mobile';
-import { StyledAddButton } from './ingredients-input-field.styles';
 import { AddIngredientModal } from './add-ingredient-modal';
 
 export function IngredientsInputField(): ReactElement {

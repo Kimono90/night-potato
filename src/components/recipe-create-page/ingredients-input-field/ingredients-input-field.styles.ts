@@ -92,30 +92,3 @@ export const StyledMobileIngredient = styled.div`
     display: inline-block;
   }
 `;
-
-export const StyledRemoveButton = styled.button`
-  font: inherit;
-  font-size: 1rem;
-  color: white;
-  border: none;
-  background-color: orangered;
-  border-radius: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  text-align: center;
-  cursor: pointer;
-`;
-
-export const StyledAddButton = styled.button`
-  font: inherit;
-  font-size: 1rem;
-  color: white;
-  border: none;
-  background-color: limegreen;
-  border-radius: 0.5rem;
-  text-align: center;
-  align-self: center;
-  padding: 0.25rem 0.5rem;
-  min-width: 4rem;
-  margin: 1rem 0;
-  cursor: pointer;
-`;
