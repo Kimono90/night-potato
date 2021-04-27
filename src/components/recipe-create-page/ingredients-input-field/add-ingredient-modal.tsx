@@ -12,20 +12,27 @@ type Props = {
 
 export function AddIngredientModal({ showModal, onIngredientAdd, onBackClick }: Props): ReactElement {
   const [ingredientName, setIngredientName] = useState<string>('');
+  const [ingredientHasError, setIngredientHasError] = useState<boolean>(false);
   const [amount, setAmount] = useState<number | ''>('');
+  const [amountHasError, setAmountHasError] = useState<boolean>(false);
   const [measurement, setMeasurement] = useState<string>('');
 
   const resetFields = () => {
     setIngredientName('');
     setAmount('');
     setMeasurement('');
+    setIngredientHasError(false);
+    setAmountHasError(false);
   };
 
   const handleCheckButtonClick = () => {
     if (ingredientName && amount) {
       onIngredientAdd(generate(), ingredientName, measurement, amount);
       resetFields();
-    } else alert('not every field is complete!');
+    } else {
+      setAmountHasError(!amount);
+      setIngredientHasError(!ingredientName);
+    }
   };
 
   return (
@@ -42,12 +49,14 @@ export function AddIngredientModal({ showModal, onIngredientAdd, onBackClick }: 
         placeholder="Ingredient name"
         value={ingredientName}
         onChange={(event: ChangeEvent<HTMLInputElement>) => setIngredientName(event.target.value)}
+        hasError={`${ingredientHasError}`}
       />
       <StyledNumericField
         placeholder="Amount"
         type="number"
         value={amount}
         onChange={(event: ChangeEvent<HTMLInputElement>) => setAmount(Number(event.target.value))}
+        hasError={`${amountHasError}`}
       />
       <div style={{ display: 'flex', alignItems: 'baseline' }}>
         <StyledSelectField

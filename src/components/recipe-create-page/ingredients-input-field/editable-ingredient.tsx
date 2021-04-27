@@ -20,7 +20,9 @@ export function EditableIngredient({
   ingredients,
 }: Props): ReactElement {
   const [ingredientName, setIngredientName] = useState<string>('');
+  const [ingredientHasError, setIngredientHasError] = useState<boolean>(false);
   const [amount, setAmount] = useState<number | ''>('');
+  const [amountHasError, setAmountHasError] = useState<boolean>(false);
   const [measurement, setMeasurement] = useState<string>('');
   const [minusButtonState, plusButtonState] = useMinPlusListLogic(
     currentIngredient.id,
@@ -31,7 +33,10 @@ export function EditableIngredient({
     if (ingredientName && amount) {
       plusButtonState.set(false);
       onPlusButtonClick(currentIngredient.id, ingredientName, measurement, amount);
-    } else alert('not every field is complete!');
+    } else {
+      setAmountHasError(!amount);
+      setIngredientHasError(!ingredientName);
+    }
   };
 
   const plusButtonComponent = plusButtonState.show ? (
@@ -46,13 +51,21 @@ export function EditableIngredient({
       <StyledTextField
         placeholder="Ingredient name"
         value={ingredientName}
-        onChange={(event) => setIngredientName(event.target.value)}
+        onChange={(event) => {
+          setIngredientHasError(false);
+          setIngredientName(event.target.value);
+        }}
+        hasError={`${ingredientHasError}`}
       />
       <StyledNumericField
         placeholder="Amount"
         type="number"
         value={amount}
-        onChange={(event) => setAmount(Number(event.target.value))}
+        onChange={(event) => {
+          setAmountHasError(false);
+          setAmount(Number(event.target.value));
+        }}
+        hasError={`${amountHasError}`}
       />
       <StyledSelectField placeholder="" onChange={(e) => setMeasurement(e.target.value)}>
         {MEASUREMENT_OPTIONS.map((o) => (

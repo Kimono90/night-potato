@@ -69,7 +69,11 @@ export const StyledAddButton = styled.button`
   cursor: pointer;
 `;
 
-export const StyledTextField = styled.input`
+type FieldProps = {
+  hasError?: string;
+};
+
+export const StyledTextField = styled.input<FieldProps>`
   font-family: inherit;
   font-size: 1.5rem;
   border-radius: 0.5rem;
@@ -77,13 +81,14 @@ export const StyledTextField = styled.input`
   outline: none;
   width: 18rem;
   margin: 0.5rem;
+  border-color: ${(props) => (props.hasError === 'true' ? 'red' : 'none')};
 
   @media (min-width: 500px) {
     margin: unset;
   }
 `;
 
-export const StyledNumericField = styled.input`
+export const StyledNumericField = styled.input<FieldProps>`
   font: inherit;
   font-size: 1.5rem;
   border-radius: 0.5rem;
@@ -94,6 +99,7 @@ export const StyledNumericField = styled.input`
   overflow: hidden;
   -moz-appearance: textfield;
   margin: 0.5rem;
+  border-color: ${(props) => (props.hasError === 'true' ? 'red' : 'none')};
 
   @media (min-width: 500px) {
     margin: unset;
