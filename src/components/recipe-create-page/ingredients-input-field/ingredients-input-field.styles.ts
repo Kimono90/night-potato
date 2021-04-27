@@ -47,11 +47,18 @@ export const StyledAmountField = styled.input`
 `;
 
 export const StyledSelectField = styled.select`
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  outline: none;
   font-family: inherit;
   font-size: 1.5rem;
   color: grey;
   min-width: 7rem;
   margin: 0.5rem 0 0 0.5rem;
+
+  :after {
+    border-radius: 0.5rem;
+  }
 
   @media (min-width: 500px) {
     margin: unset;
