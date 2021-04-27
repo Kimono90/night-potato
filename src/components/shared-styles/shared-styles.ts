@@ -68,3 +68,64 @@ export const StyledAddButton = styled.button`
   margin: 1rem 0;
   cursor: pointer;
 `;
+
+export const StyledTextField = styled.input`
+  font-family: inherit;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  outline: none;
+  width: 18rem;
+  margin: 0.5rem;
+
+  @media (min-width: 500px) {
+    margin: unset;
+  }
+`;
+
+export const StyledNumericField = styled.input`
+  font: inherit;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  outline: none;
+  width: 4.5rem;
+  text-align: center;
+  overflow: hidden;
+  -moz-appearance: textfield;
+  margin: 0.5rem;
+
+  @media (min-width: 500px) {
+    margin: unset;
+  }
+
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+`;
+
+export const StyledSelectField = styled.select`
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  outline: none;
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: grey;
+  min-width: 7rem;
+  margin: 0.5rem 0 0 0.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  //noinspection CssUnknownTarget
+  background: url('/select_arrow.svg') 96% / 20% no-repeat #eee;
+
+  :after {
+    border-radius: 0.5rem;
+  }
+
+  @media (min-width: 500px) {
+    margin: unset;
+  }
+`;

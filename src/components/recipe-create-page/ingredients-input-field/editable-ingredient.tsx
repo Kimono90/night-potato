@@ -1,15 +1,10 @@
 import React, { ReactElement, useState } from 'react';
-import {
-  StyledAmountField,
-  StyledCreateIngredientItem,
-  StyledFontAwesomeIcon,
-  StyledIngredientField,
-  StyledSelectField,
-} from './ingredients-input-field.styles';
+import { StyledCreateIngredientItem, StyledFontAwesomeIcon } from './ingredients-input-field.styles';
 import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import type { IIngredient } from '../../../models-and-constants/IRecipe';
 import { useMinPlusListLogic } from '../../../hooks/use-min-plus-list-logic';
 import { MEASUREMENT_OPTIONS } from '../../../models-and-constants/measurement-options';
+import { StyledNumericField, StyledSelectField, StyledTextField } from '../../shared-styles/shared-styles';
 
 type Props = {
   currentIngredient: IIngredient;
@@ -48,12 +43,12 @@ export function EditableIngredient({
 
   return (
     <StyledCreateIngredientItem>
-      <StyledIngredientField
+      <StyledTextField
         placeholder="Ingredient name"
         value={ingredientName}
         onChange={(event) => setIngredientName(event.target.value)}
       />
-      <StyledAmountField
+      <StyledNumericField
         placeholder="Amount"
         type="number"
         value={amount}

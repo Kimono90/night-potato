@@ -1,8 +1,8 @@
-import React, { ReactElement, useState } from 'react';
-import { StyledAmountField, StyledIngredientField, StyledSelectField } from './ingredients-input-field.styles';
+import React, { ChangeEvent, ReactElement, useState } from 'react';
 import { MEASUREMENT_OPTIONS } from '../../../models-and-constants/measurement-options';
 import { generate } from 'shortid';
 import { AddItemModalWrapper } from '../add-item-modal-mobile/add-item-modal-wrapper';
+import { StyledNumericField, StyledSelectField, StyledTextField } from '../../shared-styles/shared-styles';
 
 type Props = {
   showModal: boolean;
@@ -38,19 +38,22 @@ export function AddIngredientModal({ showModal, onIngredientAdd, onBackClick }: 
       }}
       onCheckButtonClick={() => handleCheckButtonClick()}
     >
-      <StyledIngredientField
+      <StyledTextField
         placeholder="Ingredient name"
         value={ingredientName}
-        onChange={(event) => setIngredientName(event.target.value)}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => setIngredientName(event.target.value)}
       />
-      <StyledAmountField
+      <StyledNumericField
         placeholder="Amount"
         type="number"
         value={amount}
-        onChange={(event) => setAmount(Number(event.target.value))}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => setAmount(Number(event.target.value))}
       />
       <div style={{ display: 'flex', alignItems: 'baseline' }}>
-        <StyledSelectField value={measurement} onChange={(e) => setMeasurement(e.target.value)}>
+        <StyledSelectField
+          value={measurement}
+          onChange={(e: ChangeEvent<HTMLSelectElement>) => setMeasurement(e.target.value)}
+        >
           {MEASUREMENT_OPTIONS.map((o) => (
             <option key={o}>{o}</option>
           ))}
