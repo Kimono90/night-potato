@@ -4,7 +4,7 @@ import { StyledList, StyledSummaryCard, StyledTitle } from '../../shared-styles/
 type Props = {
   cardTitle: string;
   itemsToRender: JSX.Element[] | JSX.Element;
-  mobileInputModal: ReactElement;
+  mobileInputModal?: ReactElement;
 };
 
 export function CreateItemsCard({ cardTitle, itemsToRender, mobileInputModal }: Props): ReactElement {
@@ -14,7 +14,7 @@ export function CreateItemsCard({ cardTitle, itemsToRender, mobileInputModal }: 
         <StyledTitle data-label="title">{cardTitle}</StyledTitle>
         <StyledList>{itemsToRender}</StyledList>
       </StyledSummaryCard>
-      {mobileInputModal}
+      {mobileInputModal ?? null}
     </>
   );
 }

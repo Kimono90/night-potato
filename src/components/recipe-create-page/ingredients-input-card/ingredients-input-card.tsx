@@ -1,70 +1,44 @@
 import React, { ReactElement, useState } from 'react';
-import { StyledAddButton } from '../../shared-styles/shared-styles';
 import type { IIngredient } from '../../../models-and-constants/IRecipe';
-import { generate } from 'shortid';
-import { EditableIngredient } from './editable-ingredient';
 import { CreateItemsCard } from '../create-items-card/create-items-card';
-import { EditableIngredientMobile } from './mobile/editable-ingredient-mobile';
-import { AddIngredientModal } from './mobile/add-ingredient-modal';
+import { IngredientList } from './ingredient-list';
+import { generate } from 'shortid';
 
 export function IngredientsInputCard(): ReactElement {
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [ingredients, setIngredients] = useState<IIngredient[]>([]);
-  const mobile = window.innerWidth < 500;
-
-  const handleAddIngredient = (newIngredient: IIngredient) => {
-    if (ingredients.find((i) => i.id === newIngredient.id)) {
-      console.log('Change ingredient');
-    } else setIngredients([...ingredients, newIngredient]);
-  };
+  const [ingredients, setIngredients] = useState<IIngredient[]>([
+    { id: generate(), amount: 0, measurement: '', productName: '' },
+  ]);
 
   const handleRemoveIngredient = (ingredientId: string) => {
     const newIngredients = ingredients.filter((i: IIngredient) => i.id !== ingredientId);
     setIngredients(newIngredients);
   };
 
-  const renderIngredientsForMobile = (): JSX.Element => {
-    const ingredientsToRender = ingredients.map((i: IIngredient) => (
-      <EditableIngredientMobile key={i.id} ingredient={i} onRemoveClick={handleRemoveIngredient} />
-    ));
-    return (
-      <>
-        {ingredientsToRender}
-        {mobile ? <StyledAddButton onClick={() => setShowModal(true)}>Add</StyledAddButton> : null}
-      </>
-    );
+  const handleChangeIngredient = (changedIngredient: IIngredient) => {
+    console.log('changing ingredient');
+    console.log('ID', changedIngredient.id);
+    const changedIngredientIndex = ingredients.findIndex((i) => i.id === changedIngredient.id);
+    console.log('index of ingredient', changedIngredientIndex);
+    const ingredientsCopy = [...ingredients];
+    ingredientsCopy[changedIngredientIndex].amount = changedIngredient.amount;
+    ingredientsCopy[changedIngredientIndex].productName = changedIngredient.productName;
+    ingredientsCopy[changedIngredientIndex].measurement = changedIngredient.measurement;
+    console.log('new ingredient state', ingredientsCopy);
   };
 
-  const renderIngredients = (): JSX.Element[] | JSX.Element => {
-    if (mobile) return renderIngredientsForMobile();
-    else {
-      const emptyIngredient: IIngredient = { id: generate(), amount: 0, measurement: '', productName: '' };
-      const ingredientsToRender: IIngredient[] = [...ingredients, emptyIngredient];
-
-      return ingredientsToRender.map((i, index) => (
-        <EditableIngredient
-          key={i.id}
-          currentIngredient={i}
-          onIngredientChange={handleAddIngredient}
-          onMinusButtonClick={handleRemoveIngredient}
-          ingredients={ingredients}
-        />
-      ));
-    }
+  const handleAddIngredient = () => {
+    setIngredients([...ingredients, { id: generate(), amount: 0, measurement: '', productName: '' }]);
   };
 
   return (
     <CreateItemsCard
       cardTitle="Ingredients"
-      itemsToRender={renderIngredients()}
-      mobileInputModal={
-        <AddIngredientModal
-          showModal={showModal}
-          onIngredientAdd={(ingredient) => {
-            setShowModal(false);
-            handleAddIngredient(ingredient);
-          }}
-          onBackClick={() => setShowModal(false)}
+      itemsToRender={
+        <IngredientList
+          currentIngredients={ingredients}
+          onIngredientRemove={handleRemoveIngredient}
+          onIngredientChange={handleChangeIngredient}
+          onIngredientAdd={handleAddIngredient}
         />
       }
     />
