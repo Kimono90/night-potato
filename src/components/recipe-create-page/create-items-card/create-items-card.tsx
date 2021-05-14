@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import type { ReactElement } from 'react';
 import { StyledList, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
 
 type Props = {

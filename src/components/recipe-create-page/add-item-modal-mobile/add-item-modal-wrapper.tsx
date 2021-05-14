@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import type { ReactElement } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { StyledAddItemModal } from './add-item-modal-wrapper.styles';

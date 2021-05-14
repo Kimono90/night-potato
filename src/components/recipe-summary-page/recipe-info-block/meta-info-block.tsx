@@ -11,7 +11,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LabelDictionary } from '../../recipe-label/recipe-labels';
 
-type Props = {
+export type Props = {
   recipeMetaInfo: IRecipeMetaInfo;
   onChangePortions: (action: string) => void;
 };
@@ -23,15 +23,17 @@ export default function MetaInfoBlock({ recipeMetaInfo, onChangePortions }: Prop
   return (
     <MetaInfoBlockWrapper recipeName={recipeMetaInfo.name}>
       <StyledMetaInfoContentWithoutLabels data-label="without-labels">
-        <StyledMetaInfoItem>
+        <StyledMetaInfoItem data-testid="portions">
           <div>
             <FontAwesomeIcon
+              data-testid="minus-portions"
               icon={faMinusCircle}
               style={{ fontSize: '1rem', cursor: 'pointer' }}
               onClick={() => onChangePortions(minus)}
             />
             <FontAwesomeIcon icon={faUser} style={{ fontSize: '1rem' }} />
             <FontAwesomeIcon
+              data-testid="plus-portions"
               icon={faPlusCircle}
               style={{ fontSize: '1rem', cursor: 'pointer' }}
               onClick={() => onChangePortions(plus)}
@@ -39,10 +41,10 @@ export default function MetaInfoBlock({ recipeMetaInfo, onChangePortions }: Prop
           </div>
           {recipeMetaInfo.portions} portions
         </StyledMetaInfoItem>
-        <MetaInfoItem faIcon={faClock} iconText={`${recipeMetaInfo.prepTimeInMinutes} minutes`} />
-        <MetaInfoItem faIcon={faHamburger} iconText={`${recipeMetaInfo.kcalPerPortion} kcal`} />
+        <MetaInfoItem label="prep-time" faIcon={faClock} iconText={`${recipeMetaInfo.prepTimeInMinutes} minutes`} />
+        <MetaInfoItem label="kcal" faIcon={faHamburger} iconText={`${recipeMetaInfo.kcalPerPortion} kcal`} />
       </StyledMetaInfoContentWithoutLabels>
-      <StyledMetaInfoContentWithLabels>
+      <StyledMetaInfoContentWithLabels data-testid="labels">
         {recipeMetaInfo.labels.map((l) => LabelDictionary.get(l))}
       </StyledMetaInfoContentWithLabels>
     </MetaInfoBlockWrapper>

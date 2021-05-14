@@ -12,9 +12,9 @@ import { testRecipe1, testRecipe2, brazilianPudding } from '../../testRecipes';
 export default function RecipeSummaryPage() {
   let { recipeId } = useParams<IRouteParams>();
   const [recipe, setRecipe] = useState<IRecipe | null>(null);
+  const testRecipes = [testRecipe1, testRecipe2, brazilianPudding];
 
   useEffect(() => {
-    const testRecipes = [testRecipe1, testRecipe2, brazilianPudding];
     const currentRecipe = testRecipes.find((r) => r.id === Number(recipeId));
     if (currentRecipe) {
       setRecipe(currentRecipe);

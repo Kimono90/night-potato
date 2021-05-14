@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
+import type { ReactElement } from 'react';
 import type { IIngredient } from '../../../models-and-constants/IRecipe';
 import { EditableIngredient } from './editable-ingredient';
 
