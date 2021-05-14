@@ -8,7 +8,6 @@ import { StyledAddButton } from '../../../shared-styles/shared-styles';
 export function IngredientsInputCardMobile(): ReactElement {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [ingredients, setIngredients] = useState<IIngredient[]>([]);
-  const [currentIngredient, setCurrentIngredient] = useState<IIngredient | null>(null);
   const mobile = window.innerWidth < 500;
 
   const handleAddIngredient = (newIngredient: IIngredient) => {
@@ -29,7 +28,6 @@ export function IngredientsInputCardMobile(): ReactElement {
         onRemoveClick={handleRemoveIngredient}
         onIngredientClick={(ingredient) => {
           setShowModal(true);
-          setCurrentIngredient(ingredient);
         }}
       />
     ));
@@ -41,13 +39,6 @@ export function IngredientsInputCardMobile(): ReactElement {
     );
   };
 
-  const handleChangeIngredient = (changedIngredient: IIngredient) => {
-    const changedIngredientIndex = ingredients.findIndex((i) => i.id === changedIngredient.id);
-    const ingredientsCopy = [...ingredients];
-    ingredientsCopy[changedIngredientIndex] = changedIngredient;
-    setIngredients(ingredientsCopy);
-  };
-
   return (
     <CreateItemsCard
       cardTitle="Ingredients"
@@ -55,14 +46,9 @@ export function IngredientsInputCardMobile(): ReactElement {
       mobileInputModal={
         <AddIngredientModal
           showModal={showModal}
-          currentIngredient={currentIngredient}
           onIngredientAdd={(ingredient) => {
             setShowModal(false);
             handleAddIngredient(ingredient);
-          }}
-          onIngredientChange={(ingredient) => {
-            setShowModal(false);
-            handleChangeIngredient(ingredient);
           }}
           onBackClick={() => setShowModal(false)}
         />

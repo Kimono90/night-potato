@@ -13,7 +13,7 @@ type Props = {
 export function EditableIngredientMobile({ ingredient, onRemoveClick, onIngredientClick }: Props): ReactElement {
   return (
     <StyledMobileIngredient data-label="mobile-ingredient">
-      <p onClick={() => onIngredientClick(ingredient)}>
+      <p>
         <span id="amount">
           {ingredient.amount} {ingredient.measurement}
         </span>

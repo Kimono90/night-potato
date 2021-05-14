@@ -6,28 +6,18 @@ import { StyledNumericField, StyledSelectField, StyledTextField } from '../../..
 import type { IIngredient } from '../../../../models-and-constants/IRecipe';
 
 type Props = {
-  currentIngredient: IIngredient | null;
   showModal: boolean;
   onIngredientAdd: (ingredient: IIngredient) => void;
-  onIngredientChange: (ingredient: IIngredient) => void;
   onBackClick: () => void;
 };
 
-export function AddIngredientModal({
-  currentIngredient,
-  showModal,
-  onIngredientAdd,
-  onIngredientChange,
-  onBackClick,
-}: Props): ReactElement {
-  const [ingredient, setIngredient] = useState<IIngredient>(
-    currentIngredient || {
-      id: '',
-      productName: '',
-      amount: 0,
-      measurement: '',
-    },
-  );
+export function AddIngredientModal({ showModal, onIngredientAdd, onBackClick }: Props): ReactElement {
+  const [ingredient, setIngredient] = useState<IIngredient>({
+    id: '',
+    productName: '',
+    amount: 0,
+    measurement: '',
+  });
   const [ingredientHasError, setIngredientHasError] = useState<boolean>(false);
   const [amountHasError, setAmountHasError] = useState<boolean>(false);
 
@@ -42,27 +32,14 @@ export function AddIngredientModal({
     setAmountHasError(false);
   };
 
-  const addOrChangeIngredient = () => {
-    if (currentIngredient) {
-      onIngredientChange({
-        id: currentIngredient.id,
-        amount: ingredient.amount,
-        productName: ingredient.productName,
-        measurement: ingredient.measurement,
-      });
-    } else {
+  const handleCheckButtonClick = () => {
+    if (ingredient.productName && ingredient.amount) {
       onIngredientAdd({
         id: generate(),
         amount: ingredient.amount,
         productName: ingredient.productName,
         measurement: ingredient.measurement,
       });
-    }
-  };
-
-  const handleCheckButtonClick = () => {
-    if (ingredient.productName && ingredient.amount) {
-      addOrChangeIngredient();
       resetFields();
     } else {
       setAmountHasError(!ingredient.amount);
