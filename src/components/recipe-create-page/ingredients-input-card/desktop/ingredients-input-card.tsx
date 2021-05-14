@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
-import type { IIngredient } from '../../../models-and-constants/IRecipe';
-import { CreateItemsCard } from '../create-items-card/create-items-card';
+import type { IIngredient } from '../../../../models-and-constants/IRecipe';
+import { CreateItemsCard } from '../../create-items-card/create-items-card';
 import { IngredientList } from './ingredient-list';
 import { generate } from 'shortid';
 
@@ -15,15 +15,10 @@ export function IngredientsInputCard(): ReactElement {
   };
 
   const handleChangeIngredient = (changedIngredient: IIngredient) => {
-    console.log('changing ingredient');
-    console.log('ID', changedIngredient.id);
     const changedIngredientIndex = ingredients.findIndex((i) => i.id === changedIngredient.id);
-    console.log('index of ingredient', changedIngredientIndex);
     const ingredientsCopy = [...ingredients];
-    ingredientsCopy[changedIngredientIndex].amount = changedIngredient.amount;
-    ingredientsCopy[changedIngredientIndex].productName = changedIngredient.productName;
-    ingredientsCopy[changedIngredientIndex].measurement = changedIngredient.measurement;
-    console.log('new ingredient state', ingredientsCopy);
+    ingredientsCopy[changedIngredientIndex] = changedIngredient;
+    setIngredients(ingredientsCopy);
   };
 
   const handleAddIngredient = () => {

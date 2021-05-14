@@ -8,6 +8,7 @@ import { StyledAddButton } from '../../../shared-styles/shared-styles';
 export function IngredientsInputCardMobile(): ReactElement {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [ingredients, setIngredients] = useState<IIngredient[]>([]);
+  const [currentIngredient, setCurrentIngredient] = useState<IIngredient | null>(null);
   const mobile = window.innerWidth < 500;
 
   const handleAddIngredient = (newIngredient: IIngredient) => {
@@ -22,7 +23,15 @@ export function IngredientsInputCardMobile(): ReactElement {
 
   const getIngredients = () => {
     const ingredientsToRender = ingredients.map((i: IIngredient) => (
-      <EditableIngredientMobile key={i.id} ingredient={i} onRemoveClick={handleRemoveIngredient} />
+      <EditableIngredientMobile
+        key={i.id}
+        ingredient={i}
+        onRemoveClick={handleRemoveIngredient}
+        onIngredientClick={(ingredient) => {
+          setShowModal(true);
+          setCurrentIngredient(ingredient);
+        }}
+      />
     ));
     return (
       <>
@@ -33,15 +42,10 @@ export function IngredientsInputCardMobile(): ReactElement {
   };
 
   const handleChangeIngredient = (changedIngredient: IIngredient) => {
-    console.log('changing ingredient');
-    console.log('ID', changedIngredient.id);
     const changedIngredientIndex = ingredients.findIndex((i) => i.id === changedIngredient.id);
-    console.log('index of ingredient', changedIngredientIndex);
     const ingredientsCopy = [...ingredients];
-    ingredientsCopy[changedIngredientIndex].amount = changedIngredient.amount;
-    ingredientsCopy[changedIngredientIndex].productName = changedIngredient.productName;
-    ingredientsCopy[changedIngredientIndex].measurement = changedIngredient.measurement;
-    console.log('new ingredient state', ingredientsCopy);
+    ingredientsCopy[changedIngredientIndex] = changedIngredient;
+    setIngredients(ingredientsCopy);
   };
 
   return (
@@ -51,9 +55,14 @@ export function IngredientsInputCardMobile(): ReactElement {
       mobileInputModal={
         <AddIngredientModal
           showModal={showModal}
+          currentIngredient={currentIngredient}
           onIngredientAdd={(ingredient) => {
             setShowModal(false);
             handleAddIngredient(ingredient);
+          }}
+          onIngredientChange={(ingredient) => {
+            setShowModal(false);
+            handleChangeIngredient(ingredient);
           }}
           onBackClick={() => setShowModal(false)}
         />

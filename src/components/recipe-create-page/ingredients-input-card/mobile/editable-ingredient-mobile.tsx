@@ -7,12 +7,13 @@ import { StyledRemoveButton } from '../../../shared-styles/shared-styles';
 type Props = {
   ingredient: IIngredient;
   onRemoveClick: (id: string) => void;
+  onIngredientClick: (ingredient: IIngredient) => void;
 };
 
-export function EditableIngredientMobile({ ingredient, onRemoveClick }: Props): ReactElement {
+export function EditableIngredientMobile({ ingredient, onRemoveClick, onIngredientClick }: Props): ReactElement {
   return (
     <StyledMobileIngredient data-label="mobile-ingredient">
-      <p>
+      <p onClick={() => onIngredientClick(ingredient)}>
         <span id="amount">
           {ingredient.amount} {ingredient.measurement}
         </span>

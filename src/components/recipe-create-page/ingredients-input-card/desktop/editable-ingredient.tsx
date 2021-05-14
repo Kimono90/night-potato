@@ -1,10 +1,10 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-import type { IIngredient } from '../../../models-and-constants/IRecipe';
-import { MEASUREMENT_OPTIONS } from '../../../models-and-constants/measurement-options';
-import { StyledNumericField, StyledSelectField, StyledTextField } from '../../shared-styles/shared-styles';
-import { StyledCreateIngredientItem, StyledFontAwesomeIcon } from './ingredients-input-card.styles';
-import { useMinPlusListLogic } from '../../../hooks/use-min-plus-list-logic';
+import type { IIngredient } from '../../../../models-and-constants/IRecipe';
+import { MEASUREMENT_OPTIONS } from '../../../../models-and-constants/measurement-options';
+import { StyledNumericField, StyledSelectField, StyledTextField } from '../../../shared-styles/shared-styles';
+import { StyledCreateIngredientItem, StyledFontAwesomeIcon } from '../ingredients-input-card.styles';
+import { useMinPlusListLogic } from '../../../../hooks/use-min-plus-list-logic';
 
 type Props = {
   currentIngredient: IIngredient;
