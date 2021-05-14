@@ -3,8 +3,8 @@ import React, { useContext, useState } from 'react';
 import { RecipeNameInputField } from '../../components/recipe-create-page/recipe-name-input-field/recipe-name-input-field';
 import { FirebaseContext } from '../../contexts/firebase-auth-context';
 import { Redirect } from 'react-router-dom';
-import { IngredientsInputCardMobile } from '../../components/recipe-create-page/ingredients-input-card/mobile/ingredients-input-card-mobile';
-import { IngredientsInputCard } from '../../components/recipe-create-page/ingredients-input-card/desktop/ingredients-input-card';
+import { CreateIngredientsCardMobile } from '../../components/recipe-create-page/create-ingredients-card/mobile/create-ingredients-card-mobile';
+import { CreateIngredientsCard } from '../../components/recipe-create-page/create-ingredients-card/desktop/create-ingredients-card';
 
 export function RecipeCreatePage() {
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>();
@@ -17,7 +17,7 @@ export function RecipeCreatePage() {
   return (
     <StyledSingleRecipePage data-label="create-recipe-page">
       <RecipeNameInputField onRecipeNameHasError={setRecipeNameHasError} />
-      {mobile ? <IngredientsInputCardMobile /> : <IngredientsInputCard />}
+      {mobile ? <CreateIngredientsCardMobile /> : <CreateIngredientsCard />}
     </StyledSingleRecipePage>
   );
 }

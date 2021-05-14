@@ -1,11 +1,11 @@
 import React, { ReactElement, useState } from 'react';
 import type { IIngredient } from '../../../../models-and-constants/IRecipe';
 import { CreateItemsCard } from '../../create-items-card/create-items-card';
-import { AddIngredientModal } from './add-ingredient-modal';
+import { IngredientAddModal } from './ingredient-add-modal';
 import { EditableIngredientMobile } from './editable-ingredient-mobile';
 import { StyledAddButton } from '../../../shared-styles/shared-styles';
 
-export function IngredientsInputCardMobile(): ReactElement {
+export function CreateIngredientsCardMobile(): ReactElement {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [ingredients, setIngredients] = useState<IIngredient[]>([]);
   const mobile = window.innerWidth < 500;
@@ -44,7 +44,7 @@ export function IngredientsInputCardMobile(): ReactElement {
       cardTitle="Ingredients"
       itemsToRender={getIngredients()}
       mobileInputModal={
-        <AddIngredientModal
+        <IngredientAddModal
           showModal={showModal}
           onIngredientAdd={(ingredient) => {
             setShowModal(false);

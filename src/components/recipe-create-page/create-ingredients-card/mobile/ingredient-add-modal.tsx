@@ -11,7 +11,7 @@ type Props = {
   onBackClick: () => void;
 };
 
-export function AddIngredientModal({ showModal, onIngredientAdd, onBackClick }: Props): ReactElement {
+export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: Props): ReactElement {
   const [ingredient, setIngredient] = useState<IIngredient>({
     id: '',
     productName: '',

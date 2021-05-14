@@ -4,7 +4,7 @@ import { CreateItemsCard } from '../../create-items-card/create-items-card';
 import { IngredientList } from './ingredient-list';
 import { generate } from 'shortid';
 
-export function IngredientsInputCard(): ReactElement {
+export function CreateIngredientsCard(): ReactElement {
   const [ingredients, setIngredients] = useState<IIngredient[]>([
     { id: generate(), amount: 0, measurement: '', productName: '' },
   ]);
