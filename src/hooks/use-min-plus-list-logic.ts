@@ -10,8 +10,8 @@ export const useMinPlusListLogic = (
   useEffect(() => {
     const currentItemIndex = fullItemIdentifierList.findIndex((i: number | string) => i === currentItemIdentifier);
 
-    if (currentItemIndex === -1) setShowPlusButton(true);
-    setShowMinusButton(!!fullItemIdentifierList.length);
+    if (currentItemIndex === fullItemIdentifierList.length - 1) setShowPlusButton(true);
+    setShowMinusButton(fullItemIdentifierList.length > 1);
   }, [fullItemIdentifierList, currentItemIdentifier]);
 
   const minusButton = {

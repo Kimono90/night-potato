@@ -138,6 +138,7 @@ export const StyledHamburgerMenu = styled.div<HamburgerMenuProps>`
 }
 `;
 
+// @ts-ignore
 export const StyledPotatoIcon = styled(PotatoSvg)`
   height: 2rem;
   padding: 0.5rem 1rem;

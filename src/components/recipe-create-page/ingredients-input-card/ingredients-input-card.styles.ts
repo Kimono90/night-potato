@@ -22,7 +22,6 @@ export const StyledMobileIngredient = styled.div`
   align-items: center;
   margin: 0.25rem;
   flex-wrap: nowrap;
-  cursor: pointer;
   text-decoration: none;
   font-size: 1rem;
 

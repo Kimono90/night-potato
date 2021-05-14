@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import RecipeOverviewPage from './pages/recipe-overview-page/recipe-overview-page';
 import RecipeSummaryPage from './pages/recipe-summary-page/recipe-summary-page';
 import AppMenu from './components/app-menu/app-menu';
@@ -7,7 +7,7 @@ import { FirebaseProvider } from './contexts/firebase-auth-context';
 import { RecipeCreatePage } from './pages/create-recipe-page/recipe-create-page';
 import { useDynamicPageTitle } from './hooks/use-dynamic-page-title';
 
-function App() {
+export default function App() {
   useDynamicPageTitle();
 
   return (
@@ -21,10 +21,11 @@ function App() {
           {/*<Route path="/edit/:recipeId" component={EditRecipePage} />*/}
           {/*<Route path="/my-recipes" component={MyRecipesPage} />*/}
           {/*<Route path="/my-profile" component={MyProfilePage} />*/}
+          <Route path="*">
+            <Redirect to="/" />
+          </Route>
         </Switch>
       </Router>
     </FirebaseProvider>
   );
 }
-
-export default App;
