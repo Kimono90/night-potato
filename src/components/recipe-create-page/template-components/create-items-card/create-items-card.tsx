@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ReactElement } from 'react';
-import { StyledList, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
+import { StyledList, StyledSummaryCard, StyledTitle } from '../../../shared-styles/shared-styles';
 
 type Props = {
   cardTitle: string;
