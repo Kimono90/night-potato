@@ -11,7 +11,7 @@ export const useMinPlusListLogic = (
     const currentItemIndex = fullItemIdentifierList.findIndex((i: number | string) => i === currentItemIdentifier);
 
     if (currentItemIndex === fullItemIdentifierList.length - 1) setShowPlusButton(true);
-    setShowMinusButton(!!fullItemIdentifierList.length);
+    setShowMinusButton(fullItemIdentifierList.length > 1);
   }, [fullItemIdentifierList, currentItemIdentifier]);
 
   const minusButton = {
