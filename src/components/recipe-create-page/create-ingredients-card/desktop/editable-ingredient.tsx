@@ -95,8 +95,8 @@ export function EditableIngredient({
         ))}
       </StyledSelectField>
       <div style={{ minWidth: '5rem' }}>
-        {plusButtonComponent}
         {minusButtonComponent}
+        {plusButtonComponent}
       </div>
     </StyledCreateIngredientItem>
   );

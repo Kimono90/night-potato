@@ -2,9 +2,8 @@ import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const StyledCreateIngredientItem = styled.div`
-  margin: 0.5rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   align-items: center;
 `;

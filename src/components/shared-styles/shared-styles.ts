@@ -79,12 +79,12 @@ export const StyledTextField = styled.input<FieldProps>`
   border-radius: 0.5rem;
   padding: 0.25rem 0.5rem;
   outline: none;
-  width: 18rem;
+  width: 10rem;
   margin: 0.5rem;
   border-color: ${(props) => (props.hasError === 'true' ? 'red' : 'none')};
 
   @media (min-width: 500px) {
-    margin: unset;
+    width: 18rem;
   }
 `;
 
@@ -100,10 +100,6 @@ export const StyledNumericField = styled.input<FieldProps>`
   -moz-appearance: textfield;
   margin: 0.5rem;
   border-color: ${(props) => (props.hasError === 'true' ? 'red' : 'none')};
-
-  @media (min-width: 500px) {
-    margin: unset;
-  }
 
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {
@@ -127,11 +123,11 @@ export const StyledSelectField = styled.select`
   //noinspection CssUnknownTarget
   background: url('/select_arrow.svg') 96% / 20% no-repeat #eee;
 
-  :after {
-    border-radius: 0.5rem;
+  @media (min-width: 500px) {
+    margin: 0.5rem;
   }
 
-  @media (min-width: 500px) {
-    margin: unset;
+  :after {
+    border-radius: 0.5rem;
   }
 `;

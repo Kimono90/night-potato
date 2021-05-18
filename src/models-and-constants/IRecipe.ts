@@ -21,7 +21,7 @@ export interface IInstructionStep {
 }
 
 export interface IEquipment {
-  id: number;
+  id: string;
   name: string;
 }
 

@@ -5,6 +5,7 @@ import { FirebaseContext } from '../../contexts/firebase-auth-context';
 import { Redirect } from 'react-router-dom';
 import { CreateIngredientsCardMobile } from '../../components/recipe-create-page/create-ingredients-card/mobile/create-ingredients-card-mobile';
 import { CreateIngredientsCard } from '../../components/recipe-create-page/create-ingredients-card/desktop/create-ingredients-card';
+import { CreateEquipmentCard } from '../../components/recipe-create-page/create-equipment-card/desktop/create-equipment-card';
 
 export function RecipeCreatePage() {
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>();
@@ -18,6 +19,7 @@ export function RecipeCreatePage() {
     <StyledSingleRecipePage data-label="create-recipe-page">
       <RecipeNameInputField onRecipeNameHasError={setRecipeNameHasError} />
       {mobile ? <CreateIngredientsCardMobile /> : <CreateIngredientsCard />}
+      {<CreateEquipmentCard />}
     </StyledSingleRecipePage>
   );
 }
