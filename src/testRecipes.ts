@@ -23,9 +23,9 @@ export const testRecipe1: IRecipe = {
     },
   ],
   equipment: [
-    { id: 1, name: 'Mixer' },
-    { id: 2, name: 'Sharp knife' },
-    { id: 3, name: 'Baking tray' },
+    { id: '1', name: 'Mixer' },
+    { id: '2', name: 'Sharp knife' },
+    { id: '3', name: 'Baking tray' },
   ],
   instructionSteps: [
     { stepNr: 2, stepDescription: 'Cut the stuff' },
@@ -55,9 +55,9 @@ export const testRecipe2: IRecipe = {
     { id: '4', productName: 'Butter', amount: 200, measurement: 'gram' },
   ],
   equipment: [
-    { id: 1, name: 'Mixer' },
-    { id: 2, name: 'Sharp knife' },
-    { id: 3, name: 'Baking tray' },
+    { id: '1', name: 'Mixer' },
+    { id: '2', name: 'Sharp knife' },
+    { id: '4', name: 'Baking tray' },
   ],
   instructionSteps: [
     { stepNr: 2, stepDescription: 'Cut the stuff' },
@@ -88,11 +88,11 @@ export const brazilianPudding: IRecipe = {
     { id: '4', productName: 'Milk', amount: 400, measurement: 'ml' },
   ],
   equipment: [
-    { id: 1, name: 'Mixer / Whisker' },
-    { id: 2, name: 'Big bowl to mix it all up' },
-    { id: 3, name: 'Ramekin (4 pieces)' },
-    { id: 4, name: 'Sauce pan' },
-    { id: 5, name: 'Baking tray for bain marie' },
+    { id: '1', name: 'Mixer / Whisker' },
+    { id: '2', name: 'Big bowl to mix it all up' },
+    { id: '3', name: 'Ramekin (4 pieces)' },
+    { id: '4', name: 'Sauce pan' },
+    { id: '5', name: 'Baking tray for bain marie' },
   ],
   instructionSteps: [
     { stepNr: 1, stepDescription: 'Pour the condensed milk into the bowl' },

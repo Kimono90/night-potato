@@ -1,10 +1,10 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-import type { IEquipment } from '../../../../models-and-constants/IRecipe';
-import { StyledTextField } from '../../../shared-styles/shared-styles';
-import { useMinPlusListLogic } from '../../../../hooks/use-min-plus-list-logic';
-import { StyledFontAwesomeIcon } from '../../create-ingredients-card/create-ingredients-card.styles';
-import { StyledCreateEquipmentItem } from '../create-equipment-card.styles';
+import type { IEquipment } from '../../../models-and-constants/IRecipe';
+import { StyledTextField } from '../../shared-styles/shared-styles';
+import { useMinPlusListLogic } from '../../../hooks/use-min-plus-list-logic';
+import { StyledFontAwesomeIcon } from '../create-ingredients-card/create-ingredients-card.styles';
+import { StyledCreateEquipmentItem } from './create-equipment-card.styles';
 
 type Props = {
   currentEquipment: IEquipment;

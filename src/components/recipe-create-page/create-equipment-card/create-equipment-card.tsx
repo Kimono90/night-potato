@@ -1,6 +1,6 @@
 import React, { ReactElement, useState } from 'react';
-import type { IEquipment } from '../../../../models-and-constants/IRecipe';
-import { CreateItemsCard } from '../../template-components/create-items-card/create-items-card';
+import type { IEquipment } from '../../../models-and-constants/IRecipe';
+import { CreateItemsCard } from '../template-components/create-items-card/create-items-card';
 import { generate } from 'shortid';
 import { EquipmentList } from './equipment-list';
 

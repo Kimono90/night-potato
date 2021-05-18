@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ReactElement } from 'react';
-import type { IEquipment } from '../../../../models-and-constants/IRecipe';
+import type { IEquipment } from '../../../models-and-constants/IRecipe';
 import { EditableEquipment } from './editable-equipment';
 
 type Props = {
