@@ -59,7 +59,7 @@ export const StyledAddButton = styled.button`
   font-size: 1rem;
   color: white;
   border: none;
-  background-color: limegreen;
+  background-color: #7d6c6a;
   border-radius: 0.5rem;
   text-align: center;
   align-self: center;
