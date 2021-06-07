@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ReactElement } from 'react';
-import { StyledList, StyledSummaryCard, StyledTitle } from '../../../shared-styles/shared-styles';
+import { StyledBody, StyledSummaryCard, StyledTitle } from '../../../shared-styles/shared-styles';
 
 type Props = {
   cardTitle: string;
@@ -13,7 +13,7 @@ export function CreateItemsCard({ cardTitle, itemsToRender, mobileInputModal }: 
     <>
       <StyledSummaryCard data-label="summary-card">
         <StyledTitle data-label="title">{cardTitle}</StyledTitle>
-        <StyledList>{itemsToRender}</StyledList>
+        <StyledBody>{itemsToRender}</StyledBody>
       </StyledSummaryCard>
       {mobileInputModal ?? null}
     </>

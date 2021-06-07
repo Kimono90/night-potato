@@ -28,7 +28,7 @@ export default function RecipeSummaryPage() {
 
   const handleInstructionChange = (newInstructions: IInstructionStep[]) => {
     if (!recipe) return;
-    setRecipe({ ...recipe, instructionSteps: newInstructions });
+    setRecipe({ ...recipe, instructions: newInstructions });
   };
 
   const handlePortionsChange = (action: string) => {
@@ -54,7 +54,7 @@ export default function RecipeSummaryPage() {
       {recipe.metaInfo.imgUrls.length ? <PhotoCarousel imgUrls={recipe.metaInfo.imgUrls} /> : null}
       {/*<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>*/}
       <IngredientsBlock ingredients={recipe.ingredients} equipment={recipe.equipment} />
-      <InstructionsBlock instructions={recipe.instructionSteps} />
+      <InstructionsBlock instructions={recipe.instructions} />
       {/*</div>*/}
     </StyledSingleRecipePage>
   );

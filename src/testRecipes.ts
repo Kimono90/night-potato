@@ -27,7 +27,7 @@ export const testRecipe1: IRecipe = {
     { id: '2', name: 'Sharp knife' },
     { id: '3', name: 'Baking tray' },
   ],
-  instructionSteps: [
+  instructions: [
     { stepNr: 2, stepDescription: 'Cut the stuff' },
     { stepNr: 1, stepDescription: 'Buy the stuff' },
     {
@@ -59,7 +59,7 @@ export const testRecipe2: IRecipe = {
     { id: '2', name: 'Sharp knife' },
     { id: '4', name: 'Baking tray' },
   ],
-  instructionSteps: [
+  instructions: [
     { stepNr: 2, stepDescription: 'Cut the stuff' },
     { stepNr: 1, stepDescription: 'Buy the stuff' },
     {
@@ -94,7 +94,7 @@ export const brazilianPudding: IRecipe = {
     { id: '4', name: 'Sauce pan' },
     { id: '5', name: 'Baking tray for bain marie' },
   ],
-  instructionSteps: [
+  instructions: [
     { stepNr: 1, stepDescription: 'Pour the condensed milk into the bowl' },
     { stepNr: 2, stepDescription: 'Pour 400ml of milk into the bowl' },
     { stepNr: 3, stepDescription: 'Add two eggs into the bowl' },

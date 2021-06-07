@@ -29,7 +29,7 @@ export const StyledTitle = styled.div`
   }
 `;
 
-export const StyledList = styled.div`
+export const StyledBody = styled.div`
   border-radius: 0.5rem;
   background-color: #c9a495;
   align-items: flex-start;

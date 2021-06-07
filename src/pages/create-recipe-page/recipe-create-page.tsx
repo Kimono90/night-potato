@@ -7,6 +7,7 @@ import { CreateIngredientsCardMobile } from '../../components/recipe-create-page
 import { CreateIngredientsCard } from '../../components/recipe-create-page/create-ingredients-card/desktop/create-ingredients-card';
 import { CreateEquipmentCard } from '../../components/recipe-create-page/create-equipment-card/create-equipment-card';
 import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/PhotoUpload';
+import { CreateInstructionsCard } from '../../components/recipe-create-page/create-instructions-card/desktop/create-instructions-card';
 
 export function RecipeCreatePage() {
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>();
@@ -21,6 +22,7 @@ export function RecipeCreatePage() {
       <RecipeNameInputField onRecipeNameHasError={setRecipeNameHasError} />
       {mobile ? <CreateIngredientsCardMobile /> : <CreateIngredientsCard />}
       <CreateEquipmentCard />
+      <CreateInstructionsCard />
       <PhotoUpload />
     </StyledSingleRecipePage>
   );
