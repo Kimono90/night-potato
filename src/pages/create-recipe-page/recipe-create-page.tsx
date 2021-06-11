@@ -9,6 +9,7 @@ import { CreateEquipmentCard } from '../../components/recipe-create-page/create-
 import { CreateInstructionsCard } from '../../components/recipe-create-page/create-instructions-card/desktop/create-instructions-card';
 import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/PhotoUpload';
 import type firebase from 'firebase';
+import { MetaInfoCard } from '../../components/recipe-create-page/create-meta-info-card/meta-info-card';
 
 export function RecipeCreatePage() {
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>();
@@ -25,6 +26,7 @@ export function RecipeCreatePage() {
       <CreateEquipmentCard />
       <CreateInstructionsCard />
       <PhotoUpload onFileSelection={(imgString) => setImgUrl(imgString)} />
+      <MetaInfoCard />
     </StyledSingleRecipePage>
   );
 }

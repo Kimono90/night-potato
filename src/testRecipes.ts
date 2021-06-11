@@ -40,7 +40,7 @@ export const testRecipe2: IRecipe = {
     portions: 4,
     prepTimeInMinutes: 60,
     kcalPerPortion: 350,
-    labels: [labels.vegetarian],
+    labels: [labels.vegetarian, labels.vegan, labels.glutenFree, labels.dairyFree],
     imgUrls: ['https://images.unsplash.com/photo-1515037893149-de7f840978e2'],
   },
   ingredients: [
