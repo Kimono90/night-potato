@@ -6,10 +6,8 @@ import { Redirect } from 'react-router-dom';
 import { CreateIngredientsCardMobile } from '../../components/recipe-create-page/create-ingredients-card/mobile/create-ingredients-card-mobile';
 import { CreateIngredientsCard } from '../../components/recipe-create-page/create-ingredients-card/desktop/create-ingredients-card';
 import { CreateEquipmentCard } from '../../components/recipe-create-page/create-equipment-card/create-equipment-card';
-import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/PhotoUpload';
 import { CreateInstructionsCard } from '../../components/recipe-create-page/create-instructions-card/desktop/create-instructions-card';
-import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/PhotoUpload';
-import { IRecipe } from '../../models-and-constants/IRecipe';
+import { PhotoUpload } from 'src/components/recipe-create-page/photo-upload/PhotoUpload';
 
 export function RecipeCreatePage() {
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>();

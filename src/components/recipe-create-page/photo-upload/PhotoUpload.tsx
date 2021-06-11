@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StyledPreviewImg, StyledUploadField } from './PhotoUpload.styles';
 import { StyledBody, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
-import { StyledImageUploader } from '../photo-upload/PhotoUpload.styles';
 
 type Props = {
   onFileSelection: (base64String: string) => void;
