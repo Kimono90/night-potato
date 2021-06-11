@@ -20,3 +20,17 @@ export const StyledPreviewImg = styled.img`
   margin-bottom: 1rem;
   border-radius: 0.5rem;
 `;
+
+export const FileSizeErrorMessage = styled.div`
+  font-size: 1rem;
+  align-self: center;
+  margin: 0 1.5rem 1.5rem 1.5rem;
+
+  @media (min-width: 500px) {
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin: 0;
+  }
+`;
