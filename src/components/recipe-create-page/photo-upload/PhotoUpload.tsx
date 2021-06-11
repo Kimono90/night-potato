@@ -37,7 +37,7 @@ export function PhotoUpload({ onFileSelection }: Props) {
 
   return (
     <StyledSummaryCard>
-      <StyledTitle data-label="title">Picture</StyledTitle>
+      <StyledTitle data-label="title">Recipe picture</StyledTitle>
       <StyledBody>
         <StyledUploadField htmlFor="file-upload">Choose image &#129364;</StyledUploadField>
         <input

@@ -1,5 +1,5 @@
 import { StyledSingleRecipePage } from '../recipe-summary-page/recipe-summary-page.styles';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { RecipeNameInputField } from '../../components/recipe-create-page/recipe-name-input-field/recipe-name-input-field';
 import { FirebaseContext } from '../../contexts/firebase-auth-context';
 import { Redirect } from 'react-router-dom';
@@ -8,15 +8,15 @@ import { CreateIngredientsCard } from '../../components/recipe-create-page/creat
 import { CreateEquipmentCard } from '../../components/recipe-create-page/create-equipment-card/create-equipment-card';
 import { CreateInstructionsCard } from '../../components/recipe-create-page/create-instructions-card/desktop/create-instructions-card';
 import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/PhotoUpload';
+import type firebase from 'firebase';
 
 export function RecipeCreatePage() {
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>();
   const [imgUrl, setImgUrl] = useState<string>();
-  const firebaseContext = useContext(FirebaseContext);
-  const isLoggedIn = firebaseContext.user;
+  const { isLoggingIn, user } = useContext(FirebaseContext);
   const mobile = window.innerWidth < 500;
 
-  if (!isLoggedIn) return <Redirect to="" />;
+  if (!isLoggingIn && !user) return <Redirect to="/" />;
 
   return (
     <StyledSingleRecipePage data-label="create-recipe-page">
