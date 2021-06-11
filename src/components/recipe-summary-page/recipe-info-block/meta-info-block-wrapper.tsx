@@ -10,7 +10,7 @@ type Props = {
 
 export function MetaInfoBlockWrapper({ children, recipeName }: Props) {
   return (
-    <StyledInfoBlock data-label="info-block">
+    <StyledInfoBlock data-testid="meta-info-block">
       <StyledSummaryCard data-label="summary-card">
         <StyledTitle data-testid="recipe-title">{recipeName}</StyledTitle>
         <StyledMetaInfoContentArea data-label="meta-info-content">{children}</StyledMetaInfoContentArea>

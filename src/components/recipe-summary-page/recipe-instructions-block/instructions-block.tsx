@@ -8,7 +8,7 @@ type Props = {
 
 export default function InstructionsBlock({ instructions }: Props) {
   return (
-    <StyledSummaryCard data-label="summary-card">
+    <StyledSummaryCard data-testid="instructions-block">
       <StyledTitle data-label="title">Instructions</StyledTitle>
       <StyledBody data-label="instruction-list">
         <StyledInstructions>{instructions}</StyledInstructions>

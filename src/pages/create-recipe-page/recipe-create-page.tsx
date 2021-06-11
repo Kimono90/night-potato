@@ -8,9 +8,12 @@ import { CreateIngredientsCard } from '../../components/recipe-create-page/creat
 import { CreateEquipmentCard } from '../../components/recipe-create-page/create-equipment-card/create-equipment-card';
 import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/PhotoUpload';
 import { CreateInstructionsCard } from '../../components/recipe-create-page/create-instructions-card/desktop/create-instructions-card';
+import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/PhotoUpload';
+import { IRecipe } from '../../models-and-constants/IRecipe';
 
 export function RecipeCreatePage() {
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>();
+  const [imgUrl, setImgUrl] = useState<string>();
   const firebaseContext = useContext(FirebaseContext);
   const isLoggedIn = firebaseContext.user;
   const mobile = window.innerWidth < 500;
@@ -23,7 +26,7 @@ export function RecipeCreatePage() {
       {mobile ? <CreateIngredientsCardMobile /> : <CreateIngredientsCard />}
       <CreateEquipmentCard />
       <CreateInstructionsCard />
-      <PhotoUpload />
+      <PhotoUpload onFileSelection={(imgString) => setImgUrl(imgString)} />
     </StyledSingleRecipePage>
   );
 }
