@@ -28,7 +28,7 @@ export default function IngredientsBlock({ ingredients, equipment }: Props) {
   const equipmentList = equipment.map((e: IEquipment) => <Equipment key={e.id} equipmentItem={e} />);
 
   return (
-    <StyledSummaryCard data-label="summary-card">
+    <StyledSummaryCard data-testid="ingredients-block">
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ display: 'flex' }}>
           <StyledTabTitle data-label="title" onClick={() => setShowIngredients(true)} visible={showIngredients}>
@@ -46,7 +46,7 @@ export default function IngredientsBlock({ ingredients, equipment }: Props) {
                 }
               }}
             />
-            <StyledCopiedConfirmation copied={`${isCopied}`}>Copied :)</StyledCopiedConfirmation>
+            <StyledCopiedConfirmation copied={`${isCopied}`}>Copied &#129364;!</StyledCopiedConfirmation>
           </StyledTabTitle>
           <StyledTabTitle data-label="title" onClick={() => setShowIngredients(false)} visible={!showIngredients}>
             Equipment

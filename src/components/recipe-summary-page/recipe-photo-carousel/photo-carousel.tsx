@@ -32,7 +32,7 @@ export default function PhotoCarousel({ imgUrls }: Props) {
 
   const multiplePhotos = (
     <>
-      <StyledPhotoCarousel data-label="photo-carousel">
+      <StyledPhotoCarousel data-testid="photo-carousel">
         <StyledArrowIcon data-label="fa-left" icon={faChevronLeft} onClick={handlePreviousImgClick} />
         <div {...swipeHandlers}>
           <StyledCarouselPhoto

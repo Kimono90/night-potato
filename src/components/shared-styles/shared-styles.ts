@@ -29,7 +29,7 @@ export const StyledTitle = styled.div`
   }
 `;
 
-export const StyledList = styled.div`
+export const StyledBody = styled.div`
   border-radius: 0.5rem;
   background-color: #c9a495;
   align-items: flex-start;
@@ -59,7 +59,7 @@ export const StyledAddButton = styled.button`
   font-size: 1rem;
   color: white;
   border: none;
-  background-color: limegreen;
+  background-color: #7d6c6a;
   border-radius: 0.5rem;
   text-align: center;
   align-self: center;
@@ -79,12 +79,12 @@ export const StyledTextField = styled.input<FieldProps>`
   border-radius: 0.5rem;
   padding: 0.25rem 0.5rem;
   outline: none;
-  width: 18rem;
+  width: 10rem;
   margin: 0.5rem;
   border-color: ${(props) => (props.hasError === 'true' ? 'red' : 'none')};
 
   @media (min-width: 500px) {
-    margin: unset;
+    width: 18rem;
   }
 `;
 
@@ -100,10 +100,6 @@ export const StyledNumericField = styled.input<FieldProps>`
   -moz-appearance: textfield;
   margin: 0.5rem;
   border-color: ${(props) => (props.hasError === 'true' ? 'red' : 'none')};
-
-  @media (min-width: 500px) {
-    margin: unset;
-  }
 
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {
@@ -127,11 +123,11 @@ export const StyledSelectField = styled.select`
   //noinspection CssUnknownTarget
   background: url('/select_arrow.svg') 96% / 20% no-repeat #eee;
 
-  :after {
-    border-radius: 0.5rem;
+  @media (min-width: 500px) {
+    margin: 0.5rem;
   }
 
-  @media (min-width: 500px) {
-    margin: unset;
+  :after {
+    border-radius: 0.5rem;
   }
 `;

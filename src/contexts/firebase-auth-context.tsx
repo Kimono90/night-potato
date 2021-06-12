@@ -41,12 +41,14 @@ async function signOutOfGoogle() {
 
 export const FirebaseProvider = ({ children }: any) => {
   const [user, setUser] = useState<firebase.User | null>(null);
-  const [loggingIn, setIsLoggingIn] = useState<boolean>(false);
+  const [loggingIn, setIsLoggingIn] = useState<boolean>(true);
 
   useEffect(() => {
     setIsLoggingIn(true);
-    getSignedInUser().then((user) => setUser(user));
-    setIsLoggingIn(false);
+    getSignedInUser().then((user) => {
+      setUser(user);
+      setIsLoggingIn(false);
+    });
   }, []);
 
   const logIn = async () => {

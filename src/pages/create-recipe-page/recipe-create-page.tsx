@@ -1,23 +1,34 @@
 import { StyledSingleRecipePage } from '../recipe-summary-page/recipe-summary-page.styles';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { RecipeNameInputField } from '../../components/recipe-create-page/recipe-name-input-field/recipe-name-input-field';
 import { FirebaseContext } from '../../contexts/firebase-auth-context';
 import { Redirect } from 'react-router-dom';
-import { IngredientsInputCardMobile } from '../../components/recipe-create-page/ingredients-input-card/mobile/ingredients-input-card-mobile';
-import { IngredientsInputCard } from '../../components/recipe-create-page/ingredients-input-card/desktop/ingredients-input-card';
+import { CreateIngredientsCardMobile } from '../../components/recipe-create-page/create-ingredients-card/mobile/create-ingredients-card-mobile';
+import { CreateIngredientsCard } from '../../components/recipe-create-page/create-ingredients-card/desktop/create-ingredients-card';
+import { CreateEquipmentCard } from '../../components/recipe-create-page/create-equipment-card/create-equipment-card';
+import { CreateInstructionsCard } from '../../components/recipe-create-page/create-instructions-card/desktop/create-instructions-card';
+import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/photo-upload';
+import type firebase from 'firebase';
+import { MetaInfoCard } from '../../components/recipe-create-page/create-meta-info-card/meta-info-card';
+import { SaveButton } from '../../components/recipe-create-page/save-button/save-button';
 
 export function RecipeCreatePage() {
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>();
-  const firebaseContext = useContext(FirebaseContext);
-  const isLoggedIn = firebaseContext.user;
+  const [imgUrl, setImgUrl] = useState<string>();
+  const { isLoggingIn, user } = useContext(FirebaseContext);
   const mobile = window.innerWidth < 500;
 
-  if (!isLoggedIn) return <Redirect to="" />;
+  if (!isLoggingIn && !user) return <Redirect to="/" />;
 
   return (
     <StyledSingleRecipePage data-label="create-recipe-page">
       <RecipeNameInputField onRecipeNameHasError={setRecipeNameHasError} />
-      {mobile ? <IngredientsInputCardMobile /> : <IngredientsInputCard />}
+      {mobile ? <CreateIngredientsCardMobile /> : <CreateIngredientsCard />}
+      <CreateEquipmentCard />
+      <CreateInstructionsCard />
+      <PhotoUpload onFileSelection={(imgString) => setImgUrl(imgString)} />
+      <MetaInfoCard />
+      <SaveButton />
     </StyledSingleRecipePage>
   );
 }

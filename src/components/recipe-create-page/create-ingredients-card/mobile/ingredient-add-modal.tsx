@@ -1,7 +1,7 @@
 import React, { ChangeEvent, ReactElement, useState } from 'react';
 import { MEASUREMENT_OPTIONS } from '../../../../models-and-constants/measurement-options';
 import { generate } from 'shortid';
-import { AddItemModalWrapper } from '../../add-item-modal-mobile/add-item-modal-wrapper';
+import { AddItemModalWrapper } from '../../template-components/add-item-modal-mobile/add-item-modal-wrapper';
 import { StyledNumericField, StyledSelectField, StyledTextField } from '../../../shared-styles/shared-styles';
 import type { IIngredient } from '../../../../models-and-constants/IRecipe';
 
@@ -11,7 +11,7 @@ type Props = {
   onBackClick: () => void;
 };
 
-export function AddIngredientModal({ showModal, onIngredientAdd, onBackClick }: Props): ReactElement {
+export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: Props): ReactElement {
   const [ingredient, setIngredient] = useState<IIngredient>({
     id: '',
     productName: '',

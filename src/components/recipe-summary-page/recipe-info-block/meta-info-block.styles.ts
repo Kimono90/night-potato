@@ -47,6 +47,7 @@ export const StyledMetaInfoContentWithLabels = styled.div`
   align-items: center;
   width: 100%;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 `;
 
 export const StyledMetaInfoItem = styled.div`

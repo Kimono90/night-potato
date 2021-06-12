@@ -5,7 +5,7 @@ import MetaInfoBlock from '../../components/recipe-summary-page/recipe-info-bloc
 import { StyledSingleRecipePage } from './recipe-summary-page.styles';
 import IngredientsBlock from '../../components/recipe-summary-page/recipe-ingredients-block/ingredients-block';
 import InstructionsBlock from '../../components/recipe-summary-page/recipe-instructions-block/instructions-block';
-import type { IIngredient, IInstructionStep, IRecipe } from '../../models-and-constants/IRecipe';
+import type { IIngredient, IRecipe } from '../../models-and-constants/IRecipe';
 import PhotoCarousel from '../../components/recipe-summary-page/recipe-photo-carousel/photo-carousel';
 import { testRecipe1, testRecipe2, brazilianPudding } from '../../testRecipes';
 
@@ -26,9 +26,9 @@ export default function RecipeSummaryPage() {
     setRecipe({ ...recipe, ingredients: newIngredients });
   };
 
-  const handleInstructionChange = (newInstructions: IInstructionStep[]) => {
+  const handleInstructionChange = (newInstructions: string) => {
     if (!recipe) return;
-    setRecipe({ ...recipe, instructionSteps: newInstructions });
+    setRecipe({ ...recipe, instructions: newInstructions });
   };
 
   const handlePortionsChange = (action: string) => {
@@ -46,15 +46,15 @@ export default function RecipeSummaryPage() {
     recipe.ingredients.forEach((i) => (i.amount = (i.amount / recipe.metaInfo.portions) * newPortions));
   };
 
-  if (!recipe) return <StyledSingleRecipePage data-label="empty-summary-page" />;
+  if (!recipe) return <StyledSingleRecipePage data-testid="empty-summary-page" />;
 
   return (
-    <StyledSingleRecipePage data-label="summary-page">
+    <StyledSingleRecipePage data-testid="summary-page">
       <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
-      {recipe.metaInfo.imgUrls.length ? <PhotoCarousel imgUrls={recipe.metaInfo.imgUrls} /> : null}
+      {recipe.metaInfo.imgUrls.length ? <PhotoCarousel data-testid="photo-carousel" imgUrls={recipe.metaInfo.imgUrls} /> : null}
       {/*<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>*/}
-      <IngredientsBlock ingredients={recipe.ingredients} equipment={recipe.equipment} />
-      <InstructionsBlock instructions={recipe.instructionSteps} />
+      <IngredientsBlock data-testid="ingredients-block" ingredients={recipe.ingredients} equipment={recipe.equipment} />
+      <InstructionsBlock data-testid="instructions-block" instructions={recipe.instructions} />
       {/*</div>*/}
     </StyledSingleRecipePage>
   );
