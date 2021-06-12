@@ -28,7 +28,7 @@ export function RecipeCreatePage() {
       <CreateInstructionsCard />
       <PhotoUpload onFileSelection={(imgString) => setImgUrl(imgString)} />
       <MetaInfoCard />
-      <SaveButton />
+      <SaveButton onSaveButtonClick={() => alert('Still working on the save functionality :)!')} />
     </StyledSingleRecipePage>
   );
 }
