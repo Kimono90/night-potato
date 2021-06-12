@@ -9,4 +9,5 @@ export const StyledSingleRecipePage = styled.div`
   text-align: center;
   width: 100%;
   margin-top: 3rem;
+  padding-bottom: 1.5rem;
 `;

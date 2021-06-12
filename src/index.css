@@ -4,6 +4,8 @@ body {
   font-family: 'Patrick Hand', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  position: relative;
 }
 
 code {
@@ -17,4 +19,15 @@ code {
 #root {
   display: flex;
   justify-content: center;
+}
+
+footer {
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  bottom: 0;
+  background-color: black;
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
 }

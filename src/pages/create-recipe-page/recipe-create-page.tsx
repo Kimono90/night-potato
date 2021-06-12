@@ -7,9 +7,10 @@ import { CreateIngredientsCardMobile } from '../../components/recipe-create-page
 import { CreateIngredientsCard } from '../../components/recipe-create-page/create-ingredients-card/desktop/create-ingredients-card';
 import { CreateEquipmentCard } from '../../components/recipe-create-page/create-equipment-card/create-equipment-card';
 import { CreateInstructionsCard } from '../../components/recipe-create-page/create-instructions-card/desktop/create-instructions-card';
-import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/PhotoUpload';
+import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/photo-upload';
 import type firebase from 'firebase';
 import { MetaInfoCard } from '../../components/recipe-create-page/create-meta-info-card/meta-info-card';
+import { SaveButton } from '../../components/recipe-create-page/save-button/save-button';
 
 export function RecipeCreatePage() {
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>();
@@ -27,6 +28,7 @@ export function RecipeCreatePage() {
       <CreateInstructionsCard />
       <PhotoUpload onFileSelection={(imgString) => setImgUrl(imgString)} />
       <MetaInfoCard />
+      <SaveButton />
     </StyledSingleRecipePage>
   );
 }

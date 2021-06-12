@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileSizeErrorMessage, StyledPreviewImg, StyledUploadField } from './PhotoUpload.styles';
+import { FileSizeErrorMessage, StyledPreviewImg, StyledUploadField } from './photo-upload.styles';
 import { StyledBody, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
 
 type Props = {
