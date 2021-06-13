@@ -10,8 +10,10 @@ import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/ph
 import { MetaInfoCard } from '../../components/recipe-create-page/create-meta-info-card/meta-info-card';
 import { SaveButton } from '../../components/recipe-create-page/save-button/save-button';
 import { StyledPage } from '../../components/shared-styles/shared-styles';
-import { IRecipe } from '../../models-and-constants/IRecipe';
+import { IIngredient, IRecipe } from '../../models-and-constants/IRecipe';
 import { generate } from 'shortid';
+
+const mobile = window.innerWidth < 500;
 
 const initialRecipe: IRecipe = {
   id: generate(),
@@ -24,17 +26,17 @@ const initialRecipe: IRecipe = {
     prepTimeInMinutes: 0,
   },
   instructions: '',
-  ingredients: [],
+  ingredients: mobile ? [] : [{ id: generate(), amount: 0, measurement: '', name: '' }],
   equipment: [],
 };
 
 export function RecipeCreatePage() {
   const { isLoggingIn, user } = useContext(FirebaseContext);
-  const mobile = window.innerWidth < 500;
 
   const [recipe, setRecipe] = useState<IRecipe>(initialRecipe);
 
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>(false);
+  const [ingredientWithError, setIngredientWithError] = useState<string[]>([]);
   const [imgUrl, setImgUrl] = useState<string>();
 
   if (!isLoggingIn && !user) return <Redirect to="/" />;
@@ -43,9 +45,13 @@ export function RecipeCreatePage() {
 
   function isRecipeValid() {
     const hasRecipeName = recipe.metaInfo.name;
-    if (!hasRecipeName) setRecipeNameHasError(true);
+    const incompleteIngredients = recipe.ingredients.filter((i) => !i.name || !i.amount);
+    const incompleteIngredientIds = incompleteIngredients.flatMap((i) => i.id);
 
-    return hasRecipeName;
+    if (!hasRecipeName) setRecipeNameHasError(true);
+    if (incompleteIngredients) setIngredientWithError(incompleteIngredientIds);
+
+    return hasRecipeName || !incompleteIngredients;
   }
 
   function handleCreateRecipe() {
@@ -61,14 +67,27 @@ export function RecipeCreatePage() {
     setRecipe({ ...recipe, metaInfo: { ...recipe.metaInfo, name: name } });
   }
 
+  function handleIngredientsChange(ingredients: IIngredient[]) {
+    setIngredientWithError([]);
+    setRecipe({ ...recipe, ingredients: ingredients });
+  }
+
   return (
     <StyledPage data-label="create-recipe-page">
       <RecipeNameInputField
         recipeName={recipe.metaInfo.name}
-        onRecipeNameChange={(name) => handleRecipeNameChange(name)}
+        onRecipeNameChange={handleRecipeNameChange}
         recipeNameHasError={recipeNameHasError}
       />
-      {mobile ? <CreateIngredientsCardMobile /> : <CreateIngredientsCard />}
+      {mobile ? (
+        <CreateIngredientsCardMobile ingredients={recipe.ingredients} onIngredientsChange={handleIngredientsChange} />
+      ) : (
+        <CreateIngredientsCard
+          ingredients={recipe.ingredients}
+          onIngredientsChange={handleIngredientsChange}
+          ingredientsWithError={ingredientWithError}
+        />
+      )}
       <CreateEquipmentCard />
       <CreateInstructionsCard />
       <PhotoUpload onFileSelection={(imgString) => setImgUrl(imgString)} />

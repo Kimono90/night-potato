@@ -5,19 +5,23 @@ import { IngredientAddModal } from './ingredient-add-modal';
 import { EditableIngredientMobile } from './editable-ingredient-mobile';
 import { StyledAddButton } from '../../../shared-styles/shared-styles';
 
-export function CreateIngredientsCardMobile(): ReactElement {
+type Props = {
+  ingredients: IIngredient[];
+  onIngredientsChange: (ingredients: IIngredient[]) => void;
+};
+
+export function CreateIngredientsCardMobile({ ingredients, onIngredientsChange }: Props): ReactElement {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [ingredients, setIngredients] = useState<IIngredient[]>([]);
   const mobile = window.innerWidth < 500;
 
   const handleAddIngredient = (newIngredient: IIngredient) => {
     console.log('adding ingredient');
-    setIngredients([...ingredients, newIngredient]);
+    onIngredientsChange([...ingredients, newIngredient]);
   };
 
   const handleRemoveIngredient = (ingredientId: string) => {
     const newIngredients = ingredients.filter((i: IIngredient) => i.id !== ingredientId);
-    setIngredients(newIngredients);
+    onIngredientsChange(newIngredients);
   };
 
   const getIngredients = () => {

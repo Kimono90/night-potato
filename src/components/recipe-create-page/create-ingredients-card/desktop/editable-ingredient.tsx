@@ -12,6 +12,7 @@ type Props = {
   onIngredientChange: (ingredient: IIngredient) => void;
   onMinusButtonClick: (id: string) => void;
   onPlusButtonClick: () => void;
+  hasError: boolean;
 };
 
 export function EditableIngredient({
@@ -20,12 +21,11 @@ export function EditableIngredient({
   onIngredientChange,
   onMinusButtonClick,
   onPlusButtonClick,
+  hasError,
 }: Props): ReactElement {
   const [ingredient, setIngredient] = useState<IIngredient>(currentIngredient);
   const [ingredientNameHasError, setIngredientHasError] = useState<boolean>(false);
-  const [ingredientNameTouched, setIngredientNameTouched] = useState<boolean>(false);
   const [amountHasError, setAmountHasError] = useState<boolean>(false);
-  const [amountTouched, setAmountTouched] = useState<boolean>(false);
   const [minusButtonState, plusButtonState] = useMinPlusListLogic(
     currentIngredient.id,
     allIngredients.flatMap((i) => i.id),
@@ -41,9 +41,6 @@ export function EditableIngredient({
   }, [ingredient]);
 
   const handlePlusButtonClick = (): void => {
-    setAmountTouched(true);
-    setIngredientNameTouched(true);
-
     if (ingredient.name && ingredient.amount !== 0) {
       plusButtonState.set(false);
       onPlusButtonClick();
@@ -70,8 +67,7 @@ export function EditableIngredient({
           setIngredientHasError(false);
           setIngredient({ ...ingredient, name: event.target.value });
         }}
-        onBlur={() => setIngredientNameTouched(true)}
-        hasError={`${ingredientNameHasError && ingredientNameTouched}`}
+        hasError={`${ingredientNameHasError && hasError}`}
       />
       <StyledNumericField
         placeholder="Amount"
@@ -81,8 +77,7 @@ export function EditableIngredient({
           setAmountHasError(false);
           setIngredient({ ...ingredient, amount: Number(event.target.value) });
         }}
-        onBlur={() => setAmountTouched(true)}
-        hasError={`${amountHasError && amountTouched}`}
+        hasError={`${amountHasError && hasError}`}
       />
       <StyledSelectField
         placeholder=""

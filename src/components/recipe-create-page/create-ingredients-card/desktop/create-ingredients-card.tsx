@@ -4,23 +4,27 @@ import { CreateItemsCard } from '../../template-components/create-items-card/cre
 import { IngredientList } from './ingredient-list';
 import { generate } from 'shortid';
 
-export function CreateIngredientsCard(): ReactElement {
-  const [ingredients, setIngredients] = useState<IIngredient[]>([{ id: generate(), amount: 0, measurement: '', name: '' }]);
+type Props = {
+  ingredients: IIngredient[];
+  onIngredientsChange: (ingredients: IIngredient[]) => void;
+  ingredientsWithError: string[];
+};
 
+export function CreateIngredientsCard({ ingredients, ingredientsWithError, onIngredientsChange }: Props): ReactElement {
   const handleRemoveIngredient = (ingredientId: string) => {
     const newIngredients = ingredients.filter((i: IIngredient) => i.id !== ingredientId);
-    setIngredients(newIngredients);
+    onIngredientsChange(newIngredients);
   };
 
   const handleChangeIngredient = (changedIngredient: IIngredient) => {
     const changedIngredientIndex = ingredients.findIndex((i) => i.id === changedIngredient.id);
     const ingredientsCopy = [...ingredients];
     ingredientsCopy[changedIngredientIndex] = changedIngredient;
-    setIngredients(ingredientsCopy);
+    onIngredientsChange(ingredientsCopy);
   };
 
   const handleAddIngredient = () => {
-    setIngredients([...ingredients, { id: generate(), amount: 0, measurement: '', name: '' }]);
+    onIngredientsChange([...ingredients, { id: generate(), amount: 0, measurement: '', name: '' }]);
   };
 
   return (
@@ -32,6 +36,7 @@ export function CreateIngredientsCard(): ReactElement {
           onIngredientRemove={handleRemoveIngredient}
           onIngredientChange={handleChangeIngredient}
           onIngredientAdd={handleAddIngredient}
+          ingredientsWithError={ingredientsWithError}
         />
       }
     />
