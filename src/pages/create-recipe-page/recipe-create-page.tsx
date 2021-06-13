@@ -40,9 +40,6 @@ export function RecipeCreatePage() {
   const [instructionsHaveError, setInstructionsHaveError] = useState<boolean>(false);
   const [metaInfoHasError, setMetaInfoHasError] = useState<boolean>(false);
   const [equipmentErrorReset, setEquipmentErrorReset] = useState<boolean>(false);
-  const [imgUrl, setImgUrl] = useState<string>();
-
-  console.log('RECEPT', recipe);
 
   function isRecipeValid() {
     const hasRecipeName = recipe.metaInfo.name;
@@ -61,7 +58,7 @@ export function RecipeCreatePage() {
   function handleCreateRecipe() {
     setEquipmentErrorReset(true);
     if (isRecipeValid()) {
-      // POST to firebase
+      console.log(recipe);
     } else {
       // toast message
     }
@@ -114,7 +111,14 @@ export function RecipeCreatePage() {
         onInstructionsChange={(instructions) => setRecipe({ ...recipe, instructions: instructions })}
         instructionsHaveError={instructionsHaveError}
       />
-      <PhotoUpload onImageChange={(imgString) => setImgUrl(imgString)} />
+      <PhotoUpload
+        onImageChange={(imgString) =>
+          setRecipe({
+            ...recipe,
+            metaInfo: { ...recipe.metaInfo, imgUrls: [imgString] },
+          })
+        }
+      />
       <MetaInfoCard metaInfo={recipe.metaInfo} onMetaInfoChange={handleMetaInfoChange} metaInfoHasError={metaInfoHasError} />
       <SaveButton onSaveButtonClick={() => handleCreateRecipe()} />
     </StyledPage>
