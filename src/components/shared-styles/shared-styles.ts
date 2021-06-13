@@ -1,5 +1,17 @@
 import styled from '@emotion/styled';
 
+export const StyledPage = styled.div`
+  background-color: #30343f;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin-top: 3rem;
+  padding-bottom: 1.5rem;
+`;
+
 export const StyledSummaryCard = styled.div`
   border-radius: 0.5rem;
   margin: 0 1rem 2rem 1rem;
@@ -10,6 +22,7 @@ export const StyledSummaryCard = styled.div`
   justify-content: center;
   width: 95%;
   font-size: 1.25rem;
+  box-sizing: border-box;
 
   @media (min-width: 500px) {
     width: 45rem;
