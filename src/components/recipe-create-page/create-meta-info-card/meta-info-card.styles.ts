@@ -33,7 +33,7 @@ export const StyledDetailsBlock = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
+  width: 90%;
   margin: 1rem 2rem;
   flex-wrap: wrap;
 `;
