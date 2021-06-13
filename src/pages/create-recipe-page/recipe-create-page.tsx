@@ -37,6 +37,7 @@ export function RecipeCreatePage() {
 
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>(false);
   const [ingredientWithError, setIngredientWithError] = useState<string[]>([]);
+  const [instructionsHaveError, setInstructionsHaveError] = useState<boolean>(false);
   const [equipmentErrorReset, setEquipmentErrorReset] = useState<boolean>(false);
   const [imgUrl, setImgUrl] = useState<string>();
 
@@ -49,8 +50,9 @@ export function RecipeCreatePage() {
 
     if (!hasRecipeName) setRecipeNameHasError(true);
     if (incompleteIngredients) setIngredientWithError(incompleteIngredientIds);
+    setInstructionsHaveError(!recipe.instructions);
 
-    return hasRecipeName || !incompleteIngredients;
+    return hasRecipeName || !incompleteIngredients || recipe.instructions;
   }
 
   function handleCreateRecipe() {
@@ -99,7 +101,11 @@ export function RecipeCreatePage() {
         onEquipmentChange={handleEquipmentChange}
         equipmentErrorReset={equipmentErrorReset}
       />
-      <CreateInstructionsCard />
+      <CreateInstructionsCard
+        instructions={recipe.instructions}
+        onInstructionsChange={(instructions) => setRecipe({ ...recipe, instructions: instructions })}
+        instructionsHaveError={instructionsHaveError}
+      />
       <PhotoUpload onFileSelection={(imgString) => setImgUrl(imgString)} />
       <MetaInfoCard />
       <SaveButton onSaveButtonClick={() => handleCreateRecipe()} />
