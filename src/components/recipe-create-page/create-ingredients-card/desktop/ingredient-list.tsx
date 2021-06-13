@@ -8,6 +8,7 @@ type Props = {
   onIngredientChange: (ingredient: IIngredient) => void;
   onIngredientRemove: (id: string) => void;
   onIngredientAdd: () => void;
+  ingredientsWithError: string[];
 };
 
 export function IngredientList({
@@ -15,6 +16,7 @@ export function IngredientList({
   onIngredientChange,
   onIngredientRemove,
   onIngredientAdd,
+  ingredientsWithError,
 }: Props): ReactElement {
   const allIngredients = currentIngredients.map((i, index) => (
     <EditableIngredient
@@ -24,6 +26,7 @@ export function IngredientList({
       onIngredientChange={onIngredientChange}
       onMinusButtonClick={onIngredientRemove}
       onPlusButtonClick={onIngredientAdd}
+      hasError={ingredientsWithError.includes(i.id)}
     />
   ));
 

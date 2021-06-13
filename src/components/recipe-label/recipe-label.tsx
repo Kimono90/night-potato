@@ -8,14 +8,19 @@ type Props = {
   text: string;
   backgroundColor: string;
   clickAble?: boolean;
+  onChange?: (isActive: boolean) => void;
 };
 
-export function RecipeLabel({ icon, text, backgroundColor, clickAble = false }: Props): React.ReactElement {
+export function RecipeLabel({ icon, text, backgroundColor, clickAble = false, onChange }: Props): React.ReactElement {
   const [isActive, setIsActive] = useState<boolean>(!clickAble);
 
   function handleClick() {
     if (clickAble) {
-      setIsActive(!isActive);
+      const toggledState = !isActive;
+      setIsActive(toggledState);
+      if (onChange) {
+        onChange(toggledState);
+      }
     }
   }
 

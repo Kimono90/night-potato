@@ -3,10 +3,10 @@ import { FileSizeErrorMessage, StyledPreviewImg, StyledUploadField } from './pho
 import { StyledBody, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
 
 type Props = {
-  onFileSelection: (base64String: string) => void;
+  onImageChange: (base64String: string) => void;
 };
 
-export function PhotoUpload({ onFileSelection }: Props) {
+export function PhotoUpload({ onImageChange }: Props) {
   const [selectedImage, setSelectedImage] = useState<File>();
   const [fileTooBig, setFileTooBig] = useState<boolean>(false);
 
@@ -24,6 +24,7 @@ export function PhotoUpload({ onFileSelection }: Props) {
   }
 
   async function handleFileSelection(event: any) {
+    setFileTooBig(false);
     if (event.target.files[0].size > 3000000) {
       setFileTooBig(true);
       event.target.value = null;
@@ -31,7 +32,7 @@ export function PhotoUpload({ onFileSelection }: Props) {
     }
 
     const base64ImageString = await getBase64(event.target.files[0]);
-    onFileSelection(base64ImageString);
+    onImageChange(base64ImageString);
     setSelectedImage(event.target.files[0]);
   }
 

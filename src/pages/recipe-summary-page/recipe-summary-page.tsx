@@ -6,16 +6,16 @@ import IngredientsBlock from '../../components/recipe-summary-page/recipe-ingred
 import InstructionsBlock from '../../components/recipe-summary-page/recipe-instructions-block/instructions-block';
 import type { IIngredient, IRecipe } from '../../models-and-constants/IRecipe';
 import PhotoCarousel from '../../components/recipe-summary-page/recipe-photo-carousel/photo-carousel';
-import { testRecipe1, testRecipe2, brazilianPudding } from '../../testRecipes';
+import { testRecipe1, testRecipe2, brazilianPudding, testRecipeFinal } from '../../testRecipes';
 import { StyledPage } from '../../components/shared-styles/shared-styles';
 
 export default function RecipeSummaryPage() {
   let { recipeId } = useParams<IRouteParams>();
   const [recipe, setRecipe] = useState<IRecipe | null>(null);
-  const testRecipes = [testRecipe1, testRecipe2, brazilianPudding];
+  const testRecipes = [testRecipe1, testRecipe2, brazilianPudding, testRecipeFinal];
 
   useEffect(() => {
-    const currentRecipe = testRecipes.find((r) => r.id === Number(recipeId));
+    const currentRecipe = testRecipes.find((r) => r.id === recipeId);
     if (currentRecipe) {
       setRecipe(currentRecipe);
     }

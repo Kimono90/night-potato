@@ -12,12 +12,17 @@ export const StyledCreateInstructionStep = styled.div`
 `;
 
 export const StyledInstructionField = styled.textarea<FieldProps>`
+  display: flex;
   font-family: inherit;
   font-size: 1.5rem;
   border-radius: 0.5rem;
   padding: 0.25rem 0.5rem;
   outline: none;
-  width: 100%;
+  width: 88%;
   margin: 0.5rem;
   border-color: ${(props) => (props.hasError === 'true' ? 'red' : 'none')};
+
+  @media (min-width: 500px) {
+    width: 95%;
+  }
 `;

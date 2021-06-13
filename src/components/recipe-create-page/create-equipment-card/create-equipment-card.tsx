@@ -4,23 +4,27 @@ import { CreateItemsCard } from '../template-components/create-items-card/create
 import { generate } from 'shortid';
 import { EquipmentList } from './equipment-list';
 
-export function CreateEquipmentCard(): ReactElement {
-  const [equipment, setEquipment] = useState<IEquipment[]>([{ id: generate(), name: '' }]);
+type Props = {
+  equipment: IEquipment[];
+  onEquipmentChange: (equipment: IEquipment[]) => void;
+  equipmentErrorReset: boolean;
+};
 
+export function CreateEquipmentCard({ equipment, onEquipmentChange, equipmentErrorReset }: Props): ReactElement {
   const handleRemoveEquipment = (equipmentId: string) => {
     const newEquipment = equipment.filter((i: IEquipment) => i.id !== equipmentId);
-    setEquipment(newEquipment);
+    onEquipmentChange(newEquipment);
   };
 
   const handleChangeEquipment = (changedEquipment: IEquipment) => {
     const changedEquipmentIndex = equipment.findIndex((i) => i.id === changedEquipment.id);
     const equipmentCopy = [...equipment];
     equipmentCopy[changedEquipmentIndex] = changedEquipment;
-    setEquipment(equipmentCopy);
+    onEquipmentChange(equipmentCopy);
   };
 
   const handleAddEquipment = () => {
-    setEquipment([...equipment, { id: generate(), name: '' }]);
+    onEquipmentChange([...equipment, { id: generate(), name: '' }]);
   };
 
   return (
@@ -32,6 +36,7 @@ export function CreateEquipmentCard(): ReactElement {
           onEquipmentRemove={handleRemoveEquipment}
           onEquipmentChange={handleChangeEquipment}
           onEquipmentAdd={handleAddEquipment}
+          equipmentErrorReset={equipmentErrorReset}
         />
       }
     />

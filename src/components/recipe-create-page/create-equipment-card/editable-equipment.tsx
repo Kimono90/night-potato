@@ -12,6 +12,7 @@ type Props = {
   onEquipmentChange: (equipment: IEquipment) => void;
   onMinusButtonClick: (id: string) => void;
   onPlusButtonClick: () => void;
+  equipmentErrorReset: boolean;
 };
 
 export function EditableEquipment({
@@ -20,6 +21,7 @@ export function EditableEquipment({
   onEquipmentChange,
   onMinusButtonClick,
   onPlusButtonClick,
+  equipmentErrorReset,
 }: Props): ReactElement {
   const [equipment, setEquipment] = useState<IEquipment>(currentEquipment);
   const [equipmentNameHasError, setEquipmentNameHasError] = useState<boolean>(false);
@@ -65,8 +67,10 @@ export function EditableEquipment({
           setEquipmentNameHasError(false);
           setEquipment({ ...equipment, name: event.target.value });
         }}
-        onBlur={() => setEquipmentNameTouched(true)}
-        hasError={`${equipmentNameHasError && equipmentNameTouched}`}
+        onBlur={() => {
+          setEquipmentNameTouched(true);
+        }}
+        hasError={`${equipmentNameHasError && equipmentNameTouched && !equipmentErrorReset}`}
       />
       <div style={{ marginRight: '1rem' }}>
         {minusButtonComponent}

@@ -8,6 +8,7 @@ type Props = {
   onEquipmentChange: (equipment: IEquipment) => void;
   onEquipmentRemove: (id: string) => void;
   onEquipmentAdd: () => void;
+  equipmentErrorReset: boolean;
 };
 
 export function EquipmentList({
@@ -15,17 +16,21 @@ export function EquipmentList({
   onEquipmentChange,
   onEquipmentRemove,
   onEquipmentAdd,
+  equipmentErrorReset,
 }: Props): ReactElement {
-  const allEquipments = currentEquipments.map((i, index) => (
-    <EditableEquipment
-      key={i.id}
-      currentEquipment={i}
-      allEquipments={currentEquipments}
-      onEquipmentChange={onEquipmentChange}
-      onMinusButtonClick={onEquipmentRemove}
-      onPlusButtonClick={onEquipmentAdd}
-    />
-  ));
+  const allEquipments = currentEquipments.map((i, index) => {
+    return (
+      <EditableEquipment
+        key={i.id}
+        currentEquipment={i}
+        allEquipments={currentEquipments}
+        onEquipmentChange={onEquipmentChange}
+        onMinusButtonClick={onEquipmentRemove}
+        onPlusButtonClick={onEquipmentAdd}
+        equipmentErrorReset={equipmentErrorReset}
+      />
+    );
+  });
 
   return <>{allEquipments}</>;
 }

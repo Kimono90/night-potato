@@ -9,6 +9,7 @@ export const StyledRecipeOverviewPage = styled.div`
   align-items: center;
   text-align: center;
   width: 100%;
+  margin-bottom: 2rem;
 `;
 export const StyledRecipeResults = styled.div`
   display: flex;

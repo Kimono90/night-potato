@@ -1,5 +1,5 @@
 export interface IRecipe {
-  id: number;
+  id: string;
   metaInfo: IRecipeMetaInfo;
   ingredients: IIngredient[];
   equipment: IEquipment[];
@@ -22,7 +22,7 @@ export interface IEquipment {
 
 export interface IIngredient {
   id: string;
-  productName: string;
+  name: string;
   amount: number;
   measurement: string;
 }
