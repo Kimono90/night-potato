@@ -10,7 +10,7 @@ import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/ph
 import { MetaInfoCard } from '../../components/recipe-create-page/create-meta-info-card/meta-info-card';
 import { SaveButton } from '../../components/recipe-create-page/save-button/save-button';
 import { StyledPage } from '../../components/shared-styles/shared-styles';
-import { IIngredient, IRecipe } from '../../models-and-constants/IRecipe';
+import { IEquipment, IIngredient, IRecipe } from '../../models-and-constants/IRecipe';
 import { generate } from 'shortid';
 
 const mobile = window.innerWidth < 500;
@@ -27,7 +27,7 @@ const initialRecipe: IRecipe = {
   },
   instructions: '',
   ingredients: mobile ? [] : [{ id: generate(), amount: 0, measurement: '', name: '' }],
-  equipment: [],
+  equipment: [{ id: generate(), name: '' }],
 };
 
 export function RecipeCreatePage() {
@@ -37,6 +37,7 @@ export function RecipeCreatePage() {
 
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>(false);
   const [ingredientWithError, setIngredientWithError] = useState<string[]>([]);
+  const [equipmentWithError, setEquipmentWithError] = useState<string[]>([]);
   const [imgUrl, setImgUrl] = useState<string>();
 
   if (!isLoggingIn && !user) return <Redirect to="/" />;
@@ -48,10 +49,14 @@ export function RecipeCreatePage() {
     const incompleteIngredients = recipe.ingredients.filter((i) => !i.name || !i.amount);
     const incompleteIngredientIds = incompleteIngredients.flatMap((i) => i.id);
 
+    const incompleteEquipment = recipe.equipment.filter((e) => !e.name);
+    const incompleteEquipmentIds = incompleteEquipment.flatMap((e) => e.id);
+
     if (!hasRecipeName) setRecipeNameHasError(true);
     if (incompleteIngredients) setIngredientWithError(incompleteIngredientIds);
+    if (incompleteEquipment) setEquipmentWithError(incompleteEquipmentIds);
 
-    return hasRecipeName || !incompleteIngredients;
+    return hasRecipeName || !incompleteIngredients || !incompleteEquipment;
   }
 
   function handleCreateRecipe() {
@@ -72,6 +77,11 @@ export function RecipeCreatePage() {
     setRecipe({ ...recipe, ingredients: ingredients });
   }
 
+  function handleEquipmentChange(equipment: IEquipment[]) {
+    setEquipmentWithError([]);
+    setRecipe({ ...recipe, equipment: equipment });
+  }
+
   return (
     <StyledPage data-label="create-recipe-page">
       <RecipeNameInputField
@@ -88,7 +98,11 @@ export function RecipeCreatePage() {
           ingredientsWithError={ingredientWithError}
         />
       )}
-      <CreateEquipmentCard />
+      <CreateEquipmentCard
+        equipment={recipe.equipment}
+        onEquipmentChange={handleEquipmentChange}
+        equipmentWithError={equipmentWithError}
+      />
       <CreateInstructionsCard />
       <PhotoUpload onFileSelection={(imgString) => setImgUrl(imgString)} />
       <MetaInfoCard />
