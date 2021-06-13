@@ -45,21 +45,22 @@ export function RecipeCreatePage() {
     const hasRecipeName = recipe.metaInfo.name;
     const incompleteIngredients = recipe.ingredients.filter((i) => !i.name || !i.amount);
     const incompleteIngredientIds = incompleteIngredients.flatMap((i) => i.id);
-    const metaInfoHasError = !recipe.metaInfo.prepTimeInMinutes || !recipe.metaInfo.portions;
+    const metaInfoIsValid = recipe.metaInfo.prepTimeInMinutes && recipe.metaInfo.portions;
 
     if (!hasRecipeName) setRecipeNameHasError(true);
     if (incompleteIngredients) setIngredientWithError(incompleteIngredientIds);
     setInstructionsHaveError(!recipe.instructions);
     setMetaInfoHasError(metaInfoHasError);
 
-    return hasRecipeName && !incompleteIngredients && recipe.instructions && !metaInfoHasError;
+    return hasRecipeName && !incompleteIngredients.length && recipe.instructions && metaInfoIsValid;
   }
 
   function handleCreateRecipe() {
     setEquipmentErrorReset(true);
     if (isRecipeValid()) {
-      console.log(recipe);
+      console.log('VALID', recipe);
     } else {
+      console.log('INVALID', recipe);
       // toast message
     }
   }

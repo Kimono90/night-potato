@@ -10,22 +10,3 @@ export const LabelDictionary = new Map<string, ReactElement>([
   [labels.glutenFree, <RecipeLabel key="gluten" icon={faBreadSlice} text="Gluten free" backgroundColor="sandybrown" />],
   [labels.dairyFree, <RecipeLabel key="dairy" icon={faEgg} text="Dairy free" backgroundColor="deepskyblue" />],
 ]);
-
-export const ActiveLabelDictionary = new Map<string, ReactElement>([
-  [
-    labels.vegetarian,
-    <RecipeLabel key="vegetarian" icon={faLeaf} text="Vegetarian" backgroundColor="mediumspringgreen" clickAble={true} />,
-  ],
-  [
-    labels.vegan,
-    <RecipeLabel key="vegan" icon={faSeedling} text="Vegan" backgroundColor="mediumseagreen" clickAble={true} />,
-  ],
-  [
-    labels.glutenFree,
-    <RecipeLabel key="gluten" icon={faBreadSlice} text="Gluten free" backgroundColor="sandybrown" clickAble={true} />,
-  ],
-  [
-    labels.dairyFree,
-    <RecipeLabel key="dairy" icon={faEgg} text="Dairy free" backgroundColor="deepskyblue" clickAble={true} />,
-  ],
-]);

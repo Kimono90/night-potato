@@ -24,6 +24,7 @@ export function PhotoUpload({ onImageChange }: Props) {
   }
 
   async function handleFileSelection(event: any) {
+    setFileTooBig(false);
     if (event.target.files[0].size > 3000000) {
       setFileTooBig(true);
       event.target.value = null;

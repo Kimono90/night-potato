@@ -12,7 +12,7 @@ import type { IRecipeMetaInfo } from '../../../models-and-constants/IRecipe';
 import { OverviewCardIcon } from './overview-card-icon';
 
 type props = {
-  recipeId: number;
+  recipeId: string;
   recipeInfo: IRecipeMetaInfo;
 };
 

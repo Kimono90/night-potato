@@ -4,5 +4,3 @@ export const labels: Record<string, string> = {
   vegan: 'Vegan',
   glutenFree: 'Gluten Free',
 };
-
-export const allLabels = Object.keys(labels).map((key) => ({ key, value: labels[key] }));
