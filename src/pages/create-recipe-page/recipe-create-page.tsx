@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { RecipeNameInputField } from '../../components/recipe-create-page/recipe-name-input-field/recipe-name-input-field';
 import { FirebaseContext } from '../../contexts/firebase-auth-context';
 import { Redirect } from 'react-router-dom';
@@ -37,10 +37,8 @@ export function RecipeCreatePage() {
 
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>(false);
   const [ingredientWithError, setIngredientWithError] = useState<string[]>([]);
-  const [equipmentWithError, setEquipmentWithError] = useState<string[]>([]);
+  const [equipmentErrorReset, setEquipmentErrorReset] = useState<boolean>(false);
   const [imgUrl, setImgUrl] = useState<string>();
-
-  if (!isLoggingIn && !user) return <Redirect to="/" />;
 
   console.log('RECEPT', recipe);
 
@@ -49,17 +47,14 @@ export function RecipeCreatePage() {
     const incompleteIngredients = recipe.ingredients.filter((i) => !i.name || !i.amount);
     const incompleteIngredientIds = incompleteIngredients.flatMap((i) => i.id);
 
-    const incompleteEquipment = recipe.equipment.filter((e) => !e.name);
-    const incompleteEquipmentIds = incompleteEquipment.flatMap((e) => e.id);
-
     if (!hasRecipeName) setRecipeNameHasError(true);
     if (incompleteIngredients) setIngredientWithError(incompleteIngredientIds);
-    if (incompleteEquipment) setEquipmentWithError(incompleteEquipmentIds);
 
-    return hasRecipeName || !incompleteIngredients || !incompleteEquipment;
+    return hasRecipeName || !incompleteIngredients;
   }
 
   function handleCreateRecipe() {
+    setEquipmentErrorReset(true);
     if (isRecipeValid()) {
       // POST to firebase
     } else {
@@ -78,9 +73,10 @@ export function RecipeCreatePage() {
   }
 
   function handleEquipmentChange(equipment: IEquipment[]) {
-    setEquipmentWithError([]);
     setRecipe({ ...recipe, equipment: equipment });
   }
+
+  if (!isLoggingIn && !user) return <Redirect to="/" />;
 
   return (
     <StyledPage data-label="create-recipe-page">
@@ -101,7 +97,7 @@ export function RecipeCreatePage() {
       <CreateEquipmentCard
         equipment={recipe.equipment}
         onEquipmentChange={handleEquipmentChange}
-        equipmentWithError={equipmentWithError}
+        equipmentErrorReset={equipmentErrorReset}
       />
       <CreateInstructionsCard />
       <PhotoUpload onFileSelection={(imgString) => setImgUrl(imgString)} />

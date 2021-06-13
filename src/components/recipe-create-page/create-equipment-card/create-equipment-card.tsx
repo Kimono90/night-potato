@@ -7,10 +7,10 @@ import { EquipmentList } from './equipment-list';
 type Props = {
   equipment: IEquipment[];
   onEquipmentChange: (equipment: IEquipment[]) => void;
-  equipmentWithError: string[];
+  equipmentErrorReset: boolean;
 };
 
-export function CreateEquipmentCard({ equipment, onEquipmentChange, equipmentWithError }: Props): ReactElement {
+export function CreateEquipmentCard({ equipment, onEquipmentChange, equipmentErrorReset }: Props): ReactElement {
   const handleRemoveEquipment = (equipmentId: string) => {
     const newEquipment = equipment.filter((i: IEquipment) => i.id !== equipmentId);
     onEquipmentChange(newEquipment);
@@ -36,7 +36,7 @@ export function CreateEquipmentCard({ equipment, onEquipmentChange, equipmentWit
           onEquipmentRemove={handleRemoveEquipment}
           onEquipmentChange={handleChangeEquipment}
           onEquipmentAdd={handleAddEquipment}
-          equipmentWithError={equipmentWithError}
+          equipmentErrorReset={equipmentErrorReset}
         />
       }
     />
