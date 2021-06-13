@@ -14,7 +14,7 @@ type Props = {
 export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: Props): ReactElement {
   const [ingredient, setIngredient] = useState<IIngredient>({
     id: '',
-    productName: '',
+    name: '',
     amount: 0,
     measurement: '',
   });
@@ -24,7 +24,7 @@ export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: 
   const resetFields = () => {
     setIngredient({
       id: '',
-      productName: '',
+      name: '',
       amount: 0,
       measurement: '',
     });
@@ -33,17 +33,17 @@ export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: 
   };
 
   const handleCheckButtonClick = () => {
-    if (ingredient.productName && ingredient.amount) {
+    if (ingredient.name && ingredient.amount) {
       onIngredientAdd({
         id: generate(),
         amount: ingredient.amount,
-        productName: ingredient.productName,
+        name: ingredient.name,
         measurement: ingredient.measurement,
       });
       resetFields();
     } else {
       setAmountHasError(!ingredient.amount);
-      setIngredientHasError(!ingredient.productName);
+      setIngredientHasError(!ingredient.name);
     }
   };
 
@@ -59,10 +59,8 @@ export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: 
     >
       <StyledTextField
         placeholder="Ingredient name"
-        value={ingredient.productName}
-        onChange={(event: ChangeEvent<HTMLInputElement>) =>
-          setIngredient({ ...ingredient, productName: event.target.value })
-        }
+        value={ingredient.name}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => setIngredient({ ...ingredient, name: event.target.value })}
         hasError={`${ingredientHasError}`}
       />
       <StyledNumericField
@@ -77,9 +75,7 @@ export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: 
       <div style={{ display: 'flex', alignItems: 'baseline' }}>
         <StyledSelectField
           value={ingredient.measurement}
-          onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-            setIngredient({ ...ingredient, measurement: e.target.value })
-          }
+          onChange={(e: ChangeEvent<HTMLSelectElement>) => setIngredient({ ...ingredient, measurement: e.target.value })}
         >
           {MEASUREMENT_OPTIONS.map((o) => (
             <option key={o}>{o}</option>

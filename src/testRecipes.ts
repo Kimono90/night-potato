@@ -13,11 +13,11 @@ export const testRecipe1: IRecipe = {
     imgUrls: [testImg1, testImg2, testImg3],
   },
   ingredients: [
-    { id: '1', productName: 'Chickpeas', amount: 500, measurement: 'gram' },
-    { id: '2', productName: 'Coconut milk', amount: 250, measurement: 'ml' },
+    { id: '1', name: 'Chickpeas', amount: 500, measurement: 'gram' },
+    { id: '2', name: 'Coconut milk', amount: 250, measurement: 'ml' },
     {
       id: '3',
-      productName: 'Low-sodium chicken broth and a lot of other stuff',
+      name: 'Low-sodium chicken broth and a lot of other stuff',
       amount: 200,
       measurement: 'ml',
     },
@@ -44,10 +44,10 @@ export const testRecipe2: IRecipe = {
     imgUrls: ['https://images.unsplash.com/photo-1515037893149-de7f840978e2'],
   },
   ingredients: [
-    { id: '1', productName: 'Chocolate', amount: 300, measurement: 'gram' },
-    { id: '2', productName: 'Eggs', amount: 2, measurement: 'pcs' },
-    { id: '3', productName: 'Sugar', amount: 250, measurement: 'gram' },
-    { id: '4', productName: 'Butter', amount: 200, measurement: 'gram' },
+    { id: '1', name: 'Chocolate', amount: 300, measurement: 'gram' },
+    { id: '2', name: 'Eggs', amount: 2, measurement: 'pcs' },
+    { id: '3', name: 'Sugar', amount: 250, measurement: 'gram' },
+    { id: '4', name: 'Butter', amount: 200, measurement: 'gram' },
   ],
   equipment: [
     { id: '1', name: 'Mixer' },
@@ -72,10 +72,10 @@ export const brazilianPudding: IRecipe = {
   },
 
   ingredients: [
-    { id: '1', productName: 'Can of condensed milk (400g)', amount: 1, measurement: '' },
-    { id: '2', productName: 'Eggs', amount: 2, measurement: '' },
-    { id: '3', productName: 'Sugar', amount: 100, measurement: 'gram' },
-    { id: '4', productName: 'Milk', amount: 400, measurement: 'ml' },
+    { id: '1', name: 'Can of condensed milk (400g)', amount: 1, measurement: '' },
+    { id: '2', name: 'Eggs', amount: 2, measurement: '' },
+    { id: '3', name: 'Sugar', amount: 100, measurement: 'gram' },
+    { id: '4', name: 'Milk', amount: 400, measurement: 'ml' },
   ],
   equipment: [
     { id: '1', name: 'Mixer / Whisker' },

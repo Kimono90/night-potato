@@ -17,7 +17,7 @@ export function EditableIngredientMobile({ ingredient, onRemoveClick, onIngredie
         <span id="amount">
           {ingredient.amount} {ingredient.measurement}
         </span>
-        <span id="product"> {ingredient.productName}</span>
+        <span id="product"> {ingredient.name}</span>
       </p>
       <StyledRemoveButton onClick={() => onRemoveClick(ingredient.id)}>Remove</StyledRemoveButton>
     </StyledMobileIngredient>

@@ -5,9 +5,7 @@ import { IngredientList } from './ingredient-list';
 import { generate } from 'shortid';
 
 export function CreateIngredientsCard(): ReactElement {
-  const [ingredients, setIngredients] = useState<IIngredient[]>([
-    { id: generate(), amount: 0, measurement: '', productName: '' },
-  ]);
+  const [ingredients, setIngredients] = useState<IIngredient[]>([{ id: generate(), amount: 0, measurement: '', name: '' }]);
 
   const handleRemoveIngredient = (ingredientId: string) => {
     const newIngredients = ingredients.filter((i: IIngredient) => i.id !== ingredientId);
@@ -22,7 +20,7 @@ export function CreateIngredientsCard(): ReactElement {
   };
 
   const handleAddIngredient = () => {
-    setIngredients([...ingredients, { id: generate(), amount: 0, measurement: '', productName: '' }]);
+    setIngredients([...ingredients, { id: generate(), amount: 0, measurement: '', name: '' }]);
   };
 
   return (

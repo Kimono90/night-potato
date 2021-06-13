@@ -32,11 +32,11 @@ export function EditableIngredient({
   );
 
   useEffect(() => {
-    if (ingredient.productName && ingredient.amount) {
+    if (ingredient.name && ingredient.amount) {
       onIngredientChange(ingredient);
     } else {
       setAmountHasError(!ingredient.amount);
-      setIngredientHasError(!ingredient.productName);
+      setIngredientHasError(!ingredient.name);
     }
   }, [ingredient]);
 
@@ -44,12 +44,12 @@ export function EditableIngredient({
     setAmountTouched(true);
     setIngredientNameTouched(true);
 
-    if (ingredient.productName && ingredient.amount !== 0) {
+    if (ingredient.name && ingredient.amount !== 0) {
       plusButtonState.set(false);
       onPlusButtonClick();
     } else {
       setAmountHasError(ingredient.amount === 0);
-      setIngredientHasError(!ingredient.productName);
+      setIngredientHasError(!ingredient.name);
     }
   };
 
@@ -65,10 +65,10 @@ export function EditableIngredient({
     <StyledCreateIngredientItem>
       <StyledTextField
         placeholder="Ingredient name"
-        value={ingredient.productName}
+        value={ingredient.name}
         onChange={(event) => {
           setIngredientHasError(false);
-          setIngredient({ ...ingredient, productName: event.target.value });
+          setIngredient({ ...ingredient, name: event.target.value });
         }}
         onBlur={() => setIngredientNameTouched(true)}
         hasError={`${ingredientNameHasError && ingredientNameTouched}`}

@@ -10,24 +10,16 @@ import {
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 type Props = {
-  onRecipeNameHasError: (hasError: boolean) => void;
+  recipeName: string;
+  recipeNameHasError: boolean;
+  onRecipeNameChange: (name: string) => void;
 };
 
-export function RecipeNameInputField({ onRecipeNameHasError }: Props): ReactElement {
+export function RecipeNameInputField({ recipeName, recipeNameHasError, onRecipeNameChange }: Props): ReactElement {
   const [showRecipeName, setShowRecipeName] = useState<boolean>(false);
-  const [showRecipeInputError, setShowRecipeInputError] = useState<boolean>(false);
   const [letterCount, setLetterCount] = useState<number>(0);
-  const [recipeName, setRecipeName] = useState<string | undefined>('');
 
   const recipeNameLetterCount = `${letterCount}/50`;
-
-  const handleRecipeNameInput = () => {
-    if (recipeName) setShowRecipeName(true);
-    else {
-      onRecipeNameHasError(true);
-      setShowRecipeInputError(true);
-    }
-  };
 
   const recipeNameElement = showRecipeName ? (
     <StyledRecipeNameFieldWrapper>
@@ -42,19 +34,13 @@ export function RecipeNameInputField({ onRecipeNameHasError }: Props): ReactElem
         placeholder="Name your recipe"
         value={recipeName}
         onChange={(input: ChangeEvent<HTMLInputElement>) => {
-          setShowRecipeInputError(false);
           setLetterCount(input.target.value.length);
-          setRecipeName(input.target.value);
+          onRecipeNameChange(input.target.value);
         }}
-        onKeyDown={(e: any) => {
-          if (e.key === 'Enter') {
-            handleRecipeNameInput();
-          }
-        }}
-        hasError={`${showRecipeInputError}`}
+        hasError={`${recipeNameHasError}`}
       />
       <StyledLetterCounter>{recipeNameLetterCount}</StyledLetterCounter>
-      {showRecipeInputError ? (
+      {recipeNameHasError ? (
         <StyledInputErrorMessage>
           You don't forget to name your children, right? Your recipe deserves a good name too.
         </StyledInputErrorMessage>
