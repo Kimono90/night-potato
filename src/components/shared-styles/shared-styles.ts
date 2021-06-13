@@ -84,6 +84,7 @@ export const StyledAddButton = styled.button`
 
 type FieldProps = {
   hasError?: string;
+  width?: string;
 };
 
 export const StyledTextField = styled.input<FieldProps>`
@@ -107,8 +108,7 @@ export const StyledNumericField = styled.input<FieldProps>`
   border-radius: 0.5rem;
   padding: 0.25rem 0.5rem;
   outline: none;
-  width: 4.5rem;
-  text-align: center;
+  width: ${(props) => props.width};
   overflow: hidden;
   -moz-appearance: textfield;
   margin: 0.5rem;

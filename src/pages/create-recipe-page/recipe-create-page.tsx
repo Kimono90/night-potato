@@ -10,7 +10,7 @@ import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/ph
 import { MetaInfoCard } from '../../components/recipe-create-page/create-meta-info-card/meta-info-card';
 import { SaveButton } from '../../components/recipe-create-page/save-button/save-button';
 import { StyledPage } from '../../components/shared-styles/shared-styles';
-import { IEquipment, IIngredient, IRecipe } from '../../models-and-constants/IRecipe';
+import { IEquipment, IIngredient, IRecipe, IRecipeMetaInfo } from '../../models-and-constants/IRecipe';
 import { generate } from 'shortid';
 
 const mobile = window.innerWidth < 500;
@@ -38,6 +38,7 @@ export function RecipeCreatePage() {
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>(false);
   const [ingredientWithError, setIngredientWithError] = useState<string[]>([]);
   const [instructionsHaveError, setInstructionsHaveError] = useState<boolean>(false);
+  const [metaInfoHasError, setMetaInfoHasError] = useState<boolean>(false);
   const [equipmentErrorReset, setEquipmentErrorReset] = useState<boolean>(false);
   const [imgUrl, setImgUrl] = useState<string>();
 
@@ -47,12 +48,14 @@ export function RecipeCreatePage() {
     const hasRecipeName = recipe.metaInfo.name;
     const incompleteIngredients = recipe.ingredients.filter((i) => !i.name || !i.amount);
     const incompleteIngredientIds = incompleteIngredients.flatMap((i) => i.id);
+    const metaInfoHasError = !recipe.metaInfo.prepTimeInMinutes || !recipe.metaInfo.portions;
 
     if (!hasRecipeName) setRecipeNameHasError(true);
     if (incompleteIngredients) setIngredientWithError(incompleteIngredientIds);
     setInstructionsHaveError(!recipe.instructions);
+    setMetaInfoHasError(metaInfoHasError);
 
-    return hasRecipeName || !incompleteIngredients || recipe.instructions;
+    return hasRecipeName && !incompleteIngredients && recipe.instructions && !metaInfoHasError;
   }
 
   function handleCreateRecipe() {
@@ -76,6 +79,11 @@ export function RecipeCreatePage() {
 
   function handleEquipmentChange(equipment: IEquipment[]) {
     setRecipe({ ...recipe, equipment: equipment });
+  }
+
+  function handleMetaInfoChange(metaInfo: IRecipeMetaInfo) {
+    setMetaInfoHasError(!recipe.metaInfo.prepTimeInMinutes || !recipe.metaInfo.portions);
+    setRecipe({ ...recipe, metaInfo: metaInfo });
   }
 
   if (!isLoggingIn && !user) return <Redirect to="/" />;
@@ -106,8 +114,8 @@ export function RecipeCreatePage() {
         onInstructionsChange={(instructions) => setRecipe({ ...recipe, instructions: instructions })}
         instructionsHaveError={instructionsHaveError}
       />
-      <PhotoUpload onFileSelection={(imgString) => setImgUrl(imgString)} />
-      <MetaInfoCard />
+      <PhotoUpload onImageChange={(imgString) => setImgUrl(imgString)} />
+      <MetaInfoCard metaInfo={recipe.metaInfo} onMetaInfoChange={handleMetaInfoChange} metaInfoHasError={metaInfoHasError} />
       <SaveButton onSaveButtonClick={() => handleCreateRecipe()} />
     </StyledPage>
   );

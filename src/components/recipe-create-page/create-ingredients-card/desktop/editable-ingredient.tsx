@@ -78,6 +78,7 @@ export function EditableIngredient({
           setIngredient({ ...ingredient, amount: Number(event.target.value) });
         }}
         hasError={`${amountHasError && hasError}`}
+        width="4.5rem"
       />
       <StyledSelectField
         placeholder=""

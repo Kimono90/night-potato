@@ -9,8 +9,15 @@ import {
   StyledLabelBlock,
   StyledLabelList,
 } from './meta-info-card.styles';
+import { IRecipeMetaInfo } from '../../../models-and-constants/IRecipe';
 
-export function MetaInfoCard() {
+type Props = {
+  metaInfo: IRecipeMetaInfo;
+  onMetaInfoChange: (metaInfo: IRecipeMetaInfo) => void;
+  metaInfoHasError: boolean;
+};
+
+export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: Props) {
   return (
     <StyledSummaryCard>
       <StyledTitle data-label="title">Recipe details</StyledTitle>
@@ -18,15 +25,42 @@ export function MetaInfoCard() {
         <StyledDetailsBlock>
           <StyledDetailsItem>
             <StyledDetailsItemLabel>Portions* </StyledDetailsItemLabel>
-            <StyledNumericField />
+            <StyledNumericField
+              type="number"
+              onChange={(e) =>
+                onMetaInfoChange({
+                  ...metaInfo,
+                  portions: Number(e.target.value),
+                })
+              }
+              hasError={`${!metaInfo.portions && metaInfoHasError}`}
+            />
           </StyledDetailsItem>
           <StyledDetailsItem>
             <StyledDetailsItemLabel>Cooking time* </StyledDetailsItemLabel>
-            <StyledNumericField placeholder="minutes" />
+            <StyledNumericField
+              type="number"
+              placeholder="minutes"
+              onChange={(e) =>
+                onMetaInfoChange({
+                  ...metaInfo,
+                  prepTimeInMinutes: Number(e.target.value),
+                })
+              }
+              hasError={`${!metaInfo.prepTimeInMinutes && metaInfoHasError}`}
+            />
           </StyledDetailsItem>
           <StyledDetailsItem>
-            <StyledDetailsItemLabel>Kcal* </StyledDetailsItemLabel>
-            <StyledNumericField />
+            <StyledDetailsItemLabel>Kcal </StyledDetailsItemLabel>
+            <StyledNumericField
+              type="number"
+              onChange={(e) =>
+                onMetaInfoChange({
+                  ...metaInfo,
+                  kcalPerPortion: Number(e.target.value),
+                })
+              }
+            />
           </StyledDetailsItem>
         </StyledDetailsBlock>
         <StyledLabelBlock>
