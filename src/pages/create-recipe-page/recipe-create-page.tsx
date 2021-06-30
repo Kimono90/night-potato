@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { CreateIngredientsCardMobile } from '../../components/recipe-create-page/create-ingredients-card/mobile/create-ingredients-card-mobile';
 import { CreateIngredientsCard } from '../../components/recipe-create-page/create-ingredients-card/desktop/create-ingredients-card';
 import { CreateEquipmentCard } from '../../components/recipe-create-page/create-equipment-card/create-equipment-card';
-import { CreateInstructionsCard } from '../../components/recipe-create-page/create-instructions-card/desktop/create-instructions-card';
+import { CreateInstructionsCard } from '../../components/recipe-create-page/create-instructions-card/create-instructions-card';
 import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/photo-upload';
 import { MetaInfoCard } from '../../components/recipe-create-page/create-meta-info-card/meta-info-card';
 import { SaveButton } from '../../components/recipe-create-page/save-button/save-button';

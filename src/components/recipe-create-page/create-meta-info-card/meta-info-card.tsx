@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { StyledBody, StyledNumericField, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
-import { labels } from '../../recipe-label/label-constants';
+import { recipeLabels } from '../../recipe-label/label-constants';
 import {
   StyledDetailsBlock,
   StyledDetailsItem,
@@ -81,7 +81,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               text="Vegetarian"
               backgroundColor="mediumspringgreen"
               clickAble={true}
-              onChange={(isActive) => handleLabelChange(isActive, labels.vegetarian)}
+              onChange={(isActive) => handleLabelChange(isActive, recipeLabels.vegetarian)}
             />
             <RecipeLabel
               key="vegan"
@@ -89,7 +89,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               text="Vegan"
               backgroundColor="mediumseagreen"
               clickAble={true}
-              onChange={(isActive) => handleLabelChange(isActive, labels.vegan)}
+              onChange={(isActive) => handleLabelChange(isActive, recipeLabels.vegan)}
             />
             <RecipeLabel
               key="gluten"
@@ -97,7 +97,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               text="Gluten free"
               backgroundColor="sandybrown"
               clickAble={true}
-              onChange={(isActive) => handleLabelChange(isActive, labels.glutenFree)}
+              onChange={(isActive) => handleLabelChange(isActive, recipeLabels.glutenFree)}
             />
             <RecipeLabel
               key="dairy"
@@ -105,7 +105,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               text="Dairy free"
               backgroundColor="deepskyblue"
               clickAble={true}
-              onChange={(isActive) => handleLabelChange(isActive, labels.dairyFree)}
+              onChange={(isActive) => handleLabelChange(isActive, recipeLabels.dairyFree)}
             />
           </StyledLabelList>
         </StyledLabelBlock>

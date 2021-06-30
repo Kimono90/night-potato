@@ -1,4 +1,4 @@
-export const labels: Record<string, string> = {
+export const recipeLabels: Record<string, string> = {
   dairyFree: 'Dairy Free',
   vegetarian: 'Vegetarian',
   vegan: 'Vegan',

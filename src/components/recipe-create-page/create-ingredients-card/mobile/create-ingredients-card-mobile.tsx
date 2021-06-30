@@ -15,7 +15,6 @@ export function CreateIngredientsCardMobile({ ingredients, onIngredientsChange }
   const mobile = window.innerWidth < 500;
 
   const handleAddIngredient = (newIngredient: IIngredient) => {
-    console.log('adding ingredient');
     onIngredientsChange([...ingredients, newIngredient]);
   };
 
