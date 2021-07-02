@@ -80,7 +80,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               key="vegetarian"
               icon={faLeaf}
               text="Vegetarian"
-              backgroundColor={colors.vegetarian}
+              backgroundColor={colors.vegetarianLabel}
               clickAble={true}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.vegetarian)}
             />
@@ -88,7 +88,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               key="vegan"
               icon={faSeedling}
               text="Vegan"
-              backgroundColor={colors.vegan}
+              backgroundColor={colors.veganLabel}
               clickAble={true}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.vegan)}
             />
@@ -96,7 +96,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               key="gluten"
               icon={faBreadSlice}
               text="Gluten free"
-              backgroundColor={colors.gluten}
+              backgroundColor={colors.glutenLabel}
               clickAble={true}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.glutenFree)}
             />
@@ -104,7 +104,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               key="dairy"
               icon={faEgg}
               text="Dairy free"
-              backgroundColor={colors.dairy}
+              backgroundColor={colors.dairyLabel}
               clickAble={true}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.dairyFree)}
             />

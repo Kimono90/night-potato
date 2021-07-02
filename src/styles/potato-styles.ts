@@ -10,8 +10,8 @@ export const colors = {
   white: '#ffffff',
   grey: '#30343f',
   subtleGrey: '#909090',
-  dairy: '#00bfff',
-  vegan: '#3cb371',
-  vegetarian: '#00fa9a',
-  gluten: '#f4a460',
+  dairyLabel: '#00bfff',
+  veganLabel: '#3cb371',
+  vegetarianLabel: '#00fa9a',
+  glutenLabel: '#f4a460',
 };
