@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
+import { colors } from '../../styles/potato-styles';
 
 export const StyledRecipeOverviewPage = styled.div`
   padding: 0 1rem 1rem 1rem;
-  background-color: #30343f;
-  color: #ffffff;
+  background-color: ${colors.grey};
+  color: ${colors.white};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +29,7 @@ export const StyledSearchBox = styled.input`
   border: solid black 1px;
   font-family: 'Patrick Hand', cursive;
   font-size: 1.5rem;
-  color: gray;
+  color: ${colors.grey};
   outline: none;
 
   @media (min-width: 500px) {

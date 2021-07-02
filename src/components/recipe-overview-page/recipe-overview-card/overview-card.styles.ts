@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles/potato-styles';
 
 export const StyledOverviewCard = styled.div`
   border-radius: 0.5rem;
   margin-bottom: 2rem;
-  background-color: #7d6c6a;
+  background-color: ${colors.primary};
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -32,7 +33,7 @@ export const StyledOverviewTitle = styled.div`
 
 export const StyledOverviewInfo = styled.div`
   border-radius: 0.5rem;
-  background-color: #c9a495;
+  background-color: ${colors.secondary};
   display: flex;
   text-align: start;
   justify-content: space-between;

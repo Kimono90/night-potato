@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles/potato-styles';
 
 export const StyledSaveButton = styled.button`
   text-decoration: none;
-  background-color: #4d9366;
+  background-color: ${colors.success};
   border: none;
   border-radius: 0.5rem;
-  color: white;
+  color: ${colors.white};
   padding: 0.25rem 1rem;
   font-size: 2rem;
   font-family: inherit;
@@ -13,6 +14,6 @@ export const StyledSaveButton = styled.button`
   margin-bottom: 2rem;
 
   :hover {
-    background-color: #46865d;
+    background-color: ${colors.successHover};
   }
 `;

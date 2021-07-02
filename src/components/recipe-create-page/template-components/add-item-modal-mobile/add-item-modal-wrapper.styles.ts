@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../../styles/potato-styles';
 
 type IngredientModalProps = {
   show: string;
@@ -6,7 +7,7 @@ type IngredientModalProps = {
 
 export const StyledAddItemModal = styled.div<IngredientModalProps>`
   display: ${(props) => (props.show === 'true' ? 'flex' : 'none')};
-  background-color: #c9a495;
+  background-color: ${colors.secondary};
   height: 100%;
   width: 100%;
   position: fixed;

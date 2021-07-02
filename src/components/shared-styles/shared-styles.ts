@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
+import { colors } from '../../styles/potato-styles';
 
 export const StyledPage = styled.div`
-  background-color: #30343f;
-  color: #ffffff;
+  background-color: ${colors.grey};
+  color: ${colors.white};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +16,7 @@ export const StyledPage = styled.div`
 export const StyledSummaryCard = styled.div`
   border-radius: 0.5rem;
   margin: 0 1rem 2rem 1rem;
-  background-color: #7d6c6a;
+  background-color: ${colors.primary};
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -44,7 +45,7 @@ export const StyledTitle = styled.div`
 
 export const StyledBody = styled.div`
   border-radius: 0.5rem;
-  background-color: #c9a495;
+  background-color: ${colors.secondary};
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
@@ -58,9 +59,9 @@ export const StyledBody = styled.div`
 export const StyledRemoveButton = styled.button`
   font: inherit;
   font-size: 1rem;
-  color: white;
+  color: ${colors.white};
   border: none;
-  background-color: orangered;
+  background-color: ${colors.danger};
   border-radius: 0.5rem;
   padding: 0.25rem 0.5rem;
   text-align: center;
@@ -70,9 +71,9 @@ export const StyledRemoveButton = styled.button`
 export const StyledAddButton = styled.button`
   font: inherit;
   font-size: 1rem;
-  color: white;
+  color: ${colors.white};
   border: none;
-  background-color: #7d6c6a;
+  background-color: ${colors.primary};
   border-radius: 0.5rem;
   text-align: center;
   align-self: center;
@@ -95,7 +96,7 @@ export const StyledTextField = styled.input<FieldProps>`
   outline: none;
   width: 10rem;
   margin: 0.5rem;
-  border-color: ${(props) => (props.hasError === 'true' ? 'red' : 'none')};
+  border-color: ${(props) => (props.hasError === 'true' ? `${colors.danger}` : 'none')};
 
   @media (min-width: 500px) {
     width: 18rem;
@@ -112,7 +113,7 @@ export const StyledNumericField = styled.input<FieldProps>`
   overflow: hidden;
   -moz-appearance: textfield;
   margin: 0.5rem;
-  border-color: ${(props) => (props.hasError === 'true' ? 'red' : 'none')};
+  border-color: ${(props) => (props.hasError === 'true' ? `${colors.danger}` : 'none')};
 
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {
@@ -127,7 +128,7 @@ export const StyledSelectField = styled.select`
   outline: none;
   font-family: inherit;
   font-size: 1.5rem;
-  color: grey;
+  color: ${colors.grey};
   min-width: 7rem;
   margin: 0.5rem 0 0 0.5rem;
   -webkit-appearance: none;
