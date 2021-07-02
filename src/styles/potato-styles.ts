@@ -9,4 +9,9 @@ export const colors = {
   black: '#000000',
   white: '#ffffff',
   grey: '#30343f',
+  subtleGrey: '#909090',
+  dairy: '#00bfff',
+  vegan: '#3cb371',
+  vegetarian: '#00fa9a',
+  gluten: '#f4a460',
 };

@@ -11,6 +11,7 @@ import {
 import { IRecipeMetaInfo } from '../../../models-and-constants/IRecipe';
 import { RecipeLabel } from '../../recipe-label/recipe-label';
 import { faBreadSlice, faEgg, faLeaf, faSeedling } from '@fortawesome/free-solid-svg-icons';
+import { colors } from '../../../styles/potato-styles';
 
 type Props = {
   metaInfo: IRecipeMetaInfo;
@@ -79,7 +80,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               key="vegetarian"
               icon={faLeaf}
               text="Vegetarian"
-              backgroundColor="mediumspringgreen"
+              backgroundColor={colors.vegetarian}
               clickAble={true}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.vegetarian)}
             />
@@ -87,7 +88,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               key="vegan"
               icon={faSeedling}
               text="Vegan"
-              backgroundColor="mediumseagreen"
+              backgroundColor={colors.vegan}
               clickAble={true}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.vegan)}
             />
@@ -95,7 +96,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               key="gluten"
               icon={faBreadSlice}
               text="Gluten free"
-              backgroundColor="sandybrown"
+              backgroundColor={colors.gluten}
               clickAble={true}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.glutenFree)}
             />
@@ -103,7 +104,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               key="dairy"
               icon={faEgg}
               text="Dairy free"
-              backgroundColor="deepskyblue"
+              backgroundColor={colors.dairy}
               clickAble={true}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.dairyFree)}
             />

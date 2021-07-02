@@ -3,16 +3,17 @@ import { faBacon, faBreadSlice, faEgg, faFish, faLeaf, faSeedling } from '@forta
 import { RecipeLabel } from './recipe-label';
 import type { ReactElement } from 'react';
 import { recipeLabels } from './label-constants';
+import { colors } from '../../styles/potato-styles';
 
 export const LabelDictionary = new Map<string, ReactElement>([
   [
     recipeLabels.vegetarian,
-    <RecipeLabel key="vegetarian" icon={faLeaf} text="Vegetarian" backgroundColor="mediumspringgreen" />,
+    <RecipeLabel key="vegetarian" icon={faLeaf} text="Vegetarian" backgroundColor={colors.vegetarian} />,
   ],
-  [recipeLabels.vegan, <RecipeLabel key="vegan" icon={faSeedling} text="Vegan" backgroundColor="mediumseagreen" />],
+  [recipeLabels.vegan, <RecipeLabel key="vegan" icon={faSeedling} text="Vegan" backgroundColor={colors.vegan} />],
   [
     recipeLabels.glutenFree,
-    <RecipeLabel key="gluten" icon={faBreadSlice} text="Gluten free" backgroundColor="sandybrown" />,
+    <RecipeLabel key="gluten" icon={faBreadSlice} text="Gluten free" backgroundColor={colors.gluten} />,
   ],
-  [recipeLabels.dairyFree, <RecipeLabel key="dairy" icon={faEgg} text="Dairy free" backgroundColor="deepskyblue" />],
+  [recipeLabels.dairyFree, <RecipeLabel key="dairy" icon={faEgg} text="Dairy free" backgroundColor={colors.dairy} />],
 ]);
