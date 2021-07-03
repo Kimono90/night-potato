@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { StyledBody, StyledNumericField, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
-import { labels } from '../../recipe-label/label-constants';
+import { recipeLabels } from '../../recipe-label/label-constants';
 import {
   StyledDetailsBlock,
   StyledDetailsItem,
@@ -11,6 +11,7 @@ import {
 import { IRecipeMetaInfo } from '../../../models-and-constants/IRecipe';
 import { RecipeLabel } from '../../recipe-label/recipe-label';
 import { faBreadSlice, faEgg, faLeaf, faSeedling } from '@fortawesome/free-solid-svg-icons';
+import { colors } from '../../../styles/potato-styles';
 
 type Props = {
   metaInfo: IRecipeMetaInfo;
@@ -36,6 +37,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
             <StyledDetailsItemLabel>Portions* </StyledDetailsItemLabel>
             <StyledNumericField
               type="number"
+              value={metaInfo?.portions}
               onChange={(e) =>
                 onMetaInfoChange({
                   ...metaInfo,
@@ -50,6 +52,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
             <StyledNumericField
               type="number"
               placeholder="minutes"
+              value={metaInfo?.prepTimeInMinutes}
               onChange={(e) =>
                 onMetaInfoChange({
                   ...metaInfo,
@@ -63,6 +66,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
             <StyledDetailsItemLabel>Kcal </StyledDetailsItemLabel>
             <StyledNumericField
               type="number"
+              value={metaInfo?.kcalPerPortion}
               onChange={(e) =>
                 onMetaInfoChange({
                   ...metaInfo,
@@ -79,33 +83,37 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               key="vegetarian"
               icon={faLeaf}
               text="Vegetarian"
-              backgroundColor="mediumspringgreen"
-              clickAble={true}
-              onChange={(isActive) => handleLabelChange(isActive, labels.vegetarian)}
+              clickAble
+              backgroundColor={colors.vegetarianLabel}
+              labelActive={metaInfo?.labels.includes(recipeLabels.vegetarian)}
+              onChange={(isActive) => handleLabelChange(isActive, recipeLabels.vegetarian)}
             />
             <RecipeLabel
               key="vegan"
               icon={faSeedling}
               text="Vegan"
-              backgroundColor="mediumseagreen"
-              clickAble={true}
-              onChange={(isActive) => handleLabelChange(isActive, labels.vegan)}
+              clickAble
+              backgroundColor={colors.veganLabel}
+              labelActive={metaInfo?.labels.includes(recipeLabels.vegan)}
+              onChange={(isActive) => handleLabelChange(isActive, recipeLabels.vegan)}
             />
             <RecipeLabel
               key="gluten"
               icon={faBreadSlice}
               text="Gluten free"
-              backgroundColor="sandybrown"
-              clickAble={true}
-              onChange={(isActive) => handleLabelChange(isActive, labels.glutenFree)}
+              clickAble
+              backgroundColor={colors.glutenLabel}
+              labelActive={metaInfo?.labels.includes(recipeLabels.glutenFree)}
+              onChange={(isActive) => handleLabelChange(isActive, recipeLabels.glutenFree)}
             />
             <RecipeLabel
               key="dairy"
               icon={faEgg}
               text="Dairy free"
-              backgroundColor="deepskyblue"
-              clickAble={true}
-              onChange={(isActive) => handleLabelChange(isActive, labels.dairyFree)}
+              clickAble
+              backgroundColor={colors.dairyLabel}
+              labelActive={metaInfo?.labels.includes(recipeLabels.dairyFree)}
+              onChange={(isActive) => handleLabelChange(isActive, recipeLabels.dairyFree)}
             />
           </StyledLabelList>
         </StyledLabelBlock>

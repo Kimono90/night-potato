@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
-import { StyledBody, StyledSummaryCard, StyledTitle } from '../../../shared-styles/shared-styles';
-import { StyledInstructionField } from '../create-instructions-card.styles';
+import { StyledBody, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
+import { StyledInstructionField } from './create-instructions-card.styles';
 
 type Props = {
   instructions: string;

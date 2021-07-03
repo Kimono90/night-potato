@@ -1,17 +1,18 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles/potato-styles';
 
 export const StyledUploadField = styled.label`
   font-family: inherit;
   font-size: 1.5rem;
   cursor: pointer;
-  background-color: #7d6c6a;
+  background-color: ${colors.primary};
   padding: 0.5rem 1rem;
   margin: 1rem;
   border-radius: 0.5rem;
   align-self: center;
 
   :hover {
-    background-color: #4d4242;
+    background-color: ${colors.primaryActive};
   }
 `;
 

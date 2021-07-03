@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { colors } from '../../../styles/potato-styles';
 
 type RecipeInputProps = {
   hasError: string;
@@ -14,7 +15,7 @@ export const StyledRecipeNameInput = styled.input<RecipeInputProps>`
   font-family: inherit;
   font-size: 1.5rem;
   outline: none;
-  background-color: white;
+  background-color: ${colors.white};
 
   @media (min-width: 500px) {
     padding: 0.5rem 2.5rem 0.5rem 1rem;
@@ -28,9 +29,9 @@ export const StyledRecipeName = styled.div`
   border: solid black 1px;
   font-family: 'Patrick Hand', cursive;
   font-size: 1.5rem;
-  color: white;
+  color: ${colors.white};
   outline: none;
-  background-color: #7d6c6a;
+  background-color: ${colors.primary};
   cursor: pointer;
   width: 100%;
   min-height: 2rem;

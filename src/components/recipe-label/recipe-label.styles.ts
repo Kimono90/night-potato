@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from '../../styles/potato-styles';
 
 type LabelProps = {
   backgroundColor: string;
@@ -7,7 +8,7 @@ type LabelProps = {
 };
 
 export const StyledRecipeLabel = styled.div<LabelProps>`
-  background-color: ${(props) => (props.isActive === 'false' ? 'grey' : (props) => props.backgroundColor)};
+  background-color: ${(props) => (props.isActive === 'false' ? `${colors.subtleGrey}` : (props) => props.backgroundColor)};
   border-radius: 0.75rem;
   padding: 0.25rem 0.5rem;
   font-size: 1rem;

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinusCircle, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { colors } from '../../../styles/potato-styles';
 
 export const StyledInfoBlock = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ export const StyledInfoBlock = styled.div`
 
 export const StyledMetaInfoContentArea = styled.div`
   border-radius: 0.5rem;
-  background-color: #c9a495;
+  background-color: ${colors.secondary};
   display: flex;
   text-align: start;
   align-items: center;

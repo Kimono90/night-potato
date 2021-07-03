@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { colors } from '../../../styles/potato-styles';
 
 export const StyledIngredient = styled.div`
   display: flex;
@@ -51,7 +52,7 @@ type TabProps = {
 
 export const StyledTabList = styled.div<TabProps>`
   border-radius: 0.5rem;
-  background-color: #c9a495;
+  background-color: ${colors.secondary};
   align-items: flex-start;
   flex-wrap: wrap;
   flex-direction: column;
@@ -69,7 +70,7 @@ export const StyledTabTitle = styled.div<TabProps>`
   align-self: center;
   padding: 0.5rem 0.5rem 0.5rem 1rem;
   border-radius: 0.5rem 0.5rem 0 0;
-  background-color: ${(props) => (props.visible ? '#635554' : '#7D6C6A')};
+  background-color: ${(props) => (props.visible ? `${colors.primaryActive}` : `${colors.primary}`)};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,7 +96,7 @@ export const StyledCopyButton = styled(FontAwesomeIcon)<CopyProps>`
   display: ${(props) => (props.copied === 'true' ? 'none' : 'block')};
 
   :hover {
-    color: deepskyblue;
+    color: ${colors.info};
   }
 `;
 

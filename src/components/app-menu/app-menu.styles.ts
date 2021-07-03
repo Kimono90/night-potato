@@ -2,11 +2,12 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PotatoSvg from './potato.svg';
+import { colors } from '../../styles/potato-styles';
 
 export const StyledNavBar = styled.nav`
   position: fixed;
   width: 100%;
-  background-color: #635554;
+  background-color: ${colors.primary};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,7 +35,7 @@ type NavItemProps = {
 
 export const StyledNavLink = styled(Link)<NavItemProps>`
   text-decoration: none;
-  color: white;
+  color: ${colors.white};
   padding: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
@@ -45,7 +46,7 @@ export const StyledNavLink = styled(Link)<NavItemProps>`
   opacity: 1;
 
   :hover {
-    background-color: #4d4242;
+    background-color: ${colors.primaryActive};
   }
 
   @media (min-width: 500px) {
@@ -67,7 +68,7 @@ export const StyledNavLink = styled(Link)<NavItemProps>`
 
 export const StyledSignInButton = styled.div`
   text-decoration: none;
-  color: white;
+  color: ${colors.white};
   padding: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
@@ -78,7 +79,7 @@ export const StyledSignInButton = styled.div`
   opacity: 1;
 
   :hover {
-    background-color: #4d4242;
+    background-color: ${colors.primaryActive};
   }
 
   @media (min-width: 500px) {
@@ -100,7 +101,7 @@ export const StyledSignInButton = styled.div`
 
 export const StyledHamburgerMenuButton = styled(FontAwesomeIcon)`
   text-decoration: none;
-  color: white;
+  color: ${colors.white};
   padding: 0 1rem;
   font-size: 1.5rem;
   height: 100%;
@@ -115,7 +116,7 @@ type HamburgerMenuProps = {
 
 export const StyledHamburgerMenu = styled.div<HamburgerMenuProps>`
   display: ${(props) => (props.show === 'true' ? 'flex' : 'none')};
-  background-color: #635554;
+  background-color: ${colors.primary};
   height: 100%;
   width: 100%;
   padding-top: 3rem;

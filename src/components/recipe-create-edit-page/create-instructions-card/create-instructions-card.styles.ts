@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../styles/potato-styles';
 
 type FieldProps = {
   hasError?: string;
@@ -20,7 +21,7 @@ export const StyledInstructionField = styled.textarea<FieldProps>`
   outline: none;
   width: 88%;
   margin: 0.5rem;
-  border-color: ${(props) => (props.hasError === 'true' ? 'red' : 'none')};
+  border-color: ${(props) => (props.hasError === 'true' ? `${colors.danger}` : 'none')};
 
   @media (min-width: 500px) {
     width: 95%;

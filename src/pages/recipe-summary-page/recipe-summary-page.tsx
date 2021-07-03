@@ -5,7 +5,7 @@ import MetaInfoBlock from '../../components/recipe-summary-page/recipe-info-bloc
 import IngredientsBlock from '../../components/recipe-summary-page/recipe-ingredients-block/ingredients-block';
 import InstructionsBlock from '../../components/recipe-summary-page/recipe-instructions-block/instructions-block';
 import type { IIngredient, IRecipe } from '../../models-and-constants/IRecipe';
-import PhotoCarousel from '../../components/recipe-summary-page/recipe-photo-carousel/photo-carousel';
+import PhotoCard from '../../components/recipe-summary-page/recipe-photo-card/photo-card';
 import { testRecipe1, testRecipe2, brazilianPudding, testRecipeFinal } from '../../testRecipes';
 import { StyledPage } from '../../components/shared-styles/shared-styles';
 
@@ -51,13 +51,9 @@ export default function RecipeSummaryPage() {
   return (
     <StyledPage data-testid="summary-page">
       <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
-      {recipe.metaInfo.imgUrls.length ? (
-        <PhotoCarousel data-testid="photo-carousel" imgUrls={recipe.metaInfo.imgUrls} />
-      ) : null}
-      {/*<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>*/}
+      {recipe.metaInfo.imgUrls.length ? <PhotoCard data-testid="photo-carousel" imgUrls={recipe.metaInfo.imgUrls} /> : null}
       <IngredientsBlock data-testid="ingredients-block" ingredients={recipe.ingredients} equipment={recipe.equipment} />
       <InstructionsBlock data-testid="instructions-block" instructions={recipe.instructions} />
-      {/*</div>*/}
     </StyledPage>
   );
 }
