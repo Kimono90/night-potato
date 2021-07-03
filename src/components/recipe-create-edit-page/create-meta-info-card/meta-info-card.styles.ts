@@ -33,22 +33,27 @@ export const StyledDetailsBlock = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
-  width: 90%;
-  margin: 1rem 2rem;
   flex-wrap: wrap;
+  padding: 1rem 0;
+
+  @media (min-width: 500px) {
+    width: 90%;
+    margin: 1rem 2rem;
+  }
 `;
 export const StyledDetailsItem = styled.span`
   margin: 0;
 `;
 
 export const StyledDetailsItemLabel = styled.span`
-  width: 5rem;
+  width: 7rem;
   display: inline-block;
-  text-align: start;
+  text-align: center;
   padding: 0;
   margin: 0;
 
   @media (min-width: 500px) {
+    text-align: start;
     width: 10rem;
   }
 `;

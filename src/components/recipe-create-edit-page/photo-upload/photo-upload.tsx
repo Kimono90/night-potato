@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FileSizeErrorMessage, StyledPreviewImg, StyledUploadField } from './photo-upload.styles';
 import { StyledBody, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
 
 type Props = {
   onImageChange: (base64String: string) => void;
+  image: string;
 };
 
-export function PhotoUpload({ onImageChange }: Props) {
-  const [selectedImage, setSelectedImage] = useState<File>();
+export function PhotoUpload({ onImageChange, image }: Props) {
+  const [selectedImage, setSelectedImage] = useState<string>(image);
   const [fileTooBig, setFileTooBig] = useState<boolean>(false);
+
+  const upLoadButtonText = selectedImage ? 'Change image' : 'Choose image';
+
+  useEffect(() => {
+    if (image) {
+      setSelectedImage(image);
+    } else {
+      setSelectedImage('');
+    }
+  }, [image]);
 
   function getBase64(file: File): Promise<string> {
     return new Promise((resolve) => {
@@ -33,14 +44,14 @@ export function PhotoUpload({ onImageChange }: Props) {
 
     const base64ImageString = await getBase64(event.target.files[0]);
     onImageChange(base64ImageString);
-    setSelectedImage(event.target.files[0]);
+    setSelectedImage(base64ImageString);
   }
 
   return (
     <StyledSummaryCard>
       <StyledTitle data-label="title">Recipe picture</StyledTitle>
       <StyledBody>
-        <StyledUploadField htmlFor="file-upload">Choose image &#129364;</StyledUploadField>
+        <StyledUploadField htmlFor="file-upload">{upLoadButtonText} &#129364;</StyledUploadField>
         <input
           style={{ display: 'none' }}
           id="file-upload"
@@ -49,7 +60,7 @@ export function PhotoUpload({ onImageChange }: Props) {
           type="file"
           onChange={handleFileSelection}
         />
-        <StyledPreviewImg src={selectedImage ? URL.createObjectURL(selectedImage) : ''} alt="" width="70%" />
+        <StyledPreviewImg src={selectedImage || ''} alt="" width="70%" />
         {fileTooBig ? (
           <FileSizeErrorMessage>
             <p>The file size of your picture is too big &#128148;</p>

@@ -37,6 +37,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
             <StyledDetailsItemLabel>Portions* </StyledDetailsItemLabel>
             <StyledNumericField
               type="number"
+              value={metaInfo?.portions}
               onChange={(e) =>
                 onMetaInfoChange({
                   ...metaInfo,
@@ -51,6 +52,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
             <StyledNumericField
               type="number"
               placeholder="minutes"
+              value={metaInfo?.prepTimeInMinutes}
               onChange={(e) =>
                 onMetaInfoChange({
                   ...metaInfo,
@@ -64,6 +66,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
             <StyledDetailsItemLabel>Kcal </StyledDetailsItemLabel>
             <StyledNumericField
               type="number"
+              value={metaInfo?.kcalPerPortion}
               onChange={(e) =>
                 onMetaInfoChange({
                   ...metaInfo,
@@ -80,32 +83,36 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               key="vegetarian"
               icon={faLeaf}
               text="Vegetarian"
+              clickAble
               backgroundColor={colors.vegetarianLabel}
-              clickAble={true}
+              labelActive={metaInfo?.labels.includes(recipeLabels.vegetarian)}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.vegetarian)}
             />
             <RecipeLabel
               key="vegan"
               icon={faSeedling}
               text="Vegan"
+              clickAble
               backgroundColor={colors.veganLabel}
-              clickAble={true}
+              labelActive={metaInfo?.labels.includes(recipeLabels.vegan)}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.vegan)}
             />
             <RecipeLabel
               key="gluten"
               icon={faBreadSlice}
               text="Gluten free"
+              clickAble
               backgroundColor={colors.glutenLabel}
-              clickAble={true}
+              labelActive={metaInfo?.labels.includes(recipeLabels.glutenFree)}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.glutenFree)}
             />
             <RecipeLabel
               key="dairy"
               icon={faEgg}
               text="Dairy free"
+              clickAble
               backgroundColor={colors.dairyLabel}
-              clickAble={true}
+              labelActive={metaInfo?.labels.includes(recipeLabels.dairyFree)}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.dairyFree)}
             />
           </StyledLabelList>

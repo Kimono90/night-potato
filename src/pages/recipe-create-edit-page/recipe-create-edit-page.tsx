@@ -1,17 +1,19 @@
-import React, { useContext, useState } from 'react';
-import { RecipeNameInputField } from '../../components/recipe-create-page/recipe-name-input-field/recipe-name-input-field';
+import React, { useContext, useEffect, useState } from 'react';
+import { RecipeNameInputField } from '../../components/recipe-create-edit-page/recipe-name-input-field/recipe-name-input-field';
 import { FirebaseContext } from '../../contexts/firebase-auth-context';
-import { Redirect } from 'react-router-dom';
-import { CreateIngredientsCardMobile } from '../../components/recipe-create-page/create-ingredients-card/mobile/create-ingredients-card-mobile';
-import { CreateIngredientsCard } from '../../components/recipe-create-page/create-ingredients-card/desktop/create-ingredients-card';
-import { CreateEquipmentCard } from '../../components/recipe-create-page/create-equipment-card/create-equipment-card';
-import { CreateInstructionsCard } from '../../components/recipe-create-page/create-instructions-card/create-instructions-card';
-import { PhotoUpload } from '../../components/recipe-create-page/photo-upload/photo-upload';
-import { MetaInfoCard } from '../../components/recipe-create-page/create-meta-info-card/meta-info-card';
-import { SaveButton } from '../../components/recipe-create-page/save-button/save-button';
+import { Redirect, useParams } from 'react-router-dom';
+import { CreateIngredientsCardMobile } from '../../components/recipe-create-edit-page/create-ingredients-card/mobile/create-ingredients-card-mobile';
+import { CreateIngredientsCard } from '../../components/recipe-create-edit-page/create-ingredients-card/desktop/create-ingredients-card';
+import { CreateEquipmentCard } from '../../components/recipe-create-edit-page/create-equipment-card/create-equipment-card';
+import { CreateInstructionsCard } from '../../components/recipe-create-edit-page/create-instructions-card/create-instructions-card';
+import { PhotoUpload } from '../../components/recipe-create-edit-page/photo-upload/photo-upload';
+import { MetaInfoCard } from '../../components/recipe-create-edit-page/create-meta-info-card/meta-info-card';
+import { SaveButton } from '../../components/recipe-create-edit-page/save-button/save-button';
 import { StyledPage } from '../../components/shared-styles/shared-styles';
 import { IEquipment, IIngredient, IRecipe, IRecipeMetaInfo } from '../../models-and-constants/IRecipe';
 import { generate } from 'shortid';
+import { IRouteParams } from '../../models-and-constants/IRouteParams';
+import { brazilianPudding, testRecipe1 } from '../../testRecipes';
 
 const mobile = window.innerWidth < 500;
 
@@ -30,16 +32,25 @@ const initialRecipe: IRecipe = {
   equipment: [{ id: generate(), name: '' }],
 };
 
-export function RecipeCreatePage() {
+export function RecipeCreateEditPage() {
+  let { recipeId } = useParams<IRouteParams>();
   const { isLoggingIn, user } = useContext(FirebaseContext);
 
   const [recipe, setRecipe] = useState<IRecipe>(initialRecipe);
-
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>(false);
   const [ingredientWithError, setIngredientWithError] = useState<string[]>([]);
   const [instructionsHaveError, setInstructionsHaveError] = useState<boolean>(false);
   const [metaInfoHasError, setMetaInfoHasError] = useState<boolean>(false);
   const [equipmentErrorReset, setEquipmentErrorReset] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (recipeId) {
+      // Retrieve recipe from firebase
+      setRecipe(brazilianPudding);
+    } else {
+      setRecipe(initialRecipe);
+    }
+  }, [recipeId]);
 
   function isRecipeValid() {
     const hasRecipeName = recipe.metaInfo.name;
@@ -113,6 +124,7 @@ export function RecipeCreatePage() {
         instructionsHaveError={instructionsHaveError}
       />
       <PhotoUpload
+        image={recipe.metaInfo.imgUrls[0]}
         onImageChange={(imgString) =>
           setRecipe({
             ...recipe,
@@ -121,7 +133,7 @@ export function RecipeCreatePage() {
         }
       />
       <MetaInfoCard metaInfo={recipe.metaInfo} onMetaInfoChange={handleMetaInfoChange} metaInfoHasError={metaInfoHasError} />
-      <SaveButton onSaveButtonClick={() => handleCreateRecipe()} />
+      <SaveButton onSaveButtonClick={() => handleCreateRecipe()} existingRecipe={!!recipeId} />
     </StyledPage>
   );
 }

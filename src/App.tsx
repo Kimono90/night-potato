@@ -4,7 +4,7 @@ import RecipeOverviewPage from './pages/recipe-overview-page/recipe-overview-pag
 import RecipeSummaryPage from './pages/recipe-summary-page/recipe-summary-page';
 import AppMenu from './components/app-menu/app-menu';
 import { FirebaseProvider } from './contexts/firebase-auth-context';
-import { RecipeCreatePage } from './pages/create-recipe-page/recipe-create-page';
+import { RecipeCreateEditPage } from './pages/recipe-create-edit-page/recipe-create-edit-page';
 import { useDynamicPageTitle } from './hooks/use-dynamic-page-title';
 
 export default function App() {
@@ -17,8 +17,8 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={RecipeOverviewPage} />
           <Route path="/summary/:recipeId" component={RecipeSummaryPage} />
-          <Route path="/create" component={RecipeCreatePage} />
-          {/*<Route path="/edit/:recipeId" component={EditRecipePage} />*/}
+          <Route path="/create" component={RecipeCreateEditPage} />
+          <Route path="/edit/:recipeId" component={RecipeCreateEditPage} />
           {/*<Route path="/my-recipes" component={MyRecipesPage} />*/}
           {/*<Route path="/my-profile" component={MyProfilePage} />*/}
           <Route path="*">
