@@ -72,7 +72,7 @@ export function RecipeCreateEditPage() {
     setEquipmentErrorReset(true);
     if (isRecipeValid()) {
       console.log('VALID');
-      const requestBody: IRecipePostRequest = { recipe: { ...recipe, metaInfo: { ...recipe.metaInfo, imgUrls: [] } } };
+      const requestBody: IRecipePostRequest = { recipe: recipe };
       getUserIdToken()
         .then(async (token) => {
           const result = await axios.post(
