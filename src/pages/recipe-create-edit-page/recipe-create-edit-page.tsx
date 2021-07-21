@@ -74,7 +74,7 @@ export function RecipeCreateEditPage() {
       getUserIdToken()
         .then(async (token) => {
           const result = await axios.post(
-            `${import.meta.env.SNOWPACK_PUBLIC_API_URL}/recipes?authToken=${token}?userId=${user?.uid}`,
+            `https://night-potato-next-js.netlify.app/api/recipes?authToken=${token}?userId=${user?.uid}`,
             { recipe: recipe },
           );
           console.log('CALL MADE', result);
