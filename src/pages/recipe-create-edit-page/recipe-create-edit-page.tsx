@@ -15,8 +15,6 @@ import { generate } from 'shortid';
 import { IRouteParams } from '../../models-and-constants/IRouteParams';
 import { brazilianPudding } from '../../testRecipes';
 import axios from 'axios';
-import { firebaseProdUrl } from '../../firebase/firebase-initialization';
-import firebaseInstance from 'firebase/app';
 
 const mobile = window.innerWidth < 500;
 
@@ -75,7 +73,10 @@ export function RecipeCreateEditPage() {
       console.log('VALID');
       getUserIdToken()
         .then(async (token) => {
-          const result = await axios.post(`${firebaseProdUrl}/recipes.json?auth=${token}`, recipe);
+          const result = await axios.post(
+            `${import.meta.env.SNOWPACK_PUBLIC_API_URL}/recipes?authToken=${token}?userId=${user?.uid}`,
+            { recipe: recipe },
+          );
           console.log('CALL MADE', result);
         })
         .catch((e) => console.log(e));
