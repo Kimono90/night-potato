@@ -13,7 +13,8 @@ import { StyledPage } from '../../components/shared-styles/shared-styles';
 import { IEquipment, IIngredient, IRecipe, IRecipeMetaInfo } from '../../models-and-constants/IRecipe';
 import { generate } from 'shortid';
 import { IRouteParams } from '../../models-and-constants/IRouteParams';
-import { brazilianPudding, testRecipe1 } from '../../testRecipes';
+import { brazilianPudding } from '../../testRecipes';
+import axios from 'axios';
 
 const mobile = window.innerWidth < 500;
 
@@ -34,7 +35,7 @@ const initialRecipe: IRecipe = {
 
 export function RecipeCreateEditPage() {
   let { recipeId } = useParams<IRouteParams>();
-  const { isLoggingIn, user } = useContext(FirebaseContext);
+  const { isLoggingIn, user, getUserIdToken } = useContext(FirebaseContext);
 
   const [recipe, setRecipe] = useState<IRecipe>(initialRecipe);
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>(false);
@@ -66,10 +67,19 @@ export function RecipeCreateEditPage() {
     return hasRecipeName && !incompleteIngredients.length && recipe.instructions && metaInfoIsValid;
   }
 
-  function handleCreateRecipe() {
+  async function handleCreateRecipe() {
     setEquipmentErrorReset(true);
     if (isRecipeValid()) {
-      console.log('VALID', recipe);
+      console.log('VALID');
+      getUserIdToken()
+        .then(async (token) => {
+          const result = await axios.post(
+            `${import.meta.env.SNOWPACK_PUBLIC_API_URL}/recipes?authToken=${token}?userId=${user?.uid}`,
+            { recipe: recipe },
+          );
+          console.log('CALL MADE', result);
+        })
+        .catch((e) => console.log(e));
     } else {
       console.log('INVALID', recipe);
       // toast message

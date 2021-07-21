@@ -6,6 +6,7 @@ export interface IFirebaseContext {
   // firebase: firebase.app.App;
   logIn: () => void;
   logOut: () => void;
+  getUserIdToken: () => Promise<string>;
   user: firebase.User | null;
   isLoggingIn: boolean;
 }
@@ -64,9 +65,20 @@ export const FirebaseProvider = ({ children }: any) => {
     setUser(currentUser);
   };
 
+  const getUserIdToken = async (): Promise<string> => {
+    if (user) {
+      try {
+        return await user.getIdToken(true);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    return '';
+  };
+
   return (
     <FirebaseContext.Provider
-      value={{ user: user, logIn: logIn, logOut: logOut, isLoggingIn: loggingIn } as IFirebaseContext}
+      value={{ user: user, logIn: logIn, logOut: logOut, isLoggingIn: loggingIn, getUserIdToken } as IFirebaseContext}
     >
       {children}
     </FirebaseContext.Provider>
