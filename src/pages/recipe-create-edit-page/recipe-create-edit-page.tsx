@@ -15,6 +15,7 @@ import { generate } from 'shortid';
 import { IRouteParams } from '../../models-and-constants/IRouteParams';
 import { brazilianPudding } from '../../testRecipes';
 import axios from 'axios';
+import { IRecipePostRequest } from '../../models-and-constants/IRecipePostRequest';
 
 const mobile = window.innerWidth < 500;
 
@@ -71,11 +72,12 @@ export function RecipeCreateEditPage() {
     setEquipmentErrorReset(true);
     if (isRecipeValid()) {
       console.log('VALID');
+      const requestBody: IRecipePostRequest = { recipe: recipe };
       getUserIdToken()
         .then(async (token) => {
           const result = await axios.post(
             `https://night-potato-next-js.netlify.app/api/recipes?authToken=${token}?userId=${user?.uid}`,
-            { recipe: recipe },
+            requestBody,
           );
           console.log('CALL MADE', result);
         })
