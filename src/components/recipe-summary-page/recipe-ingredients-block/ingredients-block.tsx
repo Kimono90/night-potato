@@ -23,9 +23,9 @@ export default function IngredientsBlock({ ingredients, equipment }: Props) {
     setTextToCopy(finalCopyText);
   }, [ingredients]);
 
-  const ingredientList = ingredients.map((i: IIngredient) => <Ingredient key={i.id} ingredient={i} />);
+  const ingredientList = ingredients.map((i: IIngredient) => <Ingredient key={i.ingredientId} ingredient={i} />);
 
-  const equipmentList = equipment.map((e: IEquipment) => <Equipment key={e.id} equipmentItem={e} />);
+  const equipmentList = equipment.map((e: IEquipment) => <Equipment key={e.equipmentId} equipmentItem={e} />);
 
   return (
     <StyledSummaryCard data-testid="ingredients-block">

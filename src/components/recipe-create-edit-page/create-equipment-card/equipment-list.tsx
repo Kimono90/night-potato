@@ -21,7 +21,7 @@ export function EquipmentList({
   const allEquipments = currentEquipments.map((i, index) => {
     return (
       <EditableEquipment
-        key={i.id}
+        key={i.equipmentId}
         currentEquipment={i}
         allEquipments={currentEquipments}
         onEquipmentChange={onEquipmentChange}

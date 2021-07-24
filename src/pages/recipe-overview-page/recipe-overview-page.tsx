@@ -3,13 +3,15 @@ import OverviewCard from '../../components/recipe-overview-page/recipe-overview-
 import { StyledRecipeOverviewPage, StyledRecipeResults, StyledSearchBox } from './recipe-overview-page.styles';
 import type { IRecipe } from '../../models-and-constants/IRecipe';
 import { testRecipe1, testRecipe2, brazilianPudding, testRecipeFinal } from '../../testRecipes';
+import { getAllRecipes } from '../../gateways/night-potato-api-gateway';
 
 export default function RecipeOverviewPage() {
   const [recipes, setRecipes] = useState<IRecipe[]>([]);
   const [recipesToDisplay, setRecipesToDisplay] = useState<IRecipe[]>([]);
 
   useEffect(() => {
-    //TODO: get all recipes
+    getAllRecipes().then((recipes) => console.log(recipes));
+
     setRecipes([testRecipe1, testRecipe2, brazilianPudding, testRecipeFinal]);
     setRecipesToDisplay([testRecipe1, testRecipe2, brazilianPudding, testRecipeFinal]);
   }, []);
@@ -21,7 +23,9 @@ export default function RecipeOverviewPage() {
     setRecipesToDisplay(filteredRecipes);
   };
 
-  const recipeElements = recipesToDisplay.map((r) => <OverviewCard key={r.id} recipeId={r.id} recipeInfo={r.metaInfo} />);
+  const recipeElements = recipesToDisplay.map((r) => (
+    <OverviewCard key={r.recipeId} recipeId={r.recipeId} recipeInfo={r.metaInfo} />
+  ));
 
   return (
     <StyledRecipeOverviewPage data-label="overview-page">

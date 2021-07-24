@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react';
 import firebaseInstance from '../firebase/firebase-initialization';
 
 export interface IFirebaseContext {
-  // firebase: firebase.app.App;
   logIn: () => void;
   logOut: () => void;
-  getUserIdToken: () => Promise<string>;
+  getAuthToken: () => Promise<string>;
   user: firebase.User | null;
   isLoggingIn: boolean;
 }
@@ -65,7 +64,7 @@ export const FirebaseProvider = ({ children }: any) => {
     setUser(currentUser);
   };
 
-  const getUserIdToken = async (): Promise<string> => {
+  const getAuthToken = async (): Promise<string> => {
     if (user) {
       try {
         return await user.getIdToken(true);
@@ -78,7 +77,15 @@ export const FirebaseProvider = ({ children }: any) => {
 
   return (
     <FirebaseContext.Provider
-      value={{ user: user, logIn: logIn, logOut: logOut, isLoggingIn: loggingIn, getUserIdToken } as IFirebaseContext}
+      value={
+        {
+          user: user,
+          logIn: logIn,
+          logOut: logOut,
+          isLoggingIn: loggingIn,
+          getAuthToken: getAuthToken,
+        } as IFirebaseContext
+      }
     >
       {children}
     </FirebaseContext.Provider>

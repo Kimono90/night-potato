@@ -13,7 +13,7 @@ type Props = {
 
 export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: Props): ReactElement {
   const [ingredient, setIngredient] = useState<IIngredient>({
-    id: '',
+    ingredientId: '',
     name: '',
     amount: 0,
     measurement: '',
@@ -23,7 +23,7 @@ export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: 
 
   const resetFields = () => {
     setIngredient({
-      id: '',
+      ingredientId: '',
       name: '',
       amount: 0,
       measurement: '',
@@ -35,7 +35,7 @@ export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: 
   const handleCheckButtonClick = () => {
     if (ingredient.name && ingredient.amount) {
       onIngredientAdd({
-        id: generate(),
+        ingredientId: generate(),
         amount: ingredient.amount,
         name: ingredient.name,
         measurement: ingredient.measurement,

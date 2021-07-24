@@ -19,7 +19,7 @@ export function EditableIngredientMobile({ ingredient, onRemoveClick, onIngredie
         </span>
         <span id="product"> {ingredient.name}</span>
       </p>
-      <StyledRemoveButton onClick={() => onRemoveClick(ingredient.id)}>Remove</StyledRemoveButton>
+      <StyledRemoveButton onClick={() => onRemoveClick(ingredient.ingredientId)}>Remove</StyledRemoveButton>
     </StyledMobileIngredient>
   );
 }

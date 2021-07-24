@@ -15,7 +15,7 @@ export default function RecipeSummaryPage() {
   const testRecipes = [testRecipe1, testRecipe2, brazilianPudding, testRecipeFinal];
 
   useEffect(() => {
-    const currentRecipe = testRecipes.find((r) => r.id === recipeId);
+    const currentRecipe = testRecipes.find((r) => r.recipeId === recipeId);
     if (currentRecipe) {
       setRecipe(currentRecipe);
     }

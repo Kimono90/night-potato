@@ -12,19 +12,19 @@ type Props = {
 
 export function CreateEquipmentCard({ equipment, onEquipmentChange, equipmentErrorReset }: Props): ReactElement {
   const handleRemoveEquipment = (equipmentId: string) => {
-    const newEquipment = equipment.filter((i: IEquipment) => i.id !== equipmentId);
+    const newEquipment = equipment.filter((i: IEquipment) => i.equipmentId !== equipmentId);
     onEquipmentChange(newEquipment);
   };
 
   const handleChangeEquipment = (changedEquipment: IEquipment) => {
-    const changedEquipmentIndex = equipment.findIndex((i) => i.id === changedEquipment.id);
+    const changedEquipmentIndex = equipment.findIndex((i) => i.equipmentId === changedEquipment.equipmentId);
     const equipmentCopy = [...equipment];
     equipmentCopy[changedEquipmentIndex] = changedEquipment;
     onEquipmentChange(equipmentCopy);
   };
 
   const handleAddEquipment = () => {
-    onEquipmentChange([...equipment, { id: generate(), name: '' }]);
+    onEquipmentChange([...equipment, { equipmentId: generate(), name: '' }]);
   };
 
   return (

@@ -27,8 +27,8 @@ export function EditableIngredient({
   const [ingredientNameHasError, setIngredientHasError] = useState<boolean>(false);
   const [amountHasError, setAmountHasError] = useState<boolean>(false);
   const [minusButtonState, plusButtonState] = useMinPlusListLogic(
-    currentIngredient.id,
-    allIngredients.flatMap((i) => i.id),
+    currentIngredient.ingredientId,
+    allIngredients.flatMap((i) => i.ingredientId),
   );
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export function EditableIngredient({
   ) : null;
 
   const minusButtonComponent = minusButtonState.show ? (
-    <StyledFontAwesomeIcon icon={faMinusCircle} onClick={() => onMinusButtonClick(currentIngredient.id)} />
+    <StyledFontAwesomeIcon icon={faMinusCircle} onClick={() => onMinusButtonClick(currentIngredient.ingredientId)} />
   ) : null;
 
   return (

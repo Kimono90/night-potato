@@ -20,13 +20,13 @@ export function IngredientList({
 }: Props): ReactElement {
   const allIngredients = currentIngredients.map((i, index) => (
     <EditableIngredient
-      key={i.id}
+      key={i.ingredientId}
       currentIngredient={i}
       allIngredients={currentIngredients}
       onIngredientChange={onIngredientChange}
       onMinusButtonClick={onIngredientRemove}
       onPlusButtonClick={onIngredientAdd}
-      hasError={ingredientsWithError.includes(i.id)}
+      hasError={ingredientsWithError.includes(i.ingredientId)}
     />
   ));
 

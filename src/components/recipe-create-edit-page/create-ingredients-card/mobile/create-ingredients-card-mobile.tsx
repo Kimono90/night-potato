@@ -19,14 +19,14 @@ export function CreateIngredientsCardMobile({ ingredients, onIngredientsChange }
   };
 
   const handleRemoveIngredient = (ingredientId: string) => {
-    const newIngredients = ingredients.filter((i: IIngredient) => i.id !== ingredientId);
+    const newIngredients = ingredients.filter((i: IIngredient) => i.ingredientId !== ingredientId);
     onIngredientsChange(newIngredients);
   };
 
   const getIngredients = () => {
     const ingredientsToRender = ingredients.map((i: IIngredient) => (
       <EditableIngredientMobile
-        key={i.id}
+        key={i.ingredientId}
         ingredient={i}
         onRemoveClick={handleRemoveIngredient}
         onIngredientClick={(ingredient) => {

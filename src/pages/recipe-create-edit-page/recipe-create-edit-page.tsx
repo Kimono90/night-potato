@@ -14,13 +14,13 @@ import { IEquipment, IIngredient, IRecipe, IRecipeMetaInfo } from '../../models-
 import { generate } from 'shortid';
 import { IRouteParams } from '../../models-and-constants/IRouteParams';
 import { brazilianPudding } from '../../testRecipes';
-import axios from 'axios';
 import { IRecipePostRequest } from '../../models-and-constants/IRecipePostRequest';
+import { postRecipe } from '../../gateways/night-potato-api-gateway';
 
 const mobile = window.innerWidth < 500;
 
 const initialRecipe: IRecipe = {
-  id: generate(),
+  recipeId: generate(),
   metaInfo: {
     name: '',
     imgUrls: [],
@@ -30,13 +30,13 @@ const initialRecipe: IRecipe = {
     prepTimeInMinutes: 0,
   },
   instructions: '',
-  ingredients: mobile ? [] : [{ id: generate(), amount: 0, measurement: '', name: '' }],
-  equipment: [{ id: generate(), name: '' }],
+  ingredients: mobile ? [] : [{ ingredientId: generate(), amount: 0, measurement: '', name: '' }],
+  equipment: [{ equipmentId: generate(), name: '' }],
 };
 
 export function RecipeCreateEditPage() {
   let { recipeId } = useParams<IRouteParams>();
-  const { isLoggingIn, user, getUserIdToken } = useContext(FirebaseContext);
+  const { isLoggingIn, user, getAuthToken } = useContext(FirebaseContext);
 
   const [recipe, setRecipe] = useState<IRecipe>(initialRecipe);
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>(false);
@@ -44,6 +44,8 @@ export function RecipeCreateEditPage() {
   const [instructionsHaveError, setInstructionsHaveError] = useState<boolean>(false);
   const [metaInfoHasError, setMetaInfoHasError] = useState<boolean>(false);
   const [equipmentErrorReset, setEquipmentErrorReset] = useState<boolean>(false);
+  const [authToken, setAuthToken] = useState<string>('');
+  const [isSaving, setIsSaving] = useState<boolean>(false);
 
   useEffect(() => {
     if (recipeId) {
@@ -52,12 +54,13 @@ export function RecipeCreateEditPage() {
     } else {
       setRecipe(initialRecipe);
     }
+    getAuthToken().then((token) => setAuthToken(token));
   }, [recipeId]);
 
   function isRecipeValid() {
     const hasRecipeName = recipe.metaInfo.name;
     const incompleteIngredients = recipe.ingredients.filter((i) => !i.name || !i.amount);
-    const incompleteIngredientIds = incompleteIngredients.flatMap((i) => i.id);
+    const incompleteIngredientIds = incompleteIngredients.flatMap((i) => i.ingredientId);
     const metaInfoIsValid = recipe.metaInfo.prepTimeInMinutes && recipe.metaInfo.portions;
 
     if (!hasRecipeName) setRecipeNameHasError(true);
@@ -70,21 +73,15 @@ export function RecipeCreateEditPage() {
 
   async function handleCreateRecipe() {
     setEquipmentErrorReset(true);
-    if (isRecipeValid()) {
-      console.log('VALID');
+    setIsSaving(true);
+    if (isRecipeValid() && user) {
       const requestBody: IRecipePostRequest = { recipe: recipe };
-      getUserIdToken()
-        .then(async (token) => {
-          const result = await axios.post(
-            `https://night-potato-next-js.netlify.app/api/recipes?authToken=${token}&userId=${user?.uid}`,
-            requestBody,
-          );
-          console.log('CALL MADE', result);
-        })
-        .catch((e) => console.log(e));
+      await postRecipe(authToken, user.uid, requestBody);
+      setIsSaving(false);
     } else {
-      console.log('INVALID', recipe);
       // toast message
+      console.log('INVALID');
+      setIsSaving(false);
     }
   }
 

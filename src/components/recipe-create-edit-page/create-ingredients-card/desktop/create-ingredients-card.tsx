@@ -12,19 +12,19 @@ type Props = {
 
 export function CreateIngredientsCard({ ingredients, ingredientsWithError, onIngredientsChange }: Props): ReactElement {
   const handleRemoveIngredient = (ingredientId: string) => {
-    const newIngredients = ingredients.filter((i: IIngredient) => i.id !== ingredientId);
+    const newIngredients = ingredients.filter((i: IIngredient) => i.ingredientId !== ingredientId);
     onIngredientsChange(newIngredients);
   };
 
   const handleChangeIngredient = (changedIngredient: IIngredient) => {
-    const changedIngredientIndex = ingredients.findIndex((i) => i.id === changedIngredient.id);
+    const changedIngredientIndex = ingredients.findIndex((i) => i.ingredientId === changedIngredient.ingredientId);
     const ingredientsCopy = [...ingredients];
     ingredientsCopy[changedIngredientIndex] = changedIngredient;
     onIngredientsChange(ingredientsCopy);
   };
 
   const handleAddIngredient = () => {
-    onIngredientsChange([...ingredients, { id: generate(), amount: 0, measurement: '', name: '' }]);
+    onIngredientsChange([...ingredients, { ingredientId: generate(), amount: 0, measurement: '', name: '' }]);
   };
 
   return (

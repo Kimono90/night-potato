@@ -27,8 +27,8 @@ export function EditableEquipment({
   const [equipmentNameHasError, setEquipmentNameHasError] = useState<boolean>(false);
   const [equipmentNameTouched, setEquipmentNameTouched] = useState<boolean>(false);
   const [minusButtonState, plusButtonState] = useMinPlusListLogic(
-    currentEquipment.id,
-    allEquipments.flatMap((i) => i.id),
+    currentEquipment.equipmentId,
+    allEquipments.flatMap((i) => i.equipmentId),
   );
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export function EditableEquipment({
   ) : null;
 
   const minusButtonComponent = minusButtonState.show ? (
-    <StyledFontAwesomeIcon icon={faMinusCircle} onClick={() => onMinusButtonClick(currentEquipment.id)} />
+    <StyledFontAwesomeIcon icon={faMinusCircle} onClick={() => onMinusButtonClick(currentEquipment.equipmentId)} />
   ) : null;
 
   return (
