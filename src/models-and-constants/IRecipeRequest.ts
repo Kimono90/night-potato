@@ -1,5 +1,5 @@
 import { IRecipe } from './IRecipe';
 
-export interface IRecipePostRequest {
+export interface IRecipeRequest {
   recipe: IRecipe;
 }

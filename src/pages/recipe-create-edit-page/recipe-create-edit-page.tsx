@@ -14,7 +14,7 @@ import { IEquipment, IIngredient, IRecipe, IRecipeMetaInfo } from '../../models-
 import { generate } from 'shortid';
 import { IRouteParams } from '../../models-and-constants/IRouteParams';
 import { brazilianPudding } from '../../testRecipes';
-import { IRecipePostRequest } from '../../models-and-constants/IRecipePostRequest';
+import { IRecipeRequest } from '../../models-and-constants/IRecipeRequest';
 import { postRecipe } from '../../gateways/night-potato-api-gateway';
 
 const mobile = window.innerWidth < 500;
@@ -78,7 +78,7 @@ export function RecipeCreateEditPage() {
     setEquipmentErrorReset(true);
     setIsSaving(true);
     if (isRecipeValid() && user) {
-      const requestBody: IRecipePostRequest = { recipe: recipe };
+      const requestBody: IRecipeRequest = { recipe: recipe };
       await postRecipe(authToken, user.uid, requestBody);
       setIsSaving(false);
     } else {
