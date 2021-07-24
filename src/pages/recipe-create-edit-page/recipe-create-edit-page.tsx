@@ -48,13 +48,16 @@ export function RecipeCreateEditPage() {
   const [isSaving, setIsSaving] = useState<boolean>(false);
 
   useEffect(() => {
+    getAuthToken().then((token) => setAuthToken(token));
+  }, []);
+
+  useEffect(() => {
     if (recipeId) {
       // Retrieve recipe from firebase
       setRecipe(brazilianPudding);
     } else {
       setRecipe(initialRecipe);
     }
-    getAuthToken().then((token) => setAuthToken(token));
   }, [recipeId]);
 
   function isRecipeValid() {
