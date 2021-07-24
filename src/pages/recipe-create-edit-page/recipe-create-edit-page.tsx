@@ -49,7 +49,7 @@ export function RecipeCreateEditPage() {
 
   useEffect(() => {
     getAuthToken().then((token) => setAuthToken(token));
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     if (recipeId) {
