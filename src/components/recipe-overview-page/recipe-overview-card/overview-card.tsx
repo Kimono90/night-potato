@@ -18,7 +18,9 @@ type props = {
 
 export default function OverviewCard({ recipeId, recipeInfo }: props) {
   const history = useHistory();
-
+  const imgUrl = recipeInfo.imgUrls
+    ? recipeInfo.imgUrls[0]
+    : 'https://cdn.pixabay.com/photo/2020/04/13/20/42/potato-5039995__480.png';
   return (
     <StyledOverviewCard data-label="recipe-summary-card" onClick={() => history.push(`/summary/${recipeId}`)}>
       <StyledOverviewTitle data-label="recipe-title">{recipeInfo.name}</StyledOverviewTitle>
@@ -28,7 +30,22 @@ export default function OverviewCard({ recipeId, recipeInfo }: props) {
           <OverviewCardIcon faIcon={faClock} iconText={`${recipeInfo.prepTimeInMinutes} mins`} />
           <OverviewCardIcon faIcon={faHamburger} iconText={`${recipeInfo.kcalPerPortion} kcal`} />
         </StyledOverviewDescription>
-        <StyledOverviewPhoto data-label="recipe-photo" style={{ backgroundImage: `url(${recipeInfo.imgUrls[0]}` }} />
+        <StyledOverviewPhoto data-label="recipe-photo" style={{ backgroundImage: `url(${imgUrl}` }}>
+          {!recipeInfo.imgUrls ? (
+            <p
+              style={{
+                paddingBottom: '2rem',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'flex-end',
+                height: '100%',
+                boxSizing: 'border-box',
+              }}
+            >
+              No photo available
+            </p>
+          ) : null}
+        </StyledOverviewPhoto>
       </StyledOverviewInfo>
     </StyledOverviewCard>
   );

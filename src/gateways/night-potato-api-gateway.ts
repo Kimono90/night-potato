@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { IRecipeRequest } from '../models-and-constants/IRecipeRequest';
+import { INextJsResponseList } from '../models-and-constants/IRecipeResponse';
 
 const apiUrl = 'https://night-potato-next-js.netlify.app/api';
 
@@ -19,7 +20,7 @@ export async function putRecipe(authToken: string, userToken: string, recipe: IR
   }
 }
 
-export async function getAllRecipes() {
+export async function getAllRecipes(): Promise<INextJsResponseList> {
   try {
     return await axios.get(`${apiUrl}/recipes`);
   } catch (error) {
@@ -27,7 +28,7 @@ export async function getAllRecipes() {
   }
 }
 
-export async function getUserRecipes(userId: string) {
+export async function getUserRecipes(userId: string): Promise<INextJsResponseList> {
   try {
     return await axios.get(`${apiUrl}/recipes?userId=${userId}`);
   } catch (error) {
@@ -35,7 +36,7 @@ export async function getUserRecipes(userId: string) {
   }
 }
 
-export async function getSingleRecipe(recipeId: string) {
+export async function getSingleRecipe(recipeId: string): Promise<INextJsResponseList> {
   try {
     return await axios.get(`${apiUrl}/recipes?recipeId=${recipeId}`);
   } catch (error) {

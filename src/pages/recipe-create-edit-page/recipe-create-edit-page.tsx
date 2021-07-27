@@ -13,9 +13,8 @@ import { StyledPage } from '../../components/shared-styles/shared-styles';
 import { IEquipment, IIngredient, IRecipe, IRecipeMetaInfo } from '../../models-and-constants/IRecipe';
 import { generate } from 'shortid';
 import { IRouteParams } from '../../models-and-constants/IRouteParams';
-import { brazilianPudding } from '../../testRecipes';
 import { IRecipeRequest } from '../../models-and-constants/IRecipeRequest';
-import { postRecipe } from '../../gateways/night-potato-api-gateway';
+import { getSingleRecipe, postRecipe } from '../../gateways/night-potato-api-gateway';
 
 const mobile = window.innerWidth < 500;
 
@@ -53,8 +52,12 @@ export function RecipeCreateEditPage() {
 
   useEffect(() => {
     if (recipeId) {
-      // Retrieve recipe from firebase
-      setRecipe(brazilianPudding);
+      getSingleRecipe(recipeId)
+        .then((response) => setRecipe(response.data[0].recipe))
+        .catch((error) => {
+          // TODO: toastMessage
+          console.log(error);
+        });
     } else {
       setRecipe(initialRecipe);
     }
@@ -63,7 +66,7 @@ export function RecipeCreateEditPage() {
   function isRecipeValid() {
     const hasRecipeName = recipe.metaInfo.name;
     const incompleteIngredients = recipe.ingredients.filter((i) => !i.name || !i.amount);
-    const incompleteIngredientIds = incompleteIngredients.flatMap((i) => i.ingredientId);
+    const incompleteIngredientIds = incompleteIngredients.map((i) => i.ingredientId);
     const metaInfoIsValid = recipe.metaInfo.prepTimeInMinutes && recipe.metaInfo.portions;
 
     if (!hasRecipeName) setRecipeNameHasError(true);
@@ -135,15 +138,15 @@ export function RecipeCreateEditPage() {
         onInstructionsChange={(instructions) => setRecipe({ ...recipe, instructions: instructions })}
         instructionsHaveError={instructionsHaveError}
       />
-      <PhotoUpload
-        image={recipe.metaInfo.imgUrls[0]}
-        onImageChange={(imgString) =>
-          setRecipe({
-            ...recipe,
-            metaInfo: { ...recipe.metaInfo, imgUrls: [imgString] },
-          })
-        }
-      />
+      {/*<PhotoUpload*/}
+      {/*  image={recipe.metaInfo.imgUrls[0]}*/}
+      {/*  onImageChange={(imgString) =>*/}
+      {/*    setRecipe({*/}
+      {/*      ...recipe,*/}
+      {/*      metaInfo: { ...recipe.metaInfo, imgUrls: [imgString] },*/}
+      {/*    })*/}
+      {/*  }*/}
+      {/*/>*/}
       <MetaInfoCard metaInfo={recipe.metaInfo} onMetaInfoChange={handleMetaInfoChange} metaInfoHasError={metaInfoHasError} />
       <SaveButton onSaveButtonClick={() => handleCreateRecipe()} existingRecipe={!!recipeId} />
     </StyledPage>
