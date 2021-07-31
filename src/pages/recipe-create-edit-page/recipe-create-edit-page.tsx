@@ -86,7 +86,7 @@ export function RecipeCreateEditPage() {
       const requestBody: IRecipeRequest = { recipe: recipe, imageFile: encodedImage };
       const response = await postRecipe(authToken, user.uid, requestBody);
       setIsLoading(false);
-      alert(`${response.data.recipe.recipeId}`);
+      history.push(`/summary/${response.data.recipe.recipeId}`);
     } else {
       // toast message
       console.log('INVALID');
