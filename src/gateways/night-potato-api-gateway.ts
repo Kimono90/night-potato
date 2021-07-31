@@ -3,6 +3,7 @@ import { IRecipeRequest } from '../models-and-constants/IRecipeRequest';
 import { INextJsResponseList } from '../models-and-constants/IRecipeResponse';
 
 const apiUrl = 'https://night-potato-next-js.netlify.app/api';
+// const apiUrl = 'http://localhost:3000/api';
 
 export async function postRecipe(authToken: string, userToken: string, recipe: IRecipeRequest) {
   try {

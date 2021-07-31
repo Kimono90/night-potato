@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { RecipeNameInputField } from '../../components/recipe-create-edit-page/recipe-name-input-field/recipe-name-input-field';
 import { FirebaseContext } from '../../contexts/firebase-auth-context';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { CreateIngredientsCardMobile } from '../../components/recipe-create-edit-page/create-ingredients-card/mobile/create-ingredients-card-mobile';
 import { CreateIngredientsCard } from '../../components/recipe-create-edit-page/create-ingredients-card/desktop/create-ingredients-card';
 import { CreateEquipmentCard } from '../../components/recipe-create-edit-page/create-equipment-card/create-equipment-card';
@@ -36,6 +36,7 @@ const initialRecipe: IRecipe = {
 export function RecipeCreateEditPage() {
   let { recipeId } = useParams<IRouteParams>();
   const { isLoggingIn, user, getAuthToken } = useContext(FirebaseContext);
+  const history = useHistory();
 
   const [recipe, setRecipe] = useState<IRecipe>(initialRecipe);
   const [recipeNameHasError, setRecipeNameHasError] = useState<boolean>(false);
@@ -46,6 +47,7 @@ export function RecipeCreateEditPage() {
   const [authToken, setAuthToken] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [encodedImage, setEncodedImage] = useState<string>('');
+  const [response, setResponse] = useState<string>('');
 
   useEffect(() => {
     getAuthToken().then((token) => setAuthToken(token));
@@ -84,8 +86,8 @@ export function RecipeCreateEditPage() {
     if (isRecipeValid() && user) {
       const requestBody: IRecipeRequest = { recipe: recipe, imageFile: encodedImage };
       const response = await postRecipe(authToken, user.uid, requestBody);
-      console.log(response.data);
       setIsLoading(false);
+      setResponse(response.data);
     } else {
       // toast message
       console.log('INVALID');
@@ -143,6 +145,7 @@ export function RecipeCreateEditPage() {
       <PhotoUpload image={recipe.metaInfo.imgUrl} onImageChange={setEncodedImage} />
       <MetaInfoCard metaInfo={recipe.metaInfo} onMetaInfoChange={handleMetaInfoChange} metaInfoHasError={metaInfoHasError} />
       <SaveButton onSaveButtonClick={() => handleCreateRecipe()} existingRecipe={!!recipeId} isLoading={isLoading} />
+      <p>{response}</p>
     </StyledPage>
   );
 }
