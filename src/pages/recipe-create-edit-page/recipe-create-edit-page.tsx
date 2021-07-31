@@ -45,7 +45,7 @@ export function RecipeCreateEditPage() {
   const [equipmentErrorReset, setEquipmentErrorReset] = useState<boolean>(false);
   const [authToken, setAuthToken] = useState<string>('');
   const [isSaving, setIsSaving] = useState<boolean>(false);
-  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [encodedImage, setEncodedImage] = useState<string>('');
 
   useEffect(() => {
     getAuthToken().then((token) => setAuthToken(token));
@@ -82,7 +82,7 @@ export function RecipeCreateEditPage() {
     setEquipmentErrorReset(true);
     setIsSaving(true);
     if (isRecipeValid() && user) {
-      const requestBody: IRecipeRequest = { recipe: recipe, imageFile };
+      const requestBody: IRecipeRequest = { recipe: recipe, imageFile: encodedImage };
       await postRecipe(authToken, user.uid, requestBody);
       setIsSaving(false);
     } else {
@@ -139,7 +139,7 @@ export function RecipeCreateEditPage() {
         onInstructionsChange={(instructions) => setRecipe({ ...recipe, instructions: instructions })}
         instructionsHaveError={instructionsHaveError}
       />
-      <PhotoUpload image={recipe.metaInfo.imgUrl} onImageChange={setImageFile} />
+      <PhotoUpload image={recipe.metaInfo.imgUrl} onImageChange={setEncodedImage} />
       <MetaInfoCard metaInfo={recipe.metaInfo} onMetaInfoChange={handleMetaInfoChange} metaInfoHasError={metaInfoHasError} />
       <SaveButton onSaveButtonClick={() => handleCreateRecipe()} existingRecipe={!!recipeId} />
     </StyledPage>

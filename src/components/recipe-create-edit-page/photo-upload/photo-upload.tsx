@@ -4,7 +4,7 @@ import { StyledBody, StyledSummaryCard, StyledTitle } from '../../shared-styles/
 import axios from 'axios';
 
 type Props = {
-  onImageChange: (imageFile: File | null) => void;
+  onImageChange: (encodedImage: string) => void;
   image: string;
 };
 
@@ -42,8 +42,10 @@ export function PhotoUpload({ onImageChange, image }: Props) {
       event.target.value = null;
       return;
     }
-    onImageChange(event.target.files[0]);
-    setSelectedImage(URL.createObjectURL(event.target.files[0]));
+
+    const encodedImage = await getBase64(event.target.files[0]);
+    onImageChange(encodedImage);
+    setSelectedImage(encodedImage);
   }
 
   return (

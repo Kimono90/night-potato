@@ -45,7 +45,7 @@ export default function MetaInfoBlock({ recipeMetaInfo, onChangePortions }: Prop
         <MetaInfoItem label="kcal" faIcon={faHamburger} iconText={`${recipeMetaInfo.kcalPerPortion} kcal`} />
       </StyledMetaInfoContentWithoutLabels>
       <StyledMetaInfoContentWithLabels data-testid="labels">
-        {recipeMetaInfo.labels.map((l) => LabelDictionary.get(l))}
+        {recipeMetaInfo.labels?.map((l) => LabelDictionary.get(l))}
       </StyledMetaInfoContentWithLabels>
     </MetaInfoBlockWrapper>
   );
