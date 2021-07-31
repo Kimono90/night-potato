@@ -18,8 +18,8 @@ type props = {
 
 export default function OverviewCard({ recipeId, recipeInfo }: props) {
   const history = useHistory();
-  const imgUrl = recipeInfo.imgUrls
-    ? recipeInfo.imgUrls[0]
+  const imgUrl = recipeInfo.imgUrl
+    ? recipeInfo.imgUrl
     : 'https://cdn.pixabay.com/photo/2020/04/13/20/42/potato-5039995__480.png';
   return (
     <StyledOverviewCard data-label="recipe-summary-card" onClick={() => history.push(`/summary/${recipeId}`)}>
@@ -31,7 +31,7 @@ export default function OverviewCard({ recipeId, recipeInfo }: props) {
           <OverviewCardIcon faIcon={faHamburger} iconText={`${recipeInfo.kcalPerPortion} kcal`} />
         </StyledOverviewDescription>
         <StyledOverviewPhoto data-label="recipe-photo" style={{ backgroundImage: `url(${imgUrl}` }}>
-          {!recipeInfo.imgUrls ? (
+          {!recipeInfo.imgUrl ? (
             <p
               style={{
                 paddingBottom: '2rem',

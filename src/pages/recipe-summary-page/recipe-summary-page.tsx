@@ -47,7 +47,7 @@ export default function RecipeSummaryPage() {
   return (
     <StyledPage data-testid="summary-page">
       <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
-      {recipe.metaInfo.imgUrls ? <PhotoCard data-testid="photo-carousel" imgUrls={recipe.metaInfo.imgUrls} /> : null}
+      {recipe.metaInfo.imgUrl ? <PhotoCard data-testid="photo-carousel" imgUrl={recipe.metaInfo.imgUrl} /> : null}
       <IngredientsBlock data-testid="ingredients-block" ingredients={recipe.ingredients} equipment={recipe.equipment} />
       <InstructionsBlock data-testid="instructions-block" instructions={recipe.instructions} />
     </StyledPage>

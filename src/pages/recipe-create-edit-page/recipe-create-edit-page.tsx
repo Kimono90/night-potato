@@ -22,7 +22,7 @@ const initialRecipe: IRecipe = {
   recipeId: generate(),
   metaInfo: {
     name: '',
-    imgUrls: [],
+    imgUrl: '',
     portions: 0,
     kcalPerPortion: 0,
     labels: [],
@@ -45,6 +45,7 @@ export function RecipeCreateEditPage() {
   const [equipmentErrorReset, setEquipmentErrorReset] = useState<boolean>(false);
   const [authToken, setAuthToken] = useState<string>('');
   const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
   useEffect(() => {
     getAuthToken().then((token) => setAuthToken(token));
@@ -81,7 +82,7 @@ export function RecipeCreateEditPage() {
     setEquipmentErrorReset(true);
     setIsSaving(true);
     if (isRecipeValid() && user) {
-      const requestBody: IRecipeRequest = { recipe: recipe };
+      const requestBody: IRecipeRequest = { recipe: recipe, imageFile };
       await postRecipe(authToken, user.uid, requestBody);
       setIsSaving(false);
     } else {
@@ -138,15 +139,7 @@ export function RecipeCreateEditPage() {
         onInstructionsChange={(instructions) => setRecipe({ ...recipe, instructions: instructions })}
         instructionsHaveError={instructionsHaveError}
       />
-      {/*<PhotoUpload*/}
-      {/*  image={recipe.metaInfo.imgUrls[0]}*/}
-      {/*  onImageChange={(imgString) =>*/}
-      {/*    setRecipe({*/}
-      {/*      ...recipe,*/}
-      {/*      metaInfo: { ...recipe.metaInfo, imgUrls: [imgString] },*/}
-      {/*    })*/}
-      {/*  }*/}
-      {/*/>*/}
+      <PhotoUpload image={recipe.metaInfo.imgUrl} onImageChange={setImageFile} />
       <MetaInfoCard metaInfo={recipe.metaInfo} onMetaInfoChange={handleMetaInfoChange} metaInfoHasError={metaInfoHasError} />
       <SaveButton onSaveButtonClick={() => handleCreateRecipe()} existingRecipe={!!recipeId} />
     </StyledPage>

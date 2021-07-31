@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import MetaInfoBlock, { Props } from './meta-info-block';
 import { recipeLabels } from '../../recipe-label/label-constants';
-import { testImg1, testImg2, testImg3 } from '../../../testImgs';
 
 describe('MetaInfoBlock', () => {
   const defaultProps: Props = {
@@ -11,7 +10,7 @@ describe('MetaInfoBlock', () => {
       portions: 4,
       prepTimeInMinutes: 120,
       labels: [recipeLabels.vegan, recipeLabels.vegetarian],
-      imgUrls: [],
+      imgUrl: '',
     },
     onChangePortions: jest.fn(),
   };

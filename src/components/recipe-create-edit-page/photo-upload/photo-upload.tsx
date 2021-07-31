@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, ChangeEventHandler, useEffect, useState } from 'react';
 import { FileSizeErrorMessage, StyledPreviewImg, StyledUploadField } from './photo-upload.styles';
 import { StyledBody, StyledSummaryCard, StyledTitle } from '../../shared-styles/shared-styles';
+import axios from 'axios';
 
 type Props = {
-  onImageChange: (base64String: string) => void;
+  onImageChange: (imageFile: File | null) => void;
   image: string;
 };
 
@@ -41,10 +42,8 @@ export function PhotoUpload({ onImageChange, image }: Props) {
       event.target.value = null;
       return;
     }
-
-    const base64ImageString = await getBase64(event.target.files[0]);
-    onImageChange(base64ImageString);
-    setSelectedImage(base64ImageString);
+    onImageChange(event.target.files[0]);
+    setSelectedImage(URL.createObjectURL(event.target.files[0]));
   }
 
   return (

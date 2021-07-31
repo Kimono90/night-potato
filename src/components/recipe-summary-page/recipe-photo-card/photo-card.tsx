@@ -2,13 +2,13 @@ import React from 'react';
 import { StyledPhoto, StyledPhotoCard } from './photo-card.styles';
 
 type Props = {
-  imgUrls: string[];
+  imgUrl: string;
 };
 
-export default function PhotoCard({ imgUrls }: Props) {
+export default function PhotoCard({ imgUrl }: Props) {
   return (
     <StyledPhotoCard data-label="photo-carousel">
-      <StyledPhoto id="photo" imgUrl={`url(${imgUrls[0]})`} data-label="carousel-photo" />
+      <StyledPhoto id="photo" imgUrl={`url(${imgUrl})`} data-label="carousel-photo" />
     </StyledPhotoCard>
   );
 }
