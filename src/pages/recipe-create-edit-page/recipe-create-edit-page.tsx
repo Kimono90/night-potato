@@ -44,7 +44,7 @@ export function RecipeCreateEditPage() {
   const [metaInfoHasError, setMetaInfoHasError] = useState<boolean>(false);
   const [equipmentErrorReset, setEquipmentErrorReset] = useState<boolean>(false);
   const [authToken, setAuthToken] = useState<string>('');
-  const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [encodedImage, setEncodedImage] = useState<string>('');
 
   useEffect(() => {
@@ -80,15 +80,16 @@ export function RecipeCreateEditPage() {
 
   async function handleCreateRecipe() {
     setEquipmentErrorReset(true);
-    setIsSaving(true);
+    setIsLoading(true);
     if (isRecipeValid() && user) {
       const requestBody: IRecipeRequest = { recipe: recipe, imageFile: encodedImage };
-      await postRecipe(authToken, user.uid, requestBody);
-      setIsSaving(false);
+      const response = await postRecipe(authToken, user.uid, requestBody);
+      console.log(response.data);
+      setIsLoading(false);
     } else {
       // toast message
       console.log('INVALID');
-      setIsSaving(false);
+      setIsLoading(false);
     }
   }
 
@@ -141,7 +142,7 @@ export function RecipeCreateEditPage() {
       />
       <PhotoUpload image={recipe.metaInfo.imgUrl} onImageChange={setEncodedImage} />
       <MetaInfoCard metaInfo={recipe.metaInfo} onMetaInfoChange={handleMetaInfoChange} metaInfoHasError={metaInfoHasError} />
-      <SaveButton onSaveButtonClick={() => handleCreateRecipe()} existingRecipe={!!recipeId} />
+      <SaveButton onSaveButtonClick={() => handleCreateRecipe()} existingRecipe={!!recipeId} isLoading={isLoading} />
     </StyledPage>
   );
 }
