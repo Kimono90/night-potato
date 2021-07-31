@@ -47,7 +47,6 @@ export function RecipeCreateEditPage() {
   const [authToken, setAuthToken] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [encodedImage, setEncodedImage] = useState<string>('');
-  const [response, setResponse] = useState<string>('');
 
   useEffect(() => {
     getAuthToken().then((token) => setAuthToken(token));
@@ -87,7 +86,7 @@ export function RecipeCreateEditPage() {
       const requestBody: IRecipeRequest = { recipe: recipe, imageFile: encodedImage };
       const response = await postRecipe(authToken, user.uid, requestBody);
       setIsLoading(false);
-      setResponse(response.data);
+      alert(`${response.data.recipe.recipeId}`);
     } else {
       // toast message
       console.log('INVALID');
@@ -145,7 +144,6 @@ export function RecipeCreateEditPage() {
       <PhotoUpload image={recipe.metaInfo.imgUrl} onImageChange={setEncodedImage} />
       <MetaInfoCard metaInfo={recipe.metaInfo} onMetaInfoChange={handleMetaInfoChange} metaInfoHasError={metaInfoHasError} />
       <SaveButton onSaveButtonClick={() => handleCreateRecipe()} existingRecipe={!!recipeId} isLoading={isLoading} />
-      <p>{response}</p>
     </StyledPage>
   );
 }
