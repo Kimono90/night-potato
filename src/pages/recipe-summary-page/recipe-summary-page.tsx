@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import type { IRouteParams } from 'src/models-and-constants/IRouteParams';
 import MetaInfoBlock from '../../components/recipe-summary-page/recipe-info-block/meta-info-block';
 import IngredientsBlock from '../../components/recipe-summary-page/recipe-ingredients-block/ingredients-block';
@@ -7,17 +7,24 @@ import InstructionsBlock from '../../components/recipe-summary-page/recipe-instr
 import type { IRecipe } from '../../models-and-constants/IRecipe';
 import PhotoCard from '../../components/recipe-summary-page/recipe-photo-card/photo-card';
 import { StyledPage } from '../../components/shared-styles/shared-styles';
-import { getSingleRecipe } from '../../gateways/night-potato-api-gateway';
+import { getSingleRecipe, getUserRecipes } from '../../gateways/night-potato-api-gateway';
+import { FirebaseContext } from '../../contexts/firebase-auth-context';
+import { EditButton } from '../../components/recipe-summary-page/recipe-edit-button/recipe-edit-button';
 
 export default function RecipeSummaryPage() {
   let { recipeId } = useParams<IRouteParams>();
   const [recipe, setRecipe] = useState<IRecipe | null>(null);
+  const [isRecipeOwner, setIsRecipeOwner] = useState<boolean>(false);
+  const { user } = useContext(FirebaseContext);
+  const history = useHistory();
 
   useEffect(() => {
     if (recipeId) {
       getSingleRecipe(recipeId)
-        .then((response) => {
+        .then(async (response) => {
           setRecipe(response.data[0].recipe);
+          const isRecipeOwner = await isUserRecipeOwner();
+          setIsRecipeOwner(isRecipeOwner);
         })
         .catch((error) => {
           // TODO: toastMessage
@@ -25,7 +32,16 @@ export default function RecipeSummaryPage() {
         });
     }
     //TODO: toastMessage
-  }, []);
+  }, [user]);
+
+  async function isUserRecipeOwner(): Promise<boolean> {
+    if (user) {
+      const userRecipes = await getUserRecipes(user.uid);
+      const allRecipeIds = userRecipes.data.flatMap((recipe) => recipe.recipe.recipeId);
+      return allRecipeIds.includes(recipeId);
+    }
+    return false;
+  }
 
   const handlePortionsChange = (action: string) => {
     if (!recipe) return;
@@ -50,6 +66,7 @@ export default function RecipeSummaryPage() {
       {recipe.metaInfo.imgUrl ? <PhotoCard data-testid="photo-carousel" imgUrl={recipe.metaInfo.imgUrl} /> : null}
       <IngredientsBlock data-testid="ingredients-block" ingredients={recipe.ingredients} equipment={recipe.equipment} />
       <InstructionsBlock data-testid="instructions-block" instructions={recipe.instructions} />
+      {isRecipeOwner ? <EditButton onEditButtonClick={() => history.push(`/edit/${recipeId}`)} /> : null}
     </StyledPage>
   );
 }

@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
-import { StyledSaveButton } from './save-button.styles';
 import '../../loader/loader.css';
+import { colors } from '../../../styles/potato-styles';
+import { StyledActionButton } from '../../shared-styles/shared-styles';
 
 type Props = {
   onSaveButtonClick: () => void;
@@ -22,5 +23,14 @@ export function SaveButton({ onSaveButtonClick, existingRecipe, isLoading }: Pro
     );
   }
 
-  return <StyledSaveButton onClick={() => onSaveButtonClick()}>{getButtonContent()}</StyledSaveButton>;
+  return (
+    <StyledActionButton
+      backgroundColor={colors.success}
+      textColor={colors.white}
+      hoverColor={colors.successHover}
+      onClick={() => onSaveButtonClick()}
+    >
+      {getButtonContent()}
+    </StyledActionButton>
+  );
 }

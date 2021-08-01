@@ -145,3 +145,26 @@ export const StyledSelectField = styled.select`
     border-radius: 0.5rem;
   }
 `;
+
+type ButtonProps = {
+  backgroundColor: string;
+  textColor: string;
+  hoverColor: string;
+};
+
+export const StyledActionButton = styled.button<ButtonProps>`
+  text-decoration: none;
+  background-color: ${(props) => props.backgroundColor};
+  border: none;
+  border-radius: 0.5rem;
+  color: ${(props) => props.textColor};
+  padding: 0.25rem 1rem;
+  font-size: 2rem;
+  font-family: inherit;
+  cursor: pointer;
+  margin-bottom: 2rem;
+
+  :hover {
+    background-color: ${(props) => props.hoverColor};
+  }
+`;
