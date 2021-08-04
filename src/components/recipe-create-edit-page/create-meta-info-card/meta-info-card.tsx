@@ -19,11 +19,11 @@ type Props = {
   metaInfoHasError: boolean;
 };
 
-export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: Props) {
+export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: Props): ReactElement {
   function handleLabelChange(isActive: boolean, label: string) {
     if (isActive) onMetaInfoChange({ ...metaInfo, labels: [...metaInfo.labels, label] });
     else {
-      const newMetaInfoLabels = metaInfo.labels.filter((m) => m !== label);
+      const newMetaInfoLabels = metaInfo.labels?.filter((m) => m !== label);
       onMetaInfoChange({ ...metaInfo, labels: newMetaInfoLabels });
     }
   }
@@ -85,7 +85,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               text="Vegetarian"
               clickAble
               backgroundColor={colors.vegetarianLabel}
-              labelActive={metaInfo?.labels.includes(recipeLabels.vegetarian)}
+              labelActive={metaInfo.labels ? metaInfo.labels.includes(recipeLabels.vegetarian) : false}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.vegetarian)}
             />
             <RecipeLabel
@@ -94,7 +94,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               text="Vegan"
               clickAble
               backgroundColor={colors.veganLabel}
-              labelActive={metaInfo?.labels.includes(recipeLabels.vegan)}
+              labelActive={metaInfo.labels ? metaInfo.labels.includes(recipeLabels.vegan) : false}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.vegan)}
             />
             <RecipeLabel
@@ -103,7 +103,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               text="Gluten free"
               clickAble
               backgroundColor={colors.glutenLabel}
-              labelActive={metaInfo?.labels.includes(recipeLabels.glutenFree)}
+              labelActive={metaInfo.labels ? metaInfo.labels.includes(recipeLabels.glutenFree) : false}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.glutenFree)}
             />
             <RecipeLabel
@@ -112,7 +112,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
               text="Dairy free"
               clickAble
               backgroundColor={colors.dairyLabel}
-              labelActive={metaInfo?.labels.includes(recipeLabels.dairyFree)}
+              labelActive={metaInfo.labels ? metaInfo.labels.includes(recipeLabels.dairyFree) : false}
               onChange={(isActive) => handleLabelChange(isActive, recipeLabels.dairyFree)}
             />
           </StyledLabelList>

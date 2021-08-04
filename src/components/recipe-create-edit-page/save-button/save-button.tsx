@@ -11,11 +11,12 @@ type Props = {
 
 export function SaveButton({ onSaveButtonClick, existingRecipe, isLoading }: Props) {
   const buttonText = existingRecipe ? 'Save recipe' : 'Create recipe';
+  const loadingText = existingRecipe ? 'Saving recipe' : 'Creating recipe';
 
   function getButtonContent(): ReactElement {
     return isLoading ? (
       <span style={{ display: 'flex' }}>
-        <span style={{ marginRight: '0.5rem' }}>Creating Recipe</span>
+        <span style={{ marginRight: '0.5rem' }}>{loadingText}</span>
         <p className="loader" />
       </span>
     ) : (
