@@ -4,7 +4,7 @@ import { colors } from '../../../styles/potato-styles';
 import { StyledActionButton } from '../../shared-styles/shared-styles';
 
 type Props = {
-  onSaveButtonClick: () => void;
+  onSaveButtonClick: (existingRecipe: boolean) => void;
   existingRecipe: boolean;
   isLoading: boolean;
 };
@@ -28,7 +28,7 @@ export function SaveButton({ onSaveButtonClick, existingRecipe, isLoading }: Pro
       backgroundColor={colors.success}
       textColor={colors.white}
       hoverColor={colors.successHover}
-      onClick={() => onSaveButtonClick()}
+      onClick={() => onSaveButtonClick(existingRecipe)}
     >
       {getButtonContent()}
     </StyledActionButton>

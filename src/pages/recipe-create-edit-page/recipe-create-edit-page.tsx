@@ -14,7 +14,7 @@ import { IEquipment, IIngredient, IRecipe, IRecipeMetaInfo } from '../../models-
 import { generate } from 'shortid';
 import { IRouteParams } from '../../models-and-constants/IRouteParams';
 import { IRecipeRequest } from '../../models-and-constants/IRecipeRequest';
-import { getSingleRecipe, postRecipe } from '../../gateways/night-potato-api-gateway';
+import { getSingleRecipe, postRecipe, putRecipe } from '../../gateways/night-potato-api-gateway';
 
 const mobile = window.innerWidth < 500;
 
@@ -94,6 +94,21 @@ export function RecipeCreateEditPage() {
     }
   }
 
+  async function handleEditRecipe() {
+    setEquipmentErrorReset(true);
+    setIsLoading(true);
+    if (isRecipeValid() && user) {
+      const requestBody: IRecipeRequest = { recipe: recipe, imageFile: encodedImage };
+      const response = await putRecipe(authToken, user.uid, requestBody);
+      setIsLoading(false);
+      history.push(`/summary/${response.data.recipe.recipeId}`);
+    } else {
+      // toast message
+      console.log('INVALID');
+      setIsLoading(false);
+    }
+  }
+
   function handleRecipeNameChange(name: string) {
     setRecipeNameHasError(false);
     setRecipe({ ...recipe, metaInfo: { ...recipe.metaInfo, name: name } });
@@ -143,7 +158,11 @@ export function RecipeCreateEditPage() {
       />
       <PhotoUpload image={recipe.metaInfo.imgUrl} onImageChange={setEncodedImage} />
       <MetaInfoCard metaInfo={recipe.metaInfo} onMetaInfoChange={handleMetaInfoChange} metaInfoHasError={metaInfoHasError} />
-      <SaveButton onSaveButtonClick={() => handleCreateRecipe()} existingRecipe={!!recipeId} isLoading={isLoading} />
+      <SaveButton
+        onSaveButtonClick={(existingRecipe) => (existingRecipe ? handleEditRecipe() : handleCreateRecipe())}
+        existingRecipe={!!recipeId}
+        isLoading={isLoading}
+      />
     </StyledPage>
   );
 }
