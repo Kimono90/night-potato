@@ -15,6 +15,7 @@ import { generate } from 'shortid';
 import { IRouteParams } from '../../models-and-constants/IRouteParams';
 import { IRecipeRequest } from '../../models-and-constants/IRecipeRequest';
 import { getSingleRecipe, postRecipe, putRecipe } from '../../gateways/night-potato-api-gateway';
+import { LoadingPage } from '../loading-page/loading-page';
 
 const mobile = window.innerWidth < 500;
 
@@ -45,7 +46,9 @@ export function RecipeCreateEditPage() {
   const [metaInfoHasError, setMetaInfoHasError] = useState<boolean>(false);
   const [equipmentErrorReset, setEquipmentErrorReset] = useState<boolean>(false);
   const [authToken, setAuthToken] = useState<string>('');
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  //TODO: Loading state for page
   const [encodedImage, setEncodedImage] = useState<string>('');
 
   useEffect(() => {
@@ -56,12 +59,14 @@ export function RecipeCreateEditPage() {
     if (recipeId) {
       getSingleRecipe(recipeId)
         .then((response) => setRecipe(response.data[0].recipe))
+        .then(() => setIsLoading(false))
         .catch((error) => {
           // TODO: toastMessage
           console.log(error);
         });
     } else {
       setRecipe(initialRecipe);
+      setIsLoading(false);
     }
   }, [recipeId]);
 
@@ -81,31 +86,31 @@ export function RecipeCreateEditPage() {
 
   async function handleCreateRecipe() {
     setEquipmentErrorReset(true);
-    setIsLoading(true);
+    setIsSaving(true);
     if (isRecipeValid() && user) {
       const requestBody: IRecipeRequest = { recipe: recipe, imageFile: encodedImage };
       const response = await postRecipe(authToken, user.uid, requestBody);
-      setIsLoading(false);
+      setIsSaving(false);
       history.push(`/summary/${response.data.recipe.recipeId}`);
     } else {
       // toast message
       console.log('INVALID');
-      setIsLoading(false);
+      setIsSaving(false);
     }
   }
 
   async function handleEditRecipe() {
     setEquipmentErrorReset(true);
-    setIsLoading(true);
+    setIsSaving(true);
     if (isRecipeValid() && user) {
       const requestBody: IRecipeRequest = { recipe: recipe, imageFile: encodedImage };
       const response = await putRecipe(authToken, user.uid, requestBody);
-      setIsLoading(false);
+      setIsSaving(false);
       history.push(`/summary/${response.data[0].recipe.recipeId}`);
     } else {
       // toast message
       console.log('INVALID');
-      setIsLoading(false);
+      setIsSaving(false);
     }
   }
 
@@ -130,7 +135,9 @@ export function RecipeCreateEditPage() {
 
   if (!isLoggingIn && !user) return <Redirect to="/" />;
 
-  return (
+  return isLoading ? (
+    <LoadingPage />
+  ) : (
     <StyledPage data-label="create-recipe-page">
       <RecipeNameInputField
         recipeName={recipe.metaInfo.name}
@@ -161,7 +168,7 @@ export function RecipeCreateEditPage() {
       <SaveButton
         onSaveButtonClick={(existingRecipe) => (existingRecipe ? handleEditRecipe() : handleCreateRecipe())}
         existingRecipe={!!recipeId}
-        isLoading={isLoading}
+        isLoading={isSaving}
       />
     </StyledPage>
   );

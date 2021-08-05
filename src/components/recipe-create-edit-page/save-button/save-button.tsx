@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import '../../loader/loader.css';
+import '../../button-loader/button-loader.css';
 import { colors } from '../../../styles/potato-styles';
 import { StyledActionButton } from '../../shared-styles/shared-styles';
 
