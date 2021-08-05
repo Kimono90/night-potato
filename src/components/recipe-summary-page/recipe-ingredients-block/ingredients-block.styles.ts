@@ -66,7 +66,7 @@ export const StyledTabList = styled.div<TabProps>`
 `;
 
 export const StyledTabTitle = styled.div<TabProps>`
-  width: 45%;
+  width: 50%;
   align-self: center;
   padding: 0.5rem 0.5rem 0.5rem 1rem;
   border-radius: 0.5rem 0.5rem 0 0;
