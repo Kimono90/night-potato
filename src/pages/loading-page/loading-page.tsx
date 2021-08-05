@@ -4,7 +4,13 @@ import './dot-animation.css';
 import { StyledLoaderWrapper } from './loading-page.styles';
 
 export function LoadingPage(): ReactElement {
-  const loadingTexts = ['Charging the potatoes', 'Getting the potato off the couch', 'Petting the potato'];
+  const loadingTexts = [
+    'Charging the potatoes',
+    'Dragging the potato off the couch',
+    'Petting the potato',
+    'Potating',
+    'Frenching the fries',
+  ];
   const randomText = loadingTexts[Math.floor(Math.random() * loadingTexts.length)];
 
   return (

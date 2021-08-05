@@ -39,7 +39,7 @@ export default function MetaInfoBlock({ recipeMetaInfo, onChangePortions }: Prop
               onClick={() => onChangePortions(plus)}
             />
           </div>
-          {recipeMetaInfo.portions} portions
+          {recipeMetaInfo.portions} {recipeMetaInfo.portions > 1 ? 'portions' : 'portion'}
         </StyledMetaInfoItem>
         <MetaInfoItem label="prep-time" faIcon={faClock} iconText={`${recipeMetaInfo.prepTimeInMinutes} minutes`} />
         <MetaInfoItem label="kcal" faIcon={faHamburger} iconText={`${recipeMetaInfo.kcalPerPortion} kcal`} />

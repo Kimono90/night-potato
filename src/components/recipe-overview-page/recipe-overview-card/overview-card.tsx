@@ -26,7 +26,10 @@ export default function OverviewCard({ recipeId, recipeInfo }: props) {
       <StyledOverviewTitle data-label="recipe-title">{recipeInfo.name}</StyledOverviewTitle>
       <StyledOverviewInfo data-label="recipe-info">
         <StyledOverviewDescription data-label="recipe-description">
-          <OverviewCardIcon faIcon={faUser} iconText={`${recipeInfo.portions} persons`} />
+          <OverviewCardIcon
+            faIcon={faUser}
+            iconText={`${recipeInfo.portions} ${recipeInfo.portions > 1 ? 'portions' : 'portion'}`}
+          />
           <OverviewCardIcon faIcon={faClock} iconText={`${recipeInfo.prepTimeInMinutes} mins`} />
           <OverviewCardIcon faIcon={faHamburger} iconText={`${recipeInfo.kcalPerPortion} kcal`} />
         </StyledOverviewDescription>
