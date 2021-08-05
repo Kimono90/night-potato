@@ -10,6 +10,9 @@ export function LoadingPage(): ReactElement {
     'Petting the potato',
     'Potating',
     'Frenching the fries',
+    'Feeling down? Hug a potato',
+    'Muchos potatos',
+    'Purée away',
   ];
   const randomText = loadingTexts[Math.floor(Math.random() * loadingTexts.length)];
 
