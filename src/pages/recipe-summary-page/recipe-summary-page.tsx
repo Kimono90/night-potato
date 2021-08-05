@@ -10,10 +10,12 @@ import { StyledPage } from '../../components/shared-styles/shared-styles';
 import { getSingleRecipe, getUserRecipes } from '../../gateways/night-potato-api-gateway';
 import { FirebaseContext } from '../../contexts/firebase-auth-context';
 import { EditButton } from '../../components/recipe-summary-page/recipe-edit-button/recipe-edit-button';
+import { LoadingPage } from '../loading-page/loading-page';
 
 export default function RecipeSummaryPage() {
   let { recipeId } = useParams<IRouteParams>();
   const [recipe, setRecipe] = useState<IRecipe | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isRecipeOwner, setIsRecipeOwner] = useState<boolean>(false);
   const { user } = useContext(FirebaseContext);
   const history = useHistory();
@@ -26,6 +28,7 @@ export default function RecipeSummaryPage() {
           const isRecipeOwner = await isUserRecipeOwner();
           setIsRecipeOwner(isRecipeOwner);
         })
+        .then(() => setIsLoading(false))
         .catch((error) => {
           // TODO: toastMessage
           console.log(error);
@@ -60,7 +63,9 @@ export default function RecipeSummaryPage() {
 
   if (!recipe) return <StyledPage data-testid="empty-summary-page" />;
 
-  return (
+  return isLoading ? (
+    <LoadingPage />
+  ) : (
     <StyledPage data-testid="summary-page">
       <MetaInfoBlock recipeMetaInfo={recipe.metaInfo} onChangePortions={handlePortionsChange} />
       {recipe.metaInfo.imgUrl ? <PhotoCard data-testid="photo-carousel" imgUrl={recipe.metaInfo.imgUrl} /> : null}
