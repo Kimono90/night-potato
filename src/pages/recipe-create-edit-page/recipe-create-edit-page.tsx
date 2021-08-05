@@ -45,15 +45,9 @@ export function RecipeCreateEditPage() {
   const [instructionsHaveError, setInstructionsHaveError] = useState<boolean>(false);
   const [metaInfoHasError, setMetaInfoHasError] = useState<boolean>(false);
   const [equipmentErrorReset, setEquipmentErrorReset] = useState<boolean>(false);
-  const [authToken, setAuthToken] = useState<string>('');
   const [isSaving, setIsSaving] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  //TODO: Loading state for page
   const [encodedImage, setEncodedImage] = useState<string>('');
-
-  useEffect(() => {
-    getAuthToken().then((token) => setAuthToken(token));
-  }, [user]);
 
   useEffect(() => {
     if (recipeId) {
@@ -68,7 +62,7 @@ export function RecipeCreateEditPage() {
       setRecipe(initialRecipe);
       setIsLoading(false);
     }
-  }, [recipeId]);
+  }, []);
 
   function isRecipeValid() {
     const hasRecipeName = recipe.metaInfo.name;
@@ -89,6 +83,7 @@ export function RecipeCreateEditPage() {
     setIsSaving(true);
     if (isRecipeValid() && user) {
       const requestBody: IRecipeRequest = { recipe: recipe, imageFile: encodedImage };
+      const authToken = await getAuthToken();
       const response = await postRecipe(authToken, user.uid, requestBody);
       setIsSaving(false);
       history.push(`/summary/${response.data.recipe.recipeId}`);
@@ -104,6 +99,7 @@ export function RecipeCreateEditPage() {
     setIsSaving(true);
     if (isRecipeValid() && user) {
       const requestBody: IRecipeRequest = { recipe: recipe, imageFile: encodedImage };
+      const authToken = await getAuthToken();
       const response = await putRecipe(authToken, user.uid, requestBody);
       setIsSaving(false);
       history.push(`/summary/${response.data[0].recipe.recipeId}`);
