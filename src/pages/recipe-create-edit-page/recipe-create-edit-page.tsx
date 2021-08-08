@@ -52,7 +52,7 @@ export function RecipeCreateEditPage() {
   useEffect(() => {
     if (recipeId) {
       getSingleRecipe(recipeId)
-        .then((response) => setRecipe(response.data[0].recipe))
+        .then((response) => setRecipe(response.data.recipe))
         .then(() => setIsLoading(false))
         .catch((error) => {
           // TODO: toastMessage

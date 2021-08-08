@@ -24,7 +24,7 @@ export default function RecipeSummaryPage() {
     if (recipeId) {
       getSingleRecipe(recipeId)
         .then(async (response) => {
-          setRecipe(response.data[0].recipe);
+          setRecipe(response.data.recipe);
           const isRecipeOwner = await isUserRecipeOwner();
           setIsRecipeOwner(isRecipeOwner);
         })

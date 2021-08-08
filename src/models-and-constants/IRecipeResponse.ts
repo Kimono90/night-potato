@@ -5,6 +5,10 @@ export interface INextJsResponseList {
   data: IRecipeResponseData[];
 }
 
+export interface INextJsResponseItem {
+  data: IRecipeResponseData;
+}
+
 export interface IRecipeResponseData {
   recipe: IRecipe;
   createdOn: dayjs.Dayjs;
