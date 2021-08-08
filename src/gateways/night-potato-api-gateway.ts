@@ -5,7 +5,11 @@ import { INextJsResponseItem, INextJsResponseList, IRecipeResponseData } from '.
 const apiUrl = 'https://night-potato-next-js.netlify.app/api';
 // const apiUrl = 'http://localhost:3000/api';
 
-export async function postRecipe(authToken: string, userToken: string, recipe: IRecipeRequest) {
+export async function postRecipe(
+  authToken: string,
+  userToken: string,
+  recipe: IRecipeRequest,
+): Promise<INextJsResponseItem> {
   try {
     return await axios.post(`${apiUrl}/recipes?authToken=${authToken}&userId=${userToken}`, recipe);
   } catch (error) {
@@ -13,7 +17,7 @@ export async function postRecipe(authToken: string, userToken: string, recipe: I
   }
 }
 
-export async function putRecipe(authToken: string, userToken: string, recipe: IRecipeRequest) {
+export async function putRecipe(authToken: string, userToken: string, recipe: IRecipeRequest): Promise<INextJsResponseItem> {
   try {
     return await axios.put(`${apiUrl}/recipes?authToken=${authToken}&userId=${userToken}`, recipe);
   } catch (error) {

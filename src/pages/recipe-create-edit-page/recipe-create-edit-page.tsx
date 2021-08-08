@@ -102,7 +102,7 @@ export function RecipeCreateEditPage() {
       const authToken = await getAuthToken();
       const response = await putRecipe(authToken, user.uid, requestBody);
       setIsSaving(false);
-      history.push(`/summary/${response.data[0].recipe.recipeId}`);
+      history.push(`/summary/${response.data.recipe.recipeId}`);
     } else {
       // toast message
       console.log('INVALID');
