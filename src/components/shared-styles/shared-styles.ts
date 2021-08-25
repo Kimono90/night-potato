@@ -43,6 +43,15 @@ export const StyledTitle = styled.div`
   }
 `;
 
+export const StyledPageTitle = styled.div`
+  margin-top: 4rem;
+  font-size: 2rem;
+
+  @media (min-width: 500px) {
+    font-size: 2.5rem;
+  }
+`;
+
 export const StyledBody = styled.div`
   border-radius: 0.5rem;
   background-color: ${colors.secondary};

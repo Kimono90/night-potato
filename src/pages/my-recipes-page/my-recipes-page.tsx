@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { IRecipe } from '../models-and-constants/IRecipe';
-import { getUserRecipes } from '../gateways/night-potato-api-gateway';
-import { LoadingPage } from './loading-page/loading-page';
-import { StyledRecipeOverviewPage, StyledRecipeResults } from './recipe-overview-page/recipe-overview-page.styles';
-import OverviewCard from '../components/recipe-overview-page/recipe-overview-card/overview-card';
+import { IRecipe } from '../../models-and-constants/IRecipe';
+import { getUserRecipes } from '../../gateways/night-potato-api-gateway';
+import { LoadingPage } from '../loading-page/loading-page';
+import { StyledRecipeOverviewPage, StyledRecipeResults } from '../recipe-overview-page/recipe-overview-page.styles';
+import OverviewCard from '../../components/recipe-overview-page/recipe-overview-card/overview-card';
 import { Redirect } from 'react-router-dom';
-import { FirebaseContext } from '../contexts/firebase-auth-context';
+import { FirebaseContext } from '../../contexts/firebase-auth-context';
+import { StyledPageTitle } from '../../components/shared-styles/shared-styles';
 
 export default function MyRecipesPage() {
   const { isLoggingIn, user } = useContext(FirebaseContext);
@@ -36,7 +37,7 @@ export default function MyRecipesPage() {
     <LoadingPage />
   ) : (
     <StyledRecipeOverviewPage data-label="overview-page">
-      <div style={{ marginTop: '4rem', fontSize: '2.5rem' }}>{displayName} recipes</div>
+      <StyledPageTitle>{displayName} recipes</StyledPageTitle>
       <StyledRecipeResults>{recipeElements}</StyledRecipeResults>
     </StyledRecipeOverviewPage>
   );

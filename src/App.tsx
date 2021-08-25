@@ -6,7 +6,7 @@ import AppMenu from './components/app-menu/app-menu';
 import { FirebaseProvider } from './contexts/firebase-auth-context';
 import { RecipeCreateEditPage } from './pages/recipe-create-edit-page/recipe-create-edit-page';
 import { useDynamicPageTitle } from './hooks/use-dynamic-page-title';
-import MyRecipesPage from './pages/my-recipes-page';
+import MyRecipesPage from './pages/my-recipes-page/my-recipes-page';
 
 export default function App() {
   useDynamicPageTitle();
