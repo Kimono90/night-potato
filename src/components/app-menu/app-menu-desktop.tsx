@@ -18,7 +18,7 @@ export function DesktopAppMenu() {
         <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/create">
           CREATE RECIPE
         </StyledNavLink>
-        <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/">
+        <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/my-recipes">
           MY RECIPES
         </StyledNavLink>
       </div>
@@ -27,10 +27,7 @@ export function DesktopAppMenu() {
           <span>Logging in...</span>
         ) : (
           <>
-            <span
-              style={{ marginRight: '0.5rem' }}
-              onClick={isLoggedIn ? firebaseContext.logOut : firebaseContext.logIn}
-            >
+            <span style={{ marginRight: '0.5rem' }} onClick={isLoggedIn ? firebaseContext.logOut : firebaseContext.logIn}>
               {`${isLoggedIn ? 'LOG OUT' : 'LOG IN'}`}
             </span>
             <FontAwesomeIcon icon={isLoggedIn ? faSignOutAlt : faSignInAlt} />

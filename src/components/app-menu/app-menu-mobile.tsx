@@ -34,7 +34,7 @@ export function MobileAppMenu() {
         <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/create" onClick={() => setMenuOpen(false)}>
           CREATE RECIPE
         </StyledNavLink>
-        <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/" onClick={() => setMenuOpen(false)}>
+        <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/my-recipes" onClick={() => setMenuOpen(false)}>
           MY RECIPES
         </StyledNavLink>
         <StyledSignInButton>
@@ -42,10 +42,7 @@ export function MobileAppMenu() {
             <span>Logging in...</span>
           ) : (
             <>
-              <span
-                style={{ marginRight: '0.5rem' }}
-                onClick={isLoggedIn ? firebaseContext.logOut : firebaseContext.logIn}
-              >
+              <span style={{ marginRight: '0.5rem' }} onClick={isLoggedIn ? firebaseContext.logOut : firebaseContext.logIn}>
                 {`${isLoggedIn ? 'LOG OUT' : 'LOG IN'}`}
               </span>
               <FontAwesomeIcon icon={isLoggedIn ? faSignOutAlt : faSignInAlt} />
