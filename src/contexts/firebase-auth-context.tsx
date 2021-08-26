@@ -72,8 +72,10 @@ export const FirebaseProvider = ({ children }: any) => {
 
   const deleteAccount = async () => {
     if (user) {
-      await user.delete();
-      await logOut();
+      await user.reauthenticateWithPopup(new firebaseInstance.auth.GoogleAuthProvider()).then(async () => {
+        await user.delete();
+        await logOut();
+      });
     }
   };
 
