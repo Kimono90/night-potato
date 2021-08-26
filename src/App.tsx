@@ -7,6 +7,7 @@ import { FirebaseProvider } from './contexts/firebase-auth-context';
 import { RecipeCreateEditPage } from './pages/recipe-create-edit-page/recipe-create-edit-page';
 import { useDynamicPageTitle } from './hooks/use-dynamic-page-title';
 import MyRecipesPage from './pages/my-recipes-page/my-recipes-page';
+import { MyProfilePage } from './pages/my-profile-page/my-profile-page';
 
 export default function App() {
   useDynamicPageTitle();
@@ -21,7 +22,7 @@ export default function App() {
           <Route path="/create" component={RecipeCreateEditPage} />
           <Route path="/edit/:recipeId" component={RecipeCreateEditPage} />
           <Route path="/my-recipes" component={MyRecipesPage} />
-          {/*<Route path="/my-profile" component={MyProfilePage} />*/}
+          <Route path="/my-profile" component={MyProfilePage} />
           <Route path="*">
             <Redirect to="/" />
           </Route>

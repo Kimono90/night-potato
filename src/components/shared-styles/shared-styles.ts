@@ -65,6 +65,16 @@ export const StyledBody = styled.div`
   }
 `;
 
+export const StyledCardItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: start;
+  padding: 0.25rem 1rem;
+  flex-wrap: wrap;
+`;
+
 export const StyledRemoveButton = styled.button`
   font: inherit;
   font-size: 1rem;
@@ -172,6 +182,23 @@ export const StyledActionButton = styled.button<ButtonProps>`
   font-family: inherit;
   cursor: pointer;
   margin-bottom: 2rem;
+
+  :hover {
+    background-color: ${(props) => props.hoverColor};
+  }
+`;
+
+export const StyledActionButtonSmall = styled.button<ButtonProps>`
+  text-decoration: none;
+  background-color: ${(props) => props.backgroundColor};
+  border: none;
+  border-radius: 0.5rem;
+  color: ${(props) => props.textColor};
+  padding: 0.25rem 1rem;
+  font-size: 1.5rem;
+  font-family: inherit;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
 
   :hover {
     background-color: ${(props) => props.hoverColor};

@@ -5,6 +5,7 @@ import firebaseInstance from '../firebase/firebase-initialization';
 export interface IFirebaseContext {
   logIn: () => void;
   logOut: () => void;
+  deleteAccount: () => void;
   getAuthToken: () => Promise<string>;
   user: firebase.User | null;
   isLoggingIn: boolean;
@@ -24,8 +25,9 @@ function getSignedInUser(): Promise<firebase.User | null> {
 async function signInToGoogle(): Promise<firebase.User | null> {
   const signedInUser = await firebaseInstance.auth().signInWithPopup(googleAuthProvider);
 
-  if (signedInUser) return signedInUser.user;
-  //TODO: error handling
+  if (signedInUser) {
+    return signedInUser.user;
+  }
   console.log('sorry, something went wrong logging you in :(');
   return null;
 }
@@ -45,10 +47,14 @@ export const FirebaseProvider = ({ children }: any) => {
 
   useEffect(() => {
     setIsLoggingIn(true);
-    getSignedInUser().then((user) => {
-      setUser(user);
-      setIsLoggingIn(false);
-    });
+    firebaseInstance
+      .auth()
+      .setPersistence('session')
+      .then(async () => {
+        const user = await getSignedInUser();
+        setUser(user);
+        setIsLoggingIn(false);
+      });
   }, []);
 
   const logIn = async () => {
@@ -62,6 +68,13 @@ export const FirebaseProvider = ({ children }: any) => {
     await signOutOfGoogle();
     const currentUser = await getSignedInUser();
     setUser(currentUser);
+  };
+
+  const deleteAccount = async () => {
+    if (user) {
+      await user.delete();
+      await logOut();
+    }
   };
 
   const getAuthToken = async (): Promise<string> => {
@@ -82,6 +95,7 @@ export const FirebaseProvider = ({ children }: any) => {
           user: user,
           logIn: logIn,
           logOut: logOut,
+          deleteAccount: deleteAccount,
           isLoggingIn: loggingIn,
           getAuthToken: getAuthToken,
         } as IFirebaseContext

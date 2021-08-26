@@ -21,6 +21,9 @@ export function DesktopAppMenu() {
         <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/my-recipes">
           MY RECIPES
         </StyledNavLink>
+        <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/my-profile">
+          MY PROFILE
+        </StyledNavLink>
       </div>
       <StyledSignInButton>
         {firebaseContext.isLoggingIn ? (
