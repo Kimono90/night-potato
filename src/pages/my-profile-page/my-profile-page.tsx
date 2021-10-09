@@ -38,7 +38,11 @@ export function MyProfilePage(): ReactElement {
     if (!showModal) return null;
 
     return mobile ? (
-      <DeleteAccountModalMobile closeModal={() => setShowModal(false)} />
+      <DeleteAccountModalMobile
+        closeModal={() => setShowModal(false)}
+        onDeleteButtonClick={handleDeleteAccount}
+        isDeleting={isDeleting}
+      />
     ) : (
       <DeleteAccountModal
         closeModal={() => setShowModal(false)}
