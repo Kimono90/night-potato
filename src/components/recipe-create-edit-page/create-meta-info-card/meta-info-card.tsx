@@ -36,43 +36,43 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
           <StyledDetailsItem>
             <StyledDetailsItemLabel>Portions* </StyledDetailsItemLabel>
             <StyledNumericField
-              type="number"
               value={metaInfo?.portions}
-              onChange={(e) =>
+              onChange={(event) => {
+                if (!Number(event.target.value)) event.target.value = '';
                 onMetaInfoChange({
                   ...metaInfo,
-                  portions: Number(e.target.value),
-                })
-              }
+                  portions: Number(event.target.value),
+                });
+              }}
               hasError={`${!metaInfo.portions && metaInfoHasError}`}
             />
           </StyledDetailsItem>
           <StyledDetailsItem>
             <StyledDetailsItemLabel>Cooking time* </StyledDetailsItemLabel>
             <StyledNumericField
-              type="number"
               placeholder="minutes"
               value={metaInfo?.prepTimeInMinutes}
-              onChange={(e) =>
+              onChange={(event) => {
+                if (!Number(event.target.value)) event.target.value = '';
                 onMetaInfoChange({
                   ...metaInfo,
-                  prepTimeInMinutes: Number(e.target.value),
-                })
-              }
+                  prepTimeInMinutes: Number(event.target.value),
+                });
+              }}
               hasError={`${!metaInfo.prepTimeInMinutes && metaInfoHasError}`}
             />
           </StyledDetailsItem>
           <StyledDetailsItem>
             <StyledDetailsItemLabel>Kcal </StyledDetailsItemLabel>
             <StyledNumericField
-              type="number"
               value={metaInfo?.kcalPerPortion}
-              onChange={(e) =>
+              onChange={(event) => {
+                if (!Number(event.target.value)) event.target.value = '';
                 onMetaInfoChange({
                   ...metaInfo,
-                  kcalPerPortion: Number(e.target.value),
-                })
-              }
+                  kcalPerPortion: Number(event.target.value),
+                });
+              }}
             />
           </StyledDetailsItem>
         </StyledDetailsBlock>

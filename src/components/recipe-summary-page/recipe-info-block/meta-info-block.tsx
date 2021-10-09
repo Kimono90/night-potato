@@ -20,6 +20,12 @@ export default function MetaInfoBlock({ recipeMetaInfo, onChangePortions }: Prop
   const minus = '-';
   const plus = '+';
 
+  function renderPortions(): string {
+    if (recipeMetaInfo.portions) {
+      return `${recipeMetaInfo.portions} ${recipeMetaInfo.portions > 1 ? 'portions' : 'portion'}`;
+    } else return '';
+  }
+
   return (
     <MetaInfoBlockWrapper recipeName={recipeMetaInfo.name}>
       <StyledMetaInfoContentWithoutLabels data-label="without-labels">
@@ -39,7 +45,7 @@ export default function MetaInfoBlock({ recipeMetaInfo, onChangePortions }: Prop
               onClick={() => onChangePortions(plus)}
             />
           </div>
-          {recipeMetaInfo.portions} {recipeMetaInfo.portions > 1 ? 'portions' : 'portion'}
+          {renderPortions()}
         </StyledMetaInfoItem>
         <MetaInfoItem label="prep-time" faIcon={faClock} iconText={`${recipeMetaInfo.prepTimeInMinutes} minutes`} />
         <MetaInfoItem label="kcal" faIcon={faHamburger} iconText={`${recipeMetaInfo.kcalPerPortion} kcal`} />

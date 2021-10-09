@@ -26,13 +26,13 @@ export function RecipeCreateEditPage() {
     metaInfo: {
       name: '',
       imgUrl: '',
-      portions: 0,
-      kcalPerPortion: 0,
+      portions: undefined,
+      kcalPerPortion: undefined,
       labels: [],
-      prepTimeInMinutes: 0,
+      prepTimeInMinutes: undefined,
     },
     instructions: '',
-    ingredients: mobile ? [] : [{ ingredientId: generate(), amount: 0, measurement: '', name: '' }],
+    ingredients: mobile ? [] : [{ ingredientId: generate(), amount: undefined, measurement: '', name: '' }],
     equipment: [{ equipmentId: generate(), name: '' }],
   };
 

@@ -5,6 +5,7 @@ import { StyledCopiedConfirmation, StyledCopyButton, StyledTabList, StyledTabTit
 import { Ingredient } from './ingredient';
 import { faCopy } from '@fortawesome/free-regular-svg-icons';
 import { Equipment } from './equipment';
+import { toast } from 'react-toastify';
 
 type Props = {
   ingredients: IIngredient[];
@@ -37,13 +38,9 @@ export default function IngredientsBlock({ ingredients, equipment }: Props) {
               icon={faCopy}
               copied={`${isCopied}`}
               onClick={async () => {
-                try {
-                  await navigator.clipboard.writeText(textToCopy);
-                  setIsCopied(true);
-                  setTimeout(() => setIsCopied(false), 1000);
-                } catch (e) {
-                  // TODO: Error handling
-                }
+                await navigator.clipboard.writeText(textToCopy);
+                setIsCopied(true);
+                setTimeout(() => setIsCopied(false), 1000);
               }}
             />
             <StyledCopiedConfirmation copied={`${isCopied}`}>Copied &#129364;!</StyledCopiedConfirmation>

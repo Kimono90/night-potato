@@ -49,7 +49,7 @@ export default function RecipeSummaryPage() {
   }
 
   const handlePortionsChange = (action: string) => {
-    if (!recipe) return;
+    if (!recipe || !recipe.metaInfo.portions) return;
     let newPortions = recipe.metaInfo.portions;
     action === '+' ? newPortions++ : newPortions--;
     if (newPortions === 0) return;
@@ -60,7 +60,11 @@ export default function RecipeSummaryPage() {
 
   const recalculateIngredientAmounts = (newPortions: number) => {
     if (!recipe) return;
-    recipe.ingredients.forEach((i) => (i.amount = (i.amount / recipe.metaInfo.portions) * newPortions));
+    recipe.ingredients.forEach((i) => {
+      if (i.amount && recipe.metaInfo.portions) {
+        i.amount = (i.amount / recipe.metaInfo.portions) * newPortions;
+      }
+    });
   };
 
   async function handleDeleteRecipe() {

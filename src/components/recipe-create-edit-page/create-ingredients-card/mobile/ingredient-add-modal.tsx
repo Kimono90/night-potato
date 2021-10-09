@@ -15,7 +15,7 @@ export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: 
   const [ingredient, setIngredient] = useState<IIngredient>({
     ingredientId: '',
     name: '',
-    amount: 0,
+    amount: undefined,
     measurement: '',
   });
   const [ingredientHasError, setIngredientHasError] = useState<boolean>(false);
@@ -25,7 +25,7 @@ export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: 
     setIngredient({
       ingredientId: '',
       name: '',
-      amount: 0,
+      amount: undefined,
       measurement: '',
     });
     setIngredientHasError(false);
@@ -65,17 +65,22 @@ export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: 
       />
       <StyledNumericField
         placeholder="Amount"
-        type="number"
         value={ingredient.amount}
-        onChange={(event: ChangeEvent<HTMLInputElement>) =>
-          setIngredient({ ...ingredient, amount: Number(event.target.value) })
-        }
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          if (!Number(event.target.value)) event.target.value = '';
+          setIngredient({ ...ingredient, amount: Number(event.target.value) });
+        }}
         hasError={`${amountHasError}`}
       />
       <div style={{ display: 'flex', alignItems: 'baseline' }}>
         <StyledSelectField
           value={ingredient.measurement}
-          onChange={(e: ChangeEvent<HTMLSelectElement>) => setIngredient({ ...ingredient, measurement: e.target.value })}
+          onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+            setIngredient({
+              ...ingredient,
+              measurement: e.target.value,
+            })
+          }
         >
           {MEASUREMENT_OPTIONS.map((o) => (
             <option key={o}>{o}</option>

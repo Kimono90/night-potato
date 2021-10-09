@@ -8,9 +8,9 @@ export interface IRecipe {
 
 export interface IRecipeMetaInfo {
   name: string;
-  portions: number;
-  prepTimeInMinutes: number;
-  kcalPerPortion: number;
+  portions: number | undefined;
+  prepTimeInMinutes: number | undefined;
+  kcalPerPortion: number | undefined;
   labels: string[];
   imgUrl: string;
 }
@@ -23,6 +23,6 @@ export interface IEquipment {
 export interface IIngredient {
   ingredientId: string;
   name: string;
-  amount: number;
+  amount: number | undefined;
   measurement: string;
 }

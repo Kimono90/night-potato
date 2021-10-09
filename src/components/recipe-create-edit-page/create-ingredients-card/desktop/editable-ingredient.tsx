@@ -41,11 +41,11 @@ export function EditableIngredient({
   }, [ingredient]);
 
   const handlePlusButtonClick = (): void => {
-    if (ingredient.name && ingredient.amount !== 0) {
+    if (ingredient.name && !ingredient.amount) {
       plusButtonState.set(false);
       onPlusButtonClick();
     } else {
-      setAmountHasError(ingredient.amount === 0);
+      setAmountHasError(!ingredient.amount);
       setIngredientHasError(!ingredient.name);
     }
   };
@@ -71,9 +71,9 @@ export function EditableIngredient({
       />
       <StyledNumericField
         placeholder="Amount"
-        type="number"
         value={ingredient.amount}
         onChange={(event) => {
+          if (!Number(event.target.value)) event.target.value = '';
           setAmountHasError(false);
           setIngredient({ ...ingredient, amount: Number(event.target.value) });
         }}
