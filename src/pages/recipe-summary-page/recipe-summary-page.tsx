@@ -69,6 +69,7 @@ export default function RecipeSummaryPage() {
       const authToken = await getAuthToken();
       await deleteSingleRecipe(authToken, user.uid, recipeId);
       setIsDeleting(false);
+      toast('Your recipe has been successfully deleted! Sometimes chefs like to keep their secrets.');
       history.push(`/`);
     } else {
       toast('Oops. It seems deleting your recipe failed.');
