@@ -20,6 +20,7 @@ export function DeleteAccountModal({ closeModal }: ModalProps): ReactElement {
 
   async function handleDeleteAccount() {
     setIsDeleting(true);
+    //TODO: delete recipes
     await deleteAccount();
     setIsDeleting(false);
     history.push('/');
@@ -33,7 +34,8 @@ export function DeleteAccountModal({ closeModal }: ModalProps): ReactElement {
           Sad to see you go! Just so you know, when proceeding:
           <ul>
             <li>Your user will be removed from our user list</li>
-            <li>The recipes created with your account will still exist</li>
+            <li>The recipes created with your account will be deleted</li>
+            <li>A popup from Google might appear to request a recent login session</li>
           </ul>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '0.5rem' }}>
