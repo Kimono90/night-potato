@@ -204,3 +204,17 @@ export const StyledActionButtonSmall = styled.button<ButtonProps>`
     background-color: ${(props) => props.hoverColor};
   }
 `;
+
+type MobileModalProps = {
+  show?: string;
+};
+
+export const StyledMobileModal = styled.div<MobileModalProps>`
+  display: ${(props) => (props.show === 'true' ? 'flex' : 'none')};
+  background-color: ${colors.secondary};
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  flex-direction: column;
+  align-items: flex-start;
+`;

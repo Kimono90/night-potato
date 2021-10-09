@@ -37,12 +37,11 @@ export default function OverviewCard({ recipeId, recipeInfo }: props) {
           {!recipeInfo.imgUrl ? (
             <p
               style={{
-                paddingBottom: '2rem',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'flex-end',
+                position: 'relative',
                 height: '100%',
                 boxSizing: 'border-box',
+                textAlign: 'center',
+                top: '40%',
               }}
             >
               No photo available

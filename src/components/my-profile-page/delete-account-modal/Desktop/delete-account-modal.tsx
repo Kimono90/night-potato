@@ -1,11 +1,11 @@
 import React, { ReactElement, useContext, useState } from 'react';
 import styled from '@emotion/styled';
-import { StyledActionButtonSmall } from '../../shared-styles/shared-styles';
-import { FirebaseContext } from '../../../contexts/firebase-auth-context';
+import { StyledActionButtonSmall } from '../../../shared-styles/shared-styles';
+import { FirebaseContext } from '../../../../contexts/firebase-auth-context';
 import { useHistory } from 'react-router-dom';
-import { colors } from '../../../styles/potato-styles';
+import { colors } from '../../../../styles/potato-styles';
 import { createPortal } from 'react-dom';
-import { deleteAllRecipes } from '../../../gateways/night-potato-api-gateway';
+import { deleteAllRecipes } from '../../../../gateways/night-potato-api-gateway';
 
 type ModalProps = {
   closeModal: () => void;
@@ -35,9 +35,9 @@ export function DeleteAccountModal({ closeModal }: ModalProps): ReactElement {
         <div>
           Sad to see you go! Just so you know, when proceeding:
           <ul>
-            <li>Your user will be removed from our user list</li>
-            <li>The recipes created with your account will be deleted</li>
-            <li>A popup from Google might appear to request a recent login session</li>
+            <li>Your user will be removed from our user list.</li>
+            <li>The recipes created with your account will be deleted.</li>
+            <li>A Google popup might appear to request a recent login session.</li>
           </ul>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '0.5rem' }}>

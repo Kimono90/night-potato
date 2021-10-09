@@ -37,6 +37,9 @@ export function MobileAppMenu() {
         <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/my-recipes" onClick={() => setMenuOpen(false)}>
           MY RECIPES
         </StyledNavLink>
+        <StyledNavLink signedin={`${!!firebaseContext.user}`} to="/my-profile" onClick={() => setMenuOpen(false)}>
+          MY PROFILE
+        </StyledNavLink>
         <StyledSignInButton>
           {firebaseContext.isLoggingIn ? (
             <span>Logging in...</span>

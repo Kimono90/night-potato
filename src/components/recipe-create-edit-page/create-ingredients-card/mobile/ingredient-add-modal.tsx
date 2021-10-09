@@ -1,7 +1,7 @@
 import React, { ChangeEvent, ReactElement, useState } from 'react';
 import { MEASUREMENT_OPTIONS } from '../../../../models-and-constants/measurement-options';
 import { generate } from 'shortid';
-import { AddItemModalWrapper } from '../../template-components/add-item-modal-mobile/add-item-modal-wrapper';
+import { MobileModalWrapper } from '../../template-components/add-item-modal-mobile/mobile-modal-wrapper';
 import { StyledNumericField, StyledSelectField, StyledTextField } from '../../../shared-styles/shared-styles';
 import type { IIngredient } from '../../../../models-and-constants/IRecipe';
 
@@ -48,7 +48,7 @@ export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: 
   };
 
   return (
-    <AddItemModalWrapper
+    <MobileModalWrapper
       showModal={showModal}
       modalTitle="Add an ingredient"
       onBackClick={() => {
@@ -85,6 +85,6 @@ export function IngredientAddModal({ showModal, onIngredientAdd, onBackClick }: 
           <i>optional</i>
         </p>
       </div>
-    </AddItemModalWrapper>
+    </MobileModalWrapper>
   );
 }

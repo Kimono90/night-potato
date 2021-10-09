@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext, useEffect, useState } from 'react';
+import React, { ReactElement, useContext, useState } from 'react';
 import {
   StyledActionButton,
   StyledBody,
@@ -10,11 +10,23 @@ import {
 import { FirebaseContext } from '../../contexts/firebase-auth-context';
 import { LoadingPage } from '../loading-page/loading-page';
 import { colors } from '../../styles/potato-styles';
-import { DeleteAccountModal } from '../../components/my-profile-page/delete-account-modal/delete-account-modal';
+import { DeleteAccountModal } from '../../components/my-profile-page/delete-account-modal/Desktop/delete-account-modal';
+import { DeleteAccountModalMobile } from '../../components/my-profile-page/delete-account-modal/Mobile/delete-account-modal-mobile';
 
 export function MyProfilePage(): ReactElement {
   const [showModal, setShowModal] = useState<boolean>(false);
   const { user } = useContext(FirebaseContext);
+
+  function renderDeleteAccountModal(): JSX.Element | null {
+    const mobile = window.innerWidth < 500;
+    if (!showModal) return null;
+
+    return mobile ? (
+      <DeleteAccountModalMobile closeModal={() => setShowModal(false)} />
+    ) : (
+      <DeleteAccountModal closeModal={() => setShowModal(false)} />
+    );
+  }
 
   return !user ? (
     <LoadingPage />
@@ -56,7 +68,7 @@ export function MyProfilePage(): ReactElement {
       >
         <span>Delete my account &#128465;&#65039;</span>
       </StyledActionButton>
-      {showModal ? <DeleteAccountModal closeModal={() => setShowModal(false)} /> : null}
+      {renderDeleteAccountModal()}
     </StyledPage>
   );
 }
