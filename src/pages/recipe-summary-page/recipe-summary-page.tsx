@@ -88,7 +88,7 @@ export default function RecipeSummaryPage() {
       {recipe.metaInfo.imgUrl ? <PhotoCard data-testid="photo-carousel" imgUrl={recipe.metaInfo.imgUrl} /> : null}
       <IngredientsBlock data-testid="ingredients-block" ingredients={recipe.ingredients} equipment={recipe.equipment} />
       <InstructionsBlock data-testid="instructions-block" instructions={recipe.instructions} />
-      <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-around', width: '50%' }}>
         {isRecipeOwner ? (
           <>
             <StyledActionButton
