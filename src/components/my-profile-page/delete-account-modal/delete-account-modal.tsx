@@ -1,13 +1,11 @@
 import React, { ReactElement, useContext, useState } from 'react';
 import styled from '@emotion/styled';
-import { StyledActionButton, StyledActionButtonSmall } from '../../shared-styles/shared-styles';
+import { StyledActionButtonSmall } from '../../shared-styles/shared-styles';
 import { FirebaseContext } from '../../../contexts/firebase-auth-context';
 import { useHistory } from 'react-router-dom';
 import { colors } from '../../../styles/potato-styles';
 import { createPortal } from 'react-dom';
-import firebaseInstance from 'firebase/app';
-import firebase from 'firebase/app';
-import GoogleAuthProvider = firebase.auth.GoogleAuthProvider;
+import { deleteAllRecipes } from '../../../gateways/night-potato-api-gateway';
 
 type ModalProps = {
   closeModal: () => void;
@@ -15,15 +13,19 @@ type ModalProps = {
 
 export function DeleteAccountModal({ closeModal }: ModalProps): ReactElement {
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
-  const { user, deleteAccount } = useContext(FirebaseContext);
+  const { user, deleteAccount, getAuthToken } = useContext(FirebaseContext);
   const history = useHistory();
 
   async function handleDeleteAccount() {
     setIsDeleting(true);
-    //TODO: delete recipes
-    await deleteAccount();
+    if (user) {
+      const authToken = await getAuthToken();
+      await deleteAllRecipes(authToken, user.uid);
+      await deleteAccount();
+      setIsDeleting(false);
+      history.push('/');
+    }
     setIsDeleting(false);
-    history.push('/');
   }
 
   return createPortal(

@@ -56,3 +56,11 @@ export async function deleteSingleRecipe(authToken: string, userToken: string, r
     throw new Error(error);
   }
 }
+
+export async function deleteAllRecipes(authToken: string, userToken: string) {
+  try {
+    return await axios.delete(`${apiUrl}/recipes?authToken=${authToken}&userId=${userToken}&recipeId=ALL`);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
