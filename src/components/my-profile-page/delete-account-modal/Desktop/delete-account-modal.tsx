@@ -1,33 +1,16 @@
-import React, { ReactElement, useContext, useState } from 'react';
+import React, { ReactElement } from 'react';
 import styled from '@emotion/styled';
 import { StyledActionButtonSmall } from '../../../shared-styles/shared-styles';
-import { FirebaseContext } from '../../../../contexts/firebase-auth-context';
-import { useHistory } from 'react-router-dom';
 import { colors } from '../../../../styles/potato-styles';
 import { createPortal } from 'react-dom';
-import { deleteAllRecipes } from '../../../../gateways/night-potato-api-gateway';
 
 type ModalProps = {
   closeModal: () => void;
+  onDeleteButtonClick: () => void;
+  isDeleting: boolean;
 };
 
-export function DeleteAccountModal({ closeModal }: ModalProps): ReactElement {
-  const [isDeleting, setIsDeleting] = useState<boolean>(false);
-  const { user, deleteAccount, getAuthToken } = useContext(FirebaseContext);
-  const history = useHistory();
-
-  async function handleDeleteAccount() {
-    setIsDeleting(true);
-    if (user) {
-      const authToken = await getAuthToken();
-      await deleteAllRecipes(authToken, user.uid);
-      await deleteAccount();
-      setIsDeleting(false);
-      history.push('/');
-    }
-    setIsDeleting(false);
-  }
-
+export function DeleteAccountModal({ closeModal, onDeleteButtonClick, isDeleting }: ModalProps): ReactElement {
   return createPortal(
     <>
       <StyledBackDrop onClick={() => closeModal()} />
@@ -50,7 +33,7 @@ export function DeleteAccountModal({ closeModal }: ModalProps): ReactElement {
             Go back
           </StyledActionButtonSmall>
           <StyledActionButtonSmall
-            onClick={() => handleDeleteAccount()}
+            onClick={onDeleteButtonClick}
             backgroundColor={colors.danger}
             textColor={colors.white}
             hoverColor={colors.dangerHover}

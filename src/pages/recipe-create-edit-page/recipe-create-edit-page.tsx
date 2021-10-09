@@ -16,6 +16,7 @@ import { IRouteParams } from '../../models-and-constants/IRouteParams';
 import { IRecipeRequest } from '../../models-and-constants/IRecipeRequest';
 import { getSingleRecipe, postRecipe, putRecipe } from '../../gateways/night-potato-api-gateway';
 import { LoadingPage } from '../loading-page/loading-page';
+import { toast } from 'react-toastify';
 
 const mobile = window.innerWidth < 500;
 
@@ -52,12 +53,14 @@ export function RecipeCreateEditPage() {
   useEffect(() => {
     if (recipeId) {
       getSingleRecipe(recipeId)
-        .then((response) => setRecipe(response.data.recipe))
-        .then(() => setIsLoading(false))
-        .catch((error) => {
-          // TODO: toastMessage
-          console.log(error);
-        });
+        .then((response) => {
+          if (!response.data.recipe) {
+            toast('Apologies. I was unable to gather the information on this recipe. I will bring you back to the homepage');
+            setTimeout(() => history.push('/'), 5000);
+          }
+          setRecipe(response.data.recipe);
+        })
+        .then(() => setIsLoading(false));
     } else {
       setRecipe(initialRecipe);
       setIsLoading(false);
@@ -86,10 +89,10 @@ export function RecipeCreateEditPage() {
       const authToken = await getAuthToken();
       const response = await postRecipe(authToken, user.uid, requestBody);
       setIsSaving(false);
+      toast(`Looks delicious! Your recipe for ${response.data.recipe.metaInfo.name} was successfully created!`);
       history.push(`/summary/${response.data.recipe.recipeId}`);
     } else {
-      // toast message
-      console.log('INVALID');
+      toast('Your recipe does not seem to be complete just yet. Please fill in all mandatory fields :)');
       setIsSaving(false);
     }
   }
@@ -102,10 +105,10 @@ export function RecipeCreateEditPage() {
       const authToken = await getAuthToken();
       const response = await putRecipe(authToken, user.uid, requestBody);
       setIsSaving(false);
+      toast(`Yummy! Your recipe for ${response.data.recipe.metaInfo.name} was successfully saved!`);
       history.push(`/summary/${response.data.recipe.recipeId}`);
     } else {
-      // toast message
-      console.log('INVALID');
+      toast('Your recipe does not seem to be complete just yet. Please fill in all mandatory fields :)');
       setIsSaving(false);
     }
   }

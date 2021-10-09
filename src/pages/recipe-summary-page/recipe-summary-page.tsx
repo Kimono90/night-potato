@@ -12,7 +12,7 @@ import { FirebaseContext } from '../../contexts/firebase-auth-context';
 import { EditButton } from '../../components/recipe-summary-page/recipe-edit-button/recipe-edit-button';
 import { LoadingPage } from '../loading-page/loading-page';
 import { colors } from '../../styles/potato-styles';
-import { SaveButton } from '../../components/recipe-create-edit-page/save-button/save-button';
+import { toast } from 'react-toastify';
 
 export default function RecipeSummaryPage() {
   let { recipeId } = useParams<IRouteParams>();
@@ -27,17 +27,16 @@ export default function RecipeSummaryPage() {
     if (recipeId) {
       getSingleRecipe(recipeId)
         .then(async (response) => {
+          if (!response.data.recipe && user) {
+            toast('Apologies. I was unable to gather the information on this recipe. I will bring you back to the homepage');
+            setTimeout(() => history.push('/'), 5000);
+          }
           setRecipe(response.data.recipe);
           const isRecipeOwner = await isUserRecipeOwner();
           setIsRecipeOwner(isRecipeOwner);
         })
-        .then(() => setIsLoading(false))
-        .catch((error) => {
-          // TODO: toastMessage
-          console.log(error);
-        });
+        .then(() => setIsLoading(false));
     }
-    //TODO: toastMessage
   }, [user]);
 
   async function isUserRecipeOwner(): Promise<boolean> {
@@ -72,8 +71,7 @@ export default function RecipeSummaryPage() {
       setIsDeleting(false);
       history.push(`/`);
     } else {
-      // toast message
-      console.log('DELETE FAILED');
+      toast('Oops. It seems deleting your recipe failed.');
       setIsDeleting(false);
     }
   }

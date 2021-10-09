@@ -7,6 +7,7 @@ import OverviewCard from '../../components/recipe-overview-page/recipe-overview-
 import { Redirect } from 'react-router-dom';
 import { FirebaseContext } from '../../contexts/firebase-auth-context';
 import { StyledPageTitle } from '../../components/shared-styles/shared-styles';
+import { toast } from 'react-toastify';
 
 export default function MyRecipesPage() {
   const { isLoggingIn, user } = useContext(FirebaseContext);
@@ -21,9 +22,8 @@ export default function MyRecipesPage() {
           setRecipes(recipes);
         })
         .then(() => setIsLoading(false))
-        .catch((error) => {
-          //TODO: toast message
-          console.log(error);
+        .catch(() => {
+          toast('Apologies. I am having trouble retrieving your recipes');
         });
     }
   }, [user]);

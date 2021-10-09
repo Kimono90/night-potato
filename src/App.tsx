@@ -8,6 +8,8 @@ import { RecipeCreateEditPage } from './pages/recipe-create-edit-page/recipe-cre
 import { useDynamicPageTitle } from './hooks/use-dynamic-page-title';
 import MyRecipesPage from './pages/my-recipes-page/my-recipes-page';
 import { MyProfilePage } from './pages/my-profile-page/my-profile-page';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   useDynamicPageTitle();
@@ -16,6 +18,7 @@ export default function App() {
     <FirebaseProvider>
       <Router>
         <AppMenu />
+        <ToastContainer theme="dark" progressStyle={{ backgroundColor: 'grey' }} />
         <Switch>
           <Route exact path="/" component={RecipeOverviewPage} />
           <Route path="/summary/:recipeId" component={RecipeSummaryPage} />

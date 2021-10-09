@@ -12,10 +12,26 @@ import { LoadingPage } from '../loading-page/loading-page';
 import { colors } from '../../styles/potato-styles';
 import { DeleteAccountModal } from '../../components/my-profile-page/delete-account-modal/Desktop/delete-account-modal';
 import { DeleteAccountModalMobile } from '../../components/my-profile-page/delete-account-modal/Mobile/delete-account-modal-mobile';
+import { useHistory } from 'react-router-dom';
+import { deleteAllRecipes } from '../../gateways/night-potato-api-gateway';
 
 export function MyProfilePage(): ReactElement {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const { user } = useContext(FirebaseContext);
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
+  const { user, deleteAccount, getAuthToken } = useContext(FirebaseContext);
+  const history = useHistory();
+
+  async function handleDeleteAccount() {
+    setIsDeleting(true);
+    if (user) {
+      const authToken = await getAuthToken();
+      await deleteAllRecipes(authToken, user.uid);
+      await deleteAccount();
+      setIsDeleting(false);
+      history.push('/');
+    }
+    setIsDeleting(false);
+  }
 
   function renderDeleteAccountModal(): JSX.Element | null {
     const mobile = window.innerWidth < 500;
@@ -24,7 +40,11 @@ export function MyProfilePage(): ReactElement {
     return mobile ? (
       <DeleteAccountModalMobile closeModal={() => setShowModal(false)} />
     ) : (
-      <DeleteAccountModal closeModal={() => setShowModal(false)} />
+      <DeleteAccountModal
+        closeModal={() => setShowModal(false)}
+        onDeleteButtonClick={handleDeleteAccount}
+        isDeleting={isDeleting}
+      />
     );
   }
 

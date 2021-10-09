@@ -1,38 +1,19 @@
-import React, { ReactElement, useContext, useEffect, useState } from 'react';
+import React, { ReactElement } from 'react';
 import { MobileModalWrapper } from '../../../recipe-create-edit-page/template-components/add-item-modal-mobile/mobile-modal-wrapper';
-import { FirebaseContext } from '../../../../contexts/firebase-auth-context';
-import { useHistory } from 'react-router-dom';
-import { deleteAllRecipes } from '../../../../gateways/night-potato-api-gateway';
 
 type ModalProps = {
   closeModal: () => void;
+  onDeleteButtonClick: () => void;
+  isDeleting: boolean;
 };
 
-export function DeleteAccountModalMobile({ closeModal }: ModalProps): ReactElement {
-  const [isDeleting, setIsDeleting] = useState<boolean>(false);
-  const { user, deleteAccount, getAuthToken } = useContext(FirebaseContext);
-  const history = useHistory();
-
-  useEffect(() => console.log(isDeleting));
-
-  async function handleDeleteAccount() {
-    setIsDeleting(true);
-    if (user) {
-      const authToken = await getAuthToken();
-      await deleteAllRecipes(authToken, user.uid);
-      await deleteAccount();
-      setIsDeleting(false);
-      history.push('/');
-    }
-    setIsDeleting(false);
-  }
-
+export function DeleteAccountModalMobile({ closeModal, onDeleteButtonClick, isDeleting }: ModalProps): ReactElement {
   return (
     <MobileModalWrapper
       showModal={true}
       modalTitle="Delete your account"
       onBackClick={closeModal}
-      onCheckButtonClick={handleDeleteAccount}
+      onCheckButtonClick={onDeleteButtonClick}
       isAcceptLoading={isDeleting}
       loadingText="Deleting account"
     >

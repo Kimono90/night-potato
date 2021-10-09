@@ -17,11 +17,7 @@ export default function RecipeOverviewPage() {
         setRecipes(recipes);
         setRecipesToDisplay(recipes);
       })
-      .then(() => setIsLoading(false))
-      .catch((error) => {
-        //TODO: toast message
-        console.log(error);
-      });
+      .then(() => setIsLoading(false));
   }, []);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {

@@ -1,6 +1,7 @@
 import type firebase from 'firebase';
 import React, { useEffect, useState } from 'react';
 import firebaseInstance from '../firebase/firebase-initialization';
+import { toast } from 'react-toastify';
 
 export interface IFirebaseContext {
   logIn: () => void;
@@ -36,7 +37,6 @@ async function signOutOfGoogle() {
   try {
     await firebaseInstance.auth().signOut();
   } catch (error) {
-    //TODO: error handling
     console.log('sorry, something went wrong logging you out :(');
   }
 }
