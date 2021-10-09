@@ -19,22 +19,22 @@ import { LoadingPage } from '../loading-page/loading-page';
 
 const mobile = window.innerWidth < 500;
 
-const initialRecipe: IRecipe = {
-  recipeId: generate(),
-  metaInfo: {
-    name: '',
-    imgUrl: '',
-    portions: 0,
-    kcalPerPortion: 0,
-    labels: [],
-    prepTimeInMinutes: 0,
-  },
-  instructions: '',
-  ingredients: mobile ? [] : [{ ingredientId: generate(), amount: 0, measurement: '', name: '' }],
-  equipment: [{ equipmentId: generate(), name: '' }],
-};
-
 export function RecipeCreateEditPage() {
+  const initialRecipe: IRecipe = {
+    recipeId: generate(),
+    metaInfo: {
+      name: '',
+      imgUrl: '',
+      portions: 0,
+      kcalPerPortion: 0,
+      labels: [],
+      prepTimeInMinutes: 0,
+    },
+    instructions: '',
+    ingredients: mobile ? [] : [{ ingredientId: generate(), amount: 0, measurement: '', name: '' }],
+    equipment: [{ equipmentId: generate(), name: '' }],
+  };
+
   let { recipeId } = useParams<IRouteParams>();
   const { isLoggingIn, user, getAuthToken } = useContext(FirebaseContext);
   const history = useHistory();
