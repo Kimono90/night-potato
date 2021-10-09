@@ -15,11 +15,11 @@ export function Ingredient({ ingredient }: Props): React.ReactElement {
   return (
     <StyledIngredient data-label="ingredient" onClick={() => setIsChecked(!isChecked)}>
       <FontAwesomeIcon icon={isChecked ? faCheckSquare : faSquare} />
-      <p>
-        <span style={{ textDecoration: isChecked ? 'line-through' : 'none' }} id="amount">
+      <p style={{ display: 'grid', gridTemplateColumns: '1fr 5fr' }}>
+        <span style={{ textDecoration: isChecked ? 'line-through' : 'none', grid: 'ingredient' }} id="amount">
           {ingredient.amount} {ingredient.measurement}
         </span>
-        <span style={{ textDecoration: isChecked ? 'line-through' : 'none' }} id="product">
+        <span style={{ textDecoration: isChecked ? 'line-through' : 'none', grid: 'amount' }} id="product">
           {' '}
           {ingredient.name}
         </span>

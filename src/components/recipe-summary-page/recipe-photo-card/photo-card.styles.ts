@@ -18,6 +18,7 @@ export const StyledPhoto = styled.div<CarouselPhotoProps>`
   margin: 0 1rem 2rem 1rem;
   padding: 0 2rem;
   background-image: ${(props) => props.imgUrl};
+  background-position: center;
   user-select: none;
 
   @media (min-width: 500px) {

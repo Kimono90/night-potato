@@ -17,7 +17,7 @@ type Props = {
 
 export function RecipeNameInputField({ recipeName, recipeNameHasError, onRecipeNameChange }: Props): ReactElement {
   const [showRecipeName, setShowRecipeName] = useState<boolean>(false);
-  const [letterCount, setLetterCount] = useState<number>(0);
+  const [letterCount, setLetterCount] = useState<number>(recipeName.length);
 
   const recipeNameLetterCount = `${letterCount}/50`;
 
