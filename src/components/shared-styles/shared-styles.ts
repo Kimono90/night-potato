@@ -177,14 +177,20 @@ export const StyledActionButton = styled.button<ButtonProps>`
   border: none;
   border-radius: 0.5rem;
   color: ${(props) => props.textColor};
-  padding: 0.25rem 1rem;
-  font-size: 2rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 1rem;
   font-family: inherit;
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin: 0 1rem 2rem 1rem;
+  white-space: nowrap;
 
   :hover {
     background-color: ${(props) => props.hoverColor};
+  }
+
+  @media (min-width: 500px) {
+    font-size: 2rem;
+    padding: 0.25rem 1rem;
   }
 `;
 
