@@ -178,7 +178,7 @@ export const StyledActionButton = styled.button<ButtonProps>`
   border-radius: 0.5rem;
   color: ${(props) => props.textColor};
   padding: 0.25rem 0.75rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: inherit;
   cursor: pointer;
   margin: 0 1rem 2rem 1rem;
