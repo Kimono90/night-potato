@@ -72,8 +72,12 @@ export function EditableIngredient({
       <StyledNumericField
         placeholder="Amount"
         value={ingredient.amount}
+        onKeyPress={(event) => {
+          if (!/[0-9]/.test(event.key)) {
+            event.preventDefault();
+          }
+        }}
         onChange={(event) => {
-          if (!Number(event.target.value)) event.target.value = '';
           setAmountHasError(false);
           setIngredient({ ...ingredient, amount: Number(event.target.value) });
         }}

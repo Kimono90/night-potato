@@ -76,7 +76,7 @@ export function RecipeCreateEditPage() {
     if (!hasRecipeName) setRecipeNameHasError(true);
     if (incompleteIngredients) setIngredientWithError(incompleteIngredientIds);
     setInstructionsHaveError(!recipe.instructions);
-    setMetaInfoHasError(metaInfoHasError);
+    setMetaInfoHasError(!metaInfoIsValid);
 
     return hasRecipeName && !incompleteIngredients.length && recipe.instructions && metaInfoIsValid;
   }

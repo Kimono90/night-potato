@@ -116,6 +116,7 @@ export const StyledTextField = styled.input<FieldProps>`
   width: 10rem;
   margin: 0.5rem;
   border-color: ${(props) => (props.hasError === 'true' ? `${colors.danger}` : 'none')};
+  background-color: ${(props) => (props.hasError === 'true' ? `${colors.dangerBackground}` : 'none')};
 
   @media (min-width: 500px) {
     width: 18rem;
@@ -133,6 +134,7 @@ export const StyledNumericField = styled.input<FieldProps>`
   -moz-appearance: textfield;
   margin: 0.5rem;
   border-color: ${(props) => (props.hasError === 'true' ? `${colors.danger}` : 'none')};
+  background-color: ${(props) => (props.hasError === 'true' ? `${colors.dangerBackground}` : 'none')};
 
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {

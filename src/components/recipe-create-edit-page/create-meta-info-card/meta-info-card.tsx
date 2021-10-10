@@ -37,6 +37,11 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
             <StyledDetailsItemLabel>Portions* </StyledDetailsItemLabel>
             <StyledNumericField
               value={metaInfo?.portions}
+              onKeyPress={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
               onChange={(event) => {
                 if (!Number(event.target.value)) event.target.value = '';
                 onMetaInfoChange({
@@ -44,7 +49,7 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
                   portions: Number(event.target.value),
                 });
               }}
-              hasError={`${!metaInfo.portions && metaInfoHasError}`}
+              hasError={`${metaInfoHasError && !metaInfo.portions}`}
             />
           </StyledDetailsItem>
           <StyledDetailsItem>
@@ -52,6 +57,11 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
             <StyledNumericField
               placeholder="minutes"
               value={metaInfo?.prepTimeInMinutes}
+              onKeyPress={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
               onChange={(event) => {
                 if (!Number(event.target.value)) event.target.value = '';
                 onMetaInfoChange({
@@ -59,13 +69,18 @@ export function MetaInfoCard({ metaInfo, onMetaInfoChange, metaInfoHasError }: P
                   prepTimeInMinutes: Number(event.target.value),
                 });
               }}
-              hasError={`${!metaInfo.prepTimeInMinutes && metaInfoHasError}`}
+              hasError={`${metaInfoHasError && !metaInfo.prepTimeInMinutes}`}
             />
           </StyledDetailsItem>
           <StyledDetailsItem>
             <StyledDetailsItemLabel>Kcal </StyledDetailsItemLabel>
             <StyledNumericField
               value={metaInfo?.kcalPerPortion}
+              onKeyPress={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
               onChange={(event) => {
                 if (!Number(event.target.value)) event.target.value = '';
                 onMetaInfoChange({

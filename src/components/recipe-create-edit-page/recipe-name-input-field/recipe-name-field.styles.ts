@@ -11,11 +11,11 @@ export const StyledRecipeNameInput = styled.input<RecipeInputProps>`
   width: 100%;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  border: ${(props) => (props.hasError == 'true' ? 'solid red 2px' : 'solid black 1px')};
+  border: ${(props) => (props.hasError === 'true' ? 'solid red 2px' : 'solid black 1px')};
+  background-color: ${(props) => (props.hasError === 'true' ? `${colors.dangerBackground}` : `${colors.white}`)};
   font-family: inherit;
   font-size: 1.5rem;
   outline: none;
-  background-color: ${colors.white};
 
   @media (min-width: 500px) {
     padding: 0.5rem 2.5rem 0.5rem 1rem;

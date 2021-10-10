@@ -25,14 +25,7 @@ export function CreateIngredientsCardMobile({ ingredients, onIngredientsChange }
 
   const getIngredients = () => {
     const ingredientsToRender = ingredients.map((i: IIngredient) => (
-      <EditableIngredientMobile
-        key={i.ingredientId}
-        ingredient={i}
-        onRemoveClick={handleRemoveIngredient}
-        onIngredientClick={(ingredient) => {
-          setShowModal(true);
-        }}
-      />
+      <EditableIngredientMobile key={i.ingredientId} ingredient={i} onRemoveClick={handleRemoveIngredient} />
     ));
     return (
       <>

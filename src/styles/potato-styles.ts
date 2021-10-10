@@ -4,6 +4,7 @@ export const colors = {
   secondary: '#c9a495',
   danger: '#bd0e0d',
   dangerHover: '#970E0DFF',
+  dangerBackground: '#f1aaaa',
   success: '#4d9366',
   successHover: '#46865d',
   info: '#1e90ff',
